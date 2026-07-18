@@ -20,7 +20,8 @@
   const langButtons = document.querySelectorAll("[data-set-lang]");
   const setLang = (lang, animate = true) => {
     html.setAttribute("data-lang", lang);
-    html.setAttribute("lang", lang === "vi" ? "vi" : "en");
+    const htmlLang = { en: "en", vi: "vi", zh: "zh-CN" };
+    html.setAttribute("lang", htmlLang[lang] || "en");
     localStorage.setItem("nv-lang", lang);
     langButtons.forEach(b => b.classList.toggle("is-active", b.dataset.setLang === lang));
     updateRailLabel();
@@ -36,30 +37,37 @@
 
   /* ─── Header behaviour ─── */
   const header = document.getElementById("header");
+  const burger = document.getElementById("burger");
+  const nav = document.getElementById("nav");
   let lastY = window.scrollY;
+  const menuOpen = () => nav.classList.contains("is-open");
   const onHeaderScroll = () => {
     const y = window.scrollY;
     header.classList.toggle("is-scrolled", y > 40);
-    // hide on scroll down, show on scroll up
-    header.classList.toggle("is-hidden", y > lastY && y > 500);
+    header.classList.toggle("is-hidden", !menuOpen() && y > lastY && y > 500);
     lastY = y;
   };
 
   /* ─── Mobile menu ─── */
-  const burger = document.getElementById("burger");
-  const nav = document.getElementById("nav");
-  burger.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
+  const setMenu = open => {
+    nav.classList.toggle("is-open", open);
     burger.classList.toggle("is-open", open);
+    header.classList.toggle("is-menu-open", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) header.classList.remove("is-hidden");
+    onHeaderScroll();
+  };
+  burger.setAttribute("aria-expanded", "false");
+  burger.setAttribute("aria-controls", "nav");
+  burger.addEventListener("click", () => setMenu(!menuOpen()));
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+  window.addEventListener("keydown", e => {
+    if (e.key === "Escape" && menuOpen()) setMenu(false);
   });
-  nav.querySelectorAll("a").forEach(a =>
-    a.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      burger.classList.remove("is-open");
-      document.body.style.overflow = "";
-    })
-  );
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1280 && menuOpen()) setMenu(false);
+  });
 
   /* ─── Reveal on scroll ─── */
   const revealTargets = document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title");
@@ -119,7 +127,8 @@
   function updateRailLabel() {
     if (!activeChapter) return;
     const lang = html.getAttribute("data-lang");
-    railLabel.textContent = activeChapter.dataset[lang === "vi" ? "labelVi" : "labelEn"] || "";
+    const key = lang === "vi" ? "labelVi" : lang === "zh" ? "labelZh" : "labelEn";
+    railLabel.textContent = activeChapter.dataset[key] || "";
   }
 
   const chapterIO = new IntersectionObserver(
