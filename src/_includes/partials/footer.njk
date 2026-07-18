@@ -42,18 +42,34 @@
   <a class="float-chat__btn" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener noreferrer" title="Zalo">Zalo</a>
 </aside>
 
-<div class="cookie-bar" id="cookieBar" hidden>
-  <p>
-    <span class="lang en">{{ i18n.en.cookieText }}</span>
-    <span class="lang vi">{{ i18n.vi.cookieText }}</span>
-    <span class="lang zh">{{ i18n.zh.cookieText }}</span>
-    <a href="{{ '/privacy/' | url }}">
-      <span class="lang en">Privacy</span><span class="lang vi">Bảo mật</span><span class="lang zh">隐私</span>
-    </a>
-  </p>
-  <button type="button" class="btn btn--small btn--solid" id="cookieAccept">
-    <span class="lang en">{{ i18n.en.cookieAccept }}</span>
-    <span class="lang vi">{{ i18n.vi.cookieAccept }}</span>
-    <span class="lang zh">{{ i18n.zh.cookieAccept }}</span>
-  </button>
+<div class="cookie-bar" id="cookieBar" hidden role="dialog" aria-labelledby="cookieBarTitle" aria-live="polite">
+  <div class="cookie-bar__content">
+    <p class="cookie-bar__title" id="cookieBarTitle">
+      <span class="lang en">{{ i18n.en.cookieTitle }}</span>
+      <span class="lang vi">{{ i18n.vi.cookieTitle }}</span>
+      <span class="lang zh">{{ i18n.zh.cookieTitle }}</span>
+    </p>
+    <p class="cookie-bar__text">
+      <span class="lang en">{{ i18n.en.cookieText }}</span>
+      <span class="lang vi">{{ i18n.vi.cookieText }}</span>
+      <span class="lang zh">{{ i18n.zh.cookieText }}</span>
+      <a href="{{ '/cookies/' | url }}">
+        <span class="lang en">{{ i18n.en.cookiePolicy }}</span>
+        <span class="lang vi">{{ i18n.vi.cookiePolicy }}</span>
+        <span class="lang zh">{{ i18n.zh.cookiePolicy }}</span>
+      </a>
+    </p>
+  </div>
+  <div class="cookie-bar__actions">
+    <button type="button" class="cookie-bar__btn cookie-bar__btn--decline" id="cookieDecline">
+      <span class="lang en">{{ i18n.en.cookieDecline }}</span>
+      <span class="lang vi">{{ i18n.vi.cookieDecline }}</span>
+      <span class="lang zh">{{ i18n.zh.cookieDecline }}</span>
+    </button>
+    <button type="button" class="cookie-bar__btn cookie-bar__btn--accept" id="cookieAccept">
+      <span class="lang en">{{ i18n.en.cookieAccept }}</span>
+      <span class="lang vi">{{ i18n.vi.cookieAccept }}</span>
+      <span class="lang zh">{{ i18n.zh.cookieAccept }}</span>
+    </button>
+  </div>
 </div>

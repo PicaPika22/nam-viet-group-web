@@ -7,13 +7,17 @@
   /* Cookie consent */
   const cookieBar = document.getElementById("cookieBar");
   const cookieAccept = document.getElementById("cookieAccept");
+  const cookieDecline = document.getElementById("cookieDecline");
   if (cookieBar && cookieAccept) {
-    const key = "nv-cookie-ok";
-    if (!localStorage.getItem(key)) cookieBar.hidden = false;
-    cookieAccept.addEventListener("click", () => {
-      localStorage.setItem(key, "1");
+    const key = "nv-cookie-consent";
+    const stored = localStorage.getItem(key);
+    if (!stored) cookieBar.hidden = false;
+    const closeCookieBar = (value) => {
+      localStorage.setItem(key, value);
       cookieBar.hidden = true;
-    });
+    };
+    cookieAccept.addEventListener("click", () => closeCookieBar("accepted"));
+    cookieDecline?.addEventListener("click", () => closeCookieBar("declined"));
   }
 
   /* Site search */
@@ -161,5 +165,31 @@
   const header = document.getElementById("header");
   if (header?.classList.contains("header--inner")) {
     header.classList.add("is-scrolled");
+  }
+
+  /* Page subnav (About tabs) */
+  const subnav = document.querySelector("[data-page-subnav]");
+  if (subnav) {
+    const links = [...subnav.querySelectorAll("[data-subnav-target]")];
+    const panels = [...document.querySelectorAll("[data-page-panel]")];
+    const setActive = id => {
+      links.forEach(a => a.classList.toggle("is-active", a.dataset.subnavTarget === id));
+    };
+    links.forEach(a => {
+      a.addEventListener("click", () => setActive(a.dataset.subnavTarget));
+    });
+    if (panels.length && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        entries => {
+          for (const e of entries) {
+            if (e.isIntersecting) setActive(e.target.dataset.pagePanel);
+          }
+        },
+        { rootMargin: "-40% 0px -45% 0px", threshold: 0.1 }
+      );
+      panels.forEach(p => io.observe(p));
+    }
+    const hash = window.location.hash.replace("#", "");
+    if (hash) setActive(hash);
   }
 })();

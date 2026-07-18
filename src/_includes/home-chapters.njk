@@ -391,10 +391,18 @@
       </p>
     </header>
   </div>
-  <div class="marquee reveal">
-    <div class="marquee__track">
-      <span>PILMICO</span><i>✦</i><span>VERONESI</span><i>✦</i><span>BUNGE</span><i>✦</i><span>WILMAR</span><i>✦</i><span>CJ</span><i>✦</i><span>AJINOMOTO</span><i>✦</i>
-      <span>PILMICO</span><i>✦</i><span>VERONESI</span><i>✦</i><span>BUNGE</span><i>✦</i><span>WILMAR</span><i>✦</i><span>CJ</span><i>✦</i><span>AJINOMOTO</span><i>✦</i>
+  <div class="partner-marquee reveal" aria-label="Global partners">
+    <div class="partner-marquee__track">
+      {% for partner in partners %}
+      <a class="partner-logo" href="{{ partner.url }}" target="_blank" rel="noopener noreferrer" title="{{ partner.name }}">
+        <img src="{{ partner.logo | url }}" alt="{{ partner.name }}" width="364" height="156" loading="lazy">
+      </a>
+      {% endfor %}
+      {% for partner in partners %}
+      <a class="partner-logo" href="{{ partner.url }}" target="_blank" rel="noopener noreferrer" title="{{ partner.name }}" aria-hidden="true" tabindex="-1">
+        <img src="{{ partner.logo | url }}" alt="" width="364" height="156" loading="lazy">
+      </a>
+      {% endfor %}
     </div>
   </div>
   <div class="container center reveal" data-delay="150">

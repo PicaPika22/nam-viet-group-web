@@ -16,27 +16,29 @@ lead:
   zh: 产品目录、认证、ESG 要点与公司简介文件。
 ---
 
-<ul class="download-list">
-  {% for doc in downloads %}
-  <li>
-    <div>
-      <span class="download-list__cat">
-        <span class="lang en">{{ doc.category.en }}</span>
-        <span class="lang vi">{{ doc.category.vi }}</span>
-        <span class="lang zh">{{ doc.category.zh }}</span>
-      </span>
-      <strong>
-        <span class="lang en">{{ doc.title.en }}</span>
-        <span class="lang vi">{{ doc.title.vi }}</span>
-        <span class="lang zh">{{ doc.title.zh }}</span>
-      </strong>
-      <span class="download-list__size">{{ doc.size }}</span>
-    </div>
-    <a class="btn btn--small btn--solid" href="{{ doc.file | url }}" download>
-      <span class="lang en">{{ i18n.en.download }}</span>
-      <span class="lang vi">{{ i18n.vi.download }}</span>
-      <span class="lang zh">{{ i18n.zh.download }}</span>
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+<section class="page-section">
+  <ul class="download-list">
+    {% for doc in downloads %}
+    <li>
+      <div>
+        <span class="download-list__cat">
+          <span class="lang en">{{ doc.category.en }}</span>
+          <span class="lang vi">{{ doc.category.vi }}</span>
+          <span class="lang zh">{{ doc.category.zh }}</span>
+        </span>
+        <strong>
+          <span class="lang en">{{ doc.title.en }}</span>
+          <span class="lang vi">{{ doc.title.vi }}</span>
+          <span class="lang zh">{{ doc.title.zh }}</span>
+        </strong>
+        <span class="download-list__size">{{ doc.size }}</span>
+      </div>
+      <a class="btn btn--small btn--solid" href="{{ doc.file | url }}" download>
+        <span class="lang en">{{ i18n.en.download }}</span>
+        <span class="lang vi">{{ i18n.vi.download }}</span>
+        <span class="lang zh">{{ i18n.zh.download }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

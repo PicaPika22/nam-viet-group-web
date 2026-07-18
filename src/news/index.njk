@@ -38,4 +38,10 @@ lead:
   </a>
   {% endfor %}
 </div>
-<p><a href="{{ '/news/feed.xml' | url }}">RSS</a></p>
+<p class="page-actions">
+  <a class="rss-link" href="{{ '/news/feed.xml' | url }}">
+    <span class="lang en">{{ i18n.en.rssFeed }}</span>
+    <span class="lang vi">{{ i18n.vi.rssFeed }}</span>
+    <span class="lang zh">{{ i18n.zh.rssFeed }}</span>
+  </a>
+</p>

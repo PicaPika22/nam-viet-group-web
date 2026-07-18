@@ -9,11 +9,82 @@
     </a>
     <nav class="header__nav" id="nav" aria-label="Primary">
       {% for item in nav.primary %}
-      <a href="{{ item.href | url }}"{% if page.url == item.href %} aria-current="page"{% endif %}>
+      {% set onHome = page.url == '/' %}
+      {% set itemHref = (onHome and item.hrefHome) or item.hrefInner or item.href %}
+      {% set hasChildren = item.children and item.children.length %}
+      {% set hasMega = item.mega and item.mega.length %}
+      {% if hasChildren or hasMega %}
+      <div class="nav-item{% if hasMega %} has-mega{% else %} has-dropdown{% endif %}{% if item | navActive(page.url) %} is-current{% endif %}">
+        <a
+          href="{{ itemHref | url }}"
+          class="nav-item__link{% if item | navActive(page.url) %} is-active{% endif %}"
+          data-nav-id="{{ item.id }}"
+          {% if item | navActive(page.url) %} aria-current="page"{% endif %}
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span class="lang en">{{ item.en }}</span>
+          <span class="lang vi">{{ item.vi }}</span>
+          <span class="lang zh">{{ item.zh }}</span>
+          <svg class="nav-item__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+
+        {% if hasMega %}
+        <div class="nav-mega">
+          <div class="nav-mega__panel container">
+            <div class="nav-mega__grid">
+              {% for col in item.mega %}
+              <div class="nav-mega__col">
+                <p class="nav-mega__head">
+                  <span class="nav-mega__key lang en">{{ col.keyEn }}</span>
+                  <span class="nav-mega__key lang vi">{{ col.keyVi }}</span>
+                  <span class="nav-mega__key lang zh">{{ col.keyZh }}</span>
+                </p>
+                <ul class="nav-mega__list">
+                  {% for link in col.links %}
+                  <li>
+                    <a href="{{ link.href | url }}" class="nav-mega__link{% if page.url == (link.href | pathOnly) %} is-active{% endif %}">
+                      <span class="lang en">{{ link.en }}</span>
+                      <span class="lang vi">{{ link.vi }}</span>
+                      <span class="lang zh">{{ link.zh }}</span>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="nav-dropdown" role="menu">
+          {% for child in item.children %}
+          <a
+            href="{{ child.href | url }}"
+            class="nav-dropdown__link{% if (not (child.href | hasHash)) and page.url == (child.href | pathOnly) %} is-active{% endif %}"
+            role="menuitem"
+            data-nav-child="{{ child.id }}"
+          >
+            <span class="lang en">{{ child.en }}</span>
+            <span class="lang vi">{{ child.vi }}</span>
+            <span class="lang zh">{{ child.zh }}</span>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% else %}
+      <a
+        href="{{ itemHref | url }}"
+        class="nav-item__link{% if item | navActive(page.url) %} is-active{% endif %}"
+        data-nav-id="{{ item.id }}"
+        {% if item | navActive(page.url) %} aria-current="page"{% endif %}
+      >
         <span class="lang en">{{ item.en }}</span>
         <span class="lang vi">{{ item.vi }}</span>
         <span class="lang zh">{{ item.zh }}</span>
       </a>
+      {% endif %}
       {% endfor %}
     </nav>
     <div class="header__actions">
@@ -25,10 +96,11 @@
         <button type="button" data-set-lang="vi">VI</button>
         <button type="button" data-set-lang="zh">中文</button>
       </div>
-      <a href="{{ '/contact/' | url }}" class="btn btn--small btn--solid header__cta">
+      <a href="{{ '/contact/' | url }}" class="btn btn--small btn--outline header__cta">
         <span class="lang en">{{ i18n.en.contact }}</span>
         <span class="lang vi">{{ i18n.vi.contact }}</span>
         <span class="lang zh">{{ i18n.zh.contact }}</span>
+        <span class="header__cta-arrow" aria-hidden="true">→</span>
       </a>
       <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
     </div>

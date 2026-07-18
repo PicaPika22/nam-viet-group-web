@@ -8,6 +8,25 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
+  eleventyConfig.addFilter("pathOnly", (value) => {
+    if (!value) return "/";
+    return String(value).split("#")[0] || "/";
+  });
+
+  eleventyConfig.addFilter("hasHash", (value) =>
+    Boolean(value && String(value).includes("#"))
+  );
+
+  eleventyConfig.addFilter("navActive", (item, pageUrl) => {
+    if (!item || !pageUrl) return false;
+    const path = String(pageUrl).split("#")[0] || "/";
+    const href = String(item.hrefInner || item.href || "/").split("#")[0];
+    if (item.match === "prefix" && href !== "/" && href !== "/#") {
+      return path === href || path.startsWith(href);
+    }
+    return path === href;
+  });
+
   eleventyConfig.addFilter("absoluteUrl", (url, base) => {
     if (!url) return base || "";
     if (/^https?:\/\//i.test(url)) return url;

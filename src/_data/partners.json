@@ -1,0 +1,110 @@
+[
+  {
+    "id": "van-aarsen",
+    "name": "Van Aarsen",
+    "url": "https://www.vanaarsen.com/",
+    "desc": {
+      "en": "Feed milling line supplier",
+      "vi": "Nhà cung cấp dây chuyền sản xuất thức ăn chăn nuôi",
+      "zh": "饲料生产线供应商"
+    },
+    "logo": "/assets/img/partners/van-aarsen.png",
+    "domain": "vanaarsen.com"
+  },
+  {
+    "id": "bunge",
+    "name": "Bunge",
+    "url": "https://www.bunge.com/",
+    "desc": {
+      "en": "Global agribusiness group",
+      "vi": "Tập đoàn nông nghiệp toàn cầu",
+      "zh": "全球农业集团"
+    },
+    "logo": "/assets/img/partners/bunge.png",
+    "domain": "bunge.com"
+  },
+  {
+    "id": "wilmar",
+    "name": "Wilmar International",
+    "url": "https://www.wilmar-international.com/",
+    "desc": {
+      "en": "Agribusiness & food group",
+      "vi": "Tập đoàn nông nghiệp & thực phẩm",
+      "zh": "农业与食品集团"
+    },
+    "logo": "/assets/img/partners/wilmar.png",
+    "domain": "wilmar-international.com"
+  },
+  {
+    "id": "ajinomoto",
+    "name": "Ajinomoto Group",
+    "url": "https://www.ajinomoto.com/",
+    "desc": {
+      "en": "Nutrition technology",
+      "vi": "Công nghệ dinh dưỡng",
+      "zh": "营养科技"
+    },
+    "logo": "/assets/img/partners/ajinomoto.png",
+    "domain": "ajinomoto.com"
+  },
+  {
+    "id": "anderson",
+    "name": "Anderson International",
+    "url": "https://www.andersonintl.com/",
+    "desc": {
+      "en": "Oil pressing & processing equipment",
+      "vi": "Thiết bị ép dầu, chế biến",
+      "zh": "榨油与加工设备"
+    },
+    "logo": "/assets/img/partners/anderson.png",
+    "domain": "andersonintl.com"
+  },
+  {
+    "id": "andritz",
+    "name": "Andritz",
+    "url": "https://www.andritz.com/",
+    "desc": {
+      "en": "Industrial equipment",
+      "vi": "Thiết bị công nghiệp",
+      "zh": "工业设备"
+    },
+    "logo": "/assets/img/partners/andritz.png",
+    "domain": "andritz.com"
+  },
+  {
+    "id": "cargill",
+    "name": "Cargill",
+    "url": "https://www.cargill.com/",
+    "desc": {
+      "en": "US agribusiness group",
+      "vi": "Tập đoàn nông nghiệp Hoa Kỳ",
+      "zh": "美国农业集团"
+    },
+    "logo": "/assets/img/partners/cargill.png",
+    "domain": "cargill.com"
+  },
+  {
+    "id": "cj",
+    "name": "CJ Group",
+    "url": "https://www.cj.net/",
+    "desc": {
+      "en": "Korean conglomerate",
+      "vi": "Tập đoàn Hàn Quốc",
+      "zh": "韩国企业集团"
+    },
+    "logo": "/assets/img/partners/cj.png",
+    "domain": "cj.net"
+  },
+  {
+    "id": "olmix",
+    "name": "Olmix",
+    "url": "https://www.olmix.com/",
+    "desc": {
+      "en": "Animal nutrition & health solutions",
+      "vi": "Giải pháp dinh dưỡng & sức khỏe vật nuôi",
+      "zh": "动物营养与健康解决方案"
+    },
+    "logo": "/assets/img/partners/olmix.png",
+    "domain": "olmix.com"
+  }
+]

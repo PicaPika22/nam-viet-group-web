@@ -66,14 +66,58 @@
     burger.setAttribute("aria-expanded", "false");
     burger.setAttribute("aria-controls", "nav");
     burger.addEventListener("click", () => setMenu(!menuOpen()));
-    nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    nav.querySelectorAll("a").forEach(a => {
+      if (a.closest(".nav-dropdown, .nav-mega")) return;
+      if (a.classList.contains("nav-item__link") && a.closest(".has-dropdown, .has-mega")) return;
+      a.addEventListener("click", () => setMenu(false));
+    });
+    nav.querySelectorAll(".nav-dropdown a, .nav-mega a").forEach(a =>
+      a.addEventListener("click", () => setMenu(false))
+    );
     window.addEventListener("keydown", e => {
       if (e.key === "Escape" && menuOpen()) setMenu(false);
     });
     window.addEventListener("resize", () => {
       if (window.innerWidth > 1280 && menuOpen()) setMenu(false);
+      nav.querySelectorAll(".nav-item.is-open").forEach(i => i.classList.remove("is-open"));
     });
   }
+
+  /* Nav dropdown / mega (mobile accordion) */
+  const navItems = nav ? [...nav.querySelectorAll(".nav-item.has-dropdown, .nav-item.has-mega")] : [];
+  const syncNavPanels = () => {
+    for (const item of navItems) {
+      const open = item.classList.contains("is-open");
+      item.querySelector(".nav-item__link")?.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+  };
+  navItems.forEach(item => {
+    const trigger = item.querySelector(".nav-item__link");
+    trigger?.addEventListener("click", e => {
+      if (window.innerWidth > 1280) return;
+      e.preventDefault();
+      const wasOpen = item.classList.contains("is-open");
+      navItems.forEach(i => i.classList.remove("is-open"));
+      if (!wasOpen) item.classList.add("is-open");
+      syncNavPanels();
+    });
+  });
+
+  const syncDropdownChildActive = () => {
+    if (!nav) return;
+    const path = window.location.pathname.replace(/\/index\.html$/, "/");
+    const hash = window.location.hash;
+    nav.querySelectorAll(".nav-dropdown__link, .nav-mega__link").forEach(link => {
+      const href = link.getAttribute("href") || "";
+      const [linkPath, linkHash = ""] = href.split("#");
+      const normalizedPath = linkPath.replace(/\/index\.html$/, "/") || "/";
+      const pathMatch = normalizedPath === path || (normalizedPath !== "/" && path.startsWith(normalizedPath));
+      const hashMatch = linkHash ? hash === `#${linkHash}` : pathMatch && !hash;
+      link.classList.toggle("is-active", pathMatch && (linkHash ? hashMatch : hashMatch || pathMatch));
+    });
+  };
+  syncDropdownChildActive();
+  window.addEventListener("hashchange", syncDropdownChildActive);
 
   /* ─── Reveal on scroll ─── */
   const revealTargets = document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title");

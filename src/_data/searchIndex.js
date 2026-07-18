@@ -94,6 +94,11 @@ module.exports = function () {
       body: { en: "privacy cookies data", vi: "bảo mật cookie dữ liệu", zh: "隐私 cookie 数据" },
     },
     {
+      url: withPrefix("/cookies/"),
+      title: { en: "Cookie Policy", vi: "Chính sách cookie", zh: "Cookie 政策" },
+      body: { en: "cookies consent analytics preferences", vi: "cookie đồng ý phân tích tùy chọn", zh: "cookie 同意 分析 偏好" },
+    },
+    {
       url: withPrefix("/terms/"),
       title: { en: "Terms of Use", vi: "Điều khoản sử dụng", zh: "使用条款" },
       body: { en: "terms conditions website", vi: "điều khoản website", zh: "条款 网站" },

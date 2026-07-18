@@ -16,59 +16,69 @@ lead:
   zh: 面向合作伙伴与利益相关方的关键里程碑、资本要点与可下载摘要。
 ---
 
-<div class="stats stats--page">
-  {% for item in investors.highlights %}
-  <div class="stat">
-    <span class="stat__value">{{ item.value }}</span>
-    <span class="stat__label">
-      <span class="lang en">{{ item.label.en }}</span>
-      <span class="lang vi">{{ item.label.vi }}</span>
-      <span class="lang zh">{{ item.label.zh }}</span>
-    </span>
-  </div>
-  {% endfor %}
-</div>
-
-<h2>
-  <span class="lang en">{{ i18n.en.reports }}</span>
-  <span class="lang vi">{{ i18n.vi.reports }}</span>
-  <span class="lang zh">{{ i18n.zh.reports }}</span>
-</h2>
-<ul class="download-list">
-  {% for r in investors.reports %}
-  <li>
-    <div>
-      <strong>{{ r.year }} — 
-        <span class="lang en">{{ r.title.en }}</span>
-        <span class="lang vi">{{ r.title.vi }}</span>
-        <span class="lang zh">{{ r.title.zh }}</span>
-      </strong>
+<section class="page-section">
+  <div class="stats stats--page">
+    {% for item in investors.highlights %}
+    <div class="stat">
+      <span class="stat__value">{{ item.value }}</span>
+      <span class="stat__label">
+        <span class="lang en">{{ item.label.en }}</span>
+        <span class="lang vi">{{ item.label.vi }}</span>
+        <span class="lang zh">{{ item.label.zh }}</span>
+      </span>
     </div>
-    <a class="btn btn--small btn--dark" href="{{ r.file | url }}">PDF</a>
-  </li>
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </div>
+</section>
 
-<h2>
-  <span class="lang en">Journey</span>
-  <span class="lang vi">Hành trình</span>
-  <span class="lang zh">发展历程</span>
-</h2>
-<ol class="investor-timeline">
-  {% for m in investors.milestones %}
-  <li>
-    <strong>{{ m.year }}</strong>
-    <span class="lang en">{{ m.en }}</span>
-    <span class="lang vi">{{ m.vi }}</span>
-    <span class="lang zh">{{ m.zh }}</span>
-  </li>
-  {% endfor %}
-</ol>
+<section class="page-section">
+  <h2>
+    <span class="lang en">{{ i18n.en.reports }}</span>
+    <span class="lang vi">{{ i18n.vi.reports }}</span>
+    <span class="lang zh">{{ i18n.zh.reports }}</span>
+  </h2>
+  <ul class="download-list">
+    {% for r in investors.reports %}
+    <li>
+      <div>
+        <strong>{{ r.year }} —
+          <span class="lang en">{{ r.title.en }}</span>
+          <span class="lang vi">{{ r.title.vi }}</span>
+          <span class="lang zh">{{ r.title.zh }}</span>
+        </strong>
+      </div>
+      <a class="btn btn--small btn--solid" href="{{ r.file | url }}">
+        <span class="lang en">{{ i18n.en.downloadPdf }}</span>
+        <span class="lang vi">{{ i18n.vi.downloadPdf }}</span>
+        <span class="lang zh">{{ i18n.zh.downloadPdf }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
 
-<p>
+<section class="page-section">
+  <h2>
+    <span class="lang en">{{ i18n.en.journey }}</span>
+    <span class="lang vi">{{ i18n.vi.journey }}</span>
+    <span class="lang zh">{{ i18n.zh.journey }}</span>
+  </h2>
+  <ol class="investor-timeline">
+    {% for m in investors.milestones %}
+    <li>
+      <strong>{{ m.year }}</strong>
+      <span class="lang en">{{ m.en }}</span>
+      <span class="lang vi">{{ m.vi }}</span>
+      <span class="lang zh">{{ m.zh }}</span>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<p class="page-actions">
   <a class="btn btn--solid" href="{{ '/contact/' | url }}?type=investor">
-    <span class="lang en">Contact IR</span>
-    <span class="lang vi">Liên hệ IR</span>
-    <span class="lang zh">联系投资者关系</span>
+    <span class="lang en">{{ i18n.en.contactIr }}</span>
+    <span class="lang vi">{{ i18n.vi.contactIr }}</span>
+    <span class="lang zh">{{ i18n.zh.contactIr }}</span>
   </a>
 </p>
