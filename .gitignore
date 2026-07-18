@@ -1,4 +1,6 @@
-.cursor/
+.cursor/*
+!.cursor/agents/
+!.cursor/agents/**
 .codegraph/
 .DS_Store
 Thumbs.db
