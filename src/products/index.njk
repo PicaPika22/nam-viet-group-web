@@ -1,0 +1,38 @@
+---
+layout: layouts/inner.njk
+title: Products
+permalink: /products/
+eyebrow:
+  en: Our Products
+  vi: Sản phẩm
+  zh: 产品
+heading:
+  en: Nutrition Designed for Every Stage.
+  vi: Giải pháp dinh dưỡng cho mọi giai đoạn.
+  zh: 为每个阶段设计的营养方案。
+lead:
+  en: From pig and poultry feed to aquaculture and specialty nutrition, our products are developed through scientific research.
+  vi: Mỗi dòng sản phẩm được phát triển dựa trên nghiên cứu khoa học nhằm tối ưu sức khỏe vật nuôi.
+  zh: 从猪禽饲料到水产与特种营养，产品均基于科学研究开发。
+---
+
+<div class="products__grid products__grid--page">
+  {% for product in collections.products %}
+  <a href="{{ product.url | url }}" class="pcard" style="--pc:{{ product.data.color }}">
+    <span class="pcard__code">{{ product.data.code }}</span>
+    <span class="pcard__name">
+      <span class="lang en">{{ product.data.title.en }}</span>
+      <span class="lang vi">{{ product.data.title.vi }}</span>
+      <span class="lang zh">{{ product.data.title.zh }}</span>
+    </span>
+    <span class="pcard__arrow">→</span>
+  </a>
+  {% endfor %}
+</div>
+<p style="margin-top:2rem">
+  <a class="btn btn--dark" href="{{ '/downloads/' | url }}">
+    <span class="lang en">Download catalog</span>
+    <span class="lang vi">Tải catalogue</span>
+    <span class="lang zh">下载产品目录</span>
+  </a>
+</p>

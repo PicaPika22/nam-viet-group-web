@@ -1,4 +1,5 @@
 .cursor/
+.codegraph/
 .DS_Store
 Thumbs.db
 *.log
@@ -7,3 +8,4 @@ Thumbs.db
 node_modules/
 .vscode/
 *.local
+_site/

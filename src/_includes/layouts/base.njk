@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+{% include "partials/head.njk" %}
+</head>
+<body class="page-{{ pageLayout or 'default' }}">
+{% if showLoader %}
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <img class="loader__logo" src="{{ '/assets/img/logo-light.png' | url }}" alt="Nam Viet Group">
+    <span class="loader__word">NAM VIET GROUP</span>
+    <span class="loader__bar"><span class="loader__fill"></span></span>
+  </div>
+</div>
+{% endif %}
+
+{% if showRail %}
+<aside class="rail" id="rail" aria-hidden="true">
+  <span class="rail__index" id="railIndex">01</span>
+  <span class="rail__line"><span class="rail__progress" id="railProgress"></span></span>
+  <span class="rail__label" id="railLabel">INTRO</span>
+</aside>
+{% endif %}
+
+{% include "partials/header.njk" %}
+
+<main id="main">
+{{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+<script src="{{ '/js/main.js' | url }}"></script>
+<script src="{{ '/js/site.js' | url }}"></script>
+<script type="application/json" id="searchIndex">{{ searchIndex | dump | safe }}</script>
+</body>
+</html>

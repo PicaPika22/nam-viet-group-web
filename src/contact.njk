@@ -1,0 +1,35 @@
+---
+layout: layouts/inner.njk
+title: Contact
+permalink: /contact/
+eyebrow:
+  en: Contact
+  vi: Liên hệ
+  zh: 联系我们
+heading:
+  en: Let's Grow the Future Together.
+  vi: Cùng kiến tạo tương lai bền vững.
+  zh: 携手共创可持续未来。
+lead:
+  en: Tell us about partnership, products, logistics or careers — we will route your message to the right team.
+  vi: Cho chúng tôi biết về hợp tác, sản phẩm, logistics hoặc tuyển dụng — chúng tôi sẽ chuyển đến đúng bộ phận.
+  zh: 告诉我们您的合作、产品、物流或招聘需求——我们会转交对应团队。
+---
+
+<div class="contact-page">
+  <div class="contact-page__info">
+    <p><strong>{{ site.emailPartner }}</strong></p>
+    <p><a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a></p>
+    <p>
+      <span class="lang en">{{ site.address.en }}</span>
+      <span class="lang vi">{{ site.address.vi }}</span>
+      <span class="lang zh">{{ site.address.zh }}</span>
+    </p>
+    <div class="contact-page__map" aria-hidden="true">
+      <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Ho%20Chi%20Minh%20City&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+  {% set productCode = "" %}
+  {% include "partials/contact-form.njk" %}
+</div>

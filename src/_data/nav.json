@@ -1,0 +1,22 @@
+{
+  "primary": [
+    { "href": "/about/", "en": "About", "vi": "Về chúng tôi", "zh": "关于我们" },
+    { "href": "/#ecosystem", "en": "Ecosystem", "vi": "Hệ sinh thái", "zh": "生态系统" },
+    { "href": "/products/", "en": "Products", "vi": "Sản phẩm", "zh": "产品" },
+    { "href": "/#logistics", "en": "Logistics", "vi": "Logistics", "zh": "物流" },
+    { "href": "/sustainability/", "en": "Sustainability", "vi": "Bền vững", "zh": "可持续发展" },
+    { "href": "/news/", "en": "News", "vi": "Tin tức", "zh": "新闻" },
+    { "href": "/careers/", "en": "Careers", "vi": "Tuyển dụng", "zh": "招聘" }
+  ],
+  "footer": [
+    { "href": "/about/", "en": "About", "vi": "Về chúng tôi", "zh": "关于我们" },
+    { "href": "/products/", "en": "Products", "vi": "Sản phẩm", "zh": "产品" },
+    { "href": "/news/", "en": "News", "vi": "Tin tức", "zh": "新闻" },
+    { "href": "/sustainability/", "en": "Sustainability", "vi": "Bền vững", "zh": "可持续发展" },
+    { "href": "/investors/", "en": "Investors", "vi": "Nhà đầu tư", "zh": "投资者" },
+    { "href": "/downloads/", "en": "Downloads", "vi": "Tài liệu", "zh": "资料下载" },
+    { "href": "/contact/", "en": "Contact", "vi": "Liên hệ", "zh": "联系我们" },
+    { "href": "/privacy/", "en": "Privacy", "vi": "Bảo mật", "zh": "隐私" },
+    { "href": "/terms/", "en": "Terms", "vi": "Điều khoản", "zh": "条款" }
+  ]
+}

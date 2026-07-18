@@ -1,0 +1,52 @@
+---
+layout: layouts/inner.njk
+title: Careers
+permalink: /careers/
+eyebrow:
+  en: Careers
+  vi: Tuyển dụng
+  zh: 招聘
+heading:
+  en: Grow with Nam Viet.
+  vi: Cùng Nam Việt phát triển.
+  zh: 与南越共同成长。
+lead:
+  en: Join teams across manufacturing, logistics, sustainability and corporate functions.
+  vi: Gia nhập các đội ngũ sản xuất, logistics, bền vững và khối văn phòng.
+  zh: 加入生产、物流、可持续发展与企业职能部门。
+---
+
+<h2>
+  <span class="lang en">{{ i18n.en.openRoles }}</span>
+  <span class="lang vi">{{ i18n.vi.openRoles }}</span>
+  <span class="lang zh">{{ i18n.zh.openRoles }}</span>
+</h2>
+
+<div class="career-list">
+  {% for job in careers %}
+  <article class="career-card" id="{{ job.id }}">
+    <div>
+      <h3>
+        <span class="lang en">{{ job.title.en }}</span>
+        <span class="lang vi">{{ job.title.vi }}</span>
+        <span class="lang zh">{{ job.title.zh }}</span>
+      </h3>
+      <p class="career-card__meta">
+        <span class="lang en">{{ job.department.en }} · {{ job.location.en }} · {{ job.type.en }}</span>
+        <span class="lang vi">{{ job.department.vi }} · {{ job.location.vi }} · {{ job.type.vi }}</span>
+        <span class="lang zh">{{ job.department.zh }} · {{ job.location.zh }} · {{ job.type.zh }}</span>
+      </p>
+      <p>
+        <span class="lang en">{{ job.summary.en }}</span>
+        <span class="lang vi">{{ job.summary.vi }}</span>
+        <span class="lang zh">{{ job.summary.zh }}</span>
+      </p>
+    </div>
+    <a class="btn btn--solid btn--small" href="{{ '/contact/' | url }}?type=careers&amp;role={{ job.id }}">
+      <span class="lang en">{{ i18n.en.applyNow }}</span>
+      <span class="lang vi">{{ i18n.vi.applyNow }}</span>
+      <span class="lang zh">{{ i18n.zh.applyNow }}</span>
+    </a>
+  </article>
+  {% endfor %}
+</div>

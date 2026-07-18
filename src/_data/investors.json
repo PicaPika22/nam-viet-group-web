@@ -1,0 +1,35 @@
+{
+  "highlights": [
+    {
+      "value": "20+",
+      "label": { "en": "Years of growth", "vi": "Năm tăng trưởng", "zh": "年成长历程" }
+    },
+    {
+      "value": "542B+",
+      "label": { "en": "VND charter capital", "vi": "Vốn điều lệ (VNĐ)", "zh": "注册资本（越南盾）" }
+    },
+    {
+      "value": "10",
+      "label": { "en": "Member companies", "vi": "Công ty thành viên", "zh": "成员企业" }
+    }
+  ],
+  "reports": [
+    {
+      "year": "2025",
+      "title": { "en": "Annual Report (summary)", "vi": "Báo cáo thường niên (tóm tắt)", "zh": "年度报告（摘要）" },
+      "file": "/assets/docs/annual-report-2025-summary.pdf"
+    },
+    {
+      "year": "2025",
+      "title": { "en": "ESG Highlights", "vi": "Điểm nhấn ESG", "zh": "ESG 要点" },
+      "file": "/assets/docs/esg-highlights-2025.pdf"
+    }
+  ],
+  "milestones": [
+    { "year": "1998", "en": "Company founded", "vi": "Thành lập doanh nghiệp", "zh": "公司成立" },
+    { "year": "2005", "en": "First feed factory", "vi": "Nhà máy đầu tiên", "zh": "首座饲料工厂" },
+    { "year": "2016", "en": "Logistics network expansion", "vi": "Mở rộng mạng lưới logistics", "zh": "物流网络扩张" },
+    { "year": "2020", "en": "Port investment", "vi": "Đầu tư kho cảng", "zh": "港口投资" },
+    { "year": "Today", "en": "Integrated multi-industry group", "vi": "Tập đoàn đa ngành", "zh": "多元化产业集团" }
+  ]
+}

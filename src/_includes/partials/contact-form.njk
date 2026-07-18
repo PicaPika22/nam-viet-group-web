@@ -1,0 +1,72 @@
+<form class="contact-form" id="contactForm" action="{{ site.formEndpoint }}" method="POST">
+  <input type="hidden" name="_subject" value="Nam Viet Group website inquiry">
+  <input type="text" name="_gotcha" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <div class="contact-form__grid">
+    <label>
+      <span class="lang en">{{ i18n.en.formName }}</span>
+      <span class="lang vi">{{ i18n.vi.formName }}</span>
+      <span class="lang zh">{{ i18n.zh.formName }}</span>
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formEmail }}</span>
+      <span class="lang vi">{{ i18n.vi.formEmail }}</span>
+      <span class="lang zh">{{ i18n.zh.formEmail }}</span>
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formCompany }}</span>
+      <span class="lang vi">{{ i18n.vi.formCompany }}</span>
+      <span class="lang zh">{{ i18n.zh.formCompany }}</span>
+      <input type="text" name="company" autocomplete="organization">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formPhone }}</span>
+      <span class="lang vi">{{ i18n.vi.formPhone }}</span>
+      <span class="lang zh">{{ i18n.zh.formPhone }}</span>
+      <input type="tel" name="phone" autocomplete="tel">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formType }}</span>
+      <span class="lang vi">{{ i18n.vi.formType }}</span>
+      <span class="lang zh">{{ i18n.zh.formType }}</span>
+      <select name="inquiry_type" id="inquiryType">
+        <option value="partner">{{ i18n.en.typePartner }} / {{ i18n.vi.typePartner }} / {{ i18n.zh.typePartner }}</option>
+        <option value="product">{{ i18n.en.typeProduct }} / {{ i18n.vi.typeProduct }} / {{ i18n.zh.typeProduct }}</option>
+        <option value="logistics">{{ i18n.en.typeLogistics }}</option>
+        <option value="careers">{{ i18n.en.typeCareers }} / {{ i18n.vi.typeCareers }} / {{ i18n.zh.typeCareers }}</option>
+        <option value="investor">{{ i18n.en.typeInvestor }} / {{ i18n.vi.typeInvestor }} / {{ i18n.zh.typeInvestor }}</option>
+        <option value="other">{{ i18n.en.typeOther }} / {{ i18n.vi.typeOther }} / {{ i18n.zh.typeOther }}</option>
+      </select>
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formProduct }}</span>
+      <span class="lang vi">{{ i18n.vi.formProduct }}</span>
+      <span class="lang zh">{{ i18n.zh.formProduct }}</span>
+      <input type="text" name="product_code" id="productCode" value="{{ productCode or '' }}" placeholder="GF-901">
+    </label>
+  </div>
+  <label class="contact-form__message">
+    <span class="lang en">{{ i18n.en.formMessage }}</span>
+    <span class="lang vi">{{ i18n.vi.formMessage }}</span>
+    <span class="lang zh">{{ i18n.zh.formMessage }}</span>
+    <textarea name="message" rows="5" required></textarea>
+  </label>
+  <p class="contact-form__note">
+    <span class="lang en">By submitting, you agree to our </span>
+    <span class="lang vi">Khi gửi form, bạn đồng ý với </span>
+    <span class="lang zh">提交即表示您同意我们的</span>
+    <a href="{{ '/privacy/' | url }}">
+      <span class="lang en">Privacy Policy</span>
+      <span class="lang vi">Chính sách bảo mật</span>
+      <span class="lang zh">隐私政策</span>
+    </a>.
+  </p>
+  <button type="submit" class="btn btn--solid btn--big">
+    <span class="lang en">{{ i18n.en.sendMessage }}</span>
+    <span class="lang vi">{{ i18n.vi.sendMessage }}</span>
+    <span class="lang zh">{{ i18n.zh.sendMessage }}</span>
+  </button>
+  <p class="contact-form__status" id="formStatus" role="status" aria-live="polite" hidden></p>
+</form>

@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+---
+<section class="inner-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}"><span class="lang en">Home</span><span class="lang vi">Trang chủ</span><span class="lang zh">首页</span></a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ '/products/' | url }}"><span class="lang en">Products</span><span class="lang vi">Sản phẩm</span><span class="lang zh">产品</span></a>
+      <span aria-hidden="true">/</span>
+      <span>{{ code }}</span>
+    </nav>
+    <p class="eyebrow"><span class="pcard__code" style="color:{{ color }}">{{ code }}</span></p>
+    <h1 class="inner-hero__title">
+      <span class="lang en">{{ title.en }}</span>
+      <span class="lang vi">{{ title.vi }}</span>
+      <span class="lang zh">{{ title.zh }}</span>
+    </h1>
+    <p class="inner-hero__lead">
+      <span class="lang en">{{ summary.en }}</span>
+      <span class="lang vi">{{ summary.vi }}</span>
+      <span class="lang zh">{{ summary.zh }}</span>
+    </p>
+  </div>
+</section>
+<section class="inner-body">
+  <div class="container">
+    <div class="product-detail">
+      <div class="product-detail__panel" style="--pc:{{ color }}">
+        <h2>
+          <span class="lang en">Key specifications</span>
+          <span class="lang vi">Thông số chính</span>
+          <span class="lang zh">核心规格</span>
+        </h2>
+        <ul class="checks">
+          {% for s in specs %}
+          <li><i></i>
+            <span class="lang en">{{ s.en }}</span>
+            <span class="lang vi">{{ s.vi }}</span>
+            <span class="lang zh">{{ s.zh }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="product-detail__actions">
+          <a class="btn btn--solid" href="{{ '/contact/' | url }}?type=product&product={{ code }}">
+            <span class="lang en">{{ i18n.en.inquire }}</span>
+            <span class="lang vi">{{ i18n.vi.inquire }}</span>
+            <span class="lang zh">{{ i18n.zh.inquire }}</span>
+          </a>
+          <a class="btn btn--dark" href="{{ '/downloads/' | url }}">
+            <span class="lang en">{{ i18n.en.download }}</span>
+            <span class="lang vi">{{ i18n.vi.download }}</span>
+            <span class="lang zh">{{ i18n.zh.download }}</span>
+          </a>
+          <a class="btn btn--dark" href="{{ '/products/' | url }}">
+            <span class="lang en">{{ i18n.en.backToProducts }}</span>
+            <span class="lang vi">{{ i18n.vi.backToProducts }}</span>
+            <span class="lang zh">{{ i18n.zh.backToProducts }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

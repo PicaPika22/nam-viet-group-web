@@ -1,0 +1,44 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+ogType: article
+---
+<article class="inner-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}"><span class="lang en">Home</span><span class="lang vi">Trang chủ</span><span class="lang zh">首页</span></a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ '/news/' | url }}"><span class="lang en">News</span><span class="lang vi">Tin tức</span><span class="lang zh">新闻</span></a>
+      <span aria-hidden="true">/</span>
+      <span>{{ date | isoDate }}</span>
+    </nav>
+    <p class="eyebrow">
+      <span class="lang en">{{ category.en }}</span>
+      <span class="lang vi">{{ category.vi }}</span>
+      <span class="lang zh">{{ category.zh }}</span>
+    </p>
+    <h1 class="inner-hero__title">
+      <span class="lang en">{{ title.en }}</span>
+      <span class="lang vi">{{ title.vi }}</span>
+      <span class="lang zh">{{ title.zh }}</span>
+    </h1>
+    <p class="inner-hero__meta">{{ date | isoDate }}</p>
+  </div>
+</article>
+{% if image %}
+<div class="container article-media">
+  <img src="{{ image | url }}" alt="" loading="lazy">
+</div>
+{% endif %}
+<section class="inner-body">
+  <div class="container prose article-body">
+{{ content | safe }}
+    <p class="article-back">
+      <a href="{{ '/news/' | url }}">←
+        <span class="lang en">{{ i18n.en.backToNews }}</span>
+        <span class="lang vi">{{ i18n.vi.backToNews }}</span>
+        <span class="lang zh">{{ i18n.zh.backToNews }}</span>
+      </a>
+    </p>
+  </div>
+</section>

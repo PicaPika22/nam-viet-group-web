@@ -1,0 +1,26 @@
+{
+  "name": "Nam Viet Group",
+  "title": "Nam Viet Group — Feeding Growth. Connecting the Future.",
+  "description": "Nam Viet Group — an integrated agricultural ecosystem connecting manufacturing, logistics, port infrastructure and global partnerships.",
+  "url": "https://picapika22.github.io/nam-viet-group-web",
+  "localeDefault": "en",
+  "locales": ["en", "vi", "zh"],
+  "emailPartner": "partner@namvietgroup.vn",
+  "emailContact": "contact@namvietgroup.vn",
+  "phone": "+84 28 3822 6688",
+  "phoneTel": "+842838226688",
+  "address": {
+    "en": "Floor 12, Nam Viet Tower, District 1, Ho Chi Minh City, Vietnam",
+    "vi": "Tầng 12, Tòa nhà Nam Việt, Quận 1, TP. Hồ Chí Minh, Việt Nam",
+    "zh": "越南胡志明市第一郡南越大厦12楼"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/",
+    "facebook": "https://www.facebook.com/"
+  },
+  "formEndpoint": "https://formspree.io/f/xpwzgkqn",
+  "analyticsId": "",
+  "whatsapp": "842838226688",
+  "zalo": "842838226688",
+  "ogImage": "/assets/img/hero.png"
+}

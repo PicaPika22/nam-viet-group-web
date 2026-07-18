@@ -1,0 +1,49 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+showLoader: false
+showRail: false
+---
+<section class="inner-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}">
+        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      </a>
+      {% if breadcrumb %}
+      <span aria-hidden="true">/</span>
+      <span>{{ breadcrumb }}</span>
+      {% endif %}
+    </nav>
+    {% if eyebrow %}
+    <p class="eyebrow">
+      <span class="lang en">{{ eyebrow.en }}</span>
+      <span class="lang vi">{{ eyebrow.vi }}</span>
+      <span class="lang zh">{{ eyebrow.zh }}</span>
+    </p>
+    {% endif %}
+    <h1 class="inner-hero__title">
+      {% if heading %}
+      <span class="lang en">{{ heading.en }}</span>
+      <span class="lang vi">{{ heading.vi }}</span>
+      <span class="lang zh">{{ heading.zh }}</span>
+      {% else %}
+      {{ title }}
+      {% endif %}
+    </h1>
+    {% if lead %}
+    <p class="inner-hero__lead">
+      <span class="lang en">{{ lead.en }}</span>
+      <span class="lang vi">{{ lead.vi }}</span>
+      <span class="lang zh">{{ lead.zh }}</span>
+    </p>
+    {% endif %}
+  </div>
+</section>
+<section class="inner-body">
+  <div class="container prose">
+{{ content | safe }}
+  </div>
+</section>

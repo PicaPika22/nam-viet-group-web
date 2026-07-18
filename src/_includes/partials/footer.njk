@@ -1,0 +1,59 @@
+<footer class="footer">
+  <div class="container">
+    <p class="footer__quote reveal">
+      <span class="lang en">"Growing Sustainable Value Across Every Journey."</span>
+      <span class="lang vi">"Kiến tạo giá trị bền vững trên mọi hành trình."</span>
+      <span class="lang zh">"在每一段旅程中，创造可持续价值。"</span>
+    </p>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img class="footer__logo" src="{{ '/assets/img/logo-light.png' | url }}" alt="Nam Viet Group logo">
+        <p>NAM VIET GROUP</p>
+      </div>
+      <nav class="footer__nav">
+        {% for item in nav.footer %}
+        <a href="{{ item.href | url }}">
+          <span class="lang en">{{ item.en }}</span>
+          <span class="lang vi">{{ item.vi }}</span>
+          <span class="lang zh">{{ item.zh }}</span>
+        </a>
+        {% endfor %}
+      </nav>
+      <div class="footer__contact">
+        <p><a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a></p>
+        <p><a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a></p>
+        <p>
+          <span class="lang en">{{ site.address.en }}</span>
+          <span class="lang vi">{{ site.address.vi }}</span>
+          <span class="lang zh">{{ site.address.zh }}</span>
+        </p>
+      </div>
+    </div>
+    <p class="footer__copy">© 2026 Nam Viet Group.
+      <span class="lang en">All rights reserved.</span>
+      <span class="lang vi">Bảo lưu mọi quyền.</span>
+      <span class="lang zh">保留所有权利。</span>
+    </p>
+  </div>
+</footer>
+
+<aside class="float-chat" aria-label="Quick contact">
+  <a class="float-chat__btn" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener noreferrer" title="WhatsApp">WA</a>
+  <a class="float-chat__btn" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener noreferrer" title="Zalo">Zalo</a>
+</aside>
+
+<div class="cookie-bar" id="cookieBar" hidden>
+  <p>
+    <span class="lang en">{{ i18n.en.cookieText }}</span>
+    <span class="lang vi">{{ i18n.vi.cookieText }}</span>
+    <span class="lang zh">{{ i18n.zh.cookieText }}</span>
+    <a href="{{ '/privacy/' | url }}">
+      <span class="lang en">Privacy</span><span class="lang vi">Bảo mật</span><span class="lang zh">隐私</span>
+    </a>
+  </p>
+  <button type="button" class="btn btn--small btn--solid" id="cookieAccept">
+    <span class="lang en">{{ i18n.en.cookieAccept }}</span>
+    <span class="lang vi">{{ i18n.vi.cookieAccept }}</span>
+    <span class="lang zh">{{ i18n.zh.cookieAccept }}</span>
+  </button>
+</div>

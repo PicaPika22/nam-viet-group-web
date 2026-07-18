@@ -1,0 +1,14 @@
+{
+  "name": "nam-viet-group-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nam Viet Group corporate website — chapter storytelling + multi-page static site",
+  "scripts": {
+    "dev": "eleventy --serve --port=8123",
+    "build": "eleventy",
+    "start": "npm run build && npx serve _site -l 8123"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
