@@ -11,14 +11,14 @@ def href_repl(m):
     if href.startswith(("http", "#", "{{", "mailto:", "tel:")):
         return m.group(0)
     if href.startswith("/"):
-        return f'href="{{{{ \'{href}\' | url }}}}"'
+        return f"href=\"{{{{ '{href}' | url }}}}\""
     return m.group(0)
 
 
 t = re.sub(r'href="([^"]+)"', href_repl, t)
 t = re.sub(
     r'src="assets/img/([^"]+)"',
-    r'src="{{ \'/assets/img/\1\' | url }}"',
+    'src="{{ \'/assets/img/\\1\' | url }}"',
     t,
 )
 p.write_text(t, encoding="utf-8")
