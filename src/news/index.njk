@@ -1,23 +1,13 @@
 ---
-layout: layouts/inner.njk
+layout: layouts/news-list.njk
 title: News
 permalink: /news/
-eyebrow:
-  en: Latest News
-  vi: Tin tức
-  zh: 最新资讯
-heading:
-  en: Insights That Drive Progress.
-  vi: Thông tin tạo nên giá trị.
-  zh: 以洞察驱动进步。
-lead:
-  en: Stay updated with projects, innovations, sustainability initiatives and industry developments.
-  vi: Cập nhật dự án, hoạt động và xu hướng mới nhất từ Nam Việt.
-  zh: 了解我们最新的项目、创新与行业动态。
 ---
 
 <div class="news__grid">
   {% for post in collections.news %}
+  {% set cardClass = "reveal" %}
+  {% set cardDelay = loop.index0 * 120 %}
   {% include "partials/news-card.njk" %}
   {% endfor %}
 </div>

@@ -135,10 +135,6 @@
   }
 
   /* Logo → home top (same-page click otherwise does nothing) */
-  const isHomePath = (path) => {
-    const p = (path || "/").replace(/\/index\.html$/, "/");
-    return p === "/" || p === "";
-  };
   const goHomeTop = () => {
     setMenu(false);
     if (window.location.hash) {
@@ -149,7 +145,7 @@
   };
   document.querySelectorAll(".header__logo, .nav-mobile__brand").forEach((logo) => {
     logo.addEventListener("click", (e) => {
-      if (!isHomePath(window.location.pathname)) return;
+      if (!document.body.classList.contains("page-home")) return;
       e.preventDefault();
       goHomeTop();
     });

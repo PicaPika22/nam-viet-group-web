@@ -25,7 +25,21 @@
     slugLocked: false,
     auth: null,
     mode: "local",
+    siteUrl: "",
   };
+
+  function publicUrl(path) {
+    const base = (state.siteUrl || "").replace(/\/$/, "");
+    const p = path.startsWith("/") ? path : `/${path}`;
+    if (!base || state.mode !== "github") return p;
+    return `${base}${p}`;
+  }
+
+  function mediaUrl(src) {
+    if (!src) return "";
+    if (/^https?:\/\//i.test(src)) return src;
+    return publicUrl(src);
+  }
 
   function loadAuth() {
     try {
@@ -190,11 +204,20 @@
     return String(text || "").toLowerCase().includes(q);
   }
 
+  function setApiWarnCopy(isCloud) {
+    const el = $("#apiWarn");
+    if (!el) return;
+    el.innerHTML = isCloud
+      ? "Không kết nối được API Studio. Kiểm tra Railway đang chạy hoặc đăng nhập lại."
+      : "Chưa kết nối API. Local: chạy <code>npm run cms</code> rồi tải lại trang.";
+  }
+
   async function load() {
-    showLoading();
     try {
       const health = await api("/health");
       state.mode = health.mode || "local";
+      state.siteUrl =
+        health.siteUrl && health.siteUrl !== "/" ? String(health.siteUrl) : "";
       $("#apiWarn").hidden = true;
       setLive(true, state.mode);
       const modeLabel = $("#modeLabel");
@@ -204,8 +227,8 @@
             ? "Cloud CMS · commit → Vercel"
             : "Local CMS · EN / VI / 中文";
       }
-      if (health.siteUrl && $("#siteLink")) {
-        $("#siteLink").href = health.siteUrl;
+      if ($("#siteLink")) {
+        $("#siteLink").href = state.siteUrl || "/";
       }
       if (health.auth && !state.auth) {
         showLogin(true);
@@ -214,13 +237,20 @@
       showLogin(false);
       $("#logoutBtn").hidden = !health.auth;
     } catch {
+      const onCloud =
+        location.hostname !== "localhost" && location.hostname !== "127.0.0.1";
+      setApiWarnCopy(onCloud);
       $("#apiWarn").hidden = false;
       setLive(false);
-      $("#feed").innerHTML = `<div class="feed-empty">Không kết nối được API. Local: chạy <code>npm run cms</code>.</div>`;
+      showLogin(false);
+      if ($("#feed")) {
+        $("#feed").innerHTML = `<div class="feed-empty">Không kết nối được API Studio.</div>`;
+      }
       $("#listCount").textContent = "0";
       return;
     }
 
+    showLoading();
     try {
       if (state.tab === "news") {
         state.news = await api("/news");
@@ -297,8 +327,9 @@
           (item.data.category && (item.data.category.vi || item.data.category.en)) ||
           "Tin tức";
         const media = img
-          ? `<img class="feed-card__media" src="${img}" alt="">`
+          ? `<img class="feed-card__media" src="${escapeHtml(mediaUrl(img))}" alt="">`
           : `<div class="feed-card__media feed-card__media--empty">NV</div>`;
+        const viewHref = escapeHtml(publicUrl(`/news/${item.slug}/`));
         return `
         <article class="feed-card" data-slug="${item.slug}">
           ${media}
@@ -312,7 +343,7 @@
             <p class="feed-card__date">${escapeHtml(date)}</p>
           </div>
           <div class="feed-card__actions">
-            <a class="action-link" href="/news/${item.slug}/" target="_blank" rel="noopener">Xem</a>
+            <a class="action-link" href="${viewHref}" target="_blank" rel="noopener">Xem</a>
             <button type="button" data-edit-news="${item.slug}">Sửa</button>
             <button type="button" class="is-danger" data-del-news="${item.slug}">Xóa</button>
           </div>
@@ -370,7 +401,7 @@
             <p class="feed-card__date">${escapeHtml(meta)}</p>
           </div>
           <div class="feed-card__actions">
-            <a class="action-link" href="/careers/" target="_blank" rel="noopener">Xem</a>
+            <a class="action-link" href="${escapeHtml(publicUrl("/careers/"))}" target="_blank" rel="noopener">Xem</a>
             <button type="button" data-edit-job="${item.slug}">Sửa</button>
             <button type="button" class="is-danger" data-del-job="${item.slug}">Xóa</button>
           </div>
@@ -424,7 +455,7 @@
     const box = $("#mediaBox");
     if (state.form.image) {
       box.classList.remove("is-empty");
-      box.innerHTML = `<img src="${escapeHtml(state.form.image)}" alt=""><button type="button" class="media-box__remove" id="removeMedia" aria-label="Gỡ ảnh">✕</button>`;
+      box.innerHTML = `<img src="${escapeHtml(mediaUrl(state.form.image))}" alt=""><button type="button" class="media-box__remove" id="removeMedia" aria-label="Gỡ ảnh">✕</button>`;
       $("#removeMedia")?.addEventListener("click", () => {
         state.form.image = "";
         syncNewsFormToUI();
@@ -632,8 +663,17 @@
   async function uploadImage(file) {
     const fd = new FormData();
     fd.append("file", file);
-    const res = await fetch(`${API}/upload`, { method: "POST", body: fd });
-    const data = await res.json();
+    const res = await fetch(`${API}/upload`, {
+      method: "POST",
+      headers: authHeaders(),
+      body: fd,
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.status === 401) {
+      saveAuth(null);
+      showLogin(true);
+      throw new Error("Cần đăng nhập");
+    }
     if (!res.ok) throw new Error(data.error || "Upload thất bại");
     return data.url;
   }

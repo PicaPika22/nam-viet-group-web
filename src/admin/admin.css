@@ -29,6 +29,10 @@ body {
     radial-gradient(900px 500px at 100% 0%, rgba(196, 163, 90, 0.08), transparent 50%),
     var(--paper);
 }
+.app[hidden],
+.login[hidden] {
+  display: none !important;
+}
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
