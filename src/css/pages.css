@@ -61,6 +61,14 @@
   font-size: clamp(1.5rem, 2.5vw, 2rem); margin-top: 2.25rem;
 }
 .prose a { text-decoration: underline; text-underline-offset: 0.15em; }
+.prose a.btn,
+.prose a.ncard,
+.prose a.rss-link,
+.prose a.eco-map__co-link,
+.prose .company-stage__sibs a,
+.prose .page-actions a.btn {
+  text-decoration: none;
+}
 
 .about-page__media, .page-banner, .article-media img, .about-page__leader img {
   border-radius: 16px; overflow: hidden; width: 100%;
@@ -984,9 +992,14 @@
   }
 }
 @media (max-width: 600px) {
-  .float-chat { right: 0.75rem; bottom: 8.5rem; }
-  .float-chat__btn { width: 48px; height: 48px; }
-  .float-chat__btn svg { width: 24px; height: 24px; }
+  .float-chat {
+    right: 0.65rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.45rem;
+  }
+  .float-chat__btn { width: 42px; height: 42px; }
+  .float-chat__btn svg { width: 20px; height: 20px; }
+  .float-chat__btn--zalo svg { width: 22px; height: 22px; }
   .cookie-bar__actions {
     flex-direction: column;
   }

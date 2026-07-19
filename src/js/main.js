@@ -539,7 +539,7 @@
     const panels = [...root.querySelectorAll("[data-eco-panel]")];
     if (!tabs.length || !panels.length) return;
 
-    const activate = (id, { focus = false } = {}) => {
+    const activate = (id, { focus = false, scrollTab = true } = {}) => {
       let activeTab = null;
       tabs.forEach((tab) => {
         const on = tab.dataset.ecoTab === id;
@@ -555,11 +555,14 @@
         else panel.setAttribute("hidden", "");
       });
       if (focus && activeTab) activeTab.focus({ preventScroll: true });
-      activeTab?.scrollIntoView({
-        behavior: prefersReduced ? "auto" : "smooth",
-        inline: "nearest",
-        block: "nearest",
-      });
+      // Never scroll on initial activate — that yanked the homepage to chapter 03.
+      if (scrollTab) {
+        activeTab?.scrollIntoView({
+          behavior: prefersReduced ? "auto" : "smooth",
+          inline: "nearest",
+          block: "nearest",
+        });
+      }
     };
 
     tabs.forEach((tab) => {
@@ -594,7 +597,7 @@
       fromAttr ||
       tabs.find((t) => t.classList.contains("is-active"))?.dataset.ecoTab ||
       tabs[0].dataset.ecoTab;
-    activate(initial);
+    activate(initial, { scrollTab: false });
   });
 
   /* ─── Smooth anchor offset for fixed header ─── */
