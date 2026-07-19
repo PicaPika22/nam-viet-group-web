@@ -11,54 +11,251 @@ heading:
   vi: Cùng nhau phát triển. Có trách nhiệm.
   zh: 共同成长。负责任地前行。
 lead:
-  en: Sustainability is integrated into every decision — from responsible sourcing to transparent governance.
-  vi: Tính bền vững được đặt trong từng quyết định — từ nguyên liệu có trách nhiệm đến quản trị minh bạch.
-  zh: 可持续发展融入每一项决策——从负责任采购到透明治理。
+  en: Sustainability is how Nam Viet operates — responsible sourcing, people-first partnerships, and transparent governance.
+  vi: Phát triển bền vững là cách Nam Việt vận hành — nguyên liệu có trách nhiệm, đồng hành con người, quản trị minh bạch.
+  zh: 可持续发展是南越的运营方式——负责任采购、以人为本的合作与透明治理。
 ---
 
 <nav class="page-subnav" aria-label="Sustainability sections" data-page-subnav>
   <div class="page-subnav__inner">
-    <a href="#environment" class="page-subnav__link is-active" data-subnav-target="environment">
-      <span class="lang en">Environment</span>
-      <span class="lang vi">Môi trường</span>
-      <span class="lang zh">环境</span>
+    <a href="#overview" class="page-subnav__link is-active" data-subnav-target="overview">
+      <span class="lang en">Overview</span>
+      <span class="lang vi">Tổng quan</span>
+      <span class="lang zh">概览</span>
     </a>
-    <a href="#social" class="page-subnav__link" data-subnav-target="social">
-      <span class="lang en">Social</span>
-      <span class="lang vi">Xã hội</span>
-      <span class="lang zh">社会</span>
+    {% for pillar in sustainability.pillars %}
+    <a
+      href="#{{ pillar.id }}"
+      class="page-subnav__link"
+      data-subnav-target="{{ pillar.id }}"
+    >
+      <span class="esg-nav__letter" aria-hidden="true">{{ pillar.letter }}</span>
+      <span class="lang en">{{ pillar.title.en }}</span>
+      <span class="lang vi">{{ pillar.title.vi }}</span>
+      <span class="lang zh">{{ pillar.title.zh }}</span>
     </a>
-    <a href="#governance" class="page-subnav__link" data-subnav-target="governance">
-      <span class="lang en">Governance</span>
-      <span class="lang vi">Quản trị</span>
-      <span class="lang zh">治理</span>
+    {% endfor %}
+    <a href="#standards" class="page-subnav__link" data-subnav-target="standards">
+      <span class="lang en">Standards</span>
+      <span class="lang vi">Chuẩn mực</span>
+      <span class="lang zh">标准</span>
     </a>
   </div>
 </nav>
 
-<div class="pillars pillars--page">
-  <article id="environment" class="pillar page-panel" data-page-panel="environment">
-    <span class="pillar__letter">E</span>
-    <h3><span class="lang en">Environment</span><span class="lang vi">Môi trường</span><span class="lang zh">环境</span></h3>
-    <p><span class="lang en">Reducing environmental impact through sustainable operations.</span><span class="lang vi">Giảm thiểu tác động môi trường thông qua vận hành bền vững.</span><span class="lang zh">通过可持续运营减少环境影响。</span></p>
-  </article>
-  <article id="social" class="pillar page-panel" data-page-panel="social">
-    <span class="pillar__letter">S</span>
-    <h3><span class="lang en">Social</span><span class="lang vi">Xã hội</span><span class="lang zh">社会</span></h3>
-    <p><span class="lang en">Supporting farmers, employees and local communities.</span><span class="lang vi">Đồng hành cùng nông dân, người lao động và cộng đồng.</span><span class="lang zh">支持农民、员工与本地社区。</span></p>
-  </article>
-  <article id="governance" class="pillar page-panel" data-page-panel="governance">
-    <span class="pillar__letter">G</span>
-    <h3><span class="lang en">Governance</span><span class="lang vi">Quản trị</span><span class="lang zh">治理</span></h3>
-    <p><span class="lang en">Building trust through integrity, transparency and accountability.</span><span class="lang vi">Xây dựng niềm tin bằng chính trực, minh bạch và trách nhiệm.</span><span class="lang zh">以诚信、透明与问责建立信任。</span></p>
-  </article>
-</div>
+<div class="esg-page">
+  <section id="overview" class="esg-page__intro page-panel" data-page-panel="overview">
+    <div class="esg-page__banner">
+      <img
+        src="{{ '/assets/img/sustainability.png' | url }}"
+        alt="Sustainable agriculture and responsible operations at Nam Viet Group"
+        loading="lazy"
+        width="1400"
+        height="700"
+      >
+      <div class="esg-page__banner-veil" aria-hidden="true"></div>
+      <p class="esg-page__banner-label">
+        <span class="lang en">ESG framework</span>
+        <span class="lang vi">Khung ESG</span>
+        <span class="lang zh">ESG 框架</span>
+      </p>
+    </div>
 
-<p class="page-actions">
-  <a class="btn btn--solid" href="{{ '/downloads/' | url }}">
-    <span class="lang en">Download ESG highlights</span>
-    <span class="lang vi">Tải điểm nhấn ESG</span>
-    <span class="lang zh">下载 ESG 要点</span>
-  </a>
-</p>
-<img src="{{ '/assets/img/sustainability.png' | url }}" alt="Sustainable agriculture and responsible operations at Nam Viet Group" class="page-banner" loading="lazy">
+    <p class="esg-page__approach">
+      <span class="lang en">{{ sustainability.approach.en }}</span>
+      <span class="lang vi">{{ sustainability.approach.vi }}</span>
+      <span class="lang zh">{{ sustainability.approach.zh }}</span>
+    </p>
+
+    <ul class="esg-page__principles" aria-label="ESG principles">
+      {% for item in sustainability.principles %}
+      <li>
+        <span class="lang en">{{ item.en }}</span>
+        <span class="lang vi">{{ item.vi }}</span>
+        <span class="lang zh">{{ item.zh }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="esg-highlights" aria-label="ESG highlights">
+      {% for item in sustainability.highlights %}
+      <div class="esg-highlight{% if item.wide %} esg-highlight--wide{% endif %}">
+        <p class="esg-highlight__value">{{ item.value }}</p>
+        <p class="esg-highlight__label">
+          <span class="lang en">{{ item.label.en }}</span>
+          <span class="lang vi">{{ item.label.vi }}</span>
+          <span class="lang zh">{{ item.label.zh }}</span>
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="esg-chain" aria-labelledby="esg-chain-title">
+    <header class="esg-section__head">
+      <h2 id="esg-chain-title">
+        <span class="lang en">{{ sustainability.chain.title.en }}</span>
+        <span class="lang vi">{{ sustainability.chain.title.vi }}</span>
+        <span class="lang zh">{{ sustainability.chain.title.zh }}</span>
+      </h2>
+      <p>
+        <span class="lang en">{{ sustainability.chain.lead.en }}</span>
+        <span class="lang vi">{{ sustainability.chain.lead.vi }}</span>
+        <span class="lang zh">{{ sustainability.chain.lead.zh }}</span>
+      </p>
+    </header>
+    <ol class="esg-chain__steps">
+      {% for step in sustainability.chain.steps %}
+      <li class="esg-chain__step">
+        <span class="esg-chain__num" aria-hidden="true">{{ step.num }}</span>
+        <h3>
+          <span class="lang en">{{ step.title.en }}</span>
+          <span class="lang vi">{{ step.title.vi }}</span>
+          <span class="lang zh">{{ step.title.zh }}</span>
+        </h3>
+        <p>
+          <span class="lang en">{{ step.text.en }}</span>
+          <span class="lang vi">{{ step.text.vi }}</span>
+          <span class="lang zh">{{ step.text.zh }}</span>
+        </p>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <div class="esg-page__pillars">
+    {% for pillar in sustainability.pillars %}
+    <article
+      id="{{ pillar.id }}"
+      class="esg-block page-panel"
+      data-page-panel="{{ pillar.id }}"
+    >
+      <div class="esg-block__main">
+        <header class="esg-block__head">
+          <span class="esg-block__letter" aria-hidden="true">{{ pillar.letter }}</span>
+          <div class="esg-block__titles">
+            <p class="esg-block__eyebrow">
+              <span class="lang en">Pillar {{ loop.index }}</span>
+              <span class="lang vi">Trụ cột {{ loop.index }}</span>
+              <span class="lang zh">支柱 {{ loop.index }}</span>
+            </p>
+            <h2 class="esg-block__title">
+              <span class="lang en">{{ pillar.title.en }}</span>
+              <span class="lang vi">{{ pillar.title.vi }}</span>
+              <span class="lang zh">{{ pillar.title.zh }}</span>
+            </h2>
+          </div>
+        </header>
+        <p class="esg-block__lead">
+          <span class="lang en">{{ pillar.lead.en }}</span>
+          <span class="lang vi">{{ pillar.lead.vi }}</span>
+          <span class="lang zh">{{ pillar.lead.zh }}</span>
+        </p>
+      </div>
+      <ul class="esg-block__list">
+        {% for focus in pillar.focuses %}
+        <li>
+          <span class="esg-block__mark" aria-hidden="true"></span>
+          <span class="lang en">{{ focus.en }}</span>
+          <span class="lang vi">{{ focus.vi }}</span>
+          <span class="lang zh">{{ focus.zh }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </article>
+    {% endfor %}
+  </div>
+
+  <section id="standards" class="esg-standards page-panel" data-page-panel="standards">
+    <header class="esg-section__head">
+      <h2>
+        <span class="lang en">{{ sustainability.standards.title.en }}</span>
+        <span class="lang vi">{{ sustainability.standards.title.vi }}</span>
+        <span class="lang zh">{{ sustainability.standards.title.zh }}</span>
+      </h2>
+      <p>
+        <span class="lang en">{{ sustainability.standards.lead.en }}</span>
+        <span class="lang vi">{{ sustainability.standards.lead.vi }}</span>
+        <span class="lang zh">{{ sustainability.standards.lead.zh }}</span>
+      </p>
+    </header>
+    <div class="esg-standards__grid">
+      {% for item in sustainability.standards.items %}
+      <article class="esg-standard">
+        <p class="esg-standard__code">{{ item.code }}</p>
+        <h3>
+          <span class="lang en">{{ item.title.en }}</span>
+          <span class="lang vi">{{ item.title.vi }}</span>
+          <span class="lang zh">{{ item.title.zh }}</span>
+        </h3>
+        <p>
+          <span class="lang en">{{ item.text.en }}</span>
+          <span class="lang vi">{{ item.text.vi }}</span>
+          <span class="lang zh">{{ item.text.zh }}</span>
+        </p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <aside class="esg-story">
+    <div class="esg-story__media">
+      <img
+        src="{{ '/assets/img/sustainability.png' | url }}"
+        alt=""
+        loading="lazy"
+        width="800"
+        height="560"
+      >
+    </div>
+    <div class="esg-story__body">
+      <p class="esg-story__eyebrow">
+        <span class="lang en">{{ sustainability.story.eyebrow.en }}</span>
+        <span class="lang vi">{{ sustainability.story.eyebrow.vi }}</span>
+        <span class="lang zh">{{ sustainability.story.eyebrow.zh }}</span>
+      </p>
+      <h2>
+        <span class="lang en">{{ sustainability.story.title.en }}</span>
+        <span class="lang vi">{{ sustainability.story.title.vi }}</span>
+        <span class="lang zh">{{ sustainability.story.title.zh }}</span>
+      </h2>
+      <p>
+        <span class="lang en">{{ sustainability.story.text.en }}</span>
+        <span class="lang vi">{{ sustainability.story.text.vi }}</span>
+        <span class="lang zh">{{ sustainability.story.text.zh }}</span>
+      </p>
+      <a class="btn btn--solid" href="{{ sustainability.story.href | url }}">
+        <span class="lang en">{{ sustainability.story.cta.en }}</span>
+        <span class="lang vi">{{ sustainability.story.cta.vi }}</span>
+        <span class="lang zh">{{ sustainability.story.cta.zh }}</span>
+      </a>
+    </div>
+  </aside>
+
+  <aside class="esg-page__cta">
+    <div class="esg-page__cta-copy">
+      <h2>
+        <span class="lang en">Go deeper</span>
+        <span class="lang vi">Tìm hiểu thêm</span>
+        <span class="lang zh">深入了解</span>
+      </h2>
+      <p>
+        <span class="lang en">Download ESG highlights or talk with our team about responsible partnership.</span>
+        <span class="lang vi">Tải điểm nhấn ESG hoặc trao đổi với chúng tôi về hợp tác có trách nhiệm.</span>
+        <span class="lang zh">下载 ESG 要点，或与我们讨论负责任的合作。</span>
+      </p>
+    </div>
+    <div class="esg-page__cta-actions">
+      <a class="btn btn--solid" href="{{ '/downloads/' | url }}">
+        <span class="lang en">Download ESG highlights</span>
+        <span class="lang vi">Tải điểm nhấn ESG</span>
+        <span class="lang zh">下载 ESG 要点</span>
+      </a>
+      <a class="btn btn--outline btn--dark" href="{{ '/contact/' | url }}">
+        <span class="lang en">{{ i18n.en.contact }}</span>
+        <span class="lang vi">{{ i18n.vi.contact }}</span>
+        <span class="lang zh">{{ i18n.zh.contact }}</span>
+      </a>
+    </div>
+  </aside>
+</div>

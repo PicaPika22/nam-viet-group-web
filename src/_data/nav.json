@@ -11,12 +11,13 @@
       "children": [
         { "id": "about-overview", "href": "/about/", "en": "About Nam Viet", "vi": "Về Nam Việt", "zh": "关于南越" },
         { "id": "about-leadership", "href": "/about/#leadership", "en": "Leadership", "vi": "Ban lãnh đạo", "zh": "领导团队" },
-        { "id": "about-ecosystem", "href": "/#ecosystem", "en": "Our ecosystem", "vi": "Hệ sinh thái", "zh": "生态系统" }
+        { "id": "about-ecosystem", "href": "/about/#ecosystem", "en": "Our ecosystem", "vi": "Hệ sinh thái", "zh": "生态系统" },
+        { "id": "about-sustainability", "href": "/sustainability/", "en": "Sustainability", "vi": "Phát triển bền vững", "zh": "可持续发展" }
       ]
     },
     {
       "id": "services",
-      "href": "/products/",
+      "href": "/companies/",
       "match": "prefix",
       "en": "Products & Services",
       "vi": "Sản phẩm & dịch vụ",
@@ -28,12 +29,10 @@
           "keyVi": "THỨC ĂN CHĂN NUÔI",
           "keyZh": "饲料",
           "links": [
-            { "href": "/products/", "en": "Animal feed overview", "vi": "Thức ăn chăn nuôi", "zh": "饲料概览" },
-            { "href": "/products/gf-901/", "en": "GF-901 Pig feed", "vi": "GF-901 Thức ăn heo", "zh": "GF-901 猪饲料" },
-            { "href": "/products/hf-901/", "en": "HF-901 Cattle feed", "vi": "HF-901 Thức ăn gia súc", "zh": "HF-901 牛饲料" },
-            { "href": "/products/v-234/", "en": "V-234 Poultry feed", "vi": "V-234 Thức ăn gia cầm", "zh": "V-234 禽饲料" },
-            { "href": "/products/gf-22/", "en": "GF-22 Aquaculture feed", "vi": "GF-22 Thức ăn thủy sản", "zh": "GF-22 水产饲料" },
-            { "href": "/products/s-234/", "en": "S-234 Specialized nutrition", "vi": "S-234 Dinh dưỡng chuyên biệt", "zh": "S-234 特种营养" }
+            { "href": "/companies/nam-viet/", "en": "Nam Viet JSC", "vi": "CTCP Nam Việt", "zh": "南越股份" },
+            { "href": "/companies/fimico/", "en": "Fimico Group", "vi": "Fimico Group", "zh": "Fimico" },
+            { "href": "/companies/feed-trading/", "en": "Feed Trading", "vi": "Feed Trading", "zh": "Feed Trading" },
+            { "href": "/products/", "en": "Feed product catalog", "vi": "Danh mục thức ăn", "zh": "饲料产品目录" }
           ]
         },
         {
@@ -42,9 +41,8 @@
           "keyVi": "CHĂN NUÔI",
           "keyZh": "养殖",
           "links": [
-            { "href": "/about/", "en": "High-tech breeding farms", "vi": "Trang trại chăn nuôi công nghệ cao", "zh": "高科技养殖农场" },
-            { "href": "/about/", "en": "Pig & cattle production", "vi": "Sản xuất heo & bò", "zh": "猪牛生产" },
-            { "href": "/about/", "en": "Fimico Group partnership", "vi": "Hợp tác Fimico Group", "zh": "Fimico 合作" }
+            { "href": "/companies/xdnn-tn/", "en": "Thai Nguyen Agri Construction", "vi": "XDNN Thái Nguyên", "zh": "太原农建" },
+            { "href": "/companies/fimico/", "en": "Fimico Group partnership", "vi": "Hợp tác Fimico Group", "zh": "Fimico 合作" }
           ]
         },
         {
@@ -53,9 +51,9 @@
           "keyVi": "VẬN TẢI & KHO",
           "keyZh": "物流仓储",
           "links": [
-            { "href": "/#logistics", "en": "Warehousing & transport", "vi": "Kho bãi & vận tải", "zh": "仓储与运输" },
-            { "href": "/#logistics", "en": "Port & export logistics", "vi": "Logistics cảng & xuất khẩu", "zh": "港口与出口物流" },
-            { "href": "/news/deep-water-port/", "en": "Deep-water port investment", "vi": "Đầu tư cảng nước sâu", "zh": "深水港投资" }
+            { "href": "/companies/hutech/", "en": "Hutech Vietnam", "vi": "Hutech Việt Nam", "zh": "Hutech" },
+            { "href": "/companies/logistics-nv/", "en": "Nam Viet Logistics", "vi": "Logistics Nam Việt", "zh": "南越物流" },
+            { "href": "/companies/warehouse-qn/", "en": "Cai Lan Warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" }
           ]
         },
         {
@@ -64,9 +62,7 @@
           "keyVi": "DU LỊCH & KHÁCH SẠN",
           "keyZh": "旅游酒店",
           "links": [
-            { "href": "/about/", "en": "The King restaurants", "vi": "Hệ thống nhà hàng The King", "zh": "The King 餐饮" },
-            { "href": "/about/", "en": "The King Hotel & Condotel", "vi": "The King Hotel & Condotel", "zh": "The King 酒店" },
-            { "href": "/contact/", "en": "Event & conference services", "vi": "Hội nghị & sự kiện", "zh": "会议与活动" }
+            { "href": "/companies/tourism/", "en": "Nam Viet Tourism — The King", "vi": "Du lịch Nam Việt — The King", "zh": "南越旅游 — The King" }
           ]
         },
         {
@@ -75,9 +71,9 @@
           "keyVi": "XUẤT NHẬP KHẨU",
           "keyZh": "进出口",
           "links": [
-            { "href": "/about/", "en": "Agricultural imports", "vi": "Nhập khẩu nông sản", "zh": "农产品进口" },
-            { "href": "/about/", "en": "Fuel retail network", "vi": "Chuỗi bán lẻ xăng dầu", "zh": "燃油零售网络" },
-            { "href": "/about/", "en": "Wood pellet export", "vi": "Xuất khẩu viên nén gỗ", "zh": "木颗粒出口" }
+            { "href": "/companies/trading-vn/", "en": "Trading Vietnam", "vi": "Trading Việt Nam", "zh": "Trading VN" },
+            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" },
+            { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
           ]
         },
         {
@@ -86,24 +82,9 @@
           "keyVi": "NGHIÊN CỨU",
           "keyZh": "科研",
           "links": [
-            { "href": "/about/", "en": "Nam Viet R&D Center", "vi": "Trung tâm Nghiên cứu Nam Việt", "zh": "南越研发中心" },
-            { "href": "/about/", "en": "Quality control & diagnostics", "vi": "Kiểm soát chất lượng", "zh": "质量控制" },
-            { "href": "/about/", "en": "Probiotics & nutrition science", "vi": "Men vi sinh & dinh dưỡng", "zh": "益生菌与营养" }
+            { "href": "/companies/rd-center/", "en": "Nam Viet R&D Center", "vi": "Trung tâm NC&ƯD Nam Việt", "zh": "南越研发中心" }
           ]
         }
-      ]
-    },
-    {
-      "id": "sustainability",
-      "href": "/sustainability/",
-      "match": "prefix",
-      "en": "Sustainability",
-      "vi": "Phát triển bền vững",
-      "zh": "可持续发展",
-      "children": [
-        { "id": "esg-environment", "href": "/sustainability/#environment", "en": "Environment", "vi": "Môi trường", "zh": "环境" },
-        { "id": "esg-social", "href": "/sustainability/#social", "en": "Social", "vi": "Xã hội", "zh": "社会" },
-        { "id": "esg-governance", "href": "/sustainability/#governance", "en": "Governance", "vi": "Quản trị", "zh": "治理" }
       ]
     },
     {
@@ -111,7 +92,7 @@
       "href": "/news/",
       "match": "prefix",
       "en": "News",
-      "vi": "Truyền thông",
+      "vi": "Tin tức",
       "zh": "新闻"
     },
     {
@@ -119,12 +100,13 @@
       "href": "/careers/",
       "match": "prefix",
       "en": "Careers",
-      "vi": "Cơ hội nghề nghiệp",
+      "vi": "Tuyển dụng",
       "zh": "招聘"
     }
   ],
   "footer": [
     { "href": "/about/", "en": "About", "vi": "Về chúng tôi", "zh": "关于我们" },
+    { "href": "/companies/", "en": "Companies", "vi": "Công ty thành viên", "zh": "成员企业" },
     { "href": "/products/", "en": "Products", "vi": "Sản phẩm", "zh": "产品" },
     { "href": "/news/", "en": "News", "vi": "Tin tức", "zh": "新闻" },
     { "href": "/sustainability/", "en": "Sustainability", "vi": "Bền vững", "zh": "可持续发展" },

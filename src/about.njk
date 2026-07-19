@@ -30,6 +30,12 @@ lead:
       <span class="lang vi">Ban lãnh đạo</span>
       <span class="lang zh">领导团队</span>
     </a>
+    <a href="#ecosystem" class="page-subnav__link" data-subnav-target="ecosystem">
+      <svg class="page-subnav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <span class="lang en">Ecosystem</span>
+      <span class="lang vi">Hệ sinh thái</span>
+      <span class="lang zh">生态系统</span>
+    </a>
   </div>
 </nav>
 
@@ -60,6 +66,26 @@ lead:
       </p>
     </div>
   </section>
+
+  {% if ecosystem and ecosystem.sectors and ecosystem.sectors.length %}
+  <section id="ecosystem" class="page-panel" data-page-panel="ecosystem">
+    <h2>
+      <span class="lang en">Our ecosystem</span>
+      <span class="lang vi">Hệ sinh thái</span>
+      <span class="lang zh">生态系统</span>
+    </h2>
+    <p class="about-page__lead">
+      <span class="lang en">{{ ecosystem.intro.en }}</span>
+      <span class="lang vi">{{ ecosystem.intro.vi }}</span>
+      <span class="lang zh">{{ ecosystem.intro.zh }}</span>
+    </p>
+
+    {% set ecoMapVariant = "ink" %}
+    {% set ecoMapShowHead = false %}
+    {% set ecoMapId = "about-eco" %}
+    {% include "partials/ecosystem-map.njk" %}
+  </section>
+  {% endif %}
 
   <p class="page-actions">
     <a class="btn btn--solid" href="{{ '/contact/' | url }}">

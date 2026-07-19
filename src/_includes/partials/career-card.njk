@@ -1,0 +1,25 @@
+{#
+  Shared career / open-role card.
+  Expects: job (collection item) OR flat fields via job.data / job itself
+#}
+{% from "macros/i18n.njk" import inline %}
+{% set data = job.data if job.data else job %}
+{% set roleId = data.id or (job.fileSlug if job.fileSlug else "") %}
+<article class="career-card" id="{{ roleId }}">
+  <div>
+    <h3>{{ inline(data.title) }}</h3>
+    <p class="career-card__meta">
+      <span class="lang en">{{ data.department.en }} · {{ data.location.en }} · {{ data.type.en }}</span>
+      <span class="lang vi">{{ data.department.vi }} · {{ data.location.vi }} · {{ data.type.vi }}</span>
+      <span class="lang zh">{{ data.department.zh }} · {{ data.location.zh }} · {{ data.type.zh }}</span>
+    </p>
+    {% if data.summary %}
+    <p>{{ inline(data.summary) }}</p>
+    {% endif %}
+  </div>
+  <a class="btn btn--small btn--solid" href="tel:{{ site.phoneTel }}" aria-label="{{ site.phone }}">
+    <span class="lang en">{{ i18n.en.applyNow }}</span>
+    <span class="lang vi">{{ i18n.vi.applyNow }}</span>
+    <span class="lang zh">{{ i18n.zh.applyNow }}</span>
+  </a>
+</article>

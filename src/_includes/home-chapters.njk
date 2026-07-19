@@ -171,10 +171,16 @@
         <span class="flow__name"><span class="lang en">Global Distribution</span><span class="lang vi">Phân phối toàn cầu</span><span class="lang zh">全球分销</span></span>
       </li>
     </ol>
+
+    {% set ecoMapVariant = "dark" %}
+    {% set ecoMapShowHead = true %}
+    {% set ecoMapId = "home-eco" %}
+    {% include "partials/ecosystem-map.njk" %}
+
     <div class="reveal" data-delay="300">
-      <a href="#manufacturing" class="btn btn--light">
+      <a href="{{ '/about/' | url }}#ecosystem" class="btn btn--light">
         <span class="btn__dot"></span>
-        <span class="lang en">Explore Our Ecosystem</span><span class="lang vi">Khám phá hệ sinh thái</span><span class="lang zh">探索生态系统</span>
+        <span class="lang en">About Nam Viet</span><span class="lang vi">Về Nam Việt</span><span class="lang zh">关于南越</span>
       </a>
     </div>
   </div>
@@ -444,23 +450,25 @@
           <span class="lang vi">Tính bền vững được đặt trong từng quyết định của chúng tôi — từ nguồn nguyên liệu có trách nhiệm, sản xuất thân thiện với môi trường đến phát triển cộng đồng và quản trị minh bạch.</span>
           <span class="lang zh">可持续发展融入我们每一项决策——从负责任采购、环保制造到社区发展与透明治理。</span>
         </p>
+        {% if sustainability and sustainability.pillars %}
         <div class="pillars">
-          <article class="pillar reveal" data-delay="0">
-            <span class="pillar__letter">E</span>
-            <h3><span class="lang en">Environment</span><span class="lang vi">Môi trường</span><span class="lang zh">环境</span></h3>
-            <p><span class="lang en">Reducing environmental impact through sustainable operations.</span><span class="lang vi">Giảm thiểu tác động môi trường thông qua vận hành bền vững.</span><span class="lang zh">通过可持续运营减少环境影响。</span></p>
+          {% for pillar in sustainability.pillars %}
+          <article class="pillar reveal" data-delay="{{ loop.index0 * 120 }}">
+            <span class="pillar__letter">{{ pillar.letter }}</span>
+            <h3>
+              <span class="lang en">{{ pillar.title.en }}</span>
+              <span class="lang vi">{{ pillar.title.vi }}</span>
+              <span class="lang zh">{{ pillar.title.zh }}</span>
+            </h3>
+            <p>
+              <span class="lang en">{{ pillar.teaser.en if pillar.teaser else pillar.lead.en }}</span>
+              <span class="lang vi">{{ pillar.teaser.vi if pillar.teaser else pillar.lead.vi }}</span>
+              <span class="lang zh">{{ pillar.teaser.zh if pillar.teaser else pillar.lead.zh }}</span>
+            </p>
           </article>
-          <article class="pillar reveal" data-delay="120">
-            <span class="pillar__letter">S</span>
-            <h3><span class="lang en">Social</span><span class="lang vi">Xã hội</span><span class="lang zh">社会</span></h3>
-            <p><span class="lang en">Supporting farmers, employees and local communities.</span><span class="lang vi">Đồng hành cùng nông dân, người lao động và cộng đồng địa phương.</span><span class="lang zh">支持农民、员工与本地社区。</span></p>
-          </article>
-          <article class="pillar reveal" data-delay="240">
-            <span class="pillar__letter">G</span>
-            <h3><span class="lang en">Governance</span><span class="lang vi">Quản trị</span><span class="lang zh">治理</span></h3>
-            <p><span class="lang en">Building trust through integrity, transparency and accountability.</span><span class="lang vi">Xây dựng niềm tin bằng chính trực, minh bạch và trách nhiệm.</span><span class="lang zh">以诚信、透明与问责建立信任。</span></p>
-          </article>
+          {% endfor %}
         </div>
+        {% endif %}
         <div class="reveal" data-delay="300">
           <a href="{{ '/sustainability/' | url }}" class="btn btn--dark">
             <span class="btn__dot"></span>
@@ -512,68 +520,153 @@
   </div>
 </section>
 
-<!-- ═════════════ 10 · MILESTONES ═════════════ -->
-<section class="chapter chapter--dark chapter--solid" id="milestones" data-chapter="10" data-label-en="JOURNEY" data-label-zh="发展历程" data-label-vi="HÀNH TRÌNH">
+<!-- ═════════════ 10 · MILESTONES / JOURNEY ═════════════ -->
+<section class="chapter chapter--cream chapter--journey" id="milestones" data-chapter="10" data-label-en="JOURNEY" data-label-zh="发展历程" data-label-vi="HÀNH TRÌNH">
   <div class="container">
-    <header class="chapter__head">
+    {# Title form matches Leadership; content body follows journey mockup #}
+    <header class="journey__head">
       <span class="chapter__num reveal">10</span>
-      <p class="eyebrow eyebrow--light reveal"><span class="lang en">Our Journey</span><span class="lang vi">Hành trình phát triển</span><span class="lang zh">发展历程</span></p>
-      <h2 class="chapter__title">
+      <p class="eyebrow reveal"><span class="lang en">Our Journey</span><span class="lang vi">Hành trình phát triển</span><span class="lang zh">发展历程</span></p>
+      <h2 class="chapter__title chapter__title--sm">
         <span class="lang en">
           <span class="line-mask"><span class="line">Milestones That</span></span>
-          <span class="line-mask"><span class="line line--accent">Shape Our Future.</span></span>
+          <span class="line-mask"><span class="line line--muted">Built Who We Are.</span></span>
         </span>
         <span class="lang vi">
           <span class="line-mask"><span class="line">Những cột mốc</span></span>
-          <span class="line-mask"><span class="line line--accent">kiến tạo tương lai.</span></span>
+          <span class="line-mask"><span class="line line--muted">làm nên Nam Việt.</span></span>
         </span>
         <span class="lang zh">
           <span class="line-mask"><span class="line">里程碑</span></span>
-          <span class="line-mask"><span class="line line--accent">塑造未来。</span></span>
+          <span class="line-mask"><span class="line line--muted">铸就南越。</span></span>
         </span>
       </h2>
+      {% if journey and journey.intro %}
+      <p class="journey__intro reveal" data-delay="150">
+        <span class="lang en">{{ journey.intro.en }}</span>
+        <span class="lang vi">{{ journey.intro.vi }}</span>
+        <span class="lang zh">{{ journey.intro.zh }}</span>
+      </p>
+      {% endif %}
+      <span class="journey__rule reveal" data-delay="200" aria-hidden="true"></span>
     </header>
-    <div class="timeline">
-      <div class="timeline__rail"><span class="timeline__rail-fill" id="timelineFill"></span></div>
-      <div class="timeline__items">
-        <div class="tl reveal" data-delay="0">
-          <span class="tl__year">1998</span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">Company Founded</span><span class="lang vi">Thành lập doanh nghiệp</span><span class="lang zh">公司成立</span></span>
-        </div>
-        <div class="tl reveal" data-delay="100">
-          <span class="tl__year">2005</span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">First Feed Factory</span><span class="lang vi">Nhà máy đầu tiên</span><span class="lang zh">首座饲料工厂</span></span>
-        </div>
-        <div class="tl reveal" data-delay="200">
-          <span class="tl__year">2012</span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">Expanded Manufacturing</span><span class="lang vi">Mở rộng sản xuất</span><span class="lang zh">扩大生产规模</span></span>
-        </div>
-        <div class="tl reveal" data-delay="300">
-          <span class="tl__year">2016</span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">Logistics Development</span><span class="lang vi">Phát triển logistics</span><span class="lang zh">物流体系发展</span></span>
-        </div>
-        <div class="tl reveal" data-delay="400">
-          <span class="tl__year">2020</span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">Port Investment</span><span class="lang vi">Đầu tư kho cảng</span><span class="lang zh">港口投资</span></span>
-        </div>
-        <div class="tl tl--today reveal" data-delay="500">
-          <span class="tl__year"><span class="lang en">Today</span><span class="lang vi">Hôm nay</span><span class="lang zh">至今</span></span>
-          <span class="tl__dot"></span>
-          <span class="tl__text"><span class="lang en">Integrated Multi-industry Group</span><span class="lang vi">Tập đoàn đa ngành</span><span class="lang zh">多元化产业集团</span></span>
-        </div>
+
+    {% if journey and journey.items and (journey.items | length) %}
+    <div class="journey-tl" data-journey-tl>
+      <div class="journey-tl__controls">
+        <button type="button" class="journey-tl__nav" data-journey-prev aria-controls="journeyTrack">
+          <span class="visually-hidden"><span class="lang en">Previous milestones</span><span class="lang vi">Cột mốc trước</span><span class="lang zh">上一里程碑</span></span>
+          <span aria-hidden="true">←</span>
+        </button>
+        <button type="button" class="journey-tl__nav" data-journey-next aria-controls="journeyTrack">
+          <span class="visually-hidden"><span class="lang en">Next milestones</span><span class="lang vi">Cột mốc sau</span><span class="lang zh">下一里程碑</span></span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+      <div class="journey-tl__stage">
+      <div class="journey-tl__rail" aria-hidden="true"><span class="journey-tl__fill" id="timelineFill"></span></div>
+      <ol class="journey-tl__track" id="journeyTrack" tabindex="0">
+        {% for item in journey.items %}
+        <li class="jcard{% if loop.first %} is-active{% endif %} reveal" data-delay="{{ loop.index0 * 70 }}" data-year="{{ item.year }}">
+          <div class="jcard__meta">
+            <span class="jcard__marker" aria-hidden="true"><span></span></span>
+          </div>
+          <article class="jcard__panel">
+            {% if item.file %}
+            <div class="jcard__media">
+              <img
+                src="{{ ('/assets/img/milestones/' ~ item.file) | url }}"
+                alt="{{ item.en.title }}"
+                loading="lazy"
+                width="960"
+                height="1200"
+                decoding="async"
+              >
+            </div>
+            {% endif %}
+            <div class="jcard__veil" aria-hidden="true"></div>
+            <span class="jcard__year" aria-hidden="true">{{ item.year }}</span>
+            <div class="jcard__copy">
+              <span class="jcard__icon" aria-hidden="true">
+                {% if item.icon == "building" %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 21V10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11M2 21h20M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg>
+                {% elif item.icon == "farm" %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c2-4 4-7 8-7s6 3 8 7M8 10c0-2.2 1.8-4 4-4s4 1.8 4 4M9 20v-3h6v3"/></svg>
+                {% elif item.icon == "lab" %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v6.5L5.5 18a2.5 2.5 0 0 0 2.2 3.5h8.6a2.5 2.5 0 0 0 2.2-3.5L14 9.5V3M8.5 14h7"/></svg>
+                {% elif item.icon == "warehouse" %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5ZM7 21v-7h10v7"/></svg>
+                {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                {% endif %}
+              </span>
+              <h3 class="jcard__title">
+                <span class="lang en">{{ item.en.title }}</span>
+                <span class="lang vi">{{ item.vi.title }}</span>
+                <span class="lang zh">{{ item.zh.title }}</span>
+              </h3>
+              <p class="jcard__text">
+                <span class="lang en">{{ item.en.text }}</span>
+                <span class="lang vi">{{ item.vi.text }}</span>
+                <span class="lang zh">{{ item.zh.text }}</span>
+              </p>
+            </div>
+          </article>
+        </li>
+        {% endfor %}
+      </ol>
       </div>
     </div>
-    <div class="reveal" data-delay="300">
-      <a href="{{ '/news/' | url }}" class="btn btn--light">
-        <span class="btn__dot"></span>
-        <span class="lang en">Explore Our History</span><span class="lang vi">Khám phá lịch sử</span><span class="lang zh">探索我们的历史</span>
-      </a>
-    </div>
+    {% endif %}
+
+    {% if journey and journey.banner and journey.banner.file %}
+    <aside class="journey-banner reveal" data-delay="120">
+      <div class="journey-banner__media">
+        <img src="{{ ('/assets/img/milestones/' ~ journey.banner.file) | url }}" alt="Nam Viet agricultural landscape" loading="lazy" width="1920" height="820" decoding="async">
+      </div>
+      <div class="journey-banner__overlay" aria-hidden="true"></div>
+      <div class="journey-banner__inner">
+        <div class="journey-banner__cta">
+          <span class="journey-banner__sprout" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="30" fill="#1d6a3e"/>
+              <path d="M32 46V28M32 28c0-8 6-14 14-14-1 10-6 14-14 14Zm0 0c0-8-6-14-14-14 1 10 6 14 14 14Z" stroke="#f4f1ea" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <p>
+            <span class="lang en">{{ journey.banner.statement.en }}</span>
+            <span class="lang vi">{{ journey.banner.statement.vi }}</span>
+            <span class="lang zh">{{ journey.banner.statement.zh }}</span>
+          </p>
+        </div>
+        {% if journey.banner.stats %}
+        <ul class="journey-banner__stats">
+          {% for stat in journey.banner.stats %}
+          <li>
+            <span class="journey-stat__icon" aria-hidden="true">
+              {% if stat.icon == "years" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+              {% elif stat.icon == "companies" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c1-3 3.5-4.5 6-4.5S14 16 15 19M14 14.5c2-.2 4 1 5 3.5"/></svg>
+              {% elif stat.icon == "projects" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 7h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/></svg>
+              {% else %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5M4 19h16M8 16V10M12 16V7M16 16v-4"/></svg>
+              {% endif %}
+            </span>
+            <strong>{{ stat.value }}</strong>
+            <span>
+              <span class="lang en">{{ stat.en }}</span>
+              <span class="lang vi">{{ stat.vi }}</span>
+              <span class="lang zh">{{ stat.zh }}</span>
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </aside>
+    {% endif %}
   </div>
 </section>
 
@@ -582,46 +675,35 @@
   <div class="container">
     <header class="chapter__head">
       <span class="chapter__num reveal">11</span>
-      <p class="eyebrow reveal"><span class="lang en">Latest News</span><span class="lang vi">Tin tức</span><span class="lang zh">最新资讯</span></p>
+      <p class="eyebrow reveal"><span class="lang en">News</span><span class="lang vi">Tin tức</span><span class="lang zh">新闻</span></p>
       <h2 class="chapter__title">
         <span class="lang en">
-          <span class="line-mask"><span class="line">Insights That</span></span>
-          <span class="line-mask"><span class="line line--muted">Drive Progress.</span></span>
+          <span class="line-mask"><span class="line">What’s Happening</span></span>
+          <span class="line-mask"><span class="line line--muted">at Nam Viet.</span></span>
         </span>
         <span class="lang vi">
-          <span class="line-mask"><span class="line">Thông tin tạo nên</span></span>
-          <span class="line-mask"><span class="line line--muted">giá trị.</span></span>
+          <span class="line-mask"><span class="line">Tin mới</span></span>
+          <span class="line-mask"><span class="line line--muted">từ Nam Việt.</span></span>
         </span>
         <span class="lang zh">
-          <span class="line-mask"><span class="line">以洞察</span></span>
-          <span class="line-mask"><span class="line line--muted">驱动进步。</span></span>
+          <span class="line-mask"><span class="line">南越</span></span>
+          <span class="line-mask"><span class="line line--muted">最新动态。</span></span>
         </span>
       </h2>
       <p class="chapter__desc reveal" data-delay="200">
-        <span class="lang en">Stay updated with our latest projects, innovations, sustainability initiatives and industry developments.</span>
-        <span class="lang vi">Cập nhật những dự án, hoạt động và xu hướng mới nhất từ Nam Việt cũng như ngành nông nghiệp.</span>
-        <span class="lang zh">了解我们最新的项目、创新、可持续发展举措与行业动态。</span>
+        <span class="lang en">Project updates, business activities and key developments across the Nam Viet ecosystem.</span>
+        <span class="lang vi">Cập nhật dự án, hoạt động doanh nghiệp và những diễn biến đáng chú ý trong hệ sinh thái Nam Việt.</span>
+        <span class="lang zh">了解南越的项目进展、企业动态与重要更新。</span>
       </p>
     </header>
     <div class="news__grid">
-      <a href="{{ '/news/mekong-automation/' | url }}" class="ncard reveal" data-delay="0">
-        <div class="ncard__media"><img src="{{ '/assets/img/manufacturing.png' | url }}" alt="" loading="lazy"></div>
-        <span class="ncard__cat"><span class="lang en">Corporate News</span><span class="lang vi">Tin doanh nghiệp</span><span class="lang zh">企业新闻</span></span>
-        <h3><span class="lang en">Nam Viet expands automated production capacity across the Mekong Delta.</span><span class="lang vi">Nam Việt mở rộng công suất sản xuất tự động hóa tại Đồng bằng sông Cửu Long.</span><span class="lang zh">南越在湄公河三角洲扩大自动化生产产能。</span></h3>
-        <span class="ncard__more"><span class="lang en">Read more</span><span class="lang vi">Đọc tiếp</span><span class="lang zh">阅读更多</span> →</span>
-      </a>
-      <a href="{{ '/news/deep-water-port/' | url }}" class="ncard reveal" data-delay="120">
-        <div class="ncard__media"><img src="{{ '/assets/img/logistics.png' | url }}" alt="" loading="lazy"></div>
-        <span class="ncard__cat"><span class="lang en">Projects</span><span class="lang vi">Dự án</span><span class="lang zh">项目</span></span>
-        <h3><span class="lang en">New deep-water port investment strengthens export capability.</span><span class="lang vi">Đầu tư cảng nước sâu mới, nâng cao năng lực xuất khẩu.</span><span class="lang zh">深水港口新投资，增强出口能力。</span></h3>
-        <span class="ncard__more"><span class="lang en">Read more</span><span class="lang vi">Đọc tiếp</span><span class="lang zh">阅读更多</span> →</span>
-      </a>
-      <a href="{{ '/news/farming-households/' | url }}" class="ncard reveal" data-delay="240">
-        <div class="ncard__media"><img src="{{ '/assets/img/sustainability.png' | url }}" alt="" loading="lazy"></div>
-        <span class="ncard__cat">CSR</span>
-        <h3><span class="lang en">Supporting 5,000 farming households through sustainable programs.</span><span class="lang vi">Đồng hành cùng 5.000 hộ nông dân qua các chương trình bền vững.</span><span class="lang zh">通过可持续项目，支持 5,000 户农户。</span></h3>
-        <span class="ncard__more"><span class="lang en">Read more</span><span class="lang vi">Đọc tiếp</span><span class="lang zh">阅读更多</span> →</span>
-      </a>
+      {% for post in collections.news %}
+      {% if loop.index0 < 3 %}
+      {% set cardClass = "reveal" %}
+      {% set cardDelay = loop.index0 * 120 %}
+      {% include "partials/news-card.njk" %}
+      {% endif %}
+      {% endfor %}
     </div>
     <div class="center reveal" data-delay="300">
       <a href="{{ '/news/' | url }}" class="btn btn--dark">

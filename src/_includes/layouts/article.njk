@@ -3,6 +3,7 @@ layout: layouts/base.njk
 pageLayout: inner
 ogType: article
 ---
+{% from "macros/i18n.njk" import inline, rich with context %}
 {% set heroTag = "article" %}
 {% set heroMeta = date | isoDate %}
 {% set eyebrow = category %}
@@ -24,7 +25,11 @@ ogType: article
 {% endif %}
 <section class="inner-body">
   <div class="container prose article-body">
-{{ content | safe }}
+    {% if body and body.en %}
+    {{ rich(body) }}
+    {% else %}
+    {{ content | safe }}
+    {% endif %}
     <p class="article-back">
       <a href="{{ '/news/' | url }}">←
         <span class="lang en">{{ i18n.en.backToNews }}</span>

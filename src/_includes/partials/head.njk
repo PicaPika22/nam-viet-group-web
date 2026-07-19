@@ -1,17 +1,29 @@
+{% set docTitle = site.title %}
+{% if title %}
+  {% if title.en or title.vi or title.zh %}
+    {% set docTitle = (title.en or title.vi or title.zh) ~ " — " ~ site.name %}
+  {% else %}
+    {% set docTitle = title ~ " — " ~ site.name %}
+  {% endif %}
+{% endif %}
+{% set docDesc = description or site.description %}
+{% if docDesc.en or docDesc.vi or docDesc.zh %}
+  {% set docDesc = docDesc.en or docDesc.vi or docDesc.zh %}
+{% endif %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ description or site.description }}">
+<title>{{ docTitle }}</title>
+<meta name="description" content="{{ docDesc }}">
 <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:site_name" content="{{ site.name }}">
-<meta property="og:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}">
-<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:title" content="{{ docTitle }}">
+<meta property="og:description" content="{{ docDesc }}">
 <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
 <meta property="og:image" content="{{ (ogImage or site.ogImage) | absoluteUrl(site.url) }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.title }}{% endif %}">
-<meta name="twitter:description" content="{{ description or site.description }}">
+<meta name="twitter:title" content="{{ docTitle }}">
+<meta name="twitter:description" content="{{ docDesc }}">
 <meta name="twitter:image" content="{{ (ogImage or site.ogImage) | absoluteUrl(site.url) }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,0 +1,113 @@
+---
+pagination:
+  data: companies
+  size: 1
+  alias: company
+permalink: "/companies/{{ company.id }}/"
+layout: layouts/inner.njk
+---
+
+<div class="company-stage">
+  <div class="company-stage__panel">
+    <div class="company-stage__media">
+      <img
+        src="{{ company.sector.image | url }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="960"
+        height="640"
+      >
+      <div class="company-stage__veil" aria-hidden="true"></div>
+      <div class="company-stage__media-copy">
+        <p class="company-stage__sector-key" aria-hidden="true">
+          <span class="lang en">{{ company.sector.key.en }}</span>
+          <span class="lang vi">{{ company.sector.key.vi }}</span>
+          <span class="lang zh">{{ company.sector.key.zh }}</span>
+        </p>
+        <p class="company-stage__sector-title">
+          <span class="lang en">{{ company.sector.title.en }}</span>
+          <span class="lang vi">{{ company.sector.title.vi }}</span>
+          <span class="lang zh">{{ company.sector.title.zh }}</span>
+        </p>
+        {% if company.year %}
+        <p class="company-stage__year">
+          <span class="lang en">Since {{ company.year }}</span>
+          <span class="lang vi">Từ {{ company.year }}</span>
+          <span class="lang zh">始于 {{ company.year }}</span>
+        </p>
+        {% endif %}
+        {% if company.unit %}
+        <p class="company-stage__unit">
+          <span class="lang en">Group unit</span>
+          <span class="lang vi">Đơn vị tập đoàn</span>
+          <span class="lang zh">集团单位</span>
+        </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="company-stage__body">
+      <p class="company-stage__short">
+        <span class="lang en">{{ company.short.en }}</span>
+        <span class="lang vi">{{ company.short.vi }}</span>
+        <span class="lang zh">{{ company.short.zh }}</span>
+      </p>
+      <p class="company-stage__blurb">
+        <span class="lang en">{{ company.sector.blurb.en }}</span>
+        <span class="lang vi">{{ company.sector.blurb.vi }}</span>
+        <span class="lang zh">{{ company.sector.blurb.zh }}</span>
+      </p>
+
+      {% if company.focuses and (company.focuses | length) %}
+      <ol class="company-stage__focus">
+        {% for item in company.focuses %}
+        <li>
+          <span class="company-stage__focus-num" aria-hidden="true">0{{ loop.index }}</span>
+          <span>
+            <span class="lang en">{{ item.en }}</span>
+            <span class="lang vi">{{ item.vi }}</span>
+            <span class="lang zh">{{ item.zh }}</span>
+          </span>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+
+      <div class="company-stage__actions">
+        <a class="btn btn--solid" href="{{ '/contact/' | url }}">
+          <span class="lang en">{{ i18n.en.contact }}</span>
+          <span class="lang vi">{{ i18n.vi.contact }}</span>
+          <span class="lang zh">{{ i18n.zh.contact }}</span>
+        </a>
+        <a class="btn btn--outline btn--dark" href="{{ ('/companies/#' + company.sector.id) | url }}">
+          <span class="lang en">Back to map</span>
+          <span class="lang vi">Về bản đồ</span>
+          <span class="lang zh">返回地图</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% if company.siblings and (company.siblings | length) %}
+  <section class="company-stage__related">
+    <h2>
+      <span class="lang en">Also in this sector</span>
+      <span class="lang vi">Cùng ngành trong tập đoàn</span>
+      <span class="lang zh">同板块成员</span>
+    </h2>
+    <ul class="company-stage__sibs">
+      {% for sib in company.siblings %}
+      <li>
+        <a href="{{ sib.url | url }}">
+          <span class="lang en">{{ sib.short.en }}</span>
+          <span class="lang vi">{{ sib.short.vi }}</span>
+          <span class="lang zh">{{ sib.short.zh }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>

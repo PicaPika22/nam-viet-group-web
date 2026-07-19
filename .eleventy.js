@@ -1,4 +1,6 @@
 const path = require("path");
+const markdownIt = require("markdown-it");
+const md = markdownIt({ html: false, linkify: true, breaks: true });
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("src/admin/**");
@@ -7,6 +9,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/js": "js" });
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
+
+  eleventyConfig.addFilter("md", (value) => {
+    if (value == null || value === "") return "";
+    return md.render(String(value));
+  });
 
   eleventyConfig.addFilter("pathOnly", (value) => {
     if (!value) return "/";
@@ -22,9 +29,19 @@ module.exports = function (eleventyConfig) {
     const path = String(pageUrl).split("#")[0] || "/";
     const href = String(item.hrefInner || item.href || "/").split("#")[0];
     if (item.match === "prefix" && href !== "/" && href !== "/#") {
-      return path === href || path.startsWith(href);
+      if (path === href || path.startsWith(href)) return true;
+    } else if (path === href) {
+      return true;
     }
-    return path === href;
+    const childHrefs = [
+      ...(item.children || []).map((c) => c.href),
+      ...((item.mega || []).flatMap((col) => (col.links || []).map((l) => l.href))),
+    ];
+    return childHrefs.some((raw) => {
+      const childPath = String(raw || "").split("#")[0];
+      if (!childPath || childPath === "/" || childPath === "/#") return false;
+      return path === childPath || path.startsWith(childPath);
+    });
   });
 
   eleventyConfig.addFilter("absoluteUrl", (url, base) => {
@@ -51,6 +68,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("products", (collectionApi) =>
     collectionApi
       .getFilteredByGlob("src/products/items/*.md")
+      .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  );
+
+  eleventyConfig.addCollection("careers", (collectionApi) =>
+    collectionApi
+      .getFilteredByGlob("src/careers/jobs/*.md")
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   );
 

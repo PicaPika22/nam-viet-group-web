@@ -23,32 +23,17 @@ lead:
     <span class="lang zh">{{ i18n.zh.openRoles }}</span>
   </h2>
 
+  {% if collections.careers and (collections.careers | length) %}
   <div class="career-list">
-    {% for job in careers %}
-    <article class="career-card" id="{{ job.id }}">
-      <div>
-        <h3>
-          <span class="lang en">{{ job.title.en }}</span>
-          <span class="lang vi">{{ job.title.vi }}</span>
-          <span class="lang zh">{{ job.title.zh }}</span>
-        </h3>
-        <p class="career-card__meta">
-          <span class="lang en">{{ job.department.en }} · {{ job.location.en }} · {{ job.type.en }}</span>
-          <span class="lang vi">{{ job.department.vi }} · {{ job.location.vi }} · {{ job.type.vi }}</span>
-          <span class="lang zh">{{ job.department.zh }} · {{ job.location.zh }} · {{ job.type.zh }}</span>
-        </p>
-        <p>
-          <span class="lang en">{{ job.summary.en }}</span>
-          <span class="lang vi">{{ job.summary.vi }}</span>
-          <span class="lang zh">{{ job.summary.zh }}</span>
-        </p>
-      </div>
-      <a class="btn btn--small btn--solid" href="{{ '/contact/' | url }}?type=careers&amp;role={{ job.id }}">
-        <span class="lang en">{{ i18n.en.applyNow }}</span>
-        <span class="lang vi">{{ i18n.vi.applyNow }}</span>
-        <span class="lang zh">{{ i18n.zh.applyNow }}</span>
-      </a>
-    </article>
+    {% for job in collections.careers %}
+    {% include "partials/career-card.njk" %}
     {% endfor %}
   </div>
+  {% else %}
+  <p class="career-empty">
+    <span class="lang en">No open roles right now. Send a general application via Contact.</span>
+    <span class="lang vi">Hiện chưa có vị trí mở. Gửi hồ sơ qua trang Liên hệ.</span>
+    <span class="lang zh">暂无开放职位。请通过联系页投递。</span>
+  </p>
+  {% endif %}
 </section>

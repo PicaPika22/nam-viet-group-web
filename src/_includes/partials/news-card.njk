@@ -1,0 +1,28 @@
+{#
+  Shared news card.
+  Expects: post (Eleventy collection item) OR
+    url, image, category, title, excerpt (optional)
+#}
+{% from "macros/i18n.njk" import inline %}
+{% set href = post.url if post else url %}
+{% set img = (post.data.image if post else image) %}
+{% set cat = (post.data.category if post else category) %}
+{% set ttl = (post.data.title if post else title) %}
+{% set ex = (post.data.excerpt if post else excerpt) %}
+<a href="{{ href | url }}" class="ncard{{ (' ' + cardClass) if cardClass else '' }}"{% if cardDelay %} data-delay="{{ cardDelay }}"{% endif %}>
+  {% if img %}
+  <div class="ncard__media"><img src="{{ img | url }}" alt="" loading="lazy"></div>
+  {% endif %}
+  {% if cat %}
+  <span class="ncard__cat">{{ inline(cat) }}</span>
+  {% endif %}
+  <h3>{{ inline(ttl) }}</h3>
+  {% if ex and ex.en %}
+  <p class="ncard__excerpt">{{ inline(ex) }}</p>
+  {% endif %}
+  <span class="ncard__more">
+    <span class="lang en">{{ i18n.en.readMore }}</span>
+    <span class="lang vi">{{ i18n.vi.readMore }}</span>
+    <span class="lang zh">{{ i18n.zh.readMore }}</span> →
+  </span>
+</a>

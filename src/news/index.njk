@@ -18,24 +18,7 @@ lead:
 
 <div class="news__grid">
   {% for post in collections.news %}
-  <a href="{{ post.url | url }}" class="ncard">
-    <div class="ncard__media"><img src="{{ post.data.image | url }}" alt="" loading="lazy"></div>
-    <span class="ncard__cat">
-      <span class="lang en">{{ post.data.category.en }}</span>
-      <span class="lang vi">{{ post.data.category.vi }}</span>
-      <span class="lang zh">{{ post.data.category.zh }}</span>
-    </span>
-    <h3>
-      <span class="lang en">{{ post.data.title.en }}</span>
-      <span class="lang vi">{{ post.data.title.vi }}</span>
-      <span class="lang zh">{{ post.data.title.zh }}</span>
-    </h3>
-    <span class="ncard__more">
-      <span class="lang en">{{ i18n.en.readMore }}</span>
-      <span class="lang vi">{{ i18n.vi.readMore }}</span>
-      <span class="lang zh">{{ i18n.zh.readMore }}</span> →
-    </span>
-  </a>
+  {% include "partials/news-card.njk" %}
   {% endfor %}
 </div>
 <p class="page-actions">

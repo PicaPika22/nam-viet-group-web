@@ -62,6 +62,15 @@ module.exports = function () {
       },
     },
     {
+      url: withPrefix("/companies/"),
+      title: { en: "Member companies", vi: "Công ty thành viên", zh: "成员企业" },
+      body: {
+        en: "ecosystem Fimico Hutech The King logistics feed trading",
+        vi: "hệ sinh thái Fimico Hutech The King logistics thức ăn",
+        zh: "生态 Fimico Hutech The King 物流 饲料",
+      },
+    },
+    {
       url: withPrefix("/careers/"),
       title: { en: "Careers", vi: "Tuyển dụng", zh: "招聘" },
       body: {

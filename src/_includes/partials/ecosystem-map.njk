@@ -1,0 +1,146 @@
+{#
+  Ecosystem sector map — tabs + image stage + company rows.
+  Locals:
+    ecoMapVariant — "dark" (home chapter) | "ink" (about / light pages). Default: dark
+    ecoMapShowHead — show title + intro above tabs. Default: true
+    ecoMapId — id prefix for a11y ids when multiple maps could exist. Default: eco
+    ecoMapActive — optional sector id to open first (also reads URL hash)
+#}
+{% set variant = ecoMapVariant or "dark" %}
+{% set showHead = ecoMapShowHead if ecoMapShowHead is defined else true %}
+{% set idPrefix = ecoMapId or "eco" %}
+{% set activeSector = ecoMapActive or "" %}
+
+{% set sectors = ecosystem.sectors if ecosystem else null %}
+{% if sectors and (sectors | length) %}
+<div
+  class="eco-map eco-map--{{ variant }}{% if not showHead %} eco-map--flush{% endif %}"
+  data-eco-map
+  {% if activeSector %}data-eco-initial="{{ activeSector }}"{% endif %}
+  id="{{ idPrefix }}-map"
+>
+  {% if showHead %}
+  <header class="eco-map__head reveal">
+    <h3 class="eco-map__title">
+      <span class="lang en">Member companies</span>
+      <span class="lang vi">Công ty thành viên</span>
+      <span class="lang zh">成员企业</span>
+    </h3>
+    <p class="eco-map__intro">
+      <span class="lang en">{{ ecosystem.intro.en }}</span>
+      <span class="lang vi">{{ ecosystem.intro.vi }}</span>
+      <span class="lang zh">{{ ecosystem.intro.zh }}</span>
+    </p>
+  </header>
+  {% endif %}
+
+  <div class="eco-map__tabs-wrap reveal" data-delay="80">
+    <div class="eco-map__tabs" role="tablist" aria-label="Ecosystem sectors">
+      {% for sector in sectors %}
+      <button
+        type="button"
+        class="eco-map__tab{% if loop.first %} is-active{% endif %}"
+        role="tab"
+        id="{{ idPrefix }}-tab-{{ sector.id }}"
+        aria-controls="{{ idPrefix }}-panel-{{ sector.id }}"
+        aria-selected="{{ 'true' if loop.first else 'false' }}"
+        tabindex="{{ 0 if loop.first else -1 }}"
+        data-eco-tab="{{ sector.id }}"
+      >
+        <span class="eco-map__tab-key" aria-hidden="true">
+          <span class="lang en">{{ sector.key.en }}</span>
+          <span class="lang vi">{{ sector.key.vi }}</span>
+          <span class="lang zh">{{ sector.key.zh }}</span>
+        </span>
+        <span class="eco-map__tab-label">
+          <span class="lang en">{{ sector.title.en }}</span>
+          <span class="lang vi">{{ sector.title.vi }}</span>
+          <span class="lang zh">{{ sector.title.zh }}</span>
+        </span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="eco-map__stage reveal" data-delay="140">
+    {% for sector in sectors %}
+    <div
+      class="eco-map__panel{% if loop.first %} is-active{% endif %}"
+      role="tabpanel"
+      id="{{ idPrefix }}-panel-{{ sector.id }}"
+      aria-labelledby="{{ idPrefix }}-tab-{{ sector.id }}"
+      data-eco-panel="{{ sector.id }}"
+      {% if not loop.first %}hidden{% endif %}
+    >
+      <div class="eco-map__media">
+        <img
+          src="{{ sector.image | url }}"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width="960"
+          height="640"
+        >
+        <div class="eco-map__veil" aria-hidden="true"></div>
+        <div class="eco-map__media-copy">
+          <p class="eco-map__sector-key" aria-hidden="true">
+            <span class="lang en">{{ sector.key.en }}</span>
+            <span class="lang vi">{{ sector.key.vi }}</span>
+            <span class="lang zh">{{ sector.key.zh }}</span>
+          </p>
+          <h4 class="eco-map__sector-title">
+            <span class="lang en">{{ sector.title.en }}</span>
+            <span class="lang vi">{{ sector.title.vi }}</span>
+            <span class="lang zh">{{ sector.title.zh }}</span>
+          </h4>
+          <p class="eco-map__sector-blurb">
+            <span class="lang en">{{ sector.blurb.en }}</span>
+            <span class="lang vi">{{ sector.blurb.vi }}</span>
+            <span class="lang zh">{{ sector.blurb.zh }}</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="eco-map__companies">
+        {% for co in sector.companies %}
+        <li class="eco-map__co">
+          <a class="eco-map__co-link" href="{{ ('/companies/' + co.id + '/') | url }}">
+            <div class="eco-map__co-meta">
+              {% if co.year %}
+              <span class="eco-map__co-year">{{ co.year }}</span>
+              {% endif %}
+              {% if co.unit %}
+              <span class="eco-map__co-unit">
+                <span class="lang en">Unit</span>
+                <span class="lang vi">Đơn vị</span>
+                <span class="lang zh">单位</span>
+              </span>
+              {% endif %}
+            </div>
+            <div class="eco-map__co-body">
+              <p class="eco-map__co-short">
+                <span class="lang en">{{ co.short.en }}</span>
+                <span class="lang vi">{{ co.short.vi }}</span>
+                <span class="lang zh">{{ co.short.zh }}</span>
+              </p>
+              <p class="eco-map__co-name">
+                <span class="lang en">{{ co.name.en }}</span>
+                <span class="lang vi">{{ co.name.vi }}</span>
+                <span class="lang zh">{{ co.name.zh }}</span>
+              </p>
+              <p class="eco-map__co-desc">
+                <span class="lang en">{{ co.desc.en }}</span>
+                <span class="lang vi">{{ co.desc.vi }}</span>
+                <span class="lang zh">{{ co.desc.zh }}</span>
+              </p>
+            </div>
+            <span class="eco-map__co-go" aria-hidden="true">→</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
