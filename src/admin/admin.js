@@ -1,8 +1,14 @@
 (() => {
   "use strict";
 
-  const API = "http://127.0.0.1:8081/api";
+  const metaApi = document.querySelector('meta[name="admin-api"]')?.content?.trim();
+  const API =
+    metaApi ||
+    (location.port === "8125" || location.port === "8080"
+      ? "http://127.0.0.1:8081/api"
+      : `${location.origin}/api`);
   const LANGS = ["vi", "en", "zh"];
+  const AUTH_KEY = "nv_studio_auth";
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -17,7 +23,31 @@
     form: emptyNews(),
     job: emptyJob(),
     slugLocked: false,
+    auth: null,
+    mode: "local",
   };
+
+  function loadAuth() {
+    try {
+      state.auth = JSON.parse(sessionStorage.getItem(AUTH_KEY) || "null");
+    } catch {
+      state.auth = null;
+    }
+  }
+
+  function saveAuth(auth) {
+    state.auth = auth;
+    if (auth) sessionStorage.setItem(AUTH_KEY, JSON.stringify(auth));
+    else sessionStorage.removeItem(AUTH_KEY);
+  }
+
+  function authHeaders() {
+    const h = {};
+    if (!state.auth) return h;
+    if (state.auth.token) h["X-Admin-Token"] = state.auth.token;
+    if (state.auth.basic) h.Authorization = `Basic ${state.auth.basic}`;
+    return h;
+  }
 
   function emptyNews() {
     return {
@@ -115,19 +145,36 @@
   }
 
   async function api(path, opts = {}) {
-    const res = await fetch(`${API}${path}`, opts);
+    const headers = { ...(opts.headers || {}), ...authHeaders() };
+    const res = await fetch(`${API}${path}`, { ...opts, headers });
     const data = await res.json().catch(() => ({}));
+    if (res.status === 401) {
+      saveAuth(null);
+      showLogin(true);
+      throw new Error("Cần đăng nhập");
+    }
     if (!res.ok) throw new Error(data.error || res.statusText);
     return data;
   }
 
-  function setLive(on) {
+  function setLive(on, mode) {
     const el = $("#liveDot");
     const label = $("#liveLabel");
     if (!el) return;
     el.classList.toggle("is-on", on);
     el.classList.toggle("is-off", !on);
-    if (label) label.textContent = on ? "Local" : "Offline";
+    if (label) {
+      if (!on) label.textContent = "Offline";
+      else if (mode === "github") label.textContent = "Cloud";
+      else label.textContent = "Local";
+    }
+  }
+
+  function showLogin(show) {
+    const gate = $("#loginGate");
+    const shell = $("#appShell");
+    if (gate) gate.hidden = !show;
+    if (shell) shell.hidden = show;
   }
 
   function showLoading() {
@@ -146,13 +193,30 @@
   async function load() {
     showLoading();
     try {
-      await api("/health");
+      const health = await api("/health");
+      state.mode = health.mode || "local";
       $("#apiWarn").hidden = true;
-      setLive(true);
+      setLive(true, state.mode);
+      const modeLabel = $("#modeLabel");
+      if (modeLabel) {
+        modeLabel.textContent =
+          state.mode === "github"
+            ? "Cloud CMS · commit → Vercel"
+            : "Local CMS · EN / VI / 中文";
+      }
+      if (health.siteUrl && $("#siteLink")) {
+        $("#siteLink").href = health.siteUrl;
+      }
+      if (health.auth && !state.auth) {
+        showLogin(true);
+        return;
+      }
+      showLogin(false);
+      $("#logoutBtn").hidden = !health.auth;
     } catch {
       $("#apiWarn").hidden = false;
       setLive(false);
-      $("#feed").innerHTML = `<div class="feed-empty">Không kết nối được API. Chạy <code>npm run cms</code>.</div>`;
+      $("#feed").innerHTML = `<div class="feed-empty">Không kết nối được API. Local: chạy <code>npm run cms</code>.</div>`;
       $("#listCount").textContent = "0";
       return;
     }
@@ -426,7 +490,11 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(state.form),
         });
-        toast("Đã xuất bản bài viết");
+        toast(
+          state.mode === "github"
+            ? "Đã commit — Vercel đang build (~1–2 phút)"
+            : "Đã xuất bản bài viết"
+        );
       }
       closeNewsModal();
       await load();
@@ -545,7 +613,11 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(state.job),
         });
-        toast("Đã xuất bản tuyển dụng");
+        toast(
+          state.mode === "github"
+            ? "Đã commit — Vercel đang build (~1–2 phút)"
+            : "Đã xuất bản tuyển dụng"
+        );
       }
       closeJobModal();
       await load();
@@ -567,6 +639,40 @@
   }
 
   function bind() {
+    $("#loginForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const err = $("#loginError");
+      err.hidden = true;
+      try {
+        const data = await fetch(`${API}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user: $("#loginUser").value.trim(),
+            password: $("#loginPass").value,
+          }),
+        }).then(async (r) => {
+          const j = await r.json().catch(() => ({}));
+          if (!r.ok) throw new Error(j.error || "Đăng nhập thất bại");
+          return j;
+        });
+        saveAuth({
+          token: data.token || null,
+          basic: data.basic || null,
+        });
+        showLogin(false);
+        await load();
+      } catch (ex) {
+        err.textContent = ex.message || "Đăng nhập thất bại";
+        err.hidden = false;
+      }
+    });
+
+    $("#logoutBtn")?.addEventListener("click", () => {
+      saveAuth(null);
+      showLogin(true);
+    });
+
     $$(".rail__item").forEach((b) =>
       b.addEventListener("click", () => setTab(b.dataset.tab))
     );
@@ -705,6 +811,7 @@
     });
   }
 
+  loadAuth();
   bind();
   setTab("news");
 })();

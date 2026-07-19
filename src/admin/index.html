@@ -10,9 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
   <link rel="icon" type="image/png" href="/assets/img/logo.png">
+  <meta name="admin-api" content="">
 </head>
 <body>
-  <div class="app">
+  <div class="login" id="loginGate" hidden>
+    <form class="login__card" id="loginForm">
+      <p class="eyebrow">Content Studio</p>
+      <h1>Đăng nhập</h1>
+      <p class="login__lead">Dành cho biên tập viên Nam Viet Group.</p>
+      <div class="field">
+        <label for="loginUser">Tài khoản</label>
+        <input id="loginUser" type="text" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="loginPass">Mật khẩu</label>
+        <input id="loginPass" type="password" autocomplete="current-password" required>
+      </div>
+      <p class="login__error" id="loginError" hidden></p>
+      <button type="submit" class="btn-primary" style="width:100%">Vào Studio</button>
+    </form>
+  </div>
+
+  <div class="app" id="appShell">
     <aside class="rail">
       <a class="rail__brand" href="/admin/">
         <img src="/assets/img/logo-light.png" alt="">
@@ -35,8 +54,9 @@
       </nav>
 
       <div class="rail__foot">
-        <a href="/" target="_blank" rel="noopener">Xem website ↗</a>
-        <p>Local CMS · EN / VI / 中文</p>
+        <a href="/" target="_blank" rel="noopener" id="siteLink">Xem website ↗</a>
+        <p id="modeLabel">CMS · EN / VI / 中文</p>
+        <button type="button" class="rail__logout" id="logoutBtn" hidden>Đăng xuất</button>
       </div>
     </aside>
 

@@ -7,7 +7,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/js": "js" });
-  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  // Admin UI runs on Railway in production — skip on Vercel builds
+  if (!process.env.VERCEL) {
+    eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  }
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
   eleventyConfig.addFilter("md", (value) => {

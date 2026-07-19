@@ -8,13 +8,19 @@
     "cms": "node scripts/admin-api.js",
     "dev:cms": "npx --yes concurrently -k -n web,cms -c green,cyan \"npm run dev\" \"npm run cms\"",
     "build": "eleventy",
-    "start": "npm run build && npx serve _site -l 8125"
+    "start": "node scripts/admin-api.js",
+    "start:site": "npm run build && npx serve _site -l 8125"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "gray-matter": "^4.0.3",
+    "multer": "^2.2.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "express": "^5.2.1",
-    "gray-matter": "^4.0.3",
-    "markdown-it": "^14.3.0",
-    "multer": "^2.2.0"
+    "markdown-it": "^14.3.0"
   }
 }

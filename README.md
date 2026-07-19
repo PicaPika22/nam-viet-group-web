@@ -1,14 +1,17 @@
 # Nam Viet Group — Corporate Website
 
-Chapter-storytelling home page plus multi-page corporate site (About, Products, News, Contact, Careers, Investors, Downloads, legal pages). Built with **Eleventy**, HTML/CSS/JS, trilingual **EN / VI / 中文**.
+Chapter-storytelling home page plus multi-page corporate site. Built with **Eleventy**, HTML/CSS/JS, trilingual **EN / VI / 中文**.
 
 ## Develop
 
 ```bash
 npm install
-npm run dev
-# http://localhost:8123
+npm run dev:cms
+# Site  http://localhost:8125/
+# CMS   http://localhost:8125/admin/  (API on :8081)
 ```
+
+Or site only: `npm run dev`
 
 ## Build
 
@@ -17,58 +20,70 @@ npm run build
 # Output: _site/
 ```
 
-For GitHub project pages locally:
+## Deploy (client handoff)
 
-```bash
-set PATH_PREFIX=/nam-viet-group-web/
-npm run build
+```mermaid
+flowchart LR
+  cms[Railway_Content_Studio] --> gh[GitHub_commit]
+  gh --> vercel[Vercel_rebuild]
+  vercel --> web[Public_website]
 ```
 
-## Structure
+| Layer | Platform | URL |
+|-------|----------|-----|
+| Public website | **Vercel** | your domain / `*.vercel.app` |
+| Content Studio | **Railway** | `https://…railway.app/admin/` |
+| Content source | **GitHub** | markdown in this repo |
 
-| Path | Purpose |
-|------|---------|
-| `src/index.njk` | Home (12 chapters) |
-| `src/about.njk` | About + leadership |
-| `src/products/` | Catalog + markdown product items |
-| `src/news/` | News index + markdown posts + RSS |
-| `src/contact.njk` | Contact form (Formspree) |
-| `src/careers.njk` | Open roles |
-| `src/investors.njk` | IR highlights & reports |
-| `src/downloads.njk` | Download center |
-| `src/privacy.njk` / `terms.njk` | Legal |
-| `src/_data/` | Site config, i18n, nav, careers, downloads |
-| `src/css/` · `src/js/` · `src/assets/` | Static assets |
+### 1) Vercel — website
+
+1. Import repo → Framework **Other**
+2. Build Command: `npm run build`
+3. Output Directory: `_site`
+4. Deploy → set custom domain
+5. Update [`src/_data/site.json`](src/_data/site.json) `url` to the production domain and push
+
+Config file: [`vercel.json`](vercel.json)
+
+### 2) Railway — Content Studio
+
+1. New service from the same GitHub repo  
+2. Start command: `node scripts/admin-api.js` (see [`railway.json`](railway.json))  
+3. Variables (see [`.env.example`](.env.example)):
+
+| Variable | Purpose |
+|----------|---------|
+| `GITHUB_TOKEN` | Fine-grained PAT, Contents read/write |
+| `GITHUB_REPO` | `owner/repo` |
+| `GITHUB_BRANCH` | `main` |
+| `ADMIN_USER` / `ADMIN_PASS` | Editor login |
+| `CORS_ORIGIN` | Optional; default `*` |
+
+4. Give the client: Railway `/admin/` URL + username/password  
+5. Publishing commits to GitHub → Vercel rebuilds in ~1–2 minutes  
+
+Details: [`src/admin/README.md`](src/admin/README.md)
+
+### GitHub Pages (optional / legacy)
+
+Workflow `.github/workflows/deploy.yml` still publishes to  
+`https://picapika22.github.io/nam-viet-group-web/` with `PATH_PREFIX`. Prefer Vercel for the client domain.
 
 ## Configure
 
 Edit [`src/_data/site.json`](src/_data/site.json):
 
-- `url` — production canonical URL
+- `url` — production canonical URL (Vercel / custom domain)
 - `emailPartner` / `emailContact` / `phone` / `address`
-- `formEndpoint` — your [Formspree](https://formspree.io) form URL (replace the placeholder)
-- `analyticsId` — optional GA4 measurement ID (e.g. `G-XXXXXXXX`)
+- `formEndpoint` — Formspree form URL
 - `whatsapp` / `zalo` — floating chat numbers
 
-### Content CMS (Git-based)
+## Content
 
-- **Products:** add `src/products/items/*.md`
-- **News:** add `src/news/posts/*.md`
-- Redeploy / rebuild after push
+| Content | Path |
+|---------|------|
+| News | `src/news/posts/*.md` |
+| Careers | `src/careers/jobs/*.md` |
+| Products | `src/products/items/*.md` |
 
-## Deploy
-
-GitHub Actions (`.github/workflows/deploy.yml`) builds with `PATH_PREFIX=/nam-viet-group-web/` and publishes to **GitHub Pages**.
-
-1. Repo → Settings → Pages → Source: **GitHub Actions**
-2. Push to `main`
-3. Site: `https://picapika22.github.io/nam-viet-group-web/`
-
-For a custom domain, set `site.url`, clear `PATH_PREFIX` in the workflow (use `/`), and add a `CNAME` under `src/`.
-
-## SEO & ops
-
-- Open Graph + canonical tags on every page
-- `robots.txt`, `sitemap.xml`, news `feed.xml`
-- Cookie notice + optional GA4
-- Privacy / Terms in three languages
+Editors use Content Studio (local or Railway). Developers can also edit markdown directly and push.
