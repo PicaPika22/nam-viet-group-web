@@ -51,73 +51,46 @@ lead:
     </p>
   </section>
 
-  <section id="leadership" class="page-panel" data-page-panel="leadership">
-    <h2>
-      <span class="lang en">Leadership</span>
-      <span class="lang vi">Ban lãnh đạo</span>
-      <span class="lang zh">领导团队</span>
-    </h2>
-    <p class="about-page__lead">
-      <span class="lang en">Our leadership team combines decades of industry experience with a forward-thinking vision, guiding Nam Viet toward sustainable growth and global competitiveness.</span>
-      <span class="lang vi">Đội ngũ lãnh đạo giàu kinh nghiệm dẫn dắt Nam Việt phát triển bền vững và nâng cao năng lực cạnh tranh quốc tế.</span>
-      <span class="lang zh">领导团队汇聚数十年行业经验与前瞻视野，引领南越走向可持续增长与全球竞争力。</span>
-    </p>
-
-    {% set chair = leadership | selectattr("featured") | first %}
-    {% if chair %}
-    <a class="leader-feature" href="{{ ('/about/leadership/' + chair.id + '/') | url }}">
-      <div class="leader-feature__media">
-        <img src="{{ chair.image | url }}" alt="{{ chair.name.en }}" width="480" height="640" loading="lazy">
-      </div>
-      <div class="leader-feature__copy">
-        <p class="leader-feature__role">
-          <span class="lang en">{{ chair.role.en }}</span>
-          <span class="lang vi">{{ chair.role.vi }}</span>
-          <span class="lang zh">{{ chair.role.zh }}</span>
-        </p>
-        <h3 class="leader-feature__name">
-          <span class="lang en">{{ chair.name.en }}</span>
-          <span class="lang vi">{{ chair.name.vi }}</span>
-          <span class="lang zh">{{ chair.name.zh }}</span>
-        </h3>
-        <p class="leader-feature__bio">
-          <span class="lang en">{{ chair.bio.en }}</span>
-          <span class="lang vi">{{ chair.bio.vi }}</span>
-          <span class="lang zh">{{ chair.bio.zh }}</span>
-        </p>
-        <span class="leader-feature__more">
-          <span class="lang en">View profile</span>
-          <span class="lang vi">Xem hồ sơ</span>
-          <span class="lang zh">查看简介</span>
-          →
+  <section id="leadership" class="page-panel page-panel--leadership" data-page-panel="leadership">
+    <header class="chapter__head chapter__head--about">
+      <span class="chapter__num reveal">09</span>
+      <p class="eyebrow reveal">
+        <span class="lang en">Our Leadership</span>
+        <span class="lang vi">Ban lãnh đạo</span>
+        <span class="lang zh">领导团队</span>
+      </p>
+      <h2 class="chapter__title chapter__title--sm">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Leadership That</span></span>
+          <span class="line-mask"><span class="line line--muted">Steers the Group.</span></span>
         </span>
-      </div>
-    </a>
-    {% endif %}
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Ban lãnh đạo</span></span>
+          <span class="line-mask"><span class="line line--muted">định hướng Tập đoàn.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">以领导力</span></span>
+          <span class="line-mask"><span class="line line--muted">掌舵集团。</span></span>
+        </span>
+      </h2>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">Seasoned executives across Group companies set strategy, capital discipline and operating standards for Nam Viet’s agribusiness ecosystem — from nutrition and manufacturing to trade and logistics.</span>
+        <span class="lang vi">Đội ngũ lãnh đạo dày dặn tại các công ty thành viên định hướng chiến lược, kỷ luật vốn và chuẩn vận hành cho hệ sinh thái nông nghiệp Nam Việt — từ dinh dưỡng, sản xuất đến thương mại và logistics.</span>
+        <span class="lang zh">集团及成员企业高管团队负责战略定调、资本纪律与运营标准，支撑南越农业产业生态——覆盖营养方案、制造、贸易与物流。</span>
+      </p>
+    </header>
 
-    <ul class="leader-grid">
-      {% for person in leadership %}
-      {% if not person.featured %}
-      <li>
-        <a class="leader-card" href="{{ ('/about/leadership/' + person.id + '/') | url }}">
-          <div class="leader-card__media">
-            <img src="{{ person.image | url }}" alt="{{ person.name.en }}" loading="lazy" width="320" height="400">
-          </div>
-          <span class="leader-card__name">
-            <span class="lang en">{{ person.name.en }}</span>
-            <span class="lang vi">{{ person.name.vi }}</span>
-            <span class="lang zh">{{ person.name.zh }}</span>
-          </span>
-          <span class="leader-card__role">
-            <span class="lang en">{{ person.role.en }}</span>
-            <span class="lang vi">{{ person.role.vi }}</span>
-            <span class="lang zh">{{ person.role.zh }}</span>
-          </span>
-        </a>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
+    {% set rosterCompact = true %}
+    {% include "partials/leadership-roster.njk" %}
+
+    <p class="page-actions reveal">
+      <a class="btn btn--dark" href="{{ '/about/leadership/' | url }}">
+        <span class="btn__dot"></span>
+        <span class="lang en">View the full leadership roster</span>
+        <span class="lang vi">Xem toàn bộ ban lãnh đạo</span>
+        <span class="lang zh">查看完整领导名录</span>
+      </a>
+    </p>
   </section>
 
   {% if ecosystem and ecosystem.sectors and ecosystem.sectors.length %}

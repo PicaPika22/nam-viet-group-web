@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+showLoader: false
+showRail: false
+---
+<section class="chapter chapter--cream leadership-hero">
+  <div class="container">
+    <nav class="breadcrumb leadership-hero__crumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}">
+        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ '/about/' | url }}">
+        <span class="lang en">About</span>
+        <span class="lang vi">Giới thiệu</span>
+        <span class="lang zh">关于</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <span>
+        <span class="lang en">Leadership</span>
+        <span class="lang vi">Ban lãnh đạo</span>
+        <span class="lang zh">领导团队</span>
+      </span>
+    </nav>
+    <header class="chapter__head">
+      <span class="chapter__num reveal">09</span>
+      <p class="eyebrow reveal">
+        <span class="lang en">Our Leadership</span>
+        <span class="lang vi">Ban lãnh đạo</span>
+        <span class="lang zh">领导团队</span>
+      </p>
+      <h1 class="chapter__title">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Leadership That</span></span>
+          <span class="line-mask"><span class="line line--muted">Steers the Group.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Ban lãnh đạo</span></span>
+          <span class="line-mask"><span class="line line--muted">định hướng Tập đoàn.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">以领导力</span></span>
+          <span class="line-mask"><span class="line line--muted">掌舵集团。</span></span>
+        </span>
+      </h1>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">With charter capital of VND 542 billion, Nam Viet’s leadership directs a multi-sector agribusiness ecosystem — feed, trading, manufacturing and logistics.</span>
+        <span class="lang vi">Với vốn điều lệ 542 tỷ đồng, ban lãnh đạo Nam Việt điều hành hệ sinh thái nông nghiệp đa ngành — từ thức ăn chăn nuôi, thương mại, sản xuất đến logistics.</span>
+        <span class="lang zh">以南越集团注册资本5,420亿越南盾为基，领导层统筹饲料、贸易、制造与物流等多业态农业产业生态。</span>
+      </p>
+    </header>
+  </div>
+</section>
+<section class="inner-body leadership-body">
+  <div class="container">
+{{ content | safe }}
+  </div>
+</section>

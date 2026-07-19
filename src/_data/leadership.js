@@ -1,4 +1,13 @@
-/** Leadership team — names/roles/photos from namviet-jsc.com/vn/about */
+/**
+ * Leadership team — names/roles/photos from namviet-jsc.com/vn/about
+ *
+ * Portrait upload standard (required for a consistent grid + profile):
+ *   - Ratio:  3:4 (portrait)
+ *   - Size:   900 × 1200 px (site store size)
+ *   - Format: JPG
+ *   - Framing: head & upper torso, face in the upper third, neutral/office backdrop
+ * Normalize batch:  python scripts/normalize_leadership_photos.py
+ */
 module.exports = [
   {
     id: "ha-van-an",
@@ -15,9 +24,9 @@ module.exports = [
       zh: "董事会主席",
     },
     bio: {
-      en: "At Nam Viet, we are committed to sustainable agriculture. We balance stakeholder interests while prioritizing environmental protection. We lead in eco-friendly farming solutions, strengthen food security and rural economic growth, and create lasting value for customers, partners and society through sustainable methods.",
-      vi: "Tại Nam Việt, chúng tôi cam kết phát triển nông nghiệp bền vững. Chúng tôi cân bằng lợi ích các bên liên quan đồng thời ưu tiên bảo vệ môi trường. Công ty chúng tôi đi đầu trong phát triển giải pháp canh tác thân thiện môi trường, tăng cường an ninh lương thực và tăng trưởng kinh tế nông thôn. Chúng tôi tận tâm tạo ra giá trị lâu dài cho khách hàng, đối tác và xã hội thông qua các phương pháp bền vững.",
-      zh: "在南越，我们致力于可持续农业发展。我们在优先保护环境的同时平衡各方利益。公司引领环保耕作解决方案，加强粮食安全与农村经济增长，并通过可持续方法为客户、合作伙伴与社会创造长期价值。",
+      en: "At Nam Viet, we are committed to sustainable agriculture. We balance stakeholder interests while prioritizing environmental protection — advancing eco-friendly farming solutions, food security and rural growth, and creating lasting value for customers, partners and society.",
+      vi: "Tại Nam Việt, chúng tôi cam kết phát triển nông nghiệp bền vững. Chúng tôi cân bằng lợi ích các bên liên quan, ưu tiên bảo vệ môi trường — đi đầu giải pháp canh tác thân thiện môi trường, an ninh lương thực và tăng trưởng kinh tế nông thôn, tạo giá trị lâu dài cho khách hàng, đối tác và xã hội.",
+      zh: "在南越，我们致力于可持续农业。平衡各方利益、优先保护环境——推进环保耕作、粮食安全与农村增长，为客户、伙伴与社会创造长期价值。",
     },
   },
   {
@@ -34,9 +43,9 @@ module.exports = [
       zh: "副总经理",
     },
     bio: {
-      en: "Supports Group executive leadership across operations and member companies, helping align day-to-day management with Nam Viet’s long-term growth agenda.",
-      vi: "Hỗ trợ điều hành tập đoàn trên các hoạt động và công ty thành viên, gắn quản trị hàng ngày với định hướng phát triển dài hạn của Nam Việt.",
-      zh: "协助集团日常运营与成员企业管理，使日常管理与南越长期发展方向保持一致。",
+      en: "Steers Group executive operations across member companies — translating Board strategy into disciplined day-to-day management and cross-unit performance.",
+      vi: "Điều phối điều hành Tập đoàn tại các công ty thành viên — chuyển chiến lược HĐQT thành quản trị hàng ngày có kỷ luật và hiệu quả liên đơn vị.",
+      zh: "统筹集团及成员企业运营——将董事会战略落地为有纪律的日常管理与跨单元绩效。",
     },
   },
   {
@@ -53,9 +62,9 @@ module.exports = [
       zh: "总会计师",
     },
     bio: {
-      en: "Leads Group accounting and financial reporting, supporting transparency and disciplined capital stewardship across the Nam Viet ecosystem.",
-      vi: "Phụ trách kế toán và báo cáo tài chính tập đoàn, góp phần minh bạch và quản trị vốn chặt chẽ trong hệ sinh thái Nam Việt.",
-      zh: "负责集团会计与财务报告，支持南越生态体系内的透明与稳健资本管理。",
+      en: "Owns Group accounting and consolidated reporting — upholding transparency, capital discipline and governance standards across the Nam Viet ecosystem.",
+      vi: "Phụ trách kế toán và báo cáo hợp nhất Tập đoàn — bảo đảm minh bạch, kỷ luật vốn và chuẩn quản trị trong toàn hệ sinh thái Nam Việt.",
+      zh: "负责集团会计与合并报表——在南越生态内维护透明、资本纪律与治理标准。",
     },
   },
   {
@@ -72,9 +81,9 @@ module.exports = [
       zh: "Feed Trading 越南有限公司总经理",
     },
     bio: {
-      en: "Directs Feed Trading Vietnam, focusing on feed materials trading and logistics services that connect supply with the Group’s manufacturing network.",
-      vi: "Điều hành Feed Trading Việt Nam, tập trung thương mại nguyên liệu thức ăn và dịch vụ logistics kết nối nguồn cung với mạng lưới sản xuất của tập đoàn.",
-      zh: "执掌 Feed Trading 越南，聚焦饲料原料贸易与物流服务，连接供应链与集团生产网络。",
+      en: "Leads Feed Trading Vietnam — securing feed materials and logistics flows that keep the Group’s manufacturing network supplied and commercially agile.",
+      vi: "Điều hành Feed Trading Việt Nam — bảo đảm nguồn nguyên liệu thức ăn và dòng logistics phục vụ mạng lưới sản xuất Tập đoàn, vận hành linh hoạt về thương mại.",
+      zh: "执掌 Feed Trading 越南——保障饲料原料与物流通道，支撑集团生产网络供应与商业灵活度。",
     },
   },
   {
@@ -91,9 +100,9 @@ module.exports = [
       zh: "盖麟港仓储总监",
     },
     bio: {
-      en: "Leads Cai Lan port-warehouse operations in Quang Ninh, supporting storage, cargo handling and international trade logistics for the Group.",
-      vi: "Phụ trách hoạt động kho cảng Cái Lân tại Quảng Ninh — lưu kho, bốc xếp và logistics thương mại quốc tế của tập đoàn.",
-      zh: "负责广宁盖麟港仓储运营，支持集团仓储、装卸与国际贸易物流。",
+      en: "Commands Cai Lan port–warehouse operations in Quang Ninh — storage, stevedoring and international trade logistics that anchor the Group’s northern corridor.",
+      vi: "Phụ trách kho cảng Cái Lân tại Quảng Ninh — lưu kho, bốc xếp và logistics thương mại quốc tế, trụ cột hành lang phía Bắc của Tập đoàn.",
+      zh: "执掌广宁盖麟港仓储——仓储、装卸与国际贸易物流，支撑集团北部通道。",
     },
   },
   {
@@ -110,9 +119,9 @@ module.exports = [
       zh: "Pilmico 集团股份公司总经理",
     },
     bio: {
-      en: "Leads Pilmico Group within the Nam Viet ecosystem, spanning feed manufacturing and related warehouse–logistics services.",
-      vi: "Điều hành CTCP Pilmico Group trong hệ sinh thái Nam Việt — sản xuất thức ăn và dịch vụ kho bãi, logistics liên quan.",
-      zh: "执掌南越生态内的 Pilmico 集团，涵盖饲料生产及相关仓储物流服务。",
+      en: "Leads Pilmico Group JSC within the Nam Viet ecosystem — feed manufacturing capacity backed by warehouse and logistics services for industrial partners.",
+      vi: "Điều hành CTCP Pilmico Group trong hệ sinh thái Nam Việt — năng lực sản xuất thức ăn gắn với dịch vụ kho bãi và logistics cho đối tác công nghiệp.",
+      zh: "执掌南越生态内的 Pilmico 集团股份——饲料产能与面向产业伙伴的仓储物流服务并举。",
     },
   },
   {
@@ -129,9 +138,9 @@ module.exports = [
       zh: "南越贸易旅游发展股份公司总经理",
     },
     bio: {
-      en: "Directs Nam Viet’s trade and tourism development company, covering hospitality, events and related service offerings.",
-      vi: "Điều hành công ty phát triển thương mại – du lịch Nam Việt: lưu trú, sự kiện và các dịch vụ liên quan.",
-      zh: "执掌南越贸易旅游发展公司，涵盖住宿、活动及相关服务。",
+      en: "Directs Nam Viet Trade–Tourism Development — hospitality, events and service platforms that extend the Group’s brand beyond core agribusiness.",
+      vi: "Điều hành CTCP phát triển thương mại – du lịch Nam Việt — lưu trú, sự kiện và nền tảng dịch vụ mở rộng thương hiệu Tập đoàn ngoài lõi nông nghiệp.",
+      zh: "执掌南越贸易旅游发展股份——住宿、活动与服务平台，延展集团品牌至农业主业之外。",
     },
   },
   {
@@ -148,9 +157,9 @@ module.exports = [
       zh: "南越股份公司总经理助理",
     },
     bio: {
-      en: "Supports the General Director of Nam Viet JSC on executive coordination across manufacturing and Group initiatives.",
-      vi: "Hỗ trợ Tổng giám đốc CTCP Nam Việt điều phối điều hành giữa sản xuất và các sáng kiến của tập đoàn.",
-      zh: "协助南越股份公司总经理协调制造与集团各项举措。",
+      en: "Coordinates executive agendas for Nam Viet JSC — bridging manufacturing priorities with Group-level initiatives and stakeholder programs.",
+      vi: "Điều phối chương trình điều hành CTCP Nam Việt — kết nối ưu tiên sản xuất với các sáng kiến cấp Tập đoàn và chương trình đối tác.",
+      zh: "协调南越股份公司高管议程——衔接制造重点与集团级举措及伙伴项目。",
     },
   },
   {
@@ -167,9 +176,9 @@ module.exports = [
       zh: "太原农业农村建设发展股份公司总经理",
     },
     bio: {
-      en: "Leads Thai Nguyen agriculture and rural development construction — infrastructure, farm models and related community projects.",
-      vi: "Điều hành CTCP xây dựng nông nghiệp & phát triển nông thôn Thái Nguyên — hạ tầng, mô hình trang trại và dự án cộng đồng liên quan.",
-      zh: "执掌太原农业农村建设发展公司——基础设施、农场模式及相关社区项目。",
+      en: "Leads Thai Nguyen agriculture and rural development construction — infrastructure and farm-system projects that expand the Group’s real-economy footprint.",
+      vi: "Điều hành CTCP xây dựng nông nghiệp & phát triển nông thôn Thái Nguyên — hạ tầng và mô hình trang trại mở rộng dấu ấn kinh tế thực của Tập đoàn.",
+      zh: "执掌太原农业农村建设发展股份——基础设施与农场体系项目，拓展集团实体经济布局。",
     },
   },
   {
@@ -186,9 +195,9 @@ module.exports = [
       zh: "南越物流有限公司总经理",
     },
     bio: {
-      en: "Directs Nam Viet logistics operations, connecting warehouse, transport and distribution capabilities across the Group network.",
-      vi: "Điều hành hoạt động logistics Nam Việt, kết nối kho bãi, vận tải và phân phối trong mạng lưới tập đoàn.",
-      zh: "执掌南越物流业务，连接集团网络内的仓储、运输与分销能力。",
+      en: "Runs Nam Viet Logistics — integrating warehouse, transport and distribution so Group cargo moves as one network, not isolated lanes.",
+      vi: "Điều hành Logistics Nam Việt — tích hợp kho bãi, vận tải và phân phối để hàng hóa Tập đoàn vận hành như một mạng lưới thống nhất.",
+      zh: "执掌南越物流——整合仓储、运输与分销，使集团货流作为一体网络而非割裂通道运转。",
     },
   },
 ];

@@ -1,0 +1,138 @@
+---
+pagination:
+  data: leadership
+  size: 1
+  alias: person
+permalink: "/about/leadership/{{ person.id }}/"
+layout: layouts/leader.njk
+eleventyComputed:
+  title: "{{ person.name.en }}"
+---
+
+<article class="leader-stage">
+  <div class="leader-stage__top">
+    <div class="container">
+      <nav class="breadcrumb leader-stage__crumb" aria-label="Breadcrumb">
+        <a href="{{ '/' | url }}">
+          <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+          <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+          <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+        </a>
+        <span aria-hidden="true">/</span>
+        <a href="{{ '/about/leadership/' | url }}">
+          <span class="lang en">Leadership</span>
+          <span class="lang vi">Ban lãnh đạo</span>
+          <span class="lang zh">领导团队</span>
+        </a>
+        <span aria-hidden="true">/</span>
+        <span>
+          <span class="lang en">{{ person.name.en }}</span>
+          <span class="lang vi">{{ person.name.vi }}</span>
+          <span class="lang zh">{{ person.name.zh }}</span>
+        </span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="leader-stage__panel">
+    <div class="leader-stage__media">
+      <img
+        src="{{ person.image | url }}"
+        alt="{{ person.name.en }}"
+        width="900"
+        height="1200"
+        loading="eager"
+        decoding="async"
+      >
+      <div class="leader-stage__veil" aria-hidden="true"></div>
+      <div class="leader-stage__media-copy">
+        <p class="eyebrow eyebrow--light">
+          <span class="lang en">{{ person.role.en }}</span>
+          <span class="lang vi">{{ person.role.vi }}</span>
+          <span class="lang zh">{{ person.role.zh }}</span>
+        </p>
+        <h1 class="leader-stage__name">
+          <span class="lang en">{{ person.name.en }}</span>
+          <span class="lang vi">{{ person.name.vi }}</span>
+          <span class="lang zh">{{ person.name.zh }}</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="leader-stage__body">
+      <p class="leader-stage__kicker">
+        <span class="lang en">Executive Biography</span>
+        <span class="lang vi">Tiểu sử lãnh đạo</span>
+        <span class="lang zh">高管履历</span>
+      </p>
+      {% if person.bio %}
+      <blockquote class="leader-stage__quote">
+        <p>
+          <span class="lang en">{{ person.bio.en }}</span>
+          <span class="lang vi">{{ person.bio.vi }}</span>
+          <span class="lang zh">{{ person.bio.zh }}</span>
+        </p>
+      </blockquote>
+      {% endif %}
+      <div class="page-actions page-actions--tight">
+        <a class="btn btn--solid" href="{{ '/contact/' | url }}">
+          <span class="btn__dot"></span>
+          <span class="lang en">{{ i18n.en.contact }}</span>
+          <span class="lang vi">{{ i18n.vi.contact }}</span>
+          <span class="lang zh">{{ i18n.zh.contact }}</span>
+        </a>
+        <a class="btn btn--outline btn--dark" href="{{ '/about/leadership/' | url }}">
+          <span class="lang en">Full leadership roster</span>
+          <span class="lang vi">Toàn bộ ban lãnh đạo</span>
+          <span class="lang zh">完整领导名录</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="leader-stage__more" aria-labelledby="more-leaders">
+    <div class="container">
+      <header class="leader-stage__more-head">
+        <p class="eyebrow">
+          <span class="lang en">Continue</span>
+          <span class="lang vi">Tiếp tục</span>
+          <span class="lang zh">继续浏览</span>
+        </p>
+        <h2 id="more-leaders">
+          <span class="lang en">Other Group executives</span>
+          <span class="lang vi">Các lãnh đạo khác trong Tập đoàn</span>
+          <span class="lang zh">集团其他高管</span>
+        </h2>
+      </header>
+      <ul class="leader-grid leader-grid--strip">
+        {% for p in leadership %}
+        {% if p.id != person.id %}
+        <li>
+          <a class="leader-card" href="{{ ('/about/leadership/' + p.id + '/') | url }}">
+            <div class="leader-card__media">
+              <img src="{{ p.image | url }}" alt="" loading="lazy" width="900" height="1200">
+            </div>
+            <span class="leader-card__name">
+              <span class="lang en">{{ p.name.en }}</span>
+              <span class="lang vi">{{ p.name.vi }}</span>
+              <span class="lang zh">{{ p.name.zh }}</span>
+            </span>
+            <span class="leader-card__role">
+              <span class="lang en">{{ p.role.en }}</span>
+              <span class="lang vi">{{ p.role.vi }}</span>
+              <span class="lang zh">{{ p.role.zh }}</span>
+            </span>
+            <span class="leader-card__more">
+              <span class="lang en">Biography</span>
+              <span class="lang vi">Tiểu sử</span>
+              <span class="lang zh">履历</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</article>

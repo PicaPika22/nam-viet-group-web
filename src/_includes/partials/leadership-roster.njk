@@ -1,0 +1,45 @@
+{#
+  Leadership roster — equal cards for every executive.
+  Optional: rosterCompact (bool)
+#}
+<div class="leader-roster__head reveal">
+  <p class="eyebrow">
+    <span class="lang en">Group executives</span>
+    <span class="lang vi">Lãnh đạo Tập đoàn</span>
+    <span class="lang zh">集团高管</span>
+  </p>
+  <p class="leader-roster__count">
+    <span class="lang en">{{ leadership | length }} executives across Group companies and member units — each profile below.</span>
+    <span class="lang vi">{{ leadership | length }} lãnh đạo tại các công ty và đơn vị thành viên — xem đầy đủ hồ sơ bên dưới.</span>
+    <span class="lang zh">集团及成员企业共 {{ leadership | length }} 位高管——以下均为完整履历入口。</span>
+  </p>
+</div>
+
+<ul class="leader-grid{% if rosterCompact %} leader-grid--compact{% endif %}">
+  {% for person in leadership %}
+  <li class="reveal" data-delay="{{ (loop.index0 % 4) * 80 }}">
+    <a class="leader-card" href="{{ ('/about/leadership/' + person.id + '/') | url }}">
+      <div class="leader-card__media">
+        <img src="{{ person.image | url }}" alt="{{ person.name.en }}" loading="lazy" width="900" height="1200">
+        <span class="leader-card__no" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+      </div>
+      <span class="leader-card__name">
+        <span class="lang en">{{ person.name.en }}</span>
+        <span class="lang vi">{{ person.name.vi }}</span>
+        <span class="lang zh">{{ person.name.zh }}</span>
+      </span>
+      <span class="leader-card__role">
+        <span class="lang en">{{ person.role.en }}</span>
+        <span class="lang vi">{{ person.role.vi }}</span>
+        <span class="lang zh">{{ person.role.zh }}</span>
+      </span>
+      <span class="leader-card__more">
+        <span class="lang en">Executive biography</span>
+        <span class="lang vi">Tiểu sử lãnh đạo</span>
+        <span class="lang zh">高管履历</span>
+        <span aria-hidden="true">→</span>
+      </span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

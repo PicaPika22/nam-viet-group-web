@@ -193,23 +193,57 @@
   window.addEventListener("hashchange", syncDropdownChildActive);
 
   /* ─── Reveal on scroll ─── */
-  const revealTargets = document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title");
+  const revealTargets = [...document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title")];
   revealTargets.forEach(el => {
     const d = el.dataset.delay;
     if (d) el.style.setProperty("--d", `${d}ms`);
   });
+  const markInView = (el) => {
+    el.classList.add("in-view");
+  };
+  const revealVisibleNow = (el) => {
+    const r = el.getBoundingClientRect();
+    const viewH = window.innerHeight || document.documentElement.clientHeight;
+    return r.height > 0 && r.bottom > 0 && r.top < viewH * 0.98;
+  };
   const revealIO = new IntersectionObserver(
     entries => {
       for (const e of entries) {
         if (e.isIntersecting) {
-          e.target.classList.add("in-view");
+          markInView(e.target);
           revealIO.unobserve(e.target);
         }
       }
     },
-    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+    /* Inner pages: sticky chrome + tall cards — keep a light inset only. */
+    { threshold: 0.02, rootMargin: "40px 0px -2% 0px" }
   );
-  revealTargets.forEach(el => revealIO.observe(el));
+  const syncReveals = () => {
+    for (const el of revealTargets) {
+      if (el.classList.contains("in-view")) continue;
+      if (revealVisibleNow(el)) {
+        markInView(el);
+        revealIO.unobserve(el);
+      }
+    }
+  };
+  revealTargets.forEach(el => {
+    if (revealVisibleNow(el)) {
+      markInView(el);
+      return;
+    }
+    revealIO.observe(el);
+  });
+  const onRevealScroll = () => {
+    syncReveals();
+    if (revealTargets.every((el) => el.classList.contains("in-view"))) {
+      window.removeEventListener("scroll", onRevealScroll);
+    }
+  };
+  window.addEventListener("hashchange", () => {
+    requestAnimationFrame(syncReveals);
+  });
+  window.addEventListener("scroll", onRevealScroll, { passive: true });
 
   /* ─── Animated counters ─── */
   const counters = document.querySelectorAll("[data-count]");

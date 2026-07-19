@@ -10,7 +10,7 @@
       "zh": "关于我们",
       "children": [
         { "id": "about-overview", "href": "/about/", "en": "About Nam Viet", "vi": "Về Nam Việt", "zh": "关于南越" },
-        { "id": "about-leadership", "href": "/about/#leadership", "en": "Leadership", "vi": "Ban lãnh đạo", "zh": "领导团队" },
+        { "id": "about-leadership", "href": "/about/leadership/", "en": "Leadership", "vi": "Ban lãnh đạo", "zh": "领导团队" },
         { "id": "about-ecosystem", "href": "/about/#ecosystem", "en": "Our ecosystem", "vi": "Hệ sinh thái", "zh": "生态系统" },
         { "id": "about-sustainability", "href": "/sustainability/", "en": "Sustainability", "vi": "Phát triển bền vững", "zh": "可持续发展" }
       ]
