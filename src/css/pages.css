@@ -377,41 +377,45 @@
 }
 @media (max-width: 1000px) {
   .leader-grid,
-  .leader-grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .leader-grid--strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-@media (max-width: 640px) {
-  .leader-grid,
-  .leader-grid--compact {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem 0.65rem;
-    width: 100%;
-    max-width: 100%;
-  }
-  .leader-card__name { font-size: 0.98rem; }
-  .leader-card__role { font-size: 0.74rem; }
+  .leader-grid--compact,
   .leader-grid--strip {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.85rem;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 0.35rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .leader-grid--strip::-webkit-scrollbar { display: none; }
-  .leader-grid--strip li {
-    flex: 0 0 min(58vw, 200px);
-    scroll-snap-align: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 420px) {
+/* Phone / narrow: one person per row, centered — no cramped 2-col / horizontal strip */
+@media (max-width: 720px) {
   .leader-grid,
-  .leader-grid--compact {
+  .leader-grid--compact,
+  .leader-grid--strip {
+    display: grid;
     grid-template-columns: 1fr;
-    max-width: min(100%, 340px);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: min(100%, 320px);
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .leader-grid > li,
+  .leader-grid--strip li {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+  .leader-card {
+    text-align: center;
+    align-items: center;
+  }
+  .leader-card__media {
+    width: 100%;
+    max-width: 280px;
     margin-inline: auto;
   }
+  .leader-card__name { font-size: 1.1rem; }
+  .leader-card__role {
+    font-size: 0.8rem;
+    max-width: 28ch;
+  }
+  .leader-card__more { justify-content: center; }
 }
 
 /* Profile stage — mobile-first stack, side-by-side from 960px */
@@ -566,8 +570,8 @@
   }
 }
 
-/* Keep roster clear of floating chat on mid / mobile widths */
-@media (max-width: 1100px) {
+/* Keep multi-col roster clear of floating chat; single-col already centered */
+@media (min-width: 721px) and (max-width: 1100px) {
   .page-panel--leadership .leader-grid,
   .leadership-body .leader-grid,
   .leader-stage__more .leader-grid {
