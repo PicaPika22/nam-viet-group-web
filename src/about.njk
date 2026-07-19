@@ -57,14 +57,67 @@ lead:
       <span class="lang vi">Ban lãnh đạo</span>
       <span class="lang zh">领导团队</span>
     </h2>
-    <div class="about-page__leader">
-      <img src="{{ '/assets/img/leadership.jpg' | url }}" alt="Nam Viet Group leadership" loading="lazy">
-      <p>
-        <span class="lang en">Our leadership team combines decades of industry experience with a forward-thinking vision, guiding Nam Viet toward sustainable growth and global competitiveness.</span>
-        <span class="lang vi">Đội ngũ lãnh đạo giàu kinh nghiệm dẫn dắt Nam Việt phát triển bền vững và nâng cao năng lực cạnh tranh quốc tế.</span>
-        <span class="lang zh">领导团队汇聚数十年行业经验与前瞻视野，引领南越走向可持续增长与全球竞争力。</span>
-      </p>
-    </div>
+    <p class="about-page__lead">
+      <span class="lang en">Our leadership team combines decades of industry experience with a forward-thinking vision, guiding Nam Viet toward sustainable growth and global competitiveness.</span>
+      <span class="lang vi">Đội ngũ lãnh đạo giàu kinh nghiệm dẫn dắt Nam Việt phát triển bền vững và nâng cao năng lực cạnh tranh quốc tế.</span>
+      <span class="lang zh">领导团队汇聚数十年行业经验与前瞻视野，引领南越走向可持续增长与全球竞争力。</span>
+    </p>
+
+    {% set chair = leadership | selectattr("featured") | first %}
+    {% if chair %}
+    <a class="leader-feature" href="{{ ('/about/leadership/' + chair.id + '/') | url }}">
+      <div class="leader-feature__media">
+        <img src="{{ chair.image | url }}" alt="{{ chair.name.en }}" width="480" height="640" loading="lazy">
+      </div>
+      <div class="leader-feature__copy">
+        <p class="leader-feature__role">
+          <span class="lang en">{{ chair.role.en }}</span>
+          <span class="lang vi">{{ chair.role.vi }}</span>
+          <span class="lang zh">{{ chair.role.zh }}</span>
+        </p>
+        <h3 class="leader-feature__name">
+          <span class="lang en">{{ chair.name.en }}</span>
+          <span class="lang vi">{{ chair.name.vi }}</span>
+          <span class="lang zh">{{ chair.name.zh }}</span>
+        </h3>
+        <p class="leader-feature__bio">
+          <span class="lang en">{{ chair.bio.en }}</span>
+          <span class="lang vi">{{ chair.bio.vi }}</span>
+          <span class="lang zh">{{ chair.bio.zh }}</span>
+        </p>
+        <span class="leader-feature__more">
+          <span class="lang en">View profile</span>
+          <span class="lang vi">Xem hồ sơ</span>
+          <span class="lang zh">查看简介</span>
+          →
+        </span>
+      </div>
+    </a>
+    {% endif %}
+
+    <ul class="leader-grid">
+      {% for person in leadership %}
+      {% if not person.featured %}
+      <li>
+        <a class="leader-card" href="{{ ('/about/leadership/' + person.id + '/') | url }}">
+          <div class="leader-card__media">
+            <img src="{{ person.image | url }}" alt="{{ person.name.en }}" loading="lazy" width="320" height="400">
+          </div>
+          <span class="leader-card__name">
+            <span class="lang en">{{ person.name.en }}</span>
+            <span class="lang vi">{{ person.name.vi }}</span>
+            <span class="lang zh">{{ person.name.zh }}</span>
+          </span>
+          <span class="leader-card__role">
+            <span class="lang en">{{ person.role.en }}</span>
+            <span class="lang vi">{{ person.role.vi }}</span>
+            <span class="lang zh">{{ person.role.zh }}</span>
+          </span>
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
   </section>
 
   {% if ecosystem and ecosystem.sectors and ecosystem.sectors.length %}

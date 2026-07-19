@@ -102,6 +102,21 @@
     const role = params.get("role");
     const typeEl = document.getElementById("inquiryType");
     const productEl = document.getElementById("productCode");
+
+    const syncInquiryLabels = () => {
+      if (!typeEl) return;
+      const lang = html.getAttribute("data-lang") || "en";
+      const key = lang === "vi" ? "labelVi" : lang === "zh" ? "labelZh" : "labelEn";
+      [...typeEl.options].forEach((opt) => {
+        const label = opt.dataset[key];
+        if (label) opt.textContent = label;
+      });
+    };
+    // data-label-en → dataset.labelEn
+    syncInquiryLabels();
+    const langWatch = new MutationObserver(syncInquiryLabels);
+    langWatch.observe(html, { attributes: true, attributeFilter: ["data-lang"] });
+
     if (type && typeEl) typeEl.value = type;
     if (product && productEl) productEl.value = product;
     if (role) {

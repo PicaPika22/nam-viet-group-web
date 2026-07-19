@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+showLoader: false
+showRail: false
+---
+<section class="chapter chapter--light contact-hero">
+  <div class="container">
+    <nav class="breadcrumb contact-hero__crumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}">
+        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <span>
+        <span class="lang en">{{ i18n.en.contact }}</span>
+        <span class="lang vi">{{ i18n.vi.contact }}</span>
+        <span class="lang zh">{{ i18n.zh.contact }}</span>
+      </span>
+    </nav>
+    <header class="chapter__head">
+      <p class="eyebrow reveal">
+        <span class="lang en">{{ i18n.en.contact }}</span>
+        <span class="lang vi">{{ i18n.vi.contact }}</span>
+        <span class="lang zh">{{ i18n.zh.contact }}</span>
+      </p>
+      <h1 class="chapter__title">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Let’s Grow the Future</span></span>
+          <span class="line-mask"><span class="line line--muted">Together.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Cùng kiến tạo</span></span>
+          <span class="line-mask"><span class="line line--muted">tương lai bền vững.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">携手共创</span></span>
+          <span class="line-mask"><span class="line line--muted">可持续未来。</span></span>
+        </span>
+      </h1>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">Whether you're looking for a trusted manufacturing partner, logistics solutions or long-term strategic collaboration — tell us how we can help.</span>
+        <span class="lang vi">Đối tác sản xuất, giải pháp logistics hay hợp tác chiến lược — hãy cho chúng tôi biết bạn cần hỗ trợ gì.</span>
+        <span class="lang zh">无论您需要可靠的制造伙伴、物流方案还是长期战略合作——告诉我们如何为您服务。</span>
+      </p>
+    </header>
+  </div>
+</section>
+<section class="inner-body contact-body">
+  <div class="container">
+{{ content | safe }}
+  </div>
+</section>

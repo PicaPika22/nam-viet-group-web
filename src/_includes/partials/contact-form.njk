@@ -32,12 +32,30 @@
       <span class="lang vi">{{ i18n.vi.formType }}</span>
       <span class="lang zh">{{ i18n.zh.formType }}</span>
       <select name="inquiry_type" id="inquiryType">
-        <option value="partner">{{ i18n.en.typePartner }} / {{ i18n.vi.typePartner }} / {{ i18n.zh.typePartner }}</option>
-        <option value="product">{{ i18n.en.typeProduct }} / {{ i18n.vi.typeProduct }} / {{ i18n.zh.typeProduct }}</option>
-        <option value="logistics">{{ i18n.en.typeLogistics }} / {{ i18n.vi.typeLogistics }} / {{ i18n.zh.typeLogistics }}</option>
-        <option value="careers">{{ i18n.en.typeCareers }} / {{ i18n.vi.typeCareers }} / {{ i18n.zh.typeCareers }}</option>
-        <option value="investor">{{ i18n.en.typeInvestor }} / {{ i18n.vi.typeInvestor }} / {{ i18n.zh.typeInvestor }}</option>
-        <option value="other">{{ i18n.en.typeOther }} / {{ i18n.vi.typeOther }} / {{ i18n.zh.typeOther }}</option>
+        <option value="partner"
+          data-label-en="{{ i18n.en.typePartner }}"
+          data-label-vi="{{ i18n.vi.typePartner }}"
+          data-label-zh="{{ i18n.zh.typePartner }}">{{ i18n.en.typePartner }}</option>
+        <option value="product"
+          data-label-en="{{ i18n.en.typeProduct }}"
+          data-label-vi="{{ i18n.vi.typeProduct }}"
+          data-label-zh="{{ i18n.zh.typeProduct }}">{{ i18n.en.typeProduct }}</option>
+        <option value="logistics"
+          data-label-en="{{ i18n.en.typeLogistics }}"
+          data-label-vi="{{ i18n.vi.typeLogistics }}"
+          data-label-zh="{{ i18n.zh.typeLogistics }}">{{ i18n.en.typeLogistics }}</option>
+        <option value="careers"
+          data-label-en="{{ i18n.en.typeCareers }}"
+          data-label-vi="{{ i18n.vi.typeCareers }}"
+          data-label-zh="{{ i18n.zh.typeCareers }}">{{ i18n.en.typeCareers }}</option>
+        <option value="investor"
+          data-label-en="{{ i18n.en.typeInvestor }}"
+          data-label-vi="{{ i18n.vi.typeInvestor }}"
+          data-label-zh="{{ i18n.zh.typeInvestor }}">{{ i18n.en.typeInvestor }}</option>
+        <option value="other"
+          data-label-en="{{ i18n.en.typeOther }}"
+          data-label-vi="{{ i18n.vi.typeOther }}"
+          data-label-zh="{{ i18n.zh.typeOther }}">{{ i18n.en.typeOther }}</option>
       </select>
     </label>
     <label>
@@ -64,6 +82,7 @@
     </a>.
   </p>
   <button type="submit" class="btn btn--solid btn--big">
+    <span class="btn__dot"></span>
     <span class="lang en">{{ i18n.en.sendMessage }}</span>
     <span class="lang vi">{{ i18n.vi.sendMessage }}</span>
     <span class="lang zh">{{ i18n.zh.sendMessage }}</span>

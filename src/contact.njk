@@ -1,35 +1,82 @@
 ---
-layout: layouts/inner.njk
+layout: layouts/contact.njk
 title: Contact
 permalink: /contact/
-eyebrow:
-  en: Contact
-  vi: Liên hệ
-  zh: 联系我们
-heading:
-  en: Let's Grow the Future Together.
-  vi: Cùng kiến tạo tương lai bền vững.
-  zh: 携手共创可持续未来。
-lead:
-  en: Tell us about partnership, products, logistics or careers — we will route your message to the right team.
-  vi: Cho chúng tôi biết về hợp tác, sản phẩm, logistics hoặc tuyển dụng — chúng tôi sẽ chuyển đến đúng bộ phận.
-  zh: 告诉我们您的合作、产品、物流或招聘需求——我们会转交对应团队。
 ---
 
-<div class="contact-page">
-  <div class="contact-page__info">
-    <p><strong>{{ site.emailPartner }}</strong></p>
-    <p><a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a></p>
-    <p>
-      <span class="lang en">{{ site.address.en }}</span>
-      <span class="lang vi">{{ site.address.vi }}</span>
-      <span class="lang zh">{{ site.address.zh }}</span>
+<div class="contact-desk">
+  <aside class="contact-desk__aside reveal">
+    <p class="contact-desk__kicker">
+      <span class="lang en">Direct lines</span>
+      <span class="lang vi">Kênh liên hệ</span>
+      <span class="lang zh">联系方式</span>
     </p>
-    <div class="contact-page__map" aria-hidden="true">
-      <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?q=Ho%20Chi%20Minh%20City&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+    <ul class="contact-desk__channels">
+      <li>
+        <span class="contact-desk__label">
+          <span class="lang en">Partnership</span>
+          <span class="lang vi">Hợp tác</span>
+          <span class="lang zh">合作</span>
+        </span>
+        <a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a>
+      </li>
+      <li>
+        <span class="contact-desk__label">
+          <span class="lang en">General</span>
+          <span class="lang vi">Chung</span>
+          <span class="lang zh">综合</span>
+        </span>
+        <a href="mailto:{{ site.emailContact }}">{{ site.emailContact }}</a>
+      </li>
+      <li>
+        <span class="contact-desk__label">
+          <span class="lang en">Phone</span>
+          <span class="lang vi">Điện thoại</span>
+          <span class="lang zh">电话</span>
+        </span>
+        <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
+      </li>
+      <li>
+        <span class="contact-desk__label">
+          <span class="lang en">Address</span>
+          <span class="lang vi">Địa chỉ</span>
+          <span class="lang zh">地址</span>
+        </span>
+        <span>
+          <span class="lang en">{{ site.address.en }}</span>
+          <span class="lang vi">{{ site.address.vi }}</span>
+          <span class="lang zh">{{ site.address.zh }}</span>
+        </span>
+      </li>
+    </ul>
+    <div class="contact-desk__quick">
+      <a class="contact-desk__chip" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="contact-desk__chip" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener">Zalo</a>
     </div>
+    <div class="contact-desk__map">
+      <iframe
+        title="Nam Viet Group map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Ho%20Chi%20Minh%20City&t=&z=12&ie=UTF8&iwloc=&output=embed"
+      ></iframe>
+    </div>
+  </aside>
+
+  <div class="contact-desk__panel reveal" data-delay="120">
+    <header class="contact-desk__panel-head">
+      <h2>
+        <span class="lang en">Send a message</span>
+        <span class="lang vi">Gửi tin nhắn</span>
+        <span class="lang zh">发送信息</span>
+      </h2>
+      <p>
+        <span class="lang en">We route each inquiry to the right team — partnership, products, logistics, careers or investors.</span>
+        <span class="lang vi">Mỗi yêu cầu sẽ được chuyển đến đúng bộ phận — hợp tác, sản phẩm, logistics, tuyển dụng hoặc nhà đầu tư.</span>
+        <span class="lang zh">我们会将每条咨询转交对应团队——合作、产品、物流、招聘或投资者关系。</span>
+      </p>
+    </header>
+    {% set productCode = "" %}
+    {% include "partials/contact-form.njk" %}
   </div>
-  {% set productCode = "" %}
-  {% include "partials/contact-form.njk" %}
 </div>
