@@ -1,37 +1,72 @@
 ---
-layout: layouts/inner.njk
+layout: layouts/about.njk
 title: About
 permalink: /about/
-eyebrow:
-  en: Who We Are
-  vi: Về chúng tôi
-  zh: 关于我们
-heading:
-  en: Built on Experience. Driven by Innovation.
-  vi: Xây dựng từ kinh nghiệm. Tiến bằng đổi mới.
-  zh: 以经验为基。以创新驱动。
-lead:
-  en: For over 20 years, Nam Viet Group has created sustainable growth through innovation, quality manufacturing and long-term partnerships.
-  vi: Trong hơn hai thập kỷ, Nam Việt tạo tăng trưởng bền vững qua đổi mới, sản xuất chất lượng và hợp tác dài hạn.
-  zh: 二十多年来，南越集团以创新、优质制造和长期合作推动可持续增长。
 ---
 
-<nav class="page-subnav" aria-label="About sections" data-page-subnav>
-  <div class="page-subnav__inner">
+<section class="chapter chapter--light about-hero">
+  <div class="container">
+    <nav class="breadcrumb about-hero__crumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}">
+        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <span>
+        <span class="lang en">About</span>
+        <span class="lang vi">Giới thiệu</span>
+        <span class="lang zh">关于</span>
+      </span>
+    </nav>
+    <header class="chapter__head">
+      <span class="chapter__num reveal">02</span>
+      <p class="eyebrow reveal">
+        <span class="lang en">Who We Are</span>
+        <span class="lang vi">Về chúng tôi</span>
+        <span class="lang zh">关于我们</span>
+      </p>
+      <h1 class="chapter__title">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Built on Experience.</span></span>
+          <span class="line-mask"><span class="line line--muted">Driven by Innovation.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Xây dựng từ kinh nghiệm.</span></span>
+          <span class="line-mask"><span class="line line--muted">Tiến bằng đổi mới.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">以经验为基。</span></span>
+          <span class="line-mask"><span class="line line--muted">以创新驱动。</span></span>
+        </span>
+      </h1>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">For over 20 years, Nam Viet Group has created sustainable growth through innovation, quality manufacturing and long-term partnerships.</span>
+        <span class="lang vi">Trong hơn hai thập kỷ, Nam Việt tạo tăng trưởng bền vững qua đổi mới, sản xuất chất lượng và hợp tác dài hạn.</span>
+        <span class="lang zh">二十多年来，南越集团以创新、优质制造和长期合作推动可持续增长。</span>
+      </p>
+    </header>
+  </div>
+</section>
+
+<nav class="page-subnav about-subnav" aria-label="About sections" data-page-subnav>
+  <div class="container page-subnav__inner">
     <a href="#overview" class="page-subnav__link is-active" data-subnav-target="overview">
-      <svg class="page-subnav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
-      <span class="lang en">About Nam Viet</span>
-      <span class="lang vi">Về Nam Việt</span>
-      <span class="lang zh">关于南越</span>
+      <span class="lang en">Overview</span>
+      <span class="lang vi">Tổng quan</span>
+      <span class="lang zh">概览</span>
+    </a>
+    <a href="#vision" class="page-subnav__link" data-subnav-target="vision">
+      <span class="lang en">Vision & values</span>
+      <span class="lang vi">Tầm nhìn & giá trị</span>
+      <span class="lang zh">愿景与价值</span>
     </a>
     <a href="#leadership" class="page-subnav__link" data-subnav-target="leadership">
-      <svg class="page-subnav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M22 21v-2a3.5 3.5 0 0 0-2.5-3.35"/><path d="M16.5 3.6a3.5 3.5 0 0 1 0 6.8"/></svg>
       <span class="lang en">Leadership</span>
       <span class="lang vi">Ban lãnh đạo</span>
       <span class="lang zh">领导团队</span>
     </a>
     <a href="#ecosystem" class="page-subnav__link" data-subnav-target="ecosystem">
-      <svg class="page-subnav__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
       <span class="lang en">Ecosystem</span>
       <span class="lang vi">Hệ sinh thái</span>
       <span class="lang zh">生态系统</span>
@@ -39,20 +74,146 @@ lead:
   </div>
 </nav>
 
-<div class="about-page">
-  <section id="overview" class="page-panel" data-page-panel="overview">
-    <div class="about-page__media">
-      <img src="{{ '/assets/img/about.png' | url }}" alt="Golden grain in farmer's hands" loading="lazy">
+<section class="chapter chapter--light about-section" id="overview" data-page-panel="overview">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__media reveal-img" data-parallax-img>
+        <img src="{{ '/assets/img/about.png' | url }}" alt="Golden grain in farmer's hands" loading="lazy" width="900" height="1040" decoding="async">
+      </div>
+      <div class="about__body">
+        <p class="lead reveal">
+          <span class="lang en">From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations.</span>
+          <span class="lang vi">Từ lĩnh vực thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi không ngừng mở rộng hệ sinh thái để mang lại nhiều giá trị hơn cho khách hàng, đối tác và xã hội.</span>
+          <span class="lang zh">从饲料生产到物流、港口与战略投资，我们不断拓展生态系统，为客户、社区与未来世代创造更大价值。</span>
+        </p>
+        <div class="stats">
+          <div class="stat reveal" data-delay="0">
+            <span class="stat__value"><span data-count="20">0</span>+</span>
+            <span class="stat__label"><span class="lang en">Years of Experience</span><span class="lang vi">Năm kinh nghiệm</span><span class="lang zh">年行业经验</span></span>
+          </div>
+          <div class="stat reveal" data-delay="100">
+            <span class="stat__value"><span data-count="10">0</span></span>
+            <span class="stat__label"><span class="lang en">Member Companies</span><span class="lang vi">Công ty thành viên</span><span class="lang zh">成员企业</span></span>
+          </div>
+          <div class="stat reveal" data-delay="200">
+            <span class="stat__value"><span data-count="186">0</span>+</span>
+            <span class="stat__label"><span class="lang en">Projects Delivered</span><span class="lang vi">Dự án đã triển khai</span><span class="lang zh">已交付项目</span></span>
+          </div>
+          <div class="stat reveal" data-delay="300">
+            <span class="stat__value"><span data-count="542">0</span>B+</span>
+            <span class="stat__label"><span class="lang en">VND Charter Capital</span><span class="lang vi">Vốn điều lệ (VNĐ)</span><span class="lang zh">注册资本（越南盾）</span></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <p>
-      <span class="lang en">From feed production to logistics, ports and strategic investments, we expand our ecosystem to deliver greater value for customers, communities and future generations.</span>
-      <span class="lang vi">Từ thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi mở rộng hệ sinh thái để mang lại nhiều giá trị hơn.</span>
-      <span class="lang zh">从饲料生产到物流、港口与战略投资，我们拓展生态系统，为客户与社会创造更大价值。</span>
-    </p>
-  </section>
+  </div>
+</section>
 
-  <section id="leadership" class="page-panel page-panel--leadership" data-page-panel="leadership">
-    <header class="chapter__head chapter__head--about">
+<section class="chapter chapter--cream about-section" id="vision" data-page-panel="vision">
+  <div class="container">
+    <header class="chapter__head">
+      <p class="eyebrow reveal">
+        <span class="lang en">Purpose</span>
+        <span class="lang vi">Định hướng</span>
+        <span class="lang zh">使命方向</span>
+      </p>
+      <h2 class="chapter__title chapter__title--sm">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Vision. Mission.</span></span>
+          <span class="line-mask"><span class="line line--muted">Core Values.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Tầm nhìn. Sứ mệnh.</span></span>
+          <span class="line-mask"><span class="line line--muted">Giá trị cốt lõi.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">愿景。使命。</span></span>
+          <span class="line-mask"><span class="line line--muted">核心价值。</span></span>
+        </span>
+      </h2>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">{{ about.valuesLead.en }}</span>
+        <span class="lang vi">{{ about.valuesLead.vi }}</span>
+        <span class="lang zh">{{ about.valuesLead.zh }}</span>
+      </p>
+    </header>
+
+    <div class="pillars">
+      <article class="pillar reveal">
+        <span class="pillar__letter">V</span>
+        <h3>
+          <span class="lang en">Vision</span>
+          <span class="lang vi">Tầm nhìn</span>
+          <span class="lang zh">愿景</span>
+        </h3>
+        <p>
+          <span class="lang en">{{ about.vision.en }}</span>
+          <span class="lang vi">{{ about.vision.vi }}</span>
+          <span class="lang zh">{{ about.vision.zh }}</span>
+        </p>
+      </article>
+      <article class="pillar reveal" data-delay="80">
+        <span class="pillar__letter">M</span>
+        <h3>
+          <span class="lang en">Mission</span>
+          <span class="lang vi">Sứ mệnh</span>
+          <span class="lang zh">使命</span>
+        </h3>
+        <p>
+          <span class="lang en">{{ about.mission.en }}</span>
+          <span class="lang vi">{{ about.mission.vi }}</span>
+          <span class="lang zh">{{ about.mission.zh }}</span>
+        </p>
+      </article>
+      <article class="pillar reveal" data-delay="160">
+        <span class="pillar__letter">C</span>
+        <h3>
+          <span class="lang en">Core values</span>
+          <span class="lang vi">Giá trị cốt lõi</span>
+          <span class="lang zh">核心价值</span>
+        </h3>
+        <p class="about-vmv__values">
+          <span class="lang en">{{ about.values.en }}</span>
+          <span class="lang vi">{{ about.values.vi }}</span>
+          <span class="lang zh">{{ about.values.zh }}</span>
+        </p>
+      </article>
+    </div>
+
+    <div class="manu__stats about-capacity-stats">
+      <div class="stat stat--boxed reveal">
+        <span class="stat__value">{{ about.capacity.poultryLine.value }}</span>
+        <span class="stat__label">
+          <span class="lang en">{{ about.capacity.poultryLine.unit.en }}</span>
+          <span class="lang vi">{{ about.capacity.poultryLine.unit.vi }}</span>
+          <span class="lang zh">{{ about.capacity.poultryLine.unit.zh }}</span>
+        </span>
+        <p class="about-capacity-stats__note">
+          <span class="lang en">{{ about.capacity.poultryLine.label.en }}</span>
+          <span class="lang vi">{{ about.capacity.poultryLine.label.vi }}</span>
+          <span class="lang zh">{{ about.capacity.poultryLine.label.zh }}</span>
+        </p>
+      </div>
+      <div class="stat stat--boxed reveal" data-delay="100">
+        <span class="stat__value">{{ about.capacity.aquaLine.value }}</span>
+        <span class="stat__label">
+          <span class="lang en">{{ about.capacity.aquaLine.unit.en }}</span>
+          <span class="lang vi">{{ about.capacity.aquaLine.unit.vi }}</span>
+          <span class="lang zh">{{ about.capacity.aquaLine.unit.zh }}</span>
+        </span>
+        <p class="about-capacity-stats__note">
+          <span class="lang en">{{ about.capacity.aquaLine.label.en }}</span>
+          <span class="lang vi">{{ about.capacity.aquaLine.label.vi }}</span>
+          <span class="lang zh">{{ about.capacity.aquaLine.label.zh }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter chapter--light about-section" id="leadership" data-page-panel="leadership">
+  <div class="container">
+    <header class="chapter__head">
       <span class="chapter__num reveal">09</span>
       <p class="eyebrow reveal">
         <span class="lang en">Our Leadership</span>
@@ -83,41 +244,65 @@ lead:
     {% set rosterCompact = true %}
     {% include "partials/leadership-roster.njk" %}
 
-    <p class="page-actions reveal">
+    <div class="center reveal" data-delay="200">
       <a class="btn btn--dark" href="{{ '/about/leadership/' | url }}">
         <span class="btn__dot"></span>
         <span class="lang en">View the full leadership roster</span>
         <span class="lang vi">Xem toàn bộ ban lãnh đạo</span>
         <span class="lang zh">查看完整领导名录</span>
       </a>
-    </p>
-  </section>
+    </div>
+  </div>
+</section>
 
-  {% if ecosystem and ecosystem.sectors and ecosystem.sectors.length %}
-  <section id="ecosystem" class="page-panel" data-page-panel="ecosystem">
-    <h2>
-      <span class="lang en">Our ecosystem</span>
-      <span class="lang vi">Hệ sinh thái</span>
-      <span class="lang zh">生态系统</span>
-    </h2>
-    <p class="about-page__lead">
-      <span class="lang en">{{ ecosystem.intro.en }}</span>
-      <span class="lang vi">{{ ecosystem.intro.vi }}</span>
-      <span class="lang zh">{{ ecosystem.intro.zh }}</span>
-    </p>
+{% if ecosystem and ecosystem.sectors and ecosystem.sectors.length %}
+<section class="chapter chapter--dark about-section" id="ecosystem" data-page-panel="ecosystem" data-chapter="03" data-label-en="ECOSYSTEM" data-label-zh="生态系统" data-label-vi="HỆ SINH THÁI">
+  <div class="chapter__bg" data-parallax="0.15">
+    <img src="{{ '/assets/img/ecosystem.png' | url }}" alt="" loading="lazy" width="1920" height="1080" decoding="async">
+    <div class="chapter__bg-veil"></div>
+  </div>
+  <div class="container">
+    <header class="chapter__head">
+      <span class="chapter__num reveal">03</span>
+      <p class="eyebrow eyebrow--light reveal">
+        <span class="lang en">Our Ecosystem</span>
+        <span class="lang vi">Hệ sinh thái Nam Việt</span>
+        <span class="lang zh">南越生态系统</span>
+      </p>
+      <h2 class="chapter__title">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">One Ecosystem.</span></span>
+          <span class="line-mask"><span class="line line--accent">Endless Possibilities.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Một hệ sinh thái.</span></span>
+          <span class="line-mask"><span class="line line--accent">Muôn vàn giá trị.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">一个生态系统。</span></span>
+          <span class="line-mask"><span class="line line--accent">无限可能。</span></span>
+        </span>
+      </h2>
+      <p class="chapter__desc reveal" data-delay="200">
+        <span class="lang en">{{ ecosystem.intro.en }}</span>
+        <span class="lang vi">{{ ecosystem.intro.vi }}</span>
+        <span class="lang zh">{{ ecosystem.intro.zh }}</span>
+      </p>
+    </header>
 
-    {% set ecoMapVariant = "ink" %}
-    {% set ecoMapShowHead = false %}
+    {% set ecoMapVariant = "dark" %}
+    {% set ecoMapShowHead = true %}
     {% set ecoMapId = "about-eco" %}
     {% include "partials/ecosystem-map.njk" %}
-  </section>
-  {% endif %}
 
-  <p class="page-actions">
-    <a class="btn btn--solid" href="{{ '/contact/' | url }}">
-      <span class="lang en">{{ i18n.en.contact }}</span>
-      <span class="lang vi">{{ i18n.vi.contact }}</span>
-      <span class="lang zh">{{ i18n.zh.contact }}</span>
-    </a>
-  </p>
-</div>
+    <div class="reveal" data-delay="200">
+      <a href="{{ '/contact/' | url }}" class="btn btn--light">
+        <span class="btn__dot"></span>
+        <span class="lang en">{{ i18n.en.contact }}</span>
+        <span class="lang vi">{{ i18n.vi.contact }}</span>
+        <span class="lang zh">{{ i18n.zh.contact }}</span>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}

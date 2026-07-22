@@ -19,9 +19,9 @@ module.exports = [
       zh: "何文安",
     },
     role: {
-      en: "Chairman of the Board",
-      vi: "Chủ tịch HĐQT",
-      zh: "董事会主席",
+      en: "Chairman of the Group",
+      vi: "Chủ tịch Tập đoàn",
+      zh: "集团主席",
     },
     bio: {
       en: "At Nam Viet, we are committed to sustainable agriculture. We balance stakeholder interests while prioritizing environmental protection — advancing eco-friendly farming solutions, food security and rural growth, and creating lasting value for customers, partners and society.",

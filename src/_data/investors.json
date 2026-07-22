@@ -9,8 +9,8 @@
       "label": { "en": "VND charter capital", "vi": "Vốn điều lệ (VNĐ)", "zh": "注册资本（越南盾）" }
     },
     {
-      "value": "10",
-      "label": { "en": "Member companies", "vi": "Công ty thành viên", "zh": "成员企业" }
+      "value": "12+",
+      "label": { "en": "Member companies & units", "vi": "Công ty & đơn vị thành viên", "zh": "成员企业与单位" }
     }
   ],
   "reports": [
@@ -26,10 +26,10 @@
     }
   ],
   "milestones": [
-    { "year": "1998", "en": "Company founded", "vi": "Thành lập doanh nghiệp", "zh": "公司成立" },
-    { "year": "2005", "en": "First feed factory", "vi": "Nhà máy đầu tiên", "zh": "首座饲料工厂" },
-    { "year": "2016", "en": "Logistics network expansion", "vi": "Mở rộng mạng lưới logistics", "zh": "物流网络扩张" },
-    { "year": "2020", "en": "Port investment", "vi": "Đầu tư kho cảng", "zh": "港口投资" },
-    { "year": "Today", "en": "Integrated multi-industry group", "vi": "Tập đoàn đa ngành", "zh": "多元化产业集团" }
+    { "year": "2002", "en": "Nam Viet JSC founded", "vi": "Thành lập CTCP Nam Việt", "zh": "南越股份成立" },
+    { "year": "2014", "en": "Pilmico Group & Định Hóa farm", "vi": "Pilmico Group & trang trại Định Hóa", "zh": "Pilmico 与定化农场" },
+    { "year": "2019", "en": "Cai Lan port warehouse (~190kt)", "vi": "Kho cảng Cái Lân (~190 nghìn tấn)", "zh": "盖麟港仓（约19万吨）" },
+    { "year": "2023", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
+    { "year": "2024", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH Logistics" }
   ]
 }

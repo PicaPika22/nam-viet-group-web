@@ -4,79 +4,141 @@ title: Contact
 permalink: /contact/
 ---
 
-<div class="contact-desk">
-  <aside class="contact-desk__aside reveal">
-    <p class="contact-desk__kicker">
-      <span class="lang en">Direct lines</span>
-      <span class="lang vi">Kênh liên hệ</span>
-      <span class="lang zh">联系方式</span>
-    </p>
-    <ul class="contact-desk__channels">
-      <li>
-        <span class="contact-desk__label">
-          <span class="lang en">Partnership</span>
-          <span class="lang vi">Hợp tác</span>
-          <span class="lang zh">合作</span>
-        </span>
-        <a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a>
-      </li>
-      <li>
-        <span class="contact-desk__label">
-          <span class="lang en">General</span>
-          <span class="lang vi">Chung</span>
-          <span class="lang zh">综合</span>
-        </span>
-        <a href="mailto:{{ site.emailContact }}">{{ site.emailContact }}</a>
-      </li>
-      <li>
-        <span class="contact-desk__label">
-          <span class="lang en">Phone</span>
-          <span class="lang vi">Điện thoại</span>
-          <span class="lang zh">电话</span>
-        </span>
-        <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
-      </li>
-      <li>
-        <span class="contact-desk__label">
-          <span class="lang en">Address</span>
-          <span class="lang vi">Địa chỉ</span>
-          <span class="lang zh">地址</span>
-        </span>
-        <span>
-          <span class="lang en">{{ site.address.en }}</span>
-          <span class="lang vi">{{ site.address.vi }}</span>
-          <span class="lang zh">{{ site.address.zh }}</span>
-        </span>
-      </li>
-    </ul>
-    <div class="contact-desk__quick">
-      <a class="contact-desk__chip" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="contact-desk__chip" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener">Zalo</a>
-    </div>
-    <div class="contact-desk__map">
-      <iframe
-        title="Nam Viet Group map"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?q=Ho%20Chi%20Minh%20City&t=&z=12&ie=UTF8&iwloc=&output=embed"
-      ></iframe>
-    </div>
-  </aside>
+<section class="chapter chapter--cream contact-section" id="inquire">
+  <div class="container">
+    <div class="contact-desk">
+      <aside class="contact-desk__aside reveal">
+        <header class="contact-desk__head">
+          <p class="eyebrow">
+            <span class="lang en">Direct lines</span>
+            <span class="lang vi">Kênh liên hệ</span>
+            <span class="lang zh">联系方式</span>
+          </p>
+          <h2 class="contact-desk__title">
+            <span class="lang en">Reach the right team</span>
+            <span class="lang vi">Liên hệ đúng bộ phận</span>
+            <span class="lang zh">联系对应团队</span>
+          </h2>
+        </header>
 
-  <div class="contact-desk__panel reveal" data-delay="120">
-    <header class="contact-desk__panel-head">
-      <h2>
-        <span class="lang en">Send a message</span>
-        <span class="lang vi">Gửi tin nhắn</span>
-        <span class="lang zh">发送信息</span>
+        <ul class="contact-desk__channels">
+          <li>
+            <span class="contact-desk__label">
+              <span class="lang en">Partnership</span>
+              <span class="lang vi">Hợp tác</span>
+              <span class="lang zh">合作</span>
+            </span>
+            <a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a>
+          </li>
+          <li>
+            <span class="contact-desk__label">
+              <span class="lang en">General</span>
+              <span class="lang vi">Chung</span>
+              <span class="lang zh">综合</span>
+            </span>
+            <a href="mailto:{{ site.emailContact }}">{{ site.emailContact }}</a>
+          </li>
+          <li>
+            <span class="contact-desk__label">
+              <span class="lang en">Phone</span>
+              <span class="lang vi">Điện thoại</span>
+              <span class="lang zh">电话</span>
+            </span>
+            <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
+          </li>
+          <li>
+            <span class="contact-desk__label">
+              <span class="lang en">Mobile</span>
+              <span class="lang vi">Di động</span>
+              <span class="lang zh">手机</span>
+            </span>
+            <a href="tel:{{ site.phoneMobileTel }}">{{ site.phoneMobile }}</a>
+          </li>
+          <li>
+            <span class="contact-desk__label">
+              <span class="lang en">Address</span>
+              <span class="lang vi">Địa chỉ</span>
+              <span class="lang zh">地址</span>
+            </span>
+            <span>
+              <span class="lang en">{{ site.address.en }}</span>
+              <span class="lang vi">{{ site.address.vi }}</span>
+              <span class="lang zh">{{ site.address.zh }}</span>
+            </span>
+          </li>
+        </ul>
+
+        <div class="contact-desk__quick">
+          <a class="btn btn--dark" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">
+            <span class="btn__dot"></span>
+            WhatsApp
+          </a>
+          <a class="btn btn--outline btn--dark" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener">
+            Zalo
+          </a>
+        </div>
+      </aside>
+
+      <div class="contact-desk__panel reveal" data-delay="120">
+        <header class="contact-desk__panel-head">
+          <p class="eyebrow">
+            <span class="lang en">Inquiry</span>
+            <span class="lang vi">Yêu cầu</span>
+            <span class="lang zh">咨询</span>
+          </p>
+          <h2>
+            <span class="lang en">Send a message</span>
+            <span class="lang vi">Gửi tin nhắn</span>
+            <span class="lang zh">发送信息</span>
+          </h2>
+          <p>
+            <span class="lang en">We route each inquiry to the right team — partnership, products, logistics, careers or investors.</span>
+            <span class="lang vi">Mỗi yêu cầu sẽ được chuyển đến đúng bộ phận — hợp tác, sản phẩm, logistics, tuyển dụng hoặc nhà đầu tư.</span>
+            <span class="lang zh">我们会将每条咨询转交对应团队——合作、产品、物流、招聘或投资者关系。</span>
+          </p>
+        </header>
+        {% set productCode = "" %}
+        {% include "partials/contact-form.njk" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter chapter--light contact-map-section" id="map">
+  <div class="container">
+    <header class="chapter__head chapter__head--center">
+      <p class="eyebrow reveal">
+        <span class="lang en">Headquarters</span>
+        <span class="lang vi">Trụ sở</span>
+        <span class="lang zh">总部</span>
+      </p>
+      <h2 class="chapter__title chapter__title--sm">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Visit us in</span></span>
+          <span class="line-mask"><span class="line line--muted">Thai Nguyen.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Ghé thăm chúng tôi</span></span>
+          <span class="line-mask"><span class="line line--muted">tại Thái Nguyên.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">欢迎造访</span></span>
+          <span class="line-mask"><span class="line line--muted">太原总部。</span></span>
+        </span>
       </h2>
-      <p>
-        <span class="lang en">We route each inquiry to the right team — partnership, products, logistics, careers or investors.</span>
-        <span class="lang vi">Mỗi yêu cầu sẽ được chuyển đến đúng bộ phận — hợp tác, sản phẩm, logistics, tuyển dụng hoặc nhà đầu tư.</span>
-        <span class="lang zh">我们会将每条咨询转交对应团队——合作、产品、物流、招聘或投资者关系。</span>
+      <p class="chapter__desc chapter__desc--center reveal" data-delay="150">
+        <span class="lang en">{{ site.address.en }}</span>
+        <span class="lang vi">{{ site.address.vi }}</span>
+        <span class="lang zh">{{ site.address.zh }}</span>
       </p>
     </header>
-    {% set productCode = "" %}
-    {% include "partials/contact-form.njk" %}
+    <div class="contact-map reveal-img" data-parallax-img>
+      <iframe
+        title="Nam Viet Group headquarters map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Pho%20Co%2C%20Song%20Cong%2C%20Thai%20Nguyen%2C%20Vietnam&t=&z=14&ie=UTF8&iwloc=&output=embed"
+      ></iframe>
+    </div>
   </div>
-</div>
+</section>

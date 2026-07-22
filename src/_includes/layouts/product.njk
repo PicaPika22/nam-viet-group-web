@@ -20,6 +20,11 @@ pageLayout: inner
 <section class="inner-body">
   <div class="container prose">
     <div class="product-detail">
+      {% if image %}
+      <div class="product-detail__media">
+        <img src="{{ image | url }}" alt="{{ code }}" loading="lazy" width="900" height="1200">
+      </div>
+      {% endif %}
       <div class="product-detail__panel" style="--pc:{{ color }}">
         <h2>
           <span class="lang en">Key specifications</span>

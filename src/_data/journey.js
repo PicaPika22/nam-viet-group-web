@@ -11,15 +11,32 @@ module.exports = {
       file: "2002.jpg",
       en: {
         title: "Nam Viet is founded",
-        text: "Nam Viet Joint Stock Company is established, marking the start of our agricultural journey.",
+        text: "Nam Viet Joint Stock Company is established — today Namviet Investment and Development Group.",
       },
       vi: {
         title: "Thành lập Nam Việt",
-        text: "Công ty Cổ phần Nam Việt ra đời, mở đầu hành trình trong nông nghiệp.",
+        text: "Thành lập Công ty Cổ phần Nam Việt — nay là Tập đoàn Đầu tư và Phát triển Nam Việt.",
       },
       zh: {
         title: "南越成立",
-        text: "南越股份公司成立，开启我们的农业发展之路。",
+        text: "南越股份公司成立——即今日南越投资与发展集团。",
+      },
+    },
+    {
+      year: "2013",
+      icon: "warehouse",
+      file: "2013.jpg",
+      en: {
+        title: "Feed Trading Vietnam",
+        text: "Feedtrading Vietnam Co., Ltd. is founded for road and waterway cargo transport.",
+      },
+      vi: {
+        title: "Feed Trading Việt Nam",
+        text: "Thành lập Công ty TNHH Feedtrading Việt Nam — vận chuyển hàng hóa đường bộ và đường thủy.",
+      },
+      zh: {
+        title: "Feed Trading 越南",
+        text: "成立 Feedtrading 越南有限公司，从事公路与水路货运。",
       },
     },
     {
@@ -27,16 +44,16 @@ module.exports = {
       icon: "farm",
       file: "2014.jpg",
       en: {
-        title: "High-tech livestock begins",
-        text: "We invest in modern breeding farms in Dinh Hoa and establish Fimico Group.",
+        title: "Pilmico & Định Hóa farm",
+        text: "Pilmico Group JSC is founded and a high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
       },
       vi: {
-        title: "Bước vào chăn nuôi công nghệ cao",
-        text: "Đầu tư trang trại sinh sản hiện đại tại Định Hóa và thành lập Fimico Group.",
+        title: "Pilmico & trang trại Định Hóa",
+        text: "Thành lập CTCP Pilmico Group và xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
       },
       zh: {
-        title: "启动高科技养殖",
-        text: "在定化投资现代化养殖场，并成立 Fimico Group。",
+        title: "Pilmico 与定化农场",
+        text: "成立 Pilmico 集团股份，并在太原定化建设优质牛猪繁殖场。",
       },
     },
     {
@@ -44,50 +61,118 @@ module.exports = {
       icon: "lab",
       file: "2016.jpg",
       en: {
-        title: "Research drives the ecosystem",
-        text: "A sixth member company joins, and we open a technology research and application center.",
+        title: "Nam Viet Fuel launches",
+        text: "Nam Viet Petroleum / fuel retail operations begin.",
       },
       vi: {
-        title: "Nghiên cứu thúc đẩy hệ sinh thái",
-        text: "Thêm thành viên thứ sáu và thành lập trung tâm nghiên cứu ứng dụng công nghệ.",
+        title: "Xăng dầu Nam Việt",
+        text: "Đưa vào hoạt động Công ty Xăng dầu Nam Việt.",
       },
       zh: {
-        title: "以研发推动生态",
-        text: "迎来第六家成员企业，并成立技术研究与应用中心。",
+        title: "南越石油投运",
+        text: "南越石油公司投入运营。",
       },
     },
     {
-      year: "2017–2018",
+      year: "2018",
       icon: "warehouse",
       file: "2018.jpg",
       en: {
-        title: "Supply chain grows stronger",
-        text: "We establish the Cai Lan agricultural warehouse and expand agri-construction capacity.",
+        title: "VAPCO premises & logistics",
+        text: "VAPCO Production & Trading Co., Ltd. is founded — premises leasing and logistics on nearly 3 ha, hosting industrial tenants.",
       },
       vi: {
-        title: "Chuỗi cung ứng vững hơn",
-        text: "Thành lập Tổng kho nông sản Cái Lân và mở rộng năng lực xây dựng nông nghiệp.",
+        title: "VAPCO mặt bằng & logistics",
+        text: "Thành lập Công ty TNHH sản xuất và thương mại VAPCO — cho thuê mặt bằng và logistics gần 3ha, đón doanh nghiệp thuê sản xuất.",
       },
       zh: {
-        title: "供应链更坚实",
-        text: "成立盖邻农产品总仓，并扩大农业建设能力。",
+        title: "VAPCO 场地与物流",
+        text: "成立 VAPCO 生产贸易有限公司——近3公顷场地租赁与物流，服务入驻企业。",
       },
     },
     {
-      year: "2022",
-      icon: "globe",
-      file: "2022.jpg",
+      year: "2019",
+      icon: "warehouse",
+      file: "2019.jpg",
       en: {
-        title: "Logistics reaches further",
-        text: "Hutech Vietnam is established to raise our logistics services to international standards.",
+        title: "Cai Lan port warehouse",
+        text: "Port warehouse system at Cái Lân, Quảng Ninh opens — nearly 5 ha, about 190,000 tonnes of storage capacity.",
       },
       vi: {
-        title: "Logistics vươn xa hơn",
-        text: "Thành lập Hutech Việt Nam để nâng dịch vụ logistics lên chuẩn quốc tế.",
+        title: "Kho cảng Cái Lân",
+        text: "Hoàn thành hệ thống kho cảng tại Cái Lân, Quảng Ninh — gần 5ha, lưu giữ khoảng 190.000 tấn hàng hóa.",
       },
       zh: {
-        title: "物流走向更远",
-        text: "成立 Hutech Vietnam，将物流服务提升至国际标准。",
+        title: "盖麟港仓",
+        text: "广宁盖麟港仓储系统建成——近5公顷，约19万吨仓储能力。",
+      },
+    },
+    {
+      year: "2020",
+      icon: "globe",
+      file: "2020.jpg",
+      en: {
+        title: "Hospitality & agri construction",
+        text: "High-quality hotel and restaurant system expands; Thai Nguyen Agricultural Construction & Rural Development JSC is founded.",
+      },
+      vi: {
+        title: "Khách sạn & XDNN Thái Nguyên",
+        text: "Xây dựng hệ thống khách sạn, nhà hàng chất lượng cao; thành lập CTCP xây dựng nông nghiệp và phát triển nông thôn Thái Nguyên.",
+      },
+      zh: {
+        title: "酒店与太原农建",
+        text: "建设高品质酒店餐饮体系；成立太原农业建设与农村发展股份公司。",
+      },
+    },
+    {
+      year: "2021",
+      icon: "building",
+      file: "2021.jpg",
+      en: {
+        title: "Song Cong Industrial Development",
+        text: "Song Cong Industrial Development JSC is founded — cargo management, FDI advisory, workshops and services on 20 ha.",
+      },
+      vi: {
+        title: "PT Công nghiệp Sông Công",
+        text: "Thành lập CTCP Phát triển Công nghiệp Sông Công — quản lý hàng hóa, tư vấn FDI, nhà xưởng và dịch vụ trên 20ha.",
+      },
+      zh: {
+        title: "宋功工业发展",
+        text: "成立宋功工业发展股份公司——20公顷货物管理、FDI咨询、厂房与服务。",
+      },
+    },
+    {
+      year: "2023",
+      icon: "warehouse",
+      file: "2023.jpg",
+      en: {
+        title: "Nam Viet Trade Logistics",
+        text: "Nam Viet Trade Logistics JSC is founded — FDI advisory, warehouses and workshops on 15 ha, international cargo.",
+      },
+      vi: {
+        title: "TM Logistics Nam Việt",
+        text: "Thành lập CTCP Thương mại Logistics Nam Việt — tư vấn FDI, kho bãi và nhà xưởng 15ha, vận chuyển hàng hóa quốc tế.",
+      },
+      zh: {
+        title: "南越贸易物流",
+        text: "成立南越贸易物流股份——FDI咨询、15公顷仓储厂房与国际货运。",
+      },
+    },
+    {
+      year: "2024",
+      icon: "globe",
+      file: "2024.jpg",
+      en: {
+        title: "AG & AH Logistics",
+        text: "AG & AH Logistics JSC is founded — premises leasing and logistics on 5 ha for regional industrial tenants.",
+      },
+      vi: {
+        title: "AG & AH Logistics",
+        text: "Thành lập CTCP AG & AH Logistics — cho thuê mặt bằng và logistics trên 5ha cho doanh nghiệp sản xuất trong khu vực.",
+      },
+      zh: {
+        title: "AG & AH Logistics",
+        text: "成立 AG & AH Logistics 股份——5公顷场地租赁与物流，服务区域制造企业。",
       },
     },
   ],
@@ -108,17 +193,17 @@ module.exports = {
       },
       {
         icon: "companies",
-        value: "10",
-        en: "Member companies",
-        vi: "Công ty thành viên",
-        zh: "成员企业",
+        value: "12+",
+        en: "Member companies & units",
+        vi: "Công ty & đơn vị thành viên",
+        zh: "成员企业与单位",
       },
       {
         icon: "projects",
-        value: "186+",
-        en: "Projects completed",
-        vi: "Dự án hoàn thành",
-        zh: "已完成项目",
+        value: "300k",
+        en: "Tonnes feed capacity / year",
+        vi: "Tấn công suất TACN / năm",
+        zh: "吨饲料年产能",
       },
       {
         icon: "revenue",

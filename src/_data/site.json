@@ -1,18 +1,27 @@
 {
   "name": "Nam Viet Group",
+  "legalName": {
+    "en": "Namviet Investment and Development Group",
+    "vi": "Tập đoàn Đầu tư và Phát triển Nam Việt",
+    "zh": "南越投资与发展集团"
+  },
   "title": "Nam Viet Group — Feeding Growth. Connecting the Future.",
-  "description": "Nam Viet Group — an integrated agricultural ecosystem connecting manufacturing, logistics, port infrastructure and global partnerships.",
+  "description": "Namviet Investment and Development Group — feed manufacturing, agri trade, port logistics, solar and industrial real estate across Vietnam.",
   "url": "https://namvietjscom.vn",
   "localeDefault": "en",
   "locales": ["en", "vi", "zh"],
+  "taxId": "4600305924",
   "emailPartner": "partner@namvietgroup.vn",
   "emailContact": "contact@namvietgroup.vn",
-  "phone": "+84 28 3822 6688",
-  "phoneTel": "+842838226688",
+  "phone": "+84 208 2212 646",
+  "phoneTel": "+842082212646",
+  "phoneMobile": "+84 986 095 678",
+  "phoneMobileTel": "+84986095678",
+  "fax": "+84 208 3861 809",
   "address": {
-    "en": "Floor 12, Nam Viet Tower, District 1, Ho Chi Minh City, Vietnam",
-    "vi": "Tầng 12, Tòa nhà Nam Việt, Quận 1, TP. Hồ Chí Minh, Việt Nam",
-    "zh": "越南胡志明市第一郡南越大厦12楼"
+    "en": "Residential Group 2A, Pho Co Ward, Song Cong City, Thai Nguyen Province, Vietnam",
+    "vi": "TDP 2A / Khối Phố 2, phường Phố Cò, thành phố Sông Công, tỉnh Thái Nguyên, Việt Nam",
+    "zh": "越南太原省宋功市铺古坊第二居民组（街区2）"
   },
   "social": {
     "linkedin": "https://www.linkedin.com/",
@@ -20,7 +29,7 @@
   },
   "formEndpoint": "https://formspree.io/f/xpwzgkqn",
   "analyticsId": "",
-  "whatsapp": "842838226688",
-  "zalo": "842838226688",
+  "whatsapp": "84986095678",
+  "zalo": "84986095678",
   "ogImage": "/assets/img/hero.png"
 }

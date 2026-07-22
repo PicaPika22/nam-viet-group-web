@@ -65,9 +65,9 @@ module.exports = function () {
       url: withPrefix("/companies/"),
       title: { en: "Member companies", vi: "Công ty thành viên", zh: "成员企业" },
       body: {
-        en: "ecosystem Fimico Hutech The King logistics feed trading",
-        vi: "hệ sinh thái Fimico Hutech The King logistics thức ăn",
-        zh: "生态 Fimico Hutech The King 物流 饲料",
+        en: "ecosystem Pilmico Hutech logistics feed trading Song Cong",
+        vi: "hệ sinh thái Pilmico Hutech logistics thức ăn Sông Công",
+        zh: "生态 Pilmico Hutech 物流 饲料 宋功",
       },
     },
     {

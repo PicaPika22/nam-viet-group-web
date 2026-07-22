@@ -11,21 +11,55 @@ heading:
   vi: Giải pháp dinh dưỡng cho mọi giai đoạn.
   zh: 为每个阶段设计的营养方案。
 lead:
-  en: From pig and poultry feed to aquaculture and specialty nutrition, our products are developed through scientific research.
-  vi: Mỗi dòng sản phẩm được phát triển dựa trên nghiên cứu khoa học nhằm tối ưu sức khỏe vật nuôi.
-  zh: 从猪禽饲料到水产与特种营养，产品均基于科学研究开发。
+  en: Real Nam Viet feed lines — pig, poultry, duck, cattle, goat, quail, fish and frog — built on scientific nutrition and branded packaging.
+  vi: Dòng thức ăn Nam Việt thực tế — heo, gia cầm, vịt, bò, dê, chim cút, cá và ếch — dựa trên dinh dưỡng khoa học và bao bì thương hiệu.
+  zh: 南越真实饲料产品线——猪、禽、鸭、牛、羊、鹌鹑、鱼与蛙——基于科学营养与品牌包装。
 ---
+
+<div class="products-stats reveal">
+  <div>
+    <strong>{{ about.distribution.commercial.value }}</strong>
+    <span class="lang en">{{ about.distribution.commercial.en }}</span>
+    <span class="lang vi">{{ about.distribution.commercial.vi }}</span>
+    <span class="lang zh">{{ about.distribution.commercial.zh }}</span>
+  </div>
+  <div>
+    <strong>{{ about.distribution.internal.value }}</strong>
+    <span class="lang en">{{ about.distribution.internal.en }}</span>
+    <span class="lang vi">{{ about.distribution.internal.vi }}</span>
+    <span class="lang zh">{{ about.distribution.internal.zh }}</span>
+  </div>
+  <div>
+    <strong>{{ about.distribution.dealers.value }}</strong>
+    <span class="lang en">{{ about.distribution.dealers.en }}</span>
+    <span class="lang vi">{{ about.distribution.dealers.vi }}</span>
+    <span class="lang zh">{{ about.distribution.dealers.zh }}</span>
+  </div>
+  <div>
+    <strong>{{ about.capacity.poultryLine.value }}</strong>
+    <span class="lang en">t / year feed capacity</span>
+    <span class="lang vi">tấn / năm công suất TACN</span>
+    <span class="lang zh">吨 / 年饲料产能</span>
+  </div>
+</div>
 
 <div class="products__grid products__grid--page">
   {% for product in collections.products %}
-  <a href="{{ product.url | url }}" class="pcard" style="--pc:{{ product.data.color }}">
+  <a href="{{ product.url | url }}" class="pcard pcard--media" style="--pc:{{ product.data.color }}">
+    {% if product.data.image %}
+    <span class="pcard__media"><img src="{{ product.data.image | url }}" alt="{{ product.data.code }}" loading="lazy" width="400" height="560" decoding="async"></span>
+    {% endif %}
     <span class="pcard__code">{{ product.data.code }}</span>
     <span class="pcard__name">
       <span class="lang en">{{ product.data.title.en }}</span>
       <span class="lang vi">{{ product.data.title.vi }}</span>
       <span class="lang zh">{{ product.data.title.zh }}</span>
     </span>
-    <span class="pcard__arrow">→</span>
+    <span class="pcard__more">
+      <span class="lang en">Learn more</span>
+      <span class="lang vi">Xem thêm</span>
+      <span class="lang zh">了解更多</span> →
+    </span>
   </a>
   {% endfor %}
 </div>

@@ -5,31 +5,31 @@ const ecosystem = require("./ecosystem");
 const focusesById = {
   "nam-viet": [
     {
-      en: "Core livestock and poultry feed manufacturing for the Group",
-      vi: "Sản xuất cốt lõi thức ăn gia súc, gia cầm cho tập đoàn",
-      zh: "集团核心畜禽饲料生产",
+      en: "Core livestock, poultry and aquaculture feed manufacturing",
+      vi: "Sản xuất cốt lõi thức ăn gia súc, gia cầm và thủy sản",
+      zh: "畜禽与水产饲料核心生产",
+    },
+    {
+      en: "Lines: ~300,000 t/year (Skiold) and 10 t/hour aqua (Andritz)",
+      vi: "Dây chuyền ~300.000 tấn/năm (Skiold) và thủy sản 10 tấn/giờ (Andritz)",
+      zh: "产能约30万吨/年（Skiold）与水产10吨/小时（Andritz）",
     },
     {
       en: "Quality systems aligned with ISO · GMP · HACCP practice",
       vi: "Hệ thống chất lượng theo thực hành ISO · GMP · HACCP",
       zh: "质量体系对齐 ISO · GMP · HACCP 实践",
     },
-    {
-      en: "Long-term nutrition partnerships with farming customers",
-      vi: "Đồng hành dinh dưỡng dài hạn với khách hàng chăn nuôi",
-      zh: "与养殖客户建立长期营养合作",
-    },
   ],
-  fimico: [
+  pilmico: [
     {
       en: "Feed manufacturing within the Nam Viet ecosystem",
       vi: "Sản xuất thức ăn trong hệ sinh thái Nam Việt",
       zh: "南越生态内的饲料生产",
     },
     {
-      en: "Transport and warehouse leasing since 2021",
-      vi: "Vận tải và cho thuê kho bãi từ 2021",
-      zh: "2021年起运输与仓储租赁",
+      en: "Premises and logistics support for industrial partners",
+      vi: "Hỗ trợ mặt bằng và logistics cho đối tác công nghiệp",
+      zh: "为产业伙伴提供场地与物流支持",
     },
     {
       en: "Bridge between feed production and farm partnerships",
@@ -39,19 +39,87 @@ const focusesById = {
   ],
   "feed-trading": [
     {
-      en: "Trading of animal feed and related materials",
-      vi: "Thương mại thức ăn chăn nuôi và vật tư liên quan",
-      zh: "饲料及相关物资贸易",
+      en: "Road and waterway cargo transport since 2013",
+      vi: "Vận chuyển đường bộ và đường thủy từ 2013",
+      zh: "自2013年起公路与水路货运",
     },
     {
-      en: "Support market access across the Group network",
-      vi: "Hỗ trợ tiếp cận thị trường trong mạng lưới tập đoàn",
-      zh: "支持集团网络内的市场覆盖",
+      en: "Support feed materials and agri logistics flows",
+      vi: "Phục vụ dòng nguyên liệu thức ăn và logistics nông sản",
+      zh: "支撑饲料原料与农产品物流",
     },
     {
       en: "Align supply with customer demand and seasonality",
       vi: "Đồng bộ cung ứng theo nhu cầu và mùa vụ khách hàng",
       zh: "按客户需求与季节协调供应",
+    },
+  ],
+  "logistics-nv": [
+    {
+      en: "FDI investment advisory into Vietnam",
+      vi: "Tư vấn dịch vụ đầu tư FDI vào Việt Nam",
+      zh: "赴越FDI投资咨询服务",
+    },
+    {
+      en: "Warehouses and workshops on 15 ha",
+      vi: "Kho bãi và nhà xưởng trên 15ha",
+      zh: "15公顷仓储与厂房",
+    },
+    {
+      en: "International cargo transport services",
+      vi: "Dịch vụ vận chuyển hàng hóa quốc tế",
+      zh: "国际货物运输服务",
+    },
+  ],
+  "ag-ah-logistics": [
+    {
+      en: "Premises leasing and logistics on 5 ha",
+      vi: "Cho thuê mặt bằng và logistics trên 5ha",
+      zh: "5公顷场地租赁与物流",
+    },
+    {
+      en: "Serves regional manufacturing tenants",
+      vi: "Phục vụ doanh nghiệp sản xuất trong khu vực",
+      zh: "服务区域内制造企业",
+    },
+    {
+      en: "Founded 2024 within the Group logistics network",
+      vi: "Thành lập 2024 trong mạng lưới logistics Tập đoàn",
+      zh: "2024年成立，纳入集团物流网络",
+    },
+  ],
+  "warehouse-qn": [
+    {
+      en: "Port warehouse at Cai Lan (Quang Ninh), ~5 ha",
+      vi: "Kho cảng Cái Lân (Quảng Ninh), gần 5ha",
+      zh: "广宁盖麟港仓，近5公顷",
+    },
+    {
+      en: "About 190,000 tonnes storage capacity",
+      vi: "Công suất lưu giữ khoảng 190.000 tấn",
+      zh: "约19万吨仓储能力",
+    },
+    {
+      en: "Strategic northern gateway for the Group",
+      vi: "Cửa ngõ chiến lược phía Bắc của tập đoàn",
+      zh: "集团北部战略门户",
+    },
+  ],
+  vapco: [
+    {
+      en: "Premises leasing and logistics on nearly 3 ha",
+      vi: "Cho thuê mặt bằng và logistics gần 3ha",
+      zh: "近3公顷场地租赁与物流",
+    },
+    {
+      en: "Hosts industrial manufacturing tenants",
+      vi: "Đón doanh nghiệp sản xuất thuê mặt bằng",
+      zh: "承接入驻制造企业",
+    },
+    {
+      en: "Founded 2018",
+      vi: "Thành lập 2018",
+      zh: "2018年成立",
     },
   ],
   hutech: [
@@ -61,48 +129,14 @@ const focusesById = {
       zh: "国际标准仓储与物流",
     },
     {
-      en: "Fully integrated into the Group since 2022",
-      vi: "Hội nhập toàn phần vào tập đoàn từ 2022",
-      zh: "2022年起全面并入集团",
+      en: "Integrated into the Group network",
+      vi: "Hội nhập vào mạng lưới tập đoàn",
+      zh: "并入集团网络",
     },
     {
       en: "Serve domestic distribution and export flows",
       vi: "Phục vụ phân phối nội địa và luồng xuất khẩu",
       zh: "服务国内分销与出口物流",
-    },
-  ],
-  "logistics-nv": [
-    {
-      en: "Specialized transport for agri and industrial cargo",
-      vi: "Vận tải chuyên biệt cho hàng nông sản và công nghiệp",
-      zh: "农产品与工业货物专业运输",
-    },
-    {
-      en: "Connect plants, warehouses and port gateways",
-      vi: "Kết nối nhà máy, kho bãi và cửa khẩu cảng",
-      zh: "连接工厂、仓储与港口口岸",
-    },
-    {
-      en: "Reliable scheduling across the Group value chain",
-      vi: "Lịch trình ổn định trên chuỗi giá trị tập đoàn",
-      zh: "保障集团价值链稳定调度",
-    },
-  ],
-  "warehouse-qn": [
-    {
-      en: "Agri storage at Cai Lan port (Quang Ninh)",
-      vi: "Lưu giữ nông sản tại cảng Cái Lân (Quảng Ninh)",
-      zh: "广宁盖麟港农产品仓储",
-    },
-    {
-      en: "Import / export handling for feed raw materials",
-      vi: "Xuất nhập khẩu nguyên liệu thức ăn chăn nuôi",
-      zh: "饲料原料进出口作业",
-    },
-    {
-      en: "Strategic northern gateway for the Group",
-      vi: "Cửa ngõ chiến lược phía Bắc của tập đoàn",
-      zh: "集团北部战略门户",
     },
   ],
   "trading-vn": [
@@ -112,31 +146,14 @@ const focusesById = {
       zh: "服务饲料生产的农产品进口",
     },
     {
-      en: "Wood-pellet export and international trade",
-      vi: "Xuất khẩu viên nén gỗ và thương mại quốc tế",
-      zh: "木颗粒出口与国际贸易",
+      en: "International trade programs",
+      vi: "Chương trình thương mại quốc tế",
+      zh: "国际贸易业务",
     },
     {
-      en: "Fuel distribution alongside energy retail partners",
-      vi: "Phân phối xăng dầu cùng mạng lưới bán lẻ năng lượng",
-      zh: "与能源零售网络协同燃油分销",
-    },
-  ],
-  vapco: [
-    {
-      en: "Production and international trading operations",
-      vi: "Sản xuất và hoạt động thương mại quốc tế",
-      zh: "生产与国际贸易运营",
-    },
-    {
-      en: "Complement Group supply and export programs",
-      vi: "Bổ trợ chương trình cung ứng và xuất khẩu của tập đoàn",
-      zh: "补充集团供应与出口计划",
-    },
-    {
-      en: "Partner-facing commercial execution",
-      vi: "Thực thi thương mại hướng tới đối tác",
-      zh: "面向合作伙伴的商务执行",
+      en: "Complement Group supply chains",
+      vi: "Bổ trợ chuỗi cung ứng tập đoàn",
+      zh: "补充集团供应链",
     },
   ],
   fuel: [
@@ -163,26 +180,43 @@ const focusesById = {
       zh: "农业基建与农村发展",
     },
     {
-      en: "High-tech farm and livestock facility projects",
-      vi: "Dự án trang trại và cơ sở chăn nuôi công nghệ cao",
-      zh: "高科技农场与养殖设施项目",
+      en: "Clean, high-yield synchronized farm models",
+      vi: "Mô hình trang trại sạch, năng suất cao, đồng bộ",
+      zh: "清洁、高产、协同的农场模式",
     },
     {
-      en: "Real estate linked to agri-industrial growth",
-      vi: "Bất động sản gắn với tăng trưởng nông–công nghiệp",
-      zh: "与农工增长相关的房地产",
+      en: "Founded 2020",
+      vi: "Thành lập 2020",
+      zh: "2020年成立",
+    },
+  ],
+  "song-cong": [
+    {
+      en: "Industrial development on 20 ha in Song Cong",
+      vi: "Phát triển công nghiệp trên 20ha tại Sông Công",
+      zh: "宋功20公顷工业发展",
+    },
+    {
+      en: "Cargo management and FDI advisory services",
+      vi: "Quản lý hàng hóa và tư vấn dịch vụ cho doanh nghiệp FDI",
+      zh: "货物管理与FDI咨询服务",
+    },
+    {
+      en: "Workshops and industrial services",
+      vi: "Nhà xưởng và dịch vụ công nghiệp",
+      zh: "厂房与工业服务",
     },
   ],
   tourism: [
     {
-      en: "The King restaurant system",
-      vi: "Hệ thống nhà hàng The King",
-      zh: "The King 餐饮系统",
+      en: "High-quality hotel and restaurant system",
+      vi: "Hệ thống khách sạn và nhà hàng chất lượng cao",
+      zh: "高品质酒店与餐饮体系",
     },
     {
-      en: "The King Hotel & Condotel (4-star hospitality)",
-      vi: "The King Hotel & Condotel (khách sạn 4 sao)",
-      zh: "The King Hotel & Condotel（四星酒店）",
+      en: "Hospitality expansion since 2020",
+      vi: "Mở rộng dịch vụ lưu trú từ 2020",
+      zh: "自2020年起拓展住宿服务",
     },
     {
       en: "Conference, events and guest services",

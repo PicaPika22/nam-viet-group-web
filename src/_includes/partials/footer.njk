@@ -22,6 +22,16 @@
       <div class="footer__contact">
         <p><a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a></p>
         <p><a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a></p>
+        {% if site.phoneMobile %}
+        <p><a href="tel:{{ site.phoneMobileTel }}">{{ site.phoneMobile }}</a></p>
+        {% endif %}
+        {% if site.taxId %}
+        <p>
+          <span class="lang en">Tax ID: {{ site.taxId }}</span>
+          <span class="lang vi">MST: {{ site.taxId }}</span>
+          <span class="lang zh">税号：{{ site.taxId }}</span>
+        </p>
+        {% endif %}
         <p>
           <span class="lang en">{{ site.address.en }}</span>
           <span class="lang vi">{{ site.address.vi }}</span>

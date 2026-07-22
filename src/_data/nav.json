@@ -30,7 +30,7 @@
           "keyZh": "饲料",
           "links": [
             { "href": "/companies/nam-viet/", "en": "Nam Viet JSC", "vi": "CTCP Nam Việt", "zh": "南越股份" },
-            { "href": "/companies/fimico/", "en": "Fimico Group", "vi": "Fimico Group", "zh": "Fimico" },
+            { "href": "/companies/pilmico/", "en": "Pilmico Group", "vi": "Pilmico Group", "zh": "Pilmico" },
             { "href": "/companies/feed-trading/", "en": "Feed Trading", "vi": "Feed Trading", "zh": "Feed Trading" },
             { "href": "/products/", "en": "Feed product catalog", "vi": "Danh mục thức ăn", "zh": "饲料产品目录" }
           ]
@@ -42,7 +42,7 @@
           "keyZh": "养殖",
           "links": [
             { "href": "/companies/xdnn-tn/", "en": "Thai Nguyen Agri Construction", "vi": "XDNN Thái Nguyên", "zh": "太原农建" },
-            { "href": "/companies/fimico/", "en": "Fimico Group partnership", "vi": "Hợp tác Fimico Group", "zh": "Fimico 合作" }
+            { "href": "/companies/song-cong/", "en": "Song Cong Industrial", "vi": "PTCN Sông Công", "zh": "宋功工业" }
           ]
         },
         {
@@ -51,9 +51,10 @@
           "keyVi": "VẬN TẢI & KHO",
           "keyZh": "物流仓储",
           "links": [
-            { "href": "/companies/hutech/", "en": "Hutech Vietnam", "vi": "Hutech Việt Nam", "zh": "Hutech" },
-            { "href": "/companies/logistics-nv/", "en": "Nam Viet Logistics", "vi": "Logistics Nam Việt", "zh": "南越物流" },
-            { "href": "/companies/warehouse-qn/", "en": "Cai Lan Warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" }
+            { "href": "/companies/logistics-nv/", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
+            { "href": "/companies/ag-ah-logistics/", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH" },
+            { "href": "/companies/warehouse-qn/", "en": "Cai Lan Warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" },
+            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" }
           ]
         },
         {
@@ -72,7 +73,6 @@
           "keyZh": "进出口",
           "links": [
             { "href": "/companies/trading-vn/", "en": "Trading Vietnam", "vi": "Trading Việt Nam", "zh": "Trading VN" },
-            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" },
             { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
           ]
         },

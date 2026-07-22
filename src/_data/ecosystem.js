@@ -1,14 +1,14 @@
-/** Nam Viet Group ecosystem — sectors + member companies */
+/** Nam Viet Group ecosystem — sectors + member companies (Profile TAP DOAN) */
 module.exports = {
   intro: {
-    en: "One group. Six pillars. Companies and units working as a single value chain.",
-    vi: "Một tập đoàn. Sáu trụ cột. Các công ty và đơn vị vận hành như một chuỗi giá trị.",
-    zh: "一个集团，六大支柱。成员企业与单位协同形成一体化价值链。",
+    en: "One group. Multiple pillars. Companies and units working as a single value chain.",
+    vi: "Một tập đoàn. Nhiều trụ cột. Các công ty và đơn vị vận hành như một chuỗi giá trị.",
+    zh: "一个集团，多支柱协同。成员企业与单位形成一体化价值链。",
   },
   sectors: [
     {
       id: "feed",
-      image: "/assets/img/products.png",
+      image: "/assets/img/products-hero.jpg",
       key: { en: "01", vi: "01", zh: "01" },
       title: {
         en: "Feed & Nutrition",
@@ -16,9 +16,9 @@ module.exports = {
         zh: "饲料营养",
       },
       blurb: {
-        en: "Core manufacturing of livestock and poultry feed across the Group.",
-        vi: "Sản xuất cốt lõi thức ăn chăn nuôi gia súc, gia cầm trong tập đoàn.",
-        zh: "集团核心畜禽饲料生产业务。",
+        en: "Core manufacturing of livestock, poultry and aquaculture feed.",
+        vi: "Sản xuất cốt lõi thức ăn gia súc, gia cầm và thủy sản.",
+        zh: "畜禽与水产饲料核心生产。",
       },
       companies: [
         {
@@ -31,39 +31,39 @@ module.exports = {
             zh: "南越股份公司",
           },
           desc: {
-            en: "Core company — livestock & poultry feed manufacturing.",
-            vi: "Đơn vị cốt lõi sản xuất thức ăn chăn nuôi gia súc, gia cầm.",
-            zh: "核心企业，专注畜禽饲料生产。",
+            en: "Core company — livestock, poultry and aquaculture feed manufacturing.",
+            vi: "Đơn vị cốt lõi sản xuất thức ăn chăn nuôi gia súc, gia cầm, thủy sản.",
+            zh: "核心企业，专注畜禽与水产饲料生产。",
           },
         },
         {
-          id: "fimico",
+          id: "pilmico",
           year: "2014",
-          short: { en: "Fimico Group", vi: "Fimico Group", zh: "Fimico" },
+          short: { en: "Pilmico Group", vi: "Pilmico Group", zh: "Pilmico" },
           name: {
-            en: "Fimico Group International JSC",
-            vi: "Công ty Cổ phần Quốc tế Fimico Group",
-            zh: "Fimico 国际股份公司",
+            en: "Pilmico Group Joint Stock Company",
+            vi: "Công ty Cổ phần Pilmico Group",
+            zh: "Pilmico 集团股份公司",
           },
           desc: {
-            en: "Feed production; since 2021 also transport & warehouse leasing.",
-            vi: "Thức ăn chăn nuôi; từ 2021 thêm vận tải và cho thuê kho bãi.",
-            zh: "饲料生产；2021年起拓展运输与仓储租赁。",
+            en: "Feed manufacturing within the Nam Viet ecosystem; premises and logistics for partners.",
+            vi: "Sản xuất thức ăn trong hệ sinh thái Nam Việt; mặt bằng và logistics cho đối tác.",
+            zh: "南越生态内饲料生产；为伙伴提供场地与物流。",
           },
         },
         {
           id: "feed-trading",
-          year: null,
+          year: "2013",
           short: { en: "Feed Trading", vi: "Feed Trading", zh: "Feed Trading" },
           name: {
-            en: "Feed Trading Co., Ltd.",
-            vi: "Công ty TNHH Feed Trading",
-            zh: "Feed Trading 有限公司",
+            en: "Feed Trading Vietnam Co., Ltd.",
+            vi: "Công ty TNHH Feedtrading Việt Nam",
+            zh: "Feed Trading 越南有限公司",
           },
           desc: {
-            en: "Animal feed and related trading.",
-            vi: "Thức ăn chăn nuôi và thương mại liên quan.",
-            zh: "饲料及相关贸易。",
+            en: "Road and waterway cargo transport supporting feed and agri logistics.",
+            vi: "Vận chuyển hàng hóa đường bộ và đường thủy phục vụ logistics thức ăn và nông sản.",
+            zh: "公路与水路货运，支撑饲料与农产品物流。",
           },
         },
       ],
@@ -78,11 +78,72 @@ module.exports = {
         zh: "物流与港口",
       },
       blurb: {
-        en: "Warehousing, transport and port storage to international standards.",
-        vi: "Kho bãi, vận tải và kho cảng theo tiêu chuẩn quốc tế.",
-        zh: "国际标准仓储、运输与港口仓储。",
+        en: "Warehousing, transport, port storage and industrial premises leasing.",
+        vi: "Kho bãi, vận tải, kho cảng và cho thuê mặt bằng công nghiệp.",
+        zh: "仓储、运输、港口仓储与工业场地租赁。",
       },
       companies: [
+        {
+          id: "logistics-nv",
+          year: "2023",
+          short: { en: "Nam Viet Trade Logistics", vi: "TM Logistics Nam Việt", zh: "南越贸易物流" },
+          name: {
+            en: "Nam Viet Trade Logistics JSC",
+            vi: "Công ty Cổ phần Thương mại Logistics Nam Việt",
+            zh: "南越贸易物流股份公司",
+          },
+          desc: {
+            en: "FDI advisory, warehouses and workshops on 15 ha, international cargo transport.",
+            vi: "Tư vấn FDI, kho bãi và nhà xưởng 15ha, vận chuyển hàng hóa quốc tế.",
+            zh: "FDI咨询、15公顷仓储厂房与国际货运。",
+          },
+        },
+        {
+          id: "ag-ah-logistics",
+          year: "2024",
+          short: { en: "AG & AH Logistics", vi: "AG & AH Logistics", zh: "AG & AH" },
+          name: {
+            en: "AG & AH Logistics Joint Stock Company",
+            vi: "Công ty Cổ phần AG & AH Logistics",
+            zh: "AG & AH Logistics 股份公司",
+          },
+          desc: {
+            en: "Premises leasing and logistics on 5 ha for regional manufacturing tenants.",
+            vi: "Cho thuê mặt bằng và logistics trên 5ha cho doanh nghiệp sản xuất trong khu vực.",
+            zh: "5公顷场地租赁与物流，服务区域制造企业。",
+          },
+        },
+        {
+          id: "warehouse-qn",
+          year: "2019",
+          unit: true,
+          short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
+          name: {
+            en: "Nam Viet Port Warehouse (Cai Lan, Quang Ninh)",
+            vi: "Hệ thống kho cảng Nam Việt — Cái Lân, Quảng Ninh",
+            zh: "南越港仓（广宁盖麟）",
+          },
+          desc: {
+            en: "Opened 2019 — nearly 5 ha, about 190,000 tonnes storage capacity.",
+            vi: "Hoàn thành 2019 — gần 5ha, lưu giữ khoảng 190.000 tấn hàng hóa.",
+            zh: "2019年建成——近5公顷，约19万吨仓储能力。",
+          },
+        },
+        {
+          id: "vapco",
+          year: "2018",
+          short: { en: "Vapco", vi: "Vapco", zh: "Vapco" },
+          name: {
+            en: "Vapco Production & Trading Co., Ltd.",
+            vi: "Công ty TNHH Sản xuất và Thương mại Vapco",
+            zh: "Vapco 生产与贸易有限公司",
+          },
+          desc: {
+            en: "Premises leasing and logistics on nearly 3 ha for industrial tenants.",
+            vi: "Cho thuê mặt bằng và logistics gần 3ha cho doanh nghiệp sản xuất.",
+            zh: "近3公顷场地租赁与物流，服务入驻企业。",
+          },
+        },
         {
           id: "hutech",
           year: "2022",
@@ -93,40 +154,9 @@ module.exports = {
             zh: "Hutech Vietnam 有限公司",
           },
           desc: {
-            en: "100% acquired in 2022 — international warehousing & logistics.",
-            vi: "Mua lại 100% năm 2022 — kho bãi & logistics chuẩn quốc tế.",
-            zh: "2022年全资收购，国际标准仓储物流。",
-          },
-        },
-        {
-          id: "logistics-nv",
-          year: null,
-          short: { en: "Nam Viet Logistics", vi: "Logistics Nam Việt", zh: "南越物流" },
-          name: {
-            en: "Nam Viet Logistics JSC",
-            vi: "Công ty Cổ phần Logistics Nam Việt",
-            zh: "南越物流股份公司",
-          },
-          desc: {
-            en: "Specialized transport and logistics.",
-            vi: "Chuyên vận tải và logistics.",
-            zh: "专业运输与物流。",
-          },
-        },
-        {
-          id: "warehouse-qn",
-          year: "2017",
-          unit: true,
-          short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
-          name: {
-            en: "Nam Viet Agricultural Warehouse (Cai Lan, Quang Ninh)",
-            vi: "Tổng kho nông sản Nam Việt — Kho cảng Quảng Ninh",
-            zh: "南越农产品总仓（广宁盖麟）",
-          },
-          desc: {
-            en: "Est. 2017 at Cai Lan — agri storage and import/export.",
-            vi: "Thành lập 2017 tại Cái Lân — lưu giữ & xuất nhập khẩu nông sản.",
-            zh: "2017年成立于盖麟，服务农产品仓储进出口。",
+            en: "International-standard warehousing and logistics within the Group network.",
+            vi: "Kho bãi và logistics chuẩn quốc tế trong mạng lưới Tập đoàn.",
+            zh: "集团网络内的国际标准仓储物流。",
           },
         },
       ],
@@ -141,9 +171,9 @@ module.exports = {
         zh: "贸易与能源",
       },
       blurb: {
-        en: "Agri imports, wood-pellet export and fuel retail.",
-        vi: "Nhập khẩu nông sản, xuất khẩu viên nén gỗ và bán lẻ xăng dầu.",
-        zh: "农产品进口、木颗粒出口与燃油零售。",
+        en: "Agri–forestry trade, fuel retail and related commercial services.",
+        vi: "Kinh doanh nông–lâm sản, bán lẻ xăng dầu và dịch vụ thương mại liên quan.",
+        zh: "农林贸易、燃油零售及相关商务服务。",
       },
       companies: [
         {
@@ -156,24 +186,9 @@ module.exports = {
             zh: "Trading Vietnam 有限公司",
           },
           desc: {
-            en: "Agri imports for feed, wood-pellet export, fuel distribution.",
-            vi: "Nhập khẩu nông sản, xuất khẩu viên nén gỗ, phân phối xăng dầu.",
-            zh: "饲料原料进口、木颗粒出口与燃油分销。",
-          },
-        },
-        {
-          id: "vapco",
-          year: null,
-          short: { en: "Vapco", vi: "Vapco", zh: "Vapco" },
-          name: {
-            en: "Vapco International Production & Trading Co., Ltd.",
-            vi: "Công ty TNHH Sản xuất và Thương mại Quốc tế Vapco",
-            zh: "Vapco 国际生产与贸易有限公司",
-          },
-          desc: {
-            en: "Production and international trading.",
-            vi: "Sản xuất và thương mại quốc tế.",
-            zh: "生产与国际贸易。",
+            en: "Agricultural imports for feed and international trade programs.",
+            vi: "Nhập khẩu nông sản phục vụ sản xuất thức ăn và thương mại quốc tế.",
+            zh: "服务饲料生产的农产品进口与国际贸易。",
           },
         },
         {
@@ -181,14 +196,14 @@ module.exports = {
           year: "2016",
           short: { en: "Nam Viet Fuel", vi: "Xăng dầu Nam Việt", zh: "南越石油" },
           name: {
-            en: "Nam Viet Petroleum / Petrol Station No. 1",
-            vi: "Công ty Xăng dầu Nam Việt (CHXD số 1)",
-            zh: "南越石油（1号加油站）",
+            en: "Nam Viet Petroleum",
+            vi: "Công ty Xăng dầu Nam Việt",
+            zh: "南越石油公司",
           },
           desc: {
-            en: "Joined 2016 — fuel retail.",
-            vi: "Gia nhập 2016 — bán lẻ xăng dầu.",
-            zh: "2016年加入，燃油零售。",
+            en: "Fuel retail operations since 2016.",
+            vi: "Hoạt động bán lẻ xăng dầu từ 2016.",
+            zh: "2016年起燃油零售。",
           },
         },
       ],
@@ -198,19 +213,19 @@ module.exports = {
       image: "/assets/img/about.png",
       key: { en: "04", vi: "04", zh: "04" },
       title: {
-        en: "Infrastructure & Farms",
-        vi: "Hạ tầng & trang trại",
-        zh: "基建与农场",
+        en: "Infrastructure & Industry",
+        vi: "Hạ tầng & công nghiệp",
+        zh: "基建与工业",
       },
       blurb: {
-        en: "Agricultural infrastructure, farms and real estate development.",
-        vi: "Xây dựng hạ tầng nông nghiệp, trang trại và bất động sản.",
-        zh: "农业基建、农场与房地产开发。",
+        en: "Agricultural infrastructure, farms, industrial parks and real estate.",
+        vi: "Hạ tầng nông nghiệp, trang trại, khu công nghiệp và bất động sản.",
+        zh: "农业基建、农场、工业园区与房地产。",
       },
       companies: [
         {
           id: "xdnn-tn",
-          year: "2018",
+          year: "2020",
           short: { en: "Thai Nguyen Agri Construction", vi: "XDNN Thái Nguyên", zh: "太原农建" },
           name: {
             en: "Thai Nguyen Agricultural Construction & Rural Development JSC",
@@ -218,9 +233,24 @@ module.exports = {
             zh: "太原农业建设与农村发展股份公司",
           },
           desc: {
-            en: "Joined 2018 — infrastructure, farms and real estate.",
-            vi: "Gia nhập 2018 — hạ tầng, trang trại và bất động sản.",
-            zh: "2018年加入，基建、农场与房地产。",
+            en: "Founded 2020 — agri infrastructure, clean high-yield farm models.",
+            vi: "Thành lập 2020 — hạ tầng nông nghiệp, mô hình trang trại sạch năng suất cao.",
+            zh: "2020年成立——农业基建与高产清洁农场模式。",
+          },
+        },
+        {
+          id: "song-cong",
+          year: "2021",
+          short: { en: "Song Cong Industrial", vi: "PTCN Sông Công", zh: "宋功工业" },
+          name: {
+            en: "Song Cong Industrial Development JSC",
+            vi: "Công ty Cổ phần Phát triển Công nghiệp Sông Công",
+            zh: "宋功工业发展股份公司",
+          },
+          desc: {
+            en: "Cargo management, FDI advisory, workshops and services on 20 ha.",
+            vi: "Quản lý hàng hóa, tư vấn FDI, nhà xưởng và dịch vụ trên 20ha.",
+            zh: "20公顷货物管理、FDI咨询、厂房与服务。",
           },
         },
       ],
@@ -235,14 +265,14 @@ module.exports = {
         zh: "旅游酒店",
       },
       blurb: {
-        en: "The King restaurants and 4-star hotel & condotel.",
-        vi: "Hệ thống nhà hàng The King và khách sạn 4 sao The King Hotel & Condotel.",
-        zh: "The King 餐饮与四星酒店 Condotel。",
+        en: "Hotel and restaurant systems developed since 2020.",
+        vi: "Hệ thống khách sạn và nhà hàng phát triển từ 2020.",
+        zh: "自2020年起发展的酒店与餐饮体系。",
       },
       companies: [
         {
           id: "tourism",
-          year: null,
+          year: "2020",
           short: { en: "Nam Viet Tourism", vi: "Du lịch Nam Việt", zh: "南越旅游" },
           name: {
             en: "Nam Viet Trade, Services & Tourism Development JSC",
@@ -250,9 +280,9 @@ module.exports = {
             zh: "南越贸易服务与旅游发展股份公司",
           },
           desc: {
-            en: "The King restaurants and The King Hotel & Condotel.",
-            vi: "Nhà hàng The King và The King Hotel & Condotel.",
-            zh: "The King 餐饮与 The King Hotel & Condotel。",
+            en: "High-quality hotel and restaurant hospitality platforms.",
+            vi: "Hệ thống khách sạn và nhà hàng chất lượng cao.",
+            zh: "高品质酒店与餐饮平台。",
           },
         },
       ],
@@ -267,9 +297,9 @@ module.exports = {
         zh: "研发与质量",
       },
       blurb: {
-        en: "Quality control, animal health research and probiotics.",
-        vi: "Kiểm soát chất lượng, nghiên cứu bệnh dịch và men vi sinh.",
-        zh: "质量控制、疫病研究与益生菌。",
+        en: "Quality control, animal health research and nutrition science.",
+        vi: "Kiểm soát chất lượng, nghiên cứu sức khỏe vật nuôi và khoa học dinh dưỡng.",
+        zh: "质量控制、动物健康研究与营养科学。",
       },
       companies: [
         {
@@ -283,9 +313,9 @@ module.exports = {
             zh: "南越技术研究与应用中心",
           },
           desc: {
-            en: "Est. 2016 — QC, disease research, probiotics.",
-            vi: "Thành lập 2016 — kiểm soát chất lượng, bệnh dịch, men vi sinh.",
-            zh: "2016年成立，质控、疫病与益生菌研究。",
+            en: "QC, disease research and probiotic applications for feed quality.",
+            vi: "Kiểm soát chất lượng, nghiên cứu bệnh dịch và ứng dụng men vi sinh.",
+            zh: "质控、疫病研究与益生菌应用，支撑饲料质量。",
           },
         },
       ],
