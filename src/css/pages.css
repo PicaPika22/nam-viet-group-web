@@ -63,6 +63,7 @@
 .prose a { text-decoration: underline; text-underline-offset: 0.15em; }
 .prose a.btn,
 .prose a.ncard,
+.prose a.pcard,
 .prose a.rss-link,
 .prose a.eco-map__co-link,
 .prose a.leader-card,
