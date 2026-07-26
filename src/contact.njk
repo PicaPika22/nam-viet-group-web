@@ -40,19 +40,11 @@ permalink: /contact/
           </li>
           <li>
             <span class="contact-desk__label">
-              <span class="lang en">Phone</span>
-              <span class="lang vi">Điện thoại</span>
-              <span class="lang zh">电话</span>
+              <span class="lang en">Hotline</span>
+              <span class="lang vi">Hotline</span>
+              <span class="lang zh">热线</span>
             </span>
             <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
-          </li>
-          <li>
-            <span class="contact-desk__label">
-              <span class="lang en">Mobile</span>
-              <span class="lang vi">Di động</span>
-              <span class="lang zh">手机</span>
-            </span>
-            <a href="tel:{{ site.phoneMobileTel }}">{{ site.phoneMobile }}</a>
           </li>
           <li>
             <span class="contact-desk__label">
@@ -68,15 +60,21 @@ permalink: /contact/
           </li>
         </ul>
 
+        {% if site.whatsapp or site.zalo %}
         <div class="contact-desk__quick">
+          {% if site.whatsapp %}
           <a class="btn btn--dark" href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">
             <span class="btn__dot"></span>
             WhatsApp
           </a>
+          {% endif %}
+          {% if site.zalo %}
           <a class="btn btn--outline btn--dark" href="https://zalo.me/{{ site.zalo }}" target="_blank" rel="noopener">
             Zalo
           </a>
+          {% endif %}
         </div>
+        {% endif %}
       </aside>
 
       <div class="contact-desk__panel reveal" data-delay="120">

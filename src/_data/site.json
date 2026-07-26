@@ -13,11 +13,9 @@
   "taxId": "4600305924",
   "emailPartner": "partner@namvietgroup.vn",
   "emailContact": "contact@namvietgroup.vn",
-  "phone": "+84 208 2212 646",
-  "phoneTel": "+842082212646",
-  "phoneMobile": "+84 986 095 678",
-  "phoneMobileTel": "+84986095678",
-  "fax": "+84 208 3861 809",
+  "phone": "+84 208 3861 808",
+  "phoneTel": "+842083861808",
+  "fax": "+84 208 3861 808",
   "address": {
     "en": "Residential Group 2A, Pho Co Ward, Song Cong City, Thai Nguyen Province, Vietnam",
     "vi": "TDP 2A / Khối Phố 2, phường Phố Cò, thành phố Sông Công, tỉnh Thái Nguyên, Việt Nam",
@@ -29,7 +27,7 @@
   },
   "formEndpoint": "https://formspree.io/f/xpwzgkqn",
   "analyticsId": "",
-  "whatsapp": "84986095678",
-  "zalo": "84986095678",
+  "whatsapp": "",
+  "zalo": "",
   "ogImage": "/assets/img/hero.png"
 }

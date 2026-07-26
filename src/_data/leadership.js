@@ -12,6 +12,7 @@ module.exports = [
   {
     id: "ha-van-an",
     featured: true,
+    tier: 1,
     image: "/assets/img/leadership/ha-van-an.jpg",
     name: {
       en: "Ha Van An",
@@ -31,6 +32,7 @@ module.exports = [
   },
   {
     id: "nguyen-thi-nu",
+    tier: 2,
     image: "/assets/img/leadership/nguyen-thi-nu.jpg",
     name: {
       en: "Nguyen Thi Nu",
@@ -50,6 +52,7 @@ module.exports = [
   },
   {
     id: "hoang-thanh-phong",
+    tier: 2,
     image: "/assets/img/leadership/hoang-thanh-phong.jpg",
     name: {
       en: "Hoang Thanh Phong",
@@ -69,6 +72,7 @@ module.exports = [
   },
   {
     id: "nguyen-duc-hung",
+    tier: 2,
     image: "/assets/img/leadership/nguyen-duc-hung.jpg",
     name: {
       en: "Nguyen Duc Hung",
@@ -88,6 +92,7 @@ module.exports = [
   },
   {
     id: "nguyen-van-hung",
+    tier: 2,
     image: "/assets/img/leadership/nguyen-van-hung.jpg",
     name: {
       en: "Nguyen Van Hung",
@@ -107,6 +112,7 @@ module.exports = [
   },
   {
     id: "ha-van-huong",
+    tier: 3,
     image: "/assets/img/leadership/ha-van-huong.jpg",
     name: {
       en: "Ha Van Huong",
@@ -126,6 +132,7 @@ module.exports = [
   },
   {
     id: "nguyen-manh-ha",
+    tier: 3,
     image: "/assets/img/leadership/nguyen-manh-ha.jpg",
     name: {
       en: "Nguyen Manh Ha",
@@ -145,6 +152,7 @@ module.exports = [
   },
   {
     id: "le-van-mien",
+    tier: 3,
     image: "/assets/img/leadership/le-van-mien.jpg",
     name: {
       en: "Le Van Mien",
@@ -164,6 +172,7 @@ module.exports = [
   },
   {
     id: "pham-van-dung",
+    tier: 3,
     image: "/assets/img/leadership/pham-van-dung.jpg",
     name: {
       en: "Pham Van Dung",
@@ -183,6 +192,7 @@ module.exports = [
   },
   {
     id: "nguyen-manh-hai",
+    tier: 3,
     image: "/assets/img/leadership/nguyen-manh-hai.jpg",
     name: {
       en: "Nguyen Manh Hai",
