@@ -1,20 +1,20 @@
 /* Nam Viet Content Studio — premium editorial admin */
 :root {
-  --ink: #0c1f16;
-  --ink-soft: #3d5248;
-  --muted: #6b7c73;
-  --line: rgba(12, 31, 22, 0.1);
+  --ink: #0a1420;
+  --ink-soft: #334155;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.1);
   --paper: #f3f6f3;
   --paper-2: #e8efe9;
   --card: #ffffff;
-  --forest: #0c2b1c;
-  --forest-mid: #14522f;
-  --accent: #1d6a3e;
+  --forest: #0F172A;
+  --forest-mid: #1e3a5f;
+  --accent: #0369A1;
   --accent-soft: rgba(29, 106, 62, 0.12);
   --gold: #c4a35a;
   --danger: #b42318;
   --radius: 16px;
-  --shadow: 0 1px 0 rgba(12, 31, 22, 0.04), 0 18px 40px -24px rgba(12, 31, 22, 0.35);
+  --shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 18px 40px -24px rgba(15, 23, 42, 0.35);
   --font: "DM Sans", "Segoe UI", sans-serif;
   --display: "Fraunces", Georgia, serif;
 }
@@ -101,7 +101,7 @@ body {
   flex-direction: column;
   padding: 1.5rem 1.15rem 1.25rem;
   background:
-    linear-gradient(165deg, #0f3322 0%, var(--forest) 48%, #081911 100%);
+    linear-gradient(165deg, #0d1f35 0%, var(--forest) 48%, #08111d 100%);
   color: rgba(255, 255, 255, 0.88);
   isolation: isolate;
   overflow: hidden;
@@ -326,7 +326,7 @@ body {
   border-radius: calc(var(--radius) + 4px);
   overflow: visible;
   background:
-    linear-gradient(135deg, rgba(12, 43, 28, 0.97), rgba(20, 82, 47, 0.93)),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.97), rgba(30, 58, 95, 0.93)),
     var(--forest);
   color: #fff;
   box-shadow: var(--shadow);
@@ -388,7 +388,7 @@ body {
 }
 .create-card .btn-primary:hover { background: #f3f6f3; }
 .create-card--jobs {
-  background: linear-gradient(135deg, #163528, #1f4d35 55%, #2a5c40);
+  background: linear-gradient(135deg, #1a2f45, #2a4a6f 55%, #3a5a7f);
 }
 
 .list-head {
@@ -499,7 +499,7 @@ body {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 1px 0 rgba(12, 31, 22, 0.03);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
   transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
   animation: cardIn 0.4s ease both;
 }
@@ -734,7 +734,7 @@ body {
 .lang-switch button.is-active {
   background: var(--card);
   color: var(--accent);
-  box-shadow: 0 1px 3px rgba(12, 31, 22, 0.08);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 .lang-switch button {
   position: relative;

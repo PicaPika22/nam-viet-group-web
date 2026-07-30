@@ -1,21 +1,88 @@
 ---
-layout: layouts/leadership-list.njk
-title: Leadership
-permalink: /about/leadership/
+layout: layouts/base.njk
+pageLayout: inner
+showLoader: false
+showRail: false
+eleventyComputed:
+  title: "Ban lãnh đạo"
 ---
+<div class="leadership-page">
+<section class="leadership-hero">
+  <div class="container">
+    <nav class="breadcrumb leadership-hero__crumb" aria-label="Breadcrumb">
+      <a href="{{ '/' | url }}">
+        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
+        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
+        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ '/about/' | url }}">
+        <span class="lang en">About</span>
+        <span class="lang vi">Giới thiệu</span>
+        <span class="lang zh">关于</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <span>
+        <span class="lang en">Leadership</span>
+        <span class="lang vi">Ban lãnh đạo</span>
+        <span class="lang zh">领导团队</span>
+      </span>
+    </nav>
+  </div>
+</section>
+<section class="leadership-body">
+{% include "partials/leadership-gallery.njk" %}
 
-{% include "partials/leadership-orgchart.njk" %}
+<aside class="leadership-help reveal" aria-label="How to reach us">
+  <h2 class="leadership-help__title">
+    <span class="lang en">Looking for the right contact?</span>
+    <span class="lang vi">Bạn cần liên hệ đúng bộ phận?</span>
+    <span class="lang zh">需要联系对应部门？</span>
+  </h2>
+  <ul class="leadership-help__list" role="list">
+    <li>
+      <a href="{{ '/contact/' | url }}">
+        <span class="lang en">Partnerships</span>
+        <span class="lang vi">Quan hệ đối tác</span>
+        <span class="lang zh">合作伙伴</span>
+      </a>
+    </li>
+    <li>
+      <a href="mailto:partner@namvietgroup.vn">
+        <span class="lang en">Media</span>
+        <span class="lang vi">Truyền thông</span>
+        <span class="lang zh">媒体联络</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{ '/careers/' | url }}">
+        <span class="lang en">Careers</span>
+        <span class="lang vi">Tuyển dụng</span>
+        <span class="lang zh">招聘</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{ '/about/' | url }}">
+        <span class="lang en">Company information</span>
+        <span class="lang vi">Thông tin doanh nghiệp</span>
+        <span class="lang zh">企业信息</span>
+      </a>
+    </li>
+  </ul>
+</aside>
 
-<p class="page-actions reveal">
-  <a class="btn btn--solid" href="{{ '/contact/' | url }}">
+<p class="page-actions page-actions--leadership reveal">
+  <a class="btn btn--solid" href="{{ '/#milestones' | url }}">
     <span class="btn__dot"></span>
-    <span class="lang en">Connect with the Group</span>
-    <span class="lang vi">Kết nối với Tập đoàn</span>
-    <span class="lang zh">联系集团</span>
+    <span class="lang en">Explore our history</span>
+    <span class="lang vi">Khám phá lịch sử phát triển</span>
+    <span class="lang zh">探索发展历程</span>
   </a>
-  <a class="btn btn--outline btn--dark" href="{{ '/about/' | url }}">
-    <span class="lang en">About the Group</span>
-    <span class="lang vi">Về Tập đoàn</span>
-    <span class="lang zh">关于集团</span>
+  <a class="btn btn--outline btn--light" href="{{ '/companies/' | url }}">
+    <span class="lang en">Nam Viet ecosystem</span>
+    <span class="lang vi">Tìm hiểu hệ sinh thái Nam Việt</span>
+    <span class="lang zh">了解南越生态</span>
   </a>
 </p>
+</section>
+</div>

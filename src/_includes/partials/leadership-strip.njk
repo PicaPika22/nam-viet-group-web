@@ -1,0 +1,114 @@
+{#
+  Leadership strip — navy vertical panels by band flags (isChairman / isGroupSupport / isMemberDirector).
+  Chairman always centered as apex.
+  NEVER put member-director IDs (incl. nguyen-van-hung / Cái Lân) in support row —
+  see locks in src/_data/leadership.js.
+  Optional: stripCompact (bool) — tighter for About embed.
+  Optional: stripShowBands (bool) — light labels above each band row.
+  Note: loop var must NOT be named `tier` — Nunjucks resolves person.tier as person[tier].
+#}
+<section class="leader-strip{% if stripCompact %} leader-strip--compact{% endif %}" aria-label="Leadership organization">
+  <div class="leader-strip__bg" aria-hidden="true">
+    <img src="{{ '/assets/img/leadership-map.jpg' | url }}" alt="" loading="lazy" width="2048" height="1152" decoding="async">
+    <div class="leader-strip__veil"></div>
+  </div>
+
+  <div class="leader-strip__inner">
+    <header class="leader-strip__head{% if not stripCompact %} leader-strip__head--page{% endif %} reveal">
+      {% if not stripCompact %}
+      <p class="eyebrow eyebrow--light">
+        <span class="lang en">Our Leadership</span>
+        <span class="lang vi">Ban lãnh đạo</span>
+        <span class="lang zh">领导团队</span>
+      </p>
+      <h1 class="leader-strip__title">
+        <span class="lang en">Leadership that steers the Group</span>
+        <span class="lang vi">Ban lãnh đạo định hướng Tập đoàn</span>
+        <span class="lang zh">以领导力掌舵集团</span>
+      </h1>
+      <p class="leader-strip__lead">
+        <span class="lang en">Charter capital VND 542 billion — feed, trading, manufacturing and logistics under one leadership.</span>
+        <span class="lang vi">Vốn điều lệ 542 tỷ đồng — thức ăn chăn nuôi, thương mại, sản xuất và logistics dưới một ban lãnh đạo.</span>
+        <span class="lang zh">注册资本5,420亿越南盾——饲料、贸易、制造与物流，统一领导。</span>
+      </p>
+      {% else %}
+      <p class="eyebrow eyebrow--light">
+        <span class="lang en">Organizational chart</span>
+        <span class="lang vi">Sơ đồ tổ chức</span>
+        <span class="lang zh">组织架构</span>
+      </p>
+      {% endif %}
+      <p class="leader-strip__count">
+        <span class="lang en">{{ leadership | length }} executives · Group &amp; member units</span>
+        <span class="lang vi">{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên</span>
+        <span class="lang zh">集团及成员企业 {{ leadership | length }} 位高管</span>
+      </p>
+    </header>
+
+    {# Rows: 1 chairman · 2 group-support · 3 member-director — CSS still uses --t1/2/3 #}
+    {% for level in [1, 2, 3] %}
+    {% if stripShowBands %}
+    <p class="leader-strip__band" aria-hidden="true">
+      {% if level == 1 %}
+      <span class="lang en">Chairman</span>
+      <span class="lang vi">Chủ tịch</span>
+      <span class="lang zh">董事长</span>
+      {% elif level == 2 %}
+      <span class="lang en">Group support</span>
+      <span class="lang vi">Hỗ trợ Tập đoàn</span>
+      <span class="lang zh">集团支持</span>
+      {% else %}
+      <span class="lang en">Member companies</span>
+      <span class="lang vi">Công ty thành viên</span>
+      <span class="lang zh">成员企业</span>
+      {% endif %}
+    </p>
+    {% endif %}
+    <ul class="leader-strip__row leader-strip__row--t{{ level }}" role="list">
+      {% for person in leadership %}
+        {% set inRow = (level == 1 and person.isChairman) or (level == 2 and person.isGroupSupport) or (level == 3 and person.isMemberDirector) %}
+        {% if inRow %}
+        <li>
+          <a
+            class="leader-panel{% if level == 1 %} leader-panel--apex{% endif %} reveal"
+            href="{{ ('/about/leadership/' + person.id + '/') | url }}"
+            data-delay="{{ (level - 1) * 100 + (loop.index0 % 5) * 50 }}"
+          >
+            <div class="leader-panel__media" aria-hidden="true">
+              <img
+                src="{{ person.image | url }}"
+                alt=""
+                loading="{% if level == 1 %}eager{% else %}lazy{% endif %}"
+                width="900"
+                height="1200"
+                decoding="async"
+              >
+              <span class="leader-panel__grade"></span>
+              <span class="leader-panel__fade"></span>
+            </div>
+            <span class="leader-panel__meta">
+              <span class="leader-panel__name">
+                <span class="lang en">{{ person.name.en }}</span>
+                <span class="lang vi">{{ person.name.vi }}</span>
+                <span class="lang zh">{{ person.name.zh }}</span>
+              </span>
+              <span class="leader-panel__role">
+                <span class="lang en">{{ person.role.en }}</span>
+                <span class="lang vi">{{ person.role.vi }}</span>
+                <span class="lang zh">{{ person.role.zh }}</span>
+              </span>
+              <span class="leader-panel__cue" aria-hidden="true">
+                <span class="lang en">View profile</span>
+                <span class="lang vi">Xem hồ sơ</span>
+                <span class="lang zh">查看简介</span>
+                <span>→</span>
+              </span>
+            </span>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</section>

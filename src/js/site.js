@@ -206,5 +206,12 @@
     }
     const hash = window.location.hash.replace("#", "");
     if (hash) setActive(hash);
+
+    const syncStuck = () => {
+      const stuck = subnav.getBoundingClientRect().top <= (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 68) + 1;
+      subnav.classList.toggle("is-stuck", stuck);
+    };
+    syncStuck();
+    window.addEventListener("scroll", syncStuck, { passive: true });
   }
 })();

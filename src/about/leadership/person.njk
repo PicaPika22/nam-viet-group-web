@@ -39,8 +39,8 @@ eleventyComputed:
       <img
         src="{{ person.image | url }}"
         alt="{{ person.name.en }}"
-        width="900"
-        height="1200"
+        width="1800"
+        height="2250"
         loading="eager"
         decoding="async"
       >
@@ -110,7 +110,7 @@ eleventyComputed:
         <li>
           <a class="leader-card" href="{{ ('/about/leadership/' + p.id + '/') | url }}">
             <div class="leader-card__media">
-              <img src="{{ p.image | url }}" alt="" loading="lazy" width="900" height="1200">
+              <img src="{{ p.image | url }}" alt="" loading="lazy" width="1800" height="2250">
             </div>
             <span class="leader-card__name">
               <span class="lang en">{{ p.name.en }}</span>

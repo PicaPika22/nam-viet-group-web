@@ -25,6 +25,12 @@
       "skillPath": "skills/i18n-localization/SKILL.md",
       "computedHash": "ae8e1840d716a6e700eac1d6bc3d05d2f7270f7dc7fb9b47eca98c840e818e5d"
     },
+    "karpathy-guidelines": {
+      "source": "szkocot/andrej-karpathy-skills",
+      "sourceType": "github",
+      "skillPath": "skills/karpathy-guidelines/SKILL.md",
+      "computedHash": "0ec1641120accbb458780e0bd19a50a4182f2b97863e90851b91307f29802c9f"
+    },
     "seo": {
       "source": "addyosmani/web-quality-skills",
       "sourceType": "github",

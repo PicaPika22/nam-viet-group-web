@@ -252,14 +252,19 @@
     const decimals = parseInt(el.dataset.decimals || "0", 10);
     const duration = 1800;
     const start = performance.now();
+    const format = value => {
+      if (decimals > 0) return value.toFixed(decimals);
+      return Math.round(value).toLocaleString("en-US");
+    };
     const tick = now => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 4); // easeOutQuart
-      el.textContent = (target * eased).toFixed(decimals);
+      el.textContent = format(target * eased);
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   };
+  /* About: tall sections — fire when partially visible so capacity stats animate. */
   const counterIO = new IntersectionObserver(
     entries => {
       for (const e of entries) {
@@ -269,7 +274,7 @@
         }
       }
     },
-    { threshold: 0.6 }
+    { threshold: document.querySelector("[data-page-subnav]") ? 0.35 : 0.6 }
   );
   counters.forEach(el => counterIO.observe(el));
 
@@ -634,7 +639,7 @@
     activate(initial, { scrollTab: false });
   });
 
-  /* ─── Smooth anchor offset for fixed header ─── */
+  /* ─── Smooth anchor offset for fixed header (+ sticky page subnav) ─── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", ev => {
       const id = a.getAttribute("href");
@@ -642,7 +647,11 @@
       const target = document.querySelector(id);
       if (!target) return;
       ev.preventDefault();
-      const top = target.getBoundingClientRect().top + window.scrollY - (id === "#hero" ? 0 : 64);
+      const headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 68;
+      const subnav = document.querySelector("[data-page-subnav]");
+      const subnavH = subnav ? subnav.getBoundingClientRect().height : 0;
+      const offset = id === "#hero" ? 0 : headerH + subnavH + 8;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: prefersReduced ? "auto" : "smooth" });
       history.replaceState(null, "", id);
     });

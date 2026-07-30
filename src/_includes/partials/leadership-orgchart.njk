@@ -1,5 +1,5 @@
 {#
-  Organizational chart — tiers 1 (chairman) / 2 / 3 from leadership[].tier
+  Organizational chart — rows from band flags (isChairman / isGroupSupport / isMemberDirector).
   Note: loop var must NOT be named `tier` — Nunjucks resolves person.tier as person[tier].
 #}
 <div class="orgchart reveal">
@@ -19,7 +19,8 @@
   {% for level in [1, 2, 3] %}
   <ul class="orgchart__row orgchart__row--t{{ level }}" aria-label="Level {{ level }}">
     {% for person in leadership %}
-      {% if person.tier == level %}
+      {% set inRow = (level == 1 and person.isChairman) or (level == 2 and person.isGroupSupport) or (level == 3 and person.isMemberDirector) %}
+      {% if inRow %}
       <li>
         <a class="orgchart__card{% if level == 1 %} orgchart__card--apex{% endif %}" href="{{ ('/about/leadership/' + person.id + '/') | url }}">
           <div class="orgchart__media">

@@ -12,3 +12,5 @@ node_modules/
 .vscode/
 *.local
 _site/
+.vercel
+.env*

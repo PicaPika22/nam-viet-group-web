@@ -1,0 +1,100 @@
+{#
+  About leadership teaser — gallery language, no full roster detail.
+  All deep profiles live on /about/leadership/.
+  Bands from leadership.js flags only (never invent HĐQT/BĐH).
+#}
+{% set chairman = null %}
+{% for person in leadership %}
+  {% if person.isChairman and not chairman %}{% set chairman = person %}{% endif %}
+{% endfor %}
+
+<aside class="leader-teaser reveal" aria-label="Leadership preview">
+  <div class="leader-teaser__bg" aria-hidden="true">
+    <img src="{{ '/assets/img/leadership-dark.jpg' | url }}" alt="" loading="lazy" width="4096" height="2294" decoding="async">
+    <div class="leader-teaser__veil"></div>
+  </div>
+
+  <div class="leader-teaser__inner">
+    {% if chairman %}
+    <a class="leader-teaser__apex" href="{{ '/about/leadership/' | url }}">
+      <div class="leader-teaser__apex-media">
+        <img
+          src="{{ chairman.image | url }}"
+          alt=""
+          loading="lazy"
+          width="900"
+          height="1125"
+          decoding="async"
+          style="{% if chairman.objectPosition %}object-position: {{ chairman.objectPosition }};{% endif %}"
+        >
+      </div>
+      <div class="leader-teaser__apex-copy">
+        <p class="leader-teaser__eyebrow">
+          <span class="lang en">Chairman</span>
+          <span class="lang vi">Chủ tịch</span>
+          <span class="lang zh">主席</span>
+        </p>
+        <p class="leader-teaser__name">
+          <span class="lang en">{{ chairman.name.en }}</span>
+          <span class="lang vi">{{ chairman.name.vi }}</span>
+          <span class="lang zh">{{ chairman.name.zh }}</span>
+        </p>
+        <p class="leader-teaser__role">
+          <span class="lang en">{{ chairman.role.en }}</span>
+          <span class="lang vi">{{ chairman.role.vi }}</span>
+          <span class="lang zh">{{ chairman.role.zh }}</span>
+        </p>
+        <span class="leader-teaser__cue">
+          <span class="lang en">Open leadership page</span>
+          <span class="lang vi">Mở trang Ban lãnh đạo</span>
+          <span class="lang zh">打开领导团队页</span>
+          <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </a>
+    {% endif %}
+
+    <ul class="leader-teaser__faces" role="list">
+      {% for person in leadership %}
+        {% if not person.isChairman %}
+        <li>
+          <a
+            class="leader-teaser__face"
+            href="{{ '/about/leadership/' | url }}"
+            title="{{ person.name.en }}"
+          >
+            <img
+              src="{{ person.image | url }}"
+              alt=""
+              loading="lazy"
+              width="360"
+              height="450"
+              decoding="async"
+              style="{% if person.objectPosition %}object-position: {{ person.objectPosition }};{% endif %}"
+            >
+            <span class="leader-teaser__face-name">
+              <span class="lang en">{{ person.name.en }}</span>
+              <span class="lang vi">{{ person.name.vi }}</span>
+              <span class="lang zh">{{ person.name.zh }}</span>
+            </span>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <p class="leader-teaser__foot">
+      <span class="leader-teaser__count">
+        <span class="lang en">{{ leadership | length }} executives · Group &amp; member units</span>
+        <span class="lang vi">{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên</span>
+        <span class="lang zh">集团及成员企业 {{ leadership | length }} 位高管</span>
+      </span>
+      <a class="leader-teaser__more" href="{{ '/about/leadership/' | url }}">
+        <span class="lang en">Full roster &amp; profiles</span>
+        <span class="lang vi">Danh sách &amp; hồ sơ đầy đủ</span>
+        <span class="lang zh">完整名录与简介</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
+</aside>
