@@ -30,6 +30,8 @@
 
 {% include "partials/footer.njk" %}
 
+<script src="{{ '/js/vendor/gsap.min.js' | url }}"></script>
+<script src="{{ '/js/vendor/ScrollTrigger.min.js' | url }}"></script>
 <script src="{{ '/js/main.js' | url }}"></script>
 <script src="{{ '/js/site.js' | url }}"></script>
 <script type="application/json" id="searchIndex">{{ searchIndex | dump | safe }}</script>

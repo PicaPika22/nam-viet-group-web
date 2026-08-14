@@ -4,6 +4,7 @@
   "private": true,
   "description": "Nam Viet Group corporate website — chapter storytelling + multi-page static site",
   "scripts": {
+    "postinstall": "node scripts/copy-gsap-vendor.js",
     "dev": "eleventy --serve --port=8125",
     "cms": "node scripts/admin-api.js",
     "dev:cms": "npx --yes concurrently -k -n web,cms -c green,cyan \"npm run dev\" \"npm run cms\"",
@@ -17,6 +18,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.15.0",
     "multer": "^2.2.0"
   },
   "devDependencies": {

@@ -192,8 +192,19 @@
   syncDropdownChildActive();
   window.addEventListener("hashchange", syncDropdownChildActive);
 
+  /* ─── GSAP scroll storytelling (progressive enhancement) ─── */
+  const gsapReady = !prefersReduced && window.gsap && window.ScrollTrigger;
+  if (gsapReady) gsap.registerPlugin(ScrollTrigger);
+  // Groups GSAP owns outright (batched stagger + back.out, per design-system motion spec).
+  // Pulled out of the plain CSS reveal system below so the two never animate the same element.
+  const gsapStaggerGroups = gsapReady
+    ? [...document.querySelectorAll(".stats, .manu__stats, .products__grid")]
+    : [];
+  const gsapStaggerEls = new Set(gsapStaggerGroups.flatMap(g => [...g.children]));
+
   /* ─── Reveal on scroll ─── */
-  const revealTargets = [...document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title")];
+  const revealTargets = [...document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title")]
+    .filter(el => !gsapStaggerEls.has(el));
   revealTargets.forEach(el => {
     const d = el.dataset.delay;
     if (d) el.style.setProperty("--d", `${d}ms`);
@@ -244,6 +255,54 @@
     requestAnimationFrame(syncReveals);
   });
   window.addEventListener("scroll", onRevealScroll, { passive: true });
+
+  if (gsapReady && gsapStaggerGroups.length) {
+    gsapStaggerGroups.forEach(group => {
+      const items = [...group.children];
+      if (!items.length) return;
+      items.forEach(el => { el.style.transition = "none"; });
+      gsap.set(items, { opacity: 0, y: 30, scale: 0.94 });
+      ScrollTrigger.batch(items, {
+        start: "top 92%",
+        once: true,
+        onEnter: batch =>
+          gsap.to(batch, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.65,
+            ease: "back.out(1.4)",
+            stagger: 0.08,
+          }),
+      });
+    });
+  }
+
+  /* ─── GSAP scroll-scrubbed parallax (replaces the manual rAF version below) ─── */
+  if (gsapReady) {
+    document.querySelectorAll("[data-parallax]").forEach(bg => {
+      const img = bg.querySelector("img");
+      if (!img) return;
+      const speed = parseFloat(bg.dataset.parallax) || 0.12;
+      gsap.to(img, {
+        yPercent: speed * 100,
+        ease: "none",
+        scrollTrigger: { trigger: bg, start: "top bottom", end: "bottom top", scrub: true },
+      });
+    });
+    document.querySelectorAll("[data-parallax-img] img").forEach(img => {
+      gsap.fromTo(
+        img,
+        { yPercent: 6, scale: 1.06 },
+        {
+          yPercent: -6,
+          scale: 1.06,
+          ease: "none",
+          scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true },
+        }
+      );
+    });
+  }
 
   /* ─── Animated counters ─── */
   const counters = document.querySelectorAll("[data-count]");
@@ -517,8 +576,8 @@
   const onScrollFx = () => {
     const vh = window.innerHeight;
 
-    if (!prefersReduced) {
-      // Section background parallax
+    if (!prefersReduced && !gsapReady) {
+      // Section background parallax (GSAP ScrollTrigger owns this when available — see above)
       for (const bg of parallaxBgs) {
         const rect = bg.parentElement.getBoundingClientRect
           ? bg.getBoundingClientRect()
