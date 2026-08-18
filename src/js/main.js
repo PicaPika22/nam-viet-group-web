@@ -203,7 +203,7 @@
   const gsapStaggerEls = new Set(gsapStaggerGroups.flatMap(g => [...g.children]));
 
   /* ─── Reveal on scroll ─── */
-  const revealTargets = [...document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero__title")]
+  const revealTargets = [...document.querySelectorAll(".reveal, .reveal-img, .chapter__title, .hero-nv__title")]
     .filter(el => !gsapStaggerEls.has(el));
   revealTargets.forEach(el => {
     const d = el.dataset.delay;
@@ -361,8 +361,7 @@
             if (railIndex) railIndex.textContent = e.target.dataset.chapter;
             updateRailLabel();
             const dark = e.target.classList.contains("chapter--dark") ||
-                         e.target.classList.contains("cta") ||
-                         e.target.classList.contains("hero");
+                         e.target.classList.contains("cta");
             rail.classList.toggle("rail--light", dark);
           }
         }

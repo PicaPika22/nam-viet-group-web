@@ -1,43 +1,71 @@
 <!-- ═════════════ 01 · HERO ═════════════ -->
-<section class="hero chapter" id="hero" data-chapter="01" data-label-en="INTRO" data-label-zh="开篇" data-label-vi="MỞ ĐẦU">
-  <div class="hero__bg" data-parallax="0.25">
-    <img src="{{ '/assets/img/hero.png' | url }}" alt="" class="hero__img" id="heroImg">
-    <div class="hero__veil"></div>
-  </div>
-  <div class="hero__content container">
-    <p class="eyebrow eyebrow--light reveal">
-      <span class="lang en">Nam Viet Group</span><span class="lang vi">Tập đoàn Nam Việt</span><span class="lang zh">南越集团</span>
-    </p>
-    <h1 class="hero__title">
-      <span class="lang en">
-        <span class="line-mask"><span class="line">Feeding Growth.</span></span>
-        <span class="line-mask"><span class="line line--accent">Connecting the Future.</span></span>
+<section class="hero-nv chapter" id="hero" data-chapter="01" data-label-en="INTRO" data-label-zh="开篇" data-label-vi="MỞ ĐẦU">
+  <div class="hero-nv__scene" aria-hidden="true">
+    <div class="hero-nv__art">
+      <img src="{{ '/assets/img/hero-chuan/rect-02.png' | url }}" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+      <span class="hero-nv__ring">
+        <img src="{{ '/assets/img/logo.png' | url }}" alt="" width="120" height="120">
       </span>
-      <span class="lang vi">
-        <span class="line-mask"><span class="line">Nuôi dưỡng tăng trưởng.</span></span>
-        <span class="line-mask"><span class="line line--accent">Kết nối tương lai.</span></span>
-      </span>
-      <span class="lang zh">
-        <span class="line-mask"><span class="line">滋养增长。</span></span>
-        <span class="line-mask"><span class="line line--accent">连接未来。</span></span>
-      </span>
-    </h1>
-    <p class="hero__desc reveal" data-delay="500">
-      <span class="lang en">For more than two decades, Nam Viet Group has developed an integrated agricultural ecosystem that connects manufacturing, logistics, port infrastructure and global partnerships — delivering sustainable value across every stage of the supply chain.</span>
-      <span class="lang vi">Hơn hai thập kỷ xây dựng hệ sinh thái nông nghiệp toàn diện —<br class="br-md"> kết nối sản xuất, logistics, kho cảng và đối tác toàn cầu.</span>
-      <span class="lang zh">二十多年来，南越集团打造了覆盖生产、物流、港口基础设施与全球伙伴的农业一体化生态系统——在供应链每一环节创造可持续价值。</span>
-    </p>
-    <div class="reveal" data-delay="700">
-      <a href="{{ '/#about' | url }}" class="btn btn--light">
-        <span class="btn__dot"></span>
-        <span class="lang en">Explore Our Journey</span><span class="lang vi">Khám phá hành trình</span><span class="lang zh">探索我们的旅程</span>
-      </a>
     </div>
   </div>
-  <a href="{{ '/#about' | url }}" class="hero__scroll" aria-label="Scroll">
-    <span class="lang en">Scroll to discover</span><span class="lang vi">Cuộn để khám phá</span><span class="lang zh">滚动探索</span>
-    <i></i>
-  </a>
+
+  <div class="container hero-nv__grid">
+    <div class="hero-nv__copy">
+      <p class="eyebrow reveal">
+        <span class="lang en">Nam Viet Group</span>
+        <span class="lang vi">Tập đoàn Nam Việt</span>
+        <span class="lang zh">南越集团</span>
+      </p>
+
+      <h1 class="hero-nv__title">
+        <span class="lang en">
+          <span class="line-mask"><span class="line">Feeding Growth.</span></span>
+          <span class="line-mask"><span class="line line--accent">Connecting the Future.</span></span>
+        </span>
+        <span class="lang vi">
+          <span class="line-mask"><span class="line">Nuôi dưỡng tăng trưởng.</span></span>
+          <span class="line-mask"><span class="line line--accent">Kết nối tương lai.</span></span>
+        </span>
+        <span class="lang zh">
+          <span class="line-mask"><span class="line">滋养增长。</span></span>
+          <span class="line-mask"><span class="line line--accent">连接未来。</span></span>
+        </span>
+      </h1>
+
+      <p class="lead hero-nv__desc reveal" data-delay="120">
+        <span class="lang en">For more than two decades, Nam Viet Group has developed an integrated agricultural ecosystem that connects manufacturing, logistics, port infrastructure and global partnerships — delivering sustainable value across every stage of the supply chain.</span>
+        <span class="lang vi">Hơn hai thập kỷ xây dựng hệ sinh thái nông nghiệp toàn diện — kết nối sản xuất, logistics, kho cảng và đối tác toàn cầu.</span>
+        <span class="lang zh">二十多年来，南越集团打造了覆盖生产、物流、港口基础设施与全球伙伴的农业一体化生态系统——在供应链每一环节创造可持续价值。</span>
+      </p>
+
+      <div class="hero-nv__actions reveal" data-delay="200">
+        <a href="{{ '/#about' | url }}" class="btn btn--solid hero-nv__cta">
+          <span class="lang en">Explore Our Journey</span>
+          <span class="lang vi">Khám phá hành trình</span>
+          <span class="lang zh">探索我们的旅程</span>
+        </a>
+        <a href="{{ '/#ecosystem' | url }}" class="btn btn--dark btn--outline hero-nv__cta">
+          <span class="lang en">Explore the ecosystem</span>
+          <span class="lang vi">Khám phá hệ sinh thái</span>
+          <span class="lang zh">探索生态体系</span>
+          <span class="hero-nv__cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hero-nv__foot">
+    <a href="{{ '/#about' | url }}" class="hero-nv__scroll reveal" data-delay="240">
+      <span class="hero-nv__scroll-dot" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16" focusable="false"><path d="M12 4.5v15M5.5 13l6.5 6.5L18.5 13"/></svg>
+      </span>
+      <span class="hero-nv__scroll-text">
+        <span class="lang en">Scroll to explore</span>
+        <span class="lang vi">Cuộn để khám phá</span>
+        <span class="lang zh">向下滚动探索</span>
+      </span>
+    </a>
+  </div>
 </section>
 
 <!-- ═════════════ 02 · ABOUT ═════════════ -->

@@ -544,9 +544,10 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   background-position: center;
   background-repeat: no-repeat;
 }
-.lang-flag--en { background-image: url("/assets/img/flags/en.png"); }
-.lang-flag--vi { background-image: url("/assets/img/flags/vi.png"); }
-.lang-flag--zh { background-image: url("/assets/img/flags/zh.png"); }
+/* Relative so the paths survive a deploy under a pathPrefix (CSS is copied verbatim). */
+.lang-flag--en { background-image: url("../assets/img/flags/en.png"); }
+.lang-flag--vi { background-image: url("../assets/img/flags/vi.png"); }
+.lang-flag--zh { background-image: url("../assets/img/flags/zh.png"); }
 .lang-switch__menu {
   position: absolute;
   top: calc(100% + 0.4rem);
@@ -1235,6 +1236,327 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   .hero__scroll { display: none; }
   .hero__content {
     padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Home hero — Figma 22:2 stacked layers (mint / leaf / photo insets / ring).
+   Brighter mint-white surface scoped to the hero only; the rest of the site keeps --paper. */
+/* Home hero — one composited scene image, copy layered over it. Brighter,
+   mint-white surface (Figma 22:2) scoped to the hero only — the rest of the
+   site keeps --paper. */
+.hero-nv {
+  --hero-surface: #ffffff;
+  --hero-mint: #f4f7f5;
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  background: var(--hero-mint);
+  padding-block: calc(var(--header-h) + clamp(1.4rem, 4vh, 2.6rem)) clamp(1.5rem, 4vh, 2.75rem);
+  overflow: clip;
+}
+.hero-nv__scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+}
+/* Sized to cover the scene while keeping the artwork's exact aspect ratio, so
+   percentage-positioned children (the ring) stay locked to the art at any viewport. */
+.hero-nv__art {
+  --art-ar: 1.7768;
+  --art-x: 50%;
+  --art-zoom: 1;
+  position: absolute;
+  top: 50%;
+  left: var(--art-x);
+  translate: -50% -50%;
+  width: calc(max(100cqw, 100cqh * var(--art-ar)) * var(--art-zoom));
+  height: calc(max(100cqh, 100cqw / var(--art-ar)) * var(--art-zoom));
+}
+.hero-nv__art > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Guarantees contrast for the copy on the left flank, over the varying artwork. */
+.hero-nv__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--hero-surface) 68%, transparent) 0 10%,
+      color-mix(in srgb, var(--hero-surface) 38%, transparent) 28%,
+      transparent 50%
+    ),
+    radial-gradient(
+      130% 32% at 38% 100%,
+      color-mix(in srgb, var(--hero-surface) 70%, transparent) 0 32%,
+      color-mix(in srgb, var(--hero-surface) 30%, transparent) 62%,
+      transparent 100%
+    ),
+    /* Right-flank vignette so white/glow accents over the art stay readable. */
+    radial-gradient(
+      32% 60% at 100% 44%,
+      color-mix(in srgb, var(--green-900) 40%, transparent) 0 34%,
+      color-mix(in srgb, var(--green-900) 16%, transparent) 66%,
+      transparent 100%
+    );
+}
+.hero-nv__ring {
+  position: absolute;
+  left: 69.6%;
+  top: 52.2%;
+  z-index: 2;
+  width: 11.5%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--white) 96%, transparent) 0 38%,
+    color-mix(in srgb, var(--accent) 80%, transparent) 50%,
+    color-mix(in srgb, var(--accent) 32%, transparent) 64%,
+    transparent 78%
+  );
+}
+.hero-nv__ring::before {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--white) 78%, transparent);
+}
+.hero-nv__ring img {
+  width: 62%;
+  height: auto;
+}
+.hero-nv__grid {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.hero-nv__copy {
+  position: relative;
+  max-width: min(40rem, 100%);
+}
+.hero-nv__copy::before {
+  content: "";
+  position: absolute;
+  inset: -1.25rem -2.5rem -1.5rem -1.25rem;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--hero-surface) 90%, transparent) 0 62%,
+    color-mix(in srgb, var(--hero-mint) 40%, transparent) 82%,
+    transparent
+  );
+}
+.hero-nv__copy .eyebrow {
+  margin-bottom: clamp(0.85rem, 2vw, 1.25rem);
+}
+.hero-nv__copy .eyebrow::before {
+  display: none;
+}
+
+.hero-nv__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: none;
+  /* Sized to the ~40rem copy column, not the old full-bleed hero's width —
+     the longest EN/VI line must stay under ~630px so the nowrap line-mask
+     below never clips it. */
+  font-size: calc(clamp(2.4rem, 1.6rem + 2.6vw, 4.1rem) * var(--title-scale, 1));
+  line-height: 1.06;
+  letter-spacing: var(--title-track, -0.02em);
+  margin-bottom: clamp(1.2rem, 3vw, 2.4rem);
+}
+.hero-nv .line--accent {
+  /* Origin used lime on a dark photo; mint surface needs darker green. */
+  color: var(--green-600);
+}
+[data-lang="vi"] .hero-nv__title { line-height: 1.14; }
+[data-lang="zh"] .hero-nv__title {
+  font-family: "Noto Sans SC", var(--font-body);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+@media (min-width: 1101px) {
+  .hero-nv__title .line { white-space: nowrap; }
+}
+@media (max-width: 1280px) {
+  .hero-nv__title {
+    font-size: calc(clamp(2.1rem, 4.2vw + 0.2rem, 4.8rem) * var(--title-scale, 1));
+  }
+}
+
+.hero-nv__desc {
+  max-width: 34ch;
+  color: var(--ink-soft);
+  font-size: clamp(0.95rem, 1.4vw + 0.35rem, 1.15rem);
+  margin-bottom: 0;
+}
+.hero-nv__em {
+  color: var(--green-600);
+  font-weight: 600;
+}
+.hero-nv__actions {
+  margin-top: clamp(1.2rem, 3vw, 1.9rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-nv__cta {
+  padding-block: 0.72rem;
+  font-size: 0.8rem;
+}
+.hero-nv__cta:focus-visible {
+  outline: 3px solid var(--green-900);
+  outline-offset: 3px;
+}
+.hero-nv__cta-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.hero-nv__foot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 4vw, 3rem);
+  margin-top: clamp(1.4rem, 4vh, 2.6rem);
+}
+.hero-nv__scroll {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink-soft);
+}
+.hero-nv__scroll:focus-visible {
+  outline: 3px solid var(--green-900);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.hero-nv__scroll-dot {
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);
+  display: grid;
+  place-items: center;
+  color: var(--green-600);
+}
+.hero-nv__scroll-dot svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: heroNvBob 1.9s var(--ease-soft) infinite;
+}
+@keyframes heroNvBob {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(2px); }
+}
+.hero-nv__scroll-text {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+[data-lang="vi"] .hero-nv__scroll-text { letter-spacing: 0.1em; }
+
+/* Portrait tablet cannot cover a 1700×925 frame and still show mint+leaf.
+   Contain the full Figma board; mint fills the letterbox. */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .hero-nv {
+    --art-x: 50%;
+    --art-zoom: 1;
+  }
+  .hero-nv__art {
+    width: calc(min(100cqw, 100cqh * var(--art-ar)) * var(--art-zoom));
+    height: calc(min(100cqh, 100cqw / var(--art-ar)) * var(--art-zoom));
+  }
+  .hero-nv__copy {
+    max-width: min(28rem, 46%);
+  }
+}
+
+/* Stack only when the copy column cannot share the fold with the leaf. */
+@media (max-width: 760px) {
+  .hero-nv {
+    --art-x: 64%;
+    --art-zoom: 1.12;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding-block: calc(var(--header-h) + 0.35rem) clamp(1.75rem, 5vw, 2.75rem);
+  }
+  .hero-nv__scene {
+    order: 1;
+    position: relative;
+    inset: auto;
+    height: min(42svh, 18rem);
+    overflow: hidden;
+    container-type: size;
+  }
+  .hero-nv__scene::after {
+    display: none;
+  }
+  .hero-nv__grid {
+    order: 2;
+    display: block;
+    padding-top: clamp(1.4rem, 4vw, 2rem);
+    background: var(--hero-mint);
+  }
+  .hero-nv__copy::before { display: none; }
+  .hero-nv__copy {
+    max-width: none;
+  }
+  .hero-nv__desc {
+    max-width: 46ch;
+  }
+  .hero-nv__foot {
+    order: 3;
+    margin-top: clamp(1.5rem, 4vw, 2.25rem);
+  }
+}
+@media (max-width: 560px) {
+  .hero-nv {
+    --art-x: 66%;
+    --art-zoom: 1.18;
+  }
+  .hero-nv__art {
+    height: min(36svh, 14.5rem);
+  }
+  .hero-nv__title {
+    font-size: clamp(1.85rem, 8.4vw, 2.4rem);
+  }
+  .hero-nv__actions .btn {
+    flex: 1 1 100%;
+  }
+}
+@media (max-height: 720px) {
+  .hero-nv__scroll { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-nv__scroll-dot svg {
+    animation: none !important;
   }
 }
 
@@ -2474,4 +2796,268 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 @media (max-width: 900px) {
   .about__media, .esg__media { position: static; }
   .chapter__bg img, .hero__img { will-change: auto; }
+}
+
+/* ─── Mobile concept page ─── */
+.mc {
+  padding-block: clamp(6rem, 12vh, 8rem) clamp(3rem, 8vh, 5rem);
+  background: linear-gradient(180deg, #f7faf8 0%, #edf4f1 100%);
+}
+.mc__head {
+  max-width: 64rem;
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+.mc__head .chapter__title {
+  margin-bottom: 0.8rem;
+}
+.mc__head .chapter__desc {
+  margin-inline: auto;
+}
+.mc__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+}
+.mc-phone {
+  border-radius: 32px;
+  border: 1px solid #dce8e3;
+  background: #f4f7f5;
+  color: #14221d;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 16px 34px rgba(17, 49, 36, 0.12);
+  min-height: 780px;
+}
+.mc-phone__status,
+.mc-phone__header,
+.mc-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mc-phone__status {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.mc-phone__header strong {
+  font-size: 1.1rem;
+}
+.mc-dot {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(12, 74, 52, 0.07);
+}
+.mc-hero-art {
+  position: relative;
+  height: 18.8rem;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+}
+.mc-hero-art__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #fff 0%, #ebf3f0 100%);
+}
+.mc-hero-art img:first-of-type {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 73%;
+  height: 100%;
+  object-fit: cover;
+}
+.mc-hero-art img:last-of-type {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 54%;
+  height: 68%;
+  object-fit: cover;
+  border-radius: 90px 0 90px 0;
+}
+.mc-badge {
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  background: #e2ece9;
+  color: #0c4a34;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.75rem;
+}
+.mc-phone h2 {
+  font-size: clamp(1.65rem, 2vw, 2rem);
+  line-height: 1.15;
+  margin: 0;
+}
+.mc-muted {
+  color: #4a5d57;
+  line-height: 1.5;
+  margin: 0;
+}
+.mc-cta {
+  margin-top: auto;
+  display: flex;
+  gap: 0.65rem;
+}
+.mc-cta a,
+.mc-cta button {
+  border-radius: 999px;
+  text-align: center;
+  height: 3.25rem;
+  border: 1px solid #0c4a34;
+}
+.mc-cta a {
+  flex: 1;
+  background: #0c4a34;
+  color: #fff;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+.mc-cta button {
+  width: 3.25rem;
+  color: #0c4a34;
+}
+.mc-services-head p:first-child,
+.mc-contact-head p:first-child {
+  color: #0c4a34;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+}
+.mc-services-head h2,
+.mc-contact-head h2 {
+  margin: 0.15rem 0 0.55rem;
+}
+.mc-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+}
+.mc-card {
+  border: 1px solid #e2ebe8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+}
+.mc-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mc-card div {
+  padding: 0.65rem;
+}
+.mc-card small {
+  color: #0c4a34;
+  background: #e2ece9;
+  border-radius: 4px;
+  font-size: 0.62rem;
+  padding: 0.14rem 0.35rem;
+  font-weight: 700;
+}
+.mc-card h3 {
+  margin: 0.35rem 0 0.25rem;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.mc-card p {
+  margin: 0;
+  color: #4a5d57;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+.mc-phone--dark {
+  background: #0c4a34;
+  color: #fff;
+  border-color: #184f3b;
+}
+.mc-phone--dark .mc-dot {
+  background: rgba(255, 255, 255, 0.14);
+}
+.mc-contact-head p:first-child {
+  color: #b4f53d;
+}
+.mc-contact-head p:last-child {
+  color: #a2c0b5;
+  margin: 0;
+}
+.mc-form {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.2rem;
+}
+.mc-form input,
+.mc-form textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #3d6e5c;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  padding: 0.85rem 0.9rem;
+}
+.mc-form input::placeholder,
+.mc-form textarea::placeholder {
+  color: #a2c0b5;
+}
+.mc-form textarea {
+  min-height: 6.3rem;
+  resize: vertical;
+}
+.mc-form button {
+  margin-top: 0.7rem;
+  border-radius: 999px;
+  background: #b4f53d;
+  color: #0c4a34;
+  border: 0;
+  height: 3.25rem;
+  font-weight: 800;
+}
+.mc-footer-note {
+  margin-top: auto;
+  font-size: 0.72rem;
+  color: #88a59b;
+}
+.mc-nav {
+  border-top: 1px solid rgba(20, 34, 29, 0.12);
+  padding-top: 0.8rem;
+  color: #8b9e97;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+.mc-phone--dark .mc-nav {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  color: #a2c0b5;
+}
+.mc-nav .is-active {
+  color: #0c4a34;
+}
+.mc-phone--dark .mc-nav .is-active {
+  color: #b4f53d;
+}
+@media (max-width: 1150px) {
+  .mc__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .mc__grid {
+    grid-template-columns: 1fr;
+    max-width: 29rem;
+    margin-inline: auto;
+  }
+  .mc-phone {
+    min-height: auto;
+  }
 }
