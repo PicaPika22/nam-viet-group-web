@@ -1281,7 +1281,9 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   height: 100%;
   object-fit: cover;
 }
-/* Guarantees contrast for the copy on the left flank, over the varying artwork. */
+/* Readability scrim for the copy flank — a soft, uneven falloff (a straight
+   diagonal reads as a hard rectangle laid over the art) built from a
+   diagonal wash plus an off-axis bloom so the edge curves rather than cuts. */
 .hero-nv__scene::after {
   content: "";
   position: absolute;
@@ -1291,9 +1293,16 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   background:
     linear-gradient(
       100deg,
-      color-mix(in srgb, var(--hero-surface) 68%, transparent) 0 10%,
-      color-mix(in srgb, var(--hero-surface) 38%, transparent) 28%,
-      transparent 50%
+      color-mix(in srgb, var(--hero-surface) 96%, transparent) 0 8%,
+      color-mix(in srgb, var(--hero-surface) 88%, transparent) 30%,
+      color-mix(in srgb, var(--hero-surface) 50%, transparent) 58%,
+      transparent 67%
+    ),
+    radial-gradient(
+      68% 78% at 20% 40%,
+      color-mix(in srgb, var(--hero-surface) 58%, transparent) 0%,
+      color-mix(in srgb, var(--hero-surface) 24%, transparent) 55%,
+      transparent 78%
     ),
     radial-gradient(
       130% 32% at 38% 100%,
@@ -1309,6 +1318,25 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
       transparent 100%
     );
 }
+/* Sits between the art and the scrim, over the headline only — knocks back
+   the brightest, busiest patch of mountain (sun flare) so the dark-green
+   headline never has to fight it for contrast. Backdrop-filter, not a
+   blurred duplicate image, so only this patch softens — not the whole scene. */
+.hero-nv__focus-veil {
+  position: absolute;
+  z-index: 1;
+  top: 12%;
+  left: 0;
+  width: 64%;
+  height: 40%;
+  -webkit-backdrop-filter: blur(3px) saturate(0.85) contrast(0.88);
+  backdrop-filter: blur(3px) saturate(0.85) contrast(0.88);
+  pointer-events: none;
+  /* Feathered mask — backdrop-filter otherwise cuts a hard-edged rectangle
+     into the art, which is exactly the "pasted-on box" look we're avoiding. */
+  -webkit-mask-image: radial-gradient(58% 62% at 38% 44%, #000 0%, #000 45%, transparent 92%);
+  mask-image: radial-gradient(58% 62% at 38% 44%, #000 0%, #000 45%, transparent 92%);
+}
 .hero-nv__ring {
   position: absolute;
   left: 69.6%;
@@ -1320,11 +1348,13 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   border-radius: 50%;
   display: grid;
   place-items: center;
+  /* Glow trimmed ~22% (accent stops pulled down from 80%/32%) so the ring
+     doesn't out-compete the headline as the hero's focal point. */
   background: radial-gradient(
     circle,
     color-mix(in srgb, var(--white) 96%, transparent) 0 38%,
-    color-mix(in srgb, var(--accent) 80%, transparent) 50%,
-    color-mix(in srgb, var(--accent) 32%, transparent) 64%,
+    color-mix(in srgb, var(--accent) 62%, transparent) 50%,
+    color-mix(in srgb, var(--accent) 25%, transparent) 64%,
     transparent 78%
   );
 }
@@ -1348,7 +1378,9 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 }
 .hero-nv__copy {
   position: relative;
-  max-width: min(40rem, 100%);
+  /* Keeps the headline's longest line off the art — it was reaching ~55%+
+     of the canvas and running into the brightest part of the mountain. */
+  max-width: min(46%, 40rem);
 }
 .hero-nv__copy::before {
   content: "";
@@ -1374,17 +1406,22 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: none;
-  /* Sized to the ~40rem copy column, not the old full-bleed hero's width —
-     the longest EN/VI line must stay under ~630px so the nowrap line-mask
-     below never clips it. */
-  font-size: calc(clamp(2.4rem, 1.6rem + 2.6vw, 4.1rem) * var(--title-scale, 1));
+  /* Sized to the ~46%-wide copy column, not the old full-bleed hero's width —
+     the longest EN/VI line must stay well clear of the art so the nowrap
+     line-mask below never clips it, and so it stays off the brightest patch
+     of mountain. Trimmed ~6% from the plain "fits the column" size for
+     breathing room. */
+  font-size: calc(clamp(2.08rem, 1.39rem + 2.26vw, 3.55rem) * var(--title-scale, 1));
   line-height: 1.06;
   letter-spacing: var(--title-track, -0.02em);
   margin-bottom: clamp(1.2rem, 3vw, 2.4rem);
+  /* "Feeding Growth." — the darker of the two lines, for hierarchy. */
+  color: #14362b;
 }
 .hero-nv .line--accent {
-  /* Origin used lime on a dark photo; mint surface needs darker green. */
-  color: var(--green-600);
+  /* Darker, more saturated green than --green-600 — the lighter shade lost
+     its edge against the mountain's sunlit greens and yellows. */
+  color: #0c7048;
 }
 [data-lang="vi"] .hero-nv__title { line-height: 1.14; }
 [data-lang="zh"] .hero-nv__title {
@@ -1398,12 +1435,14 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 }
 @media (max-width: 1280px) {
   .hero-nv__title {
-    font-size: calc(clamp(2.1rem, 4.2vw + 0.2rem, 4.8rem) * var(--title-scale, 1));
+    font-size: calc(clamp(1.81rem, 3.66vw + 0.19rem, 4.17rem) * var(--title-scale, 1));
   }
 }
 
 .hero-nv__desc {
-  max-width: 34ch;
+  /* ~420-450px — was stretching well past the headline's own measure into
+     the art. */
+  max-width: min(440px, 100%);
   color: var(--ink-soft);
   font-size: clamp(0.95rem, 1.4vw + 0.35rem, 1.15rem);
   margin-bottom: 0;
@@ -1516,6 +1555,9 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
     container-type: size;
   }
   .hero-nv__scene::after {
+    display: none;
+  }
+  .hero-nv__focus-veil {
     display: none;
   }
   .hero-nv__grid {
