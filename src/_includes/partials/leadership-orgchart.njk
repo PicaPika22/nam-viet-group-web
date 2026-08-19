@@ -1,0 +1,44 @@
+{#
+  Organizational chart — tiers 1 (chairman) / 2 / 3 from leadership[].tier
+  Note: loop var must NOT be named `tier` — Nunjucks resolves person.tier as person[tier].
+#}
+<div class="orgchart reveal">
+  <header class="orgchart__head">
+    <p class="eyebrow">
+      <span class="lang en">Organizational chart</span>
+      <span class="lang vi">Sơ đồ tổ chức</span>
+      <span class="lang zh">组织架构</span>
+    </p>
+    <p class="orgchart__count">
+      <span class="lang en">{{ leadership | length }} executives across the Group and member units.</span>
+      <span class="lang vi">{{ leadership | length }} lãnh đạo tại Tập đoàn và các đơn vị thành viên.</span>
+      <span class="lang zh">集团及成员企业共 {{ leadership | length }} 位高管。</span>
+    </p>
+  </header>
+
+  {% for level in [1, 2, 3] %}
+  <ul class="orgchart__row orgchart__row--t{{ level }}" aria-label="Level {{ level }}">
+    {% for person in leadership %}
+      {% if person.tier == level %}
+      <li>
+        <a class="orgchart__card{% if level == 1 %} orgchart__card--apex{% endif %}" href="{{ ('/about/leadership/' + person.id + '/') | url }}">
+          <div class="orgchart__media">
+            <img src="{{ person.image | url }}" alt="{{ person.name.en }}" loading="{% if level == 1 %}eager{% else %}lazy{% endif %}" width="900" height="1200">
+          </div>
+          <span class="orgchart__name">
+            <span class="lang en">{{ person.name.en }}</span>
+            <span class="lang vi">{{ person.name.vi }}</span>
+            <span class="lang zh">{{ person.name.zh }}</span>
+          </span>
+          <span class="orgchart__role">
+            <span class="lang en">{{ person.role.en }}</span>
+            <span class="lang vi">{{ person.role.vi }}</span>
+            <span class="lang zh">{{ person.role.zh }}</span>
+          </span>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</div>

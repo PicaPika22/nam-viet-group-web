@@ -1,0 +1,25 @@
+{# Shared trilingual helpers — EN / VI / 中文 #}
+
+{% macro text(obj, tag="span", className="") -%}
+{%- if obj -%}
+<{{ tag }}{% if className %} class="{{ className }}"{% endif %}>
+  <span class="lang en">{{ obj.en }}</span>
+  <span class="lang vi">{{ obj.vi }}</span>
+  <span class="lang zh">{{ obj.zh }}</span>
+</{{ tag }}>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro inline(obj) -%}
+{%- if obj -%}
+<span class="lang en">{{ obj.en }}</span><span class="lang vi">{{ obj.vi }}</span><span class="lang zh">{{ obj.zh }}</span>
+{%- endif -%}
+{%- endmacro %}
+
+{% macro rich(obj) -%}
+{%- if obj -%}
+<div class="lang en i18n-rich">{{ obj.en | md | safe }}</div>
+<div class="lang vi i18n-rich">{{ obj.vi | md | safe }}</div>
+<div class="lang zh i18n-rich">{{ obj.zh | md | safe }}</div>
+{%- endif -%}
+{%- endmacro %}

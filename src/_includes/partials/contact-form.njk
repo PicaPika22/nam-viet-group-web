@@ -1,0 +1,91 @@
+<form class="contact-form" id="contactForm" action="{{ site.formEndpoint }}" method="POST">
+  <input type="hidden" name="_subject" value="Nam Viet Group website inquiry">
+  <input type="text" name="_gotcha" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <div class="contact-form__grid">
+    <label>
+      <span class="lang en">{{ i18n.en.formName }}</span>
+      <span class="lang vi">{{ i18n.vi.formName }}</span>
+      <span class="lang zh">{{ i18n.zh.formName }}</span>
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formEmail }}</span>
+      <span class="lang vi">{{ i18n.vi.formEmail }}</span>
+      <span class="lang zh">{{ i18n.zh.formEmail }}</span>
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formCompany }}</span>
+      <span class="lang vi">{{ i18n.vi.formCompany }}</span>
+      <span class="lang zh">{{ i18n.zh.formCompany }}</span>
+      <input type="text" name="company" autocomplete="organization">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formPhone }}</span>
+      <span class="lang vi">{{ i18n.vi.formPhone }}</span>
+      <span class="lang zh">{{ i18n.zh.formPhone }}</span>
+      <input type="tel" name="phone" autocomplete="tel">
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formType }}</span>
+      <span class="lang vi">{{ i18n.vi.formType }}</span>
+      <span class="lang zh">{{ i18n.zh.formType }}</span>
+      <select name="inquiry_type" id="inquiryType">
+        <option value="partner"
+          data-label-en="{{ i18n.en.typePartner }}"
+          data-label-vi="{{ i18n.vi.typePartner }}"
+          data-label-zh="{{ i18n.zh.typePartner }}">{{ i18n.en.typePartner }}</option>
+        <option value="product"
+          data-label-en="{{ i18n.en.typeProduct }}"
+          data-label-vi="{{ i18n.vi.typeProduct }}"
+          data-label-zh="{{ i18n.zh.typeProduct }}">{{ i18n.en.typeProduct }}</option>
+        <option value="logistics"
+          data-label-en="{{ i18n.en.typeLogistics }}"
+          data-label-vi="{{ i18n.vi.typeLogistics }}"
+          data-label-zh="{{ i18n.zh.typeLogistics }}">{{ i18n.en.typeLogistics }}</option>
+        <option value="careers"
+          data-label-en="{{ i18n.en.typeCareers }}"
+          data-label-vi="{{ i18n.vi.typeCareers }}"
+          data-label-zh="{{ i18n.zh.typeCareers }}">{{ i18n.en.typeCareers }}</option>
+        <option value="investor"
+          data-label-en="{{ i18n.en.typeInvestor }}"
+          data-label-vi="{{ i18n.vi.typeInvestor }}"
+          data-label-zh="{{ i18n.zh.typeInvestor }}">{{ i18n.en.typeInvestor }}</option>
+        <option value="other"
+          data-label-en="{{ i18n.en.typeOther }}"
+          data-label-vi="{{ i18n.vi.typeOther }}"
+          data-label-zh="{{ i18n.zh.typeOther }}">{{ i18n.en.typeOther }}</option>
+      </select>
+    </label>
+    <label>
+      <span class="lang en">{{ i18n.en.formProduct }}</span>
+      <span class="lang vi">{{ i18n.vi.formProduct }}</span>
+      <span class="lang zh">{{ i18n.zh.formProduct }}</span>
+      <input type="text" name="product_code" id="productCode" value="{{ productCode or '' }}" placeholder="NV007">
+    </label>
+  </div>
+  <label class="contact-form__message">
+    <span class="lang en">{{ i18n.en.formMessage }}</span>
+    <span class="lang vi">{{ i18n.vi.formMessage }}</span>
+    <span class="lang zh">{{ i18n.zh.formMessage }}</span>
+    <textarea name="message" rows="5" required></textarea>
+  </label>
+  <p class="contact-form__note">
+    <span class="lang en">By submitting, you agree to our </span>
+    <span class="lang vi">Khi gửi form, bạn đồng ý với </span>
+    <span class="lang zh">提交即表示您同意我们的</span>
+    <a href="{{ '/privacy/' | url }}">
+      <span class="lang en">Privacy Policy</span>
+      <span class="lang vi">Chính sách bảo mật</span>
+      <span class="lang zh">隐私政策</span>
+    </a>.
+  </p>
+  <button type="submit" class="btn btn--dark btn--big">
+    <span class="btn__dot"></span>
+    <span class="lang en">{{ i18n.en.sendMessage }}</span>
+    <span class="lang vi">{{ i18n.vi.sendMessage }}</span>
+    <span class="lang zh">{{ i18n.zh.sendMessage }}</span>
+  </button>
+  <p class="contact-form__status" id="formStatus" role="status" aria-live="polite" hidden></p>
+</form>

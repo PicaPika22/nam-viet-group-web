@@ -1,0 +1,16 @@
+.cursor/*
+!.cursor/agents/
+!.cursor/agents/**
+!.cursor/skills/
+!.cursor/skills/**
+.codegraph/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+node_modules/
+.vscode/
+*.local
+_site/

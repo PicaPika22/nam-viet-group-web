@@ -1,0 +1,30 @@
+[
+  {
+    "id": "product-catalog",
+    "title": { "en": "Product Catalog 2026", "vi": "Catalogue sản phẩm 2026", "zh": "2026 产品目录" },
+    "category": { "en": "Products", "vi": "Sản phẩm", "zh": "产品" },
+    "file": "/assets/docs/product-catalog-2026.pdf",
+    "size": "2.4 MB"
+  },
+  {
+    "id": "iso-cert",
+    "title": { "en": "ISO · GMP · HACCP Overview", "vi": "Tổng quan ISO · GMP · HACCP", "zh": "ISO · GMP · HACCP 概览" },
+    "category": { "en": "Certifications", "vi": "Chứng nhận", "zh": "认证" },
+    "file": "/assets/docs/certifications-overview.pdf",
+    "size": "1.1 MB"
+  },
+  {
+    "id": "esg-report",
+    "title": { "en": "ESG Highlights 2025", "vi": "Điểm nhấn ESG 2025", "zh": "2025 ESG 要点" },
+    "category": { "en": "Sustainability", "vi": "Bền vững", "zh": "可持续发展" },
+    "file": "/assets/docs/esg-highlights-2025.pdf",
+    "size": "3.0 MB"
+  },
+  {
+    "id": "company-profile",
+    "title": { "en": "Company Profile", "vi": "Hồ sơ doanh nghiệp", "zh": "公司简介" },
+    "category": { "en": "Corporate", "vi": "Doanh nghiệp", "zh": "企业" },
+    "file": "/assets/docs/company-profile.pdf",
+    "size": "1.8 MB"
+  }
+]

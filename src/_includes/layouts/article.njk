@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+ogType: article
+---
+{% from "macros/i18n.njk" import inline, rich with context %}
+{% set heroTag = "article" %}
+{% set heroMeta = date | isoDate %}
+{% set eyebrow = category %}
+{% set breadcrumbHtml %}
+      <span aria-hidden="true">/</span>
+      <a href="{{ '/news/' | url }}">
+        <span class="lang en">{{ i18n.en.news }}</span>
+        <span class="lang vi">{{ i18n.vi.news }}</span>
+        <span class="lang zh">{{ i18n.zh.news }}</span>
+      </a>
+      <span aria-hidden="true">/</span>
+      <span>{{ date | isoDate }}</span>
+{% endset %}
+{% include "partials/inner-hero.njk" %}
+{% if image %}
+<div class="container article-media">
+  <img src="{{ image | url }}" alt="" loading="lazy">
+</div>
+{% endif %}
+<section class="inner-body">
+  <div class="container prose article-body">
+    {% if body and body.en %}
+    {{ rich(body) }}
+    {% else %}
+    {{ content | safe }}
+    {% endif %}
+    <p class="article-back">
+      <a href="{{ '/news/' | url }}">←
+        <span class="lang en">{{ i18n.en.backToNews }}</span>
+        <span class="lang vi">{{ i18n.vi.backToNews }}</span>
+        <span class="lang zh">{{ i18n.zh.backToNews }}</span>
+      </a>
+    </p>
+  </div>
+</section>

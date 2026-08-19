@@ -1,0 +1,21 @@
+---
+permalink: /news/feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.name }} News</title>
+    <link>{{ site.url }}/news/</link>
+    <description>{{ site.description }}</description>
+    {%- for post in collections.news %}
+    <item>
+      <title>{{ post.data.title.en }}</title>
+      <link>{{ post.url | absoluteUrl(site.url) }}</link>
+      <guid>{{ post.url | absoluteUrl(site.url) }}</guid>
+      <pubDate>{{ post.data.date }}</pubDate>
+      <description>{{ post.data.title.en }}</description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

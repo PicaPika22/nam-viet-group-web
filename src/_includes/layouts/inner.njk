@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+pageLayout: inner
+showLoader: false
+showRail: false
+---
+{% include "partials/inner-hero.njk" %}
+<section class="inner-body">
+  <div class="container prose">
+{{ content | safe }}
+  </div>
+</section>

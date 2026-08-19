@@ -1,0 +1,35 @@
+---
+layout: layouts/inner.njk
+title: Companies
+permalink: /companies/
+eyebrow:
+  en: Ecosystem
+  vi: Hệ sinh thái
+  zh: 生态系统
+heading:
+  en: One group. Six pillars.
+  vi: Một tập đoàn. Sáu trụ cột.
+  zh: 一个集团，六大支柱。
+lead:
+  en: Explore member companies and units through the Group’s visual ecosystem map.
+  vi: Khám phá công ty thành viên và đơn vị qua bản đồ hệ sinh thái trực quan.
+  zh: 通过可视化生态地图探索成员企业与单位。
+---
+
+{% set ecoMapVariant = "ink" %}
+{% set ecoMapShowHead = true %}
+{% set ecoMapId = "companies-eco" %}
+{% include "partials/ecosystem-map.njk" %}
+
+<p class="page-actions">
+  <a class="btn btn--outline btn--dark" href="{{ '/products/' | url }}">
+    <span class="lang en">Feed product catalog</span>
+    <span class="lang vi">Danh mục thức ăn</span>
+    <span class="lang zh">饲料产品目录</span>
+  </a>
+  <a class="btn btn--solid" href="{{ '/contact/' | url }}">
+    <span class="lang en">{{ i18n.en.contact }}</span>
+    <span class="lang vi">{{ i18n.vi.contact }}</span>
+    <span class="lang zh">{{ i18n.zh.contact }}</span>
+  </a>
+</p>

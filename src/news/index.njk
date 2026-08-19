@@ -1,0 +1,21 @@
+---
+layout: layouts/news-list.njk
+title: News
+permalink: /news/
+description: "News from Nam Viet Group — projects, partnerships, sustainability and corporate updates."
+---
+
+<div class="news__grid">
+  {% for post in collections.news %}
+  {% set cardClass = "reveal" %}
+  {% set cardDelay = loop.index0 * 120 %}
+  {% include "partials/news-card.njk" %}
+  {% endfor %}
+</div>
+<p class="page-actions">
+  <a class="rss-link" href="{{ '/news/feed.xml' | url }}">
+    <span class="lang en">{{ i18n.en.rssFeed }}</span>
+    <span class="lang vi">{{ i18n.vi.rssFeed }}</span>
+    <span class="lang zh">{{ i18n.zh.rssFeed }}</span>
+  </a>
+</p>

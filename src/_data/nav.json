@@ -1,0 +1,175 @@
+{
+  "primary": [
+    {
+      "id": "about",
+      "hrefHome": "/#about",
+      "hrefInner": "/about/",
+      "match": "prefix",
+      "en": "About",
+      "vi": "Giới thiệu",
+      "zh": "关于我们",
+      "children": [
+        { "id": "about-overview", "href": "/about/", "en": "About Nam Viet", "vi": "Về Nam Việt", "zh": "关于南越" },
+        { "id": "about-leadership", "href": "/about/leadership/", "en": "Leadership", "vi": "Ban lãnh đạo", "zh": "领导团队" },
+        { "id": "about-ecosystem", "href": "/about/#ecosystem", "en": "Our ecosystem", "vi": "Hệ sinh thái", "zh": "生态系统" },
+        { "id": "about-sustainability", "href": "/sustainability/", "en": "Sustainability", "vi": "Phát triển bền vững", "zh": "可持续发展" }
+      ]
+    },
+    {
+      "id": "services",
+      "href": "/companies/",
+      "match": "prefix",
+      "en": "Products & Services",
+      "vi": "Sản phẩm & dịch vụ",
+      "zh": "产品与服务",
+      "mega": [
+        {
+          "id": "feed",
+          "keyEn": "FEED",
+          "keyVi": "THỨC ĂN CHĂN NUÔI",
+          "keyZh": "饲料",
+          "links": [
+            { "href": "/companies/nam-viet/", "en": "Nam Viet JSC", "vi": "CTCP Nam Việt", "zh": "南越股份" },
+            { "href": "/companies/pilmico/", "en": "Pilmico Group", "vi": "Pilmico Group", "zh": "Pilmico" },
+            { "href": "/companies/feed-trading/", "en": "Feed Trading", "vi": "Feed Trading", "zh": "Feed Trading" },
+            { "href": "/products/", "en": "Feed product catalog", "vi": "Danh mục thức ăn", "zh": "饲料产品目录" }
+          ]
+        },
+        {
+          "id": "farm",
+          "keyEn": "FARM",
+          "keyVi": "CHĂN NUÔI",
+          "keyZh": "养殖",
+          "links": [
+            { "href": "/companies/xdnn-tn/", "en": "Thai Nguyen Agri Construction", "vi": "XDNN Thái Nguyên", "zh": "太原农建" },
+            { "href": "/companies/song-cong/", "en": "Song Cong Industrial", "vi": "PTCN Sông Công", "zh": "宋功工业" }
+          ]
+        },
+        {
+          "id": "logistics",
+          "keyEn": "LOGISTICS",
+          "keyVi": "VẬN TẢI & KHO",
+          "keyZh": "物流仓储",
+          "links": [
+            { "href": "/companies/logistics-nv/", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
+            { "href": "/companies/ag-ah-logistics/", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH" },
+            { "href": "/companies/warehouse-qn/", "en": "Cai Lan Warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" },
+            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" }
+          ]
+        },
+        {
+          "id": "hospitality",
+          "keyEn": "HOSPITALITY",
+          "keyVi": "DU LỊCH & KHÁCH SẠN",
+          "keyZh": "旅游酒店",
+          "links": [
+            { "href": "/companies/tourism/", "en": "Nam Viet Tourism — The King", "vi": "Du lịch Nam Việt — The King", "zh": "南越旅游 — The King" }
+          ]
+        },
+        {
+          "id": "trade",
+          "keyEn": "TRADE",
+          "keyVi": "XUẤT NHẬP KHẨU",
+          "keyZh": "进出口",
+          "links": [
+            { "href": "/companies/trading-vn/", "en": "Trading Vietnam", "vi": "Trading Việt Nam", "zh": "Trading VN" },
+            { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
+          ]
+        },
+        {
+          "id": "tech",
+          "keyEn": "TECH",
+          "keyVi": "NGHIÊN CỨU",
+          "keyZh": "科研",
+          "links": [
+            { "href": "/companies/rd-center/", "en": "Nam Viet R&D Center", "vi": "Trung tâm NC&ƯD Nam Việt", "zh": "南越研发中心" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "news",
+      "href": "/news/",
+      "match": "prefix",
+      "en": "News",
+      "vi": "Tin tức",
+      "zh": "新闻"
+    },
+    {
+      "id": "careers",
+      "href": "/careers/",
+      "match": "prefix",
+      "en": "Careers",
+      "vi": "Tuyển dụng",
+      "zh": "招聘"
+    }
+  ],
+  "footerColumns": [
+    {
+      "en": "About Nam Viet",
+      "vi": "Về Nam Việt",
+      "zh": "关于南越",
+      "links": [
+        { "href": "/about/", "en": "Overview", "vi": "Giới thiệu", "zh": "企业简介" },
+        { "href": "/companies/", "en": "What we do", "vi": "Lĩnh vực hoạt động", "zh": "业务领域" },
+        { "href": "/#milestones", "en": "Our journey", "vi": "Hành trình phát triển", "zh": "发展历程" },
+        { "href": "/investors/", "en": "Investor relations", "vi": "Quan hệ nhà đầu tư", "zh": "投资者关系" },
+        { "href": "/news/", "en": "News", "vi": "Tin tức", "zh": "新闻" }
+      ]
+    },
+    {
+      "en": "Feed & nutrition",
+      "vi": "Thức ăn chăn nuôi",
+      "zh": "饲料营养",
+      "links": [
+        { "href": "/products/nv007/", "en": "Pig feed — NV007", "vi": "Thức ăn heo — NV007", "zh": "猪饲料 NV007" },
+        { "href": "/products/nv-10s/", "en": "Broiler starter — NV10S", "vi": "Gà trắng úm — NV10S", "zh": "肉鸡育雏 NV10S" },
+        { "href": "/products/nv888/", "en": "Dairy cattle — NV888", "vi": "Bò sữa — NV888", "zh": "奶牛精料 NV888" },
+        { "href": "/products/nv40/", "en": "Fingerling feed — NV40", "vi": "Cá giống — NV40", "zh": "鱼苗浮料 NV40" },
+        { "href": "/products/nv530/", "en": "Frog feed — NV530", "vi": "Thức ăn ếch — NV530", "zh": "蛙用浮料 NV530" },
+        { "href": "/products/", "en": "Manufacturing capability", "vi": "Năng lực sản xuất", "zh": "生产能力" }
+      ]
+    },
+    {
+      "en": "Logistics & ports",
+      "vi": "Logistics & kho cảng",
+      "zh": "物流与港口",
+      "links": [
+        { "href": "/companies/warehouse-qn/", "en": "Cai Lan warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" },
+        { "href": "/companies/logistics-nv/", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
+        { "href": "/companies/ag-ah-logistics/", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH" },
+        { "href": "/companies/song-cong/", "en": "Premises leasing", "vi": "Cho thuê nhà xưởng", "zh": "厂房租赁" },
+        { "href": "/companies/logistics-nv/", "en": "Road & waterway transport", "vi": "Vận tải bộ & thủy", "zh": "公路与水路运输" }
+      ]
+    },
+    {
+      "en": "Partnership",
+      "vi": "Hợp tác",
+      "zh": "合作",
+      "links": [
+        { "href": "/contact/", "en": "Become a partner", "vi": "Trở thành đối tác", "zh": "成为合作伙伴" },
+        { "href": "/contact/", "en": "FDI advisory", "vi": "Tư vấn FDI", "zh": "FDI 咨询" },
+        { "href": "/about/", "en": "Global partners", "vi": "Đối tác toàn cầu", "zh": "全球合作伙伴" },
+        { "href": "/careers/", "en": "Careers", "vi": "Tuyển dụng", "zh": "招聘" },
+        { "href": "/contact/", "en": "Contact", "vi": "Liên hệ", "zh": "联系我们" }
+      ]
+    }
+  ],
+  "footerLegal": [
+    { "href": "/terms/", "en": "Terms", "vi": "Điều khoản", "zh": "条款" },
+    { "href": "/privacy/", "en": "Privacy policy", "vi": "Chính sách bảo mật", "zh": "隐私政策" }
+  ],
+  "footer": [
+    { "href": "/about/", "en": "About", "vi": "Về chúng tôi", "zh": "关于我们" },
+    { "href": "/companies/", "en": "Companies", "vi": "Công ty thành viên", "zh": "成员企业" },
+    { "href": "/products/", "en": "Products", "vi": "Sản phẩm", "zh": "产品" },
+    { "href": "/news/", "en": "News", "vi": "Tin tức", "zh": "新闻" },
+    { "href": "/sustainability/", "en": "Sustainability", "vi": "Bền vững", "zh": "可持续发展" },
+    { "href": "/investors/", "en": "Investors", "vi": "Nhà đầu tư", "zh": "投资者" },
+    { "href": "/downloads/", "en": "Downloads", "vi": "Tài liệu", "zh": "资料下载" },
+    { "href": "/contact/", "en": "Contact", "vi": "Liên hệ", "zh": "联系我们" },
+    { "href": "/privacy/", "en": "Privacy", "vi": "Bảo mật", "zh": "隐私" },
+    { "href": "/cookies/", "en": "Cookies", "vi": "Cookie", "zh": "Cookie" },
+    { "href": "/terms/", "en": "Terms", "vi": "Điều khoản", "zh": "条款" }
+  ]
+}

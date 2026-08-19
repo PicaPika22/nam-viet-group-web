@@ -1,0 +1,28 @@
+{
+  "name": "nam-viet-group-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nam Viet Group corporate website — chapter storytelling + multi-page static site",
+  "scripts": {
+    "dev": "eleventy --serve --port=8125",
+    "cms": "node scripts/admin-api.js",
+    "dev:cms": "npx --yes concurrently -k -n web,cms -c green,cyan \"npm run dev\" \"npm run cms\"",
+    "build": "eleventy",
+    "assets:hero": "node scripts/build-hero-assets.mjs",
+    "start": "node scripts/admin-api.js",
+    "start:site": "npm run build && npx serve _site -l 8125"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "gray-matter": "^4.0.3",
+    "multer": "^2.2.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^14.3.0",
+    "sharp": "^0.35.3"
+  }
+}
