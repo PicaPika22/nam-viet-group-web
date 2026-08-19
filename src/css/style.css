@@ -223,6 +223,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: contain;
   transition: opacity 0.35s var(--ease-soft);
+  clip-path: ellipse(47% 48% at 50% 52%);
 }
 .logo-img--dark { opacity: 0; }
 .header.is-scrolled:not(.is-menu-open) .logo-img--light,
@@ -1359,10 +1360,10 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   );
 }
 .hero-nv__ring img {
-  /* No more oval ring eating into the disc — the seal itself (lion + globe)
-     can fill most of the glow. */
+  /* Clip inside the seal's oval stroke so only lion + globe sit on the glow. */
   width: 72%;
   height: auto;
+  clip-path: circle(46%);
 }
 .hero-nv__grid {
   position: relative;
@@ -1552,14 +1553,42 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
     height: min(48svh, 22rem);
     overflow: hidden;
     container-type: size;
-    /* White letterbox — art-x/zoom are unset here so the box falls back to
-       the base 50%/1 (centered, no crop); "contain" below shows the whole
-       collage (all 3 windows + ring) instead of a zoomed-in slice. */
     background: var(--hero-surface);
   }
+  /* Pin the baked glow (69.6% / 52.2% of rect-02) to the scene center so
+     the logo sits between the two leaf windows. Do not crop from the right
+     edge — that detaches the overlay ring from the glow. */
   .hero-nv__art {
-    width: calc(min(100cqw, 100cqh * var(--art-ar)) * var(--art-zoom));
-    height: calc(min(100cqh, 100cqw / var(--art-ar)) * var(--art-zoom));
+    --glow-x: 0.696;
+    --glow-y: 0.522;
+    --cover-w: max(100cqw, 100cqh * var(--art-ar));
+    --cover-h: max(100cqh, 100cqw / var(--art-ar));
+    --art-zoom: max(
+      1,
+      calc(50cqw / (var(--glow-x) * var(--cover-w))),
+      calc(50cqw / ((1 - var(--glow-x)) * var(--cover-w))),
+      calc(50cqh / (var(--glow-y) * var(--cover-h))),
+      calc(50cqh / ((1 - var(--glow-y)) * var(--cover-h)))
+    );
+    position: absolute;
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--cover-w) * var(--art-zoom));
+    height: calc(var(--cover-h) * var(--art-zoom));
+    translate: -69.6% -52.2%;
+  }
+  .hero-nv__art > img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    object-position: 50% 50%;
+  }
+  .hero-nv__ring {
+    left: 69.6%;
+    top: 52.2%;
+    width: 11.5%;
+    translate: -50% -50%;
   }
   .hero-nv__scene::after {
     display: none;
@@ -1643,9 +1672,8 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   }
 }
 @media (max-width: 560px) {
-  .hero-nv__scene {
-    height: min(42svh, 18rem);
-  }
+  /* Keep the same art-band height as 760px — shortening it widens the
+     cover window past the leaf's left edge (~37%) and lets mint leak in. */
   .hero-nv__title {
     font-size: clamp(1.85rem, 8.4vw, 2.4rem);
   }
