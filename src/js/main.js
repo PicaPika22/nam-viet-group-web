@@ -7,6 +7,7 @@
 
   const html = document.documentElement;
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let restNavPill = () => {};
 
   /* ─── Loader ─── */
   const loader = document.getElementById("loader");
@@ -57,6 +58,7 @@
     if (langToggle) langToggle.setAttribute("aria-label", `Language: ${langMeta[next].label}`);
     closeLangMenu();
     updateRailLabel();
+    restNavPill();
     if (animate && !prefersReduced) {
       document.body.classList.remove("lang-switching");
       void document.body.offsetWidth; // restart animation
@@ -191,6 +193,45 @@
   };
   syncDropdownChildActive();
   window.addEventListener("hashchange", syncDropdownChildActive);
+
+  /* Sliding rounded pill behind desktop nav items */
+  const navBody = nav?.querySelector(".nav-mobile__body");
+  const navPill = navBody?.querySelector(".nav-indicator");
+  const desktopNav = () => window.matchMedia("(min-width: 1281px)").matches;
+  const navTopLinks = () => {
+    if (!navBody) return [];
+    return [...navBody.querySelectorAll(":scope > a.nav-item__link, :scope > .nav-item > .nav-item__link")];
+  };
+  const moveNavPill = (el) => {
+    if (!navPill || !navBody) return;
+    if (!desktopNav() || !el) {
+      navPill.style.opacity = "0";
+      return;
+    }
+    const br = navBody.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    navPill.style.width = `${r.width}px`;
+    navPill.style.height = `${r.height}px`;
+    navPill.style.transform = `translate(${r.left - br.left}px, ${r.top - br.top}px)`;
+    navPill.style.opacity = "1";
+  };
+  const activeNavLink = () =>
+    navTopLinks().find((a) => a.classList.contains("is-active") || a.parentElement?.classList.contains("is-current")) || navTopLinks()[0] || null;
+  restNavPill = () => moveNavPill(activeNavLink());
+  if (navBody && navPill) {
+    navBody.addEventListener("pointerover", (e) => {
+      const link = e.target.closest(".nav-item__link");
+      if (!link || link.closest(".nav-dropdown, .nav-mega")) return;
+      if (link.parentElement === navBody || link.parentElement?.classList.contains("nav-item")) {
+        moveNavPill(link);
+      }
+    });
+    navBody.addEventListener("pointerleave", restNavPill);
+    window.addEventListener("resize", restNavPill);
+    window.addEventListener("hashchange", restNavPill);
+    restNavPill();
+    document.fonts?.ready?.then(restNavPill);
+  }
 
   /* ─── GSAP scroll storytelling (progressive enhancement) ─── */
   const gsapReady = !prefersReduced && window.gsap && window.ScrollTrigger;

@@ -3431,8 +3431,8 @@ body:has(.leadership-page) .cookie-bar {
 }
 
 .search-toggle {
-  width: 42px; height: 42px; border-radius: 50%;
-  border: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
   display: inline-flex; align-items: center; justify-content: center;
 }
 .site-search {

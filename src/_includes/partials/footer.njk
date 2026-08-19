@@ -1,17 +1,81 @@
 <footer class="footer">
   <div class="container">
-    <p class="footer__quote reveal">
-      <span class="lang en">"Growing Sustainable Value Across Every Journey."</span>
-      <span class="lang vi">"Kiến tạo giá trị bền vững trên mọi hành trình."</span>
-      <span class="lang zh">"在每一段旅程中，创造可持续价值。"</span>
-    </p>
     <div class="footer__grid">
-      <div class="footer__brand">
-        <img class="footer__logo" src="{{ '/assets/img/logo-light.png' | url }}" alt="Nam Viet Group logo">
-        <p>NAM VIET GROUP</p>
+      <div class="footer__col footer__col--brand">
+        <div class="footer__brand">
+          <img class="footer__logo" src="{{ '/assets/img/logo-light.png' | url }}" alt="Nam Viet Group logo">
+          <span class="footer__brand-rule" aria-hidden="true"></span>
+          <span class="footer__wordmark">NAM VIỆT<span class="footer__wordmark-sub">GROUP</span></span>
+        </div>
+        <p class="footer__legal-name">
+          <span class="lang en">{{ site.legalName.en }}</span>
+          <span class="lang vi">{{ site.legalName.vi }}</span>
+          <span class="lang zh">{{ site.legalName.zh }}</span>
+        </p>
+        <address class="footer__contact">
+          <p>
+            <strong>
+              <span class="lang en">Head office:</span>
+              <span class="lang vi">Trụ sở chính:</span>
+              <span class="lang zh">总部：</span>
+            </strong>
+            <span class="lang en">{{ site.address.en }}</span>
+            <span class="lang vi">{{ site.address.vi }}</span>
+            <span class="lang zh">{{ site.address.zh }}</span>
+          </p>
+          <p>
+            <strong>Tel:</strong>
+            <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
+          </p>
+          {% if site.phoneMobile %}
+          <p>
+            <strong>Mobile:</strong>
+            <a href="tel:{{ site.phoneMobileTel }}">{{ site.phoneMobile }}</a>
+          </p>
+          {% endif %}
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a>
+          </p>
+          {% if site.taxId %}
+          <p>
+            <strong>
+              <span class="lang en">Tax ID:</span>
+              <span class="lang vi">Mã số thuế:</span>
+              <span class="lang zh">税号：</span>
+            </strong>
+            {{ site.taxId }}
+          </p>
+          {% endif %}
+        </address>
       </div>
-      <nav class="footer__nav">
-        {% for item in nav.footer %}
+      {% for col in nav.footerColumns %}
+      <div class="footer__col">
+        <p class="footer__col-title" id="footer-col-{{ col.id }}">
+          <span class="lang en">{{ col.titleEn }}</span>
+          <span class="lang vi">{{ col.titleVi }}</span>
+          <span class="lang zh">{{ col.titleZh }}</span>
+        </p>
+        <nav class="footer__nav" aria-labelledby="footer-col-{{ col.id }}">
+          {% for item in col.links %}
+          <a href="{{ item.href | url }}">
+            <span class="lang en">{{ item.en }}</span>
+            <span class="lang vi">{{ item.vi }}</span>
+            <span class="lang zh">{{ item.zh }}</span>
+          </a>
+          {% endfor %}
+        </nav>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Nam Viet Group.
+        <span class="lang en">All rights reserved.</span>
+        <span class="lang vi">Bảo lưu mọi quyền.</span>
+        <span class="lang zh">保留所有权利。</span>
+      </p>
+      <nav class="footer__legal" aria-label="Legal">
+        {% for item in nav.legal %}
         <a href="{{ item.href | url }}">
           <span class="lang en">{{ item.en }}</span>
           <span class="lang vi">{{ item.vi }}</span>
@@ -19,31 +83,7 @@
         </a>
         {% endfor %}
       </nav>
-      <div class="footer__contact">
-        <p><a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a></p>
-        <p><a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a></p>
-        {% if site.phoneMobile %}
-        <p><a href="tel:{{ site.phoneMobileTel }}">{{ site.phoneMobile }}</a></p>
-        {% endif %}
-        {% if site.taxId %}
-        <p>
-          <span class="lang en">Tax ID: {{ site.taxId }}</span>
-          <span class="lang vi">MST: {{ site.taxId }}</span>
-          <span class="lang zh">税号：{{ site.taxId }}</span>
-        </p>
-        {% endif %}
-        <p>
-          <span class="lang en">{{ site.address.en }}</span>
-          <span class="lang vi">{{ site.address.vi }}</span>
-          <span class="lang zh">{{ site.address.zh }}</span>
-        </p>
-      </div>
     </div>
-    <p class="footer__copy">© 2026 Nam Viet Group.
-      <span class="lang en">All rights reserved.</span>
-      <span class="lang vi">Bảo lưu mọi quyền.</span>
-      <span class="lang zh">保留所有权利。</span>
-    </p>
   </div>
 </footer>
 

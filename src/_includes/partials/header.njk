@@ -5,7 +5,8 @@
         <img class="logo-img logo-img--light" src="{{ '/assets/img/logo-light.png' | url }}?v=oval-cut" alt="">
         <img class="logo-img logo-img--dark" src="{{ '/assets/img/logo.png' | url }}?v=oval-cut" alt="">
       </span>
-      <span class="header__logo-text">Nam Viet Group</span>
+      <span class="header__logo-rule" aria-hidden="true"></span>
+      <span class="header__wordmark" translate="no">NAM VIỆT<span class="header__wordmark-sub">GROUP</span></span>
     </a>
     <nav class="header__nav" id="nav" aria-label="Primary">
       <div class="nav-mobile__head">
@@ -96,6 +97,7 @@
       </a>
       {% endif %}
       {% endfor %}
+      <span class="nav-indicator" aria-hidden="true"></span>
       </div>
       <div class="nav-mobile__foot">
         <a href="{{ '/contact/' | url }}" class="btn btn--small btn--solid nav-mobile__cta">
