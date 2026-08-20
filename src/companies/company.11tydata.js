@@ -1,5 +1,6 @@
 module.exports = {
   eleventyComputed: {
+    company: (data) => data.render && data.render.item,
     title: (data) => data.company?.name?.en || "Company",
     eyebrow: (data) =>
       data.company?.unit

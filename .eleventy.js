@@ -9,6 +9,7 @@ const {
   pageIdentity,
   canonicalUrl,
   htmlLang,
+  flattenPairs,
 } = require("./scripts/i18n/locale");
 const { validateNewsPost, validateProduct, validateJob } = require("./scripts/i18n/required");
 
@@ -114,6 +115,12 @@ module.exports = function (eleventyConfig) {
   );
   eleventyConfig.addNunjucksGlobal("htmlLang", (locale) => htmlLang(locale));
   eleventyConfig.addGlobalData("locales", Object.keys(LOCALES));
+  eleventyConfig.addGlobalData("companyLocales", () =>
+    flattenPairs(require("./src/_data/companies")())
+  );
+  eleventyConfig.addGlobalData("leadershipPersonLocales", () =>
+    flattenPairs(require("./src/_data/leadership"))
+  );
 
   eleventyConfig.on("eleventy.before", () => {
     for (const { slug, data } of markdownEntries("src/news/posts")) {

@@ -1,14 +1,15 @@
 ---
 pagination:
-  data: leadership
+  data: leadershipPersonLocales
   size: 1
-  alias: person
-permalink: "/about/leadership/{{ person.id }}/"
+  alias: render
+permalink: "{{ localeUrl('/about/leadership/' + render.item.id + '/', render.locale) }}"
 layout: layouts/leader.njk
 eleventyComputed:
-  title: "{{ person.name.en }}"
+  locale: "{{ render.locale }}"
+  title: "{{ render.item.name.en }}"
 ---
-
+{% set person = render.item %}
 <article class="leader-stage">
   <div class="leader-stage__top">
     <div class="container">
