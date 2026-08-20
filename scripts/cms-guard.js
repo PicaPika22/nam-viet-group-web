@@ -1,6 +1,6 @@
 "use strict";
 
-const MAX_SLUG_LENGTH = 80;
+const MAX_SLUG_LENGTH = 96;
 
 function nonEmpty(value) {
   return String(value ?? "").trim().length > 0;

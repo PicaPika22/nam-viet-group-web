@@ -1,5 +1,7 @@
 const { describe, it } = require("node:test");
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 const {
   nonEmpty,
   authRequired,
@@ -137,5 +139,25 @@ describe("bootCheck", () => {
     assert.ok(codes.includes("AUTH_MISSING"));
     assert.ok(codes.includes("SITE_URL_MISSING"));
     assert.ok(codes.includes("CORS_ORIGIN_MISSING"));
+  });
+});
+
+describe("existing news/jobs slugs", () => {
+  it("uses basename without .md and matches isSafeSlug", () => {
+    const roots = [
+      path.join(__dirname, "..", "src", "news", "posts"),
+      path.join(__dirname, "..", "src", "careers", "jobs"),
+    ];
+    const slugs = [];
+    for (const dir of roots) {
+      for (const name of fs.readdirSync(dir)) {
+        if (!name.endsWith(".md") || name.includes("11tydata")) continue;
+        slugs.push(name.slice(0, -3));
+      }
+    }
+    assert.ok(slugs.length > 0);
+    for (const slug of slugs) {
+      assert.equal(isSafeSlug(slug), true, slug);
+    }
   });
 });
