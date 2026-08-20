@@ -28,6 +28,20 @@
     siteUrl: "",
   };
 
+  function localeUrl(href, locale) {
+    const prefix = locale === "en" ? "/en" : locale === "zh" ? "/zh" : "";
+    if (!href.startsWith("/")) return href;
+    const url = new URL(href, "https://namvietjscom.vn");
+    return prefix + url.pathname + url.search + url.hash;
+  }
+
+  function viewSite(path) {
+    const origin = (state.siteUrl || "").replace(/\/$/, "");
+    const prefixed = localeUrl(path, state.lang === "en" || state.lang === "zh" ? state.lang : "vi");
+    if (!origin) return prefixed;
+    return origin + prefixed;
+  }
+
   function publicUrl(path) {
     const base = (state.siteUrl || "").replace(/\/$/, "");
     const p = path.startsWith("/") ? path : `/${path}`;
@@ -228,7 +242,7 @@
             : "Local CMS · EN / VI / 中文";
       }
       if ($("#siteLink")) {
-        $("#siteLink").href = state.siteUrl || "/";
+        $("#siteLink").href = viewSite("/");
       }
       if (health.auth && !state.auth) {
         showLogin(true);
@@ -329,7 +343,7 @@
         const media = img
           ? `<img class="feed-card__media" src="${escapeHtml(mediaUrl(img))}" alt="">`
           : `<div class="feed-card__media feed-card__media--empty">NV</div>`;
-        const viewHref = escapeHtml(publicUrl(`/news/${item.slug}/`));
+        const viewHref = escapeHtml(viewSite(`/news/${item.slug}/`));
         return `
         <article class="feed-card" data-slug="${item.slug}">
           ${media}
@@ -401,7 +415,7 @@
             <p class="feed-card__date">${escapeHtml(meta)}</p>
           </div>
           <div class="feed-card__actions">
-            <a class="action-link" href="${escapeHtml(publicUrl("/careers/"))}" target="_blank" rel="noopener">Xem</a>
+            <a class="action-link" href="${escapeHtml(viewSite("/careers/"))}" target="_blank" rel="noopener">Xem</a>
             <button type="button" data-edit-job="${item.slug}">Sửa</button>
             <button type="button" class="is-danger" data-del-job="${item.slug}">Xóa</button>
           </div>
@@ -743,6 +757,7 @@
       b.addEventListener("click", () => {
         readNewsUIToForm();
         state.lang = b.dataset.lang;
+        if ($("#siteLink")) $("#siteLink").href = viewSite("/");
         syncNewsFormToUI();
       })
     );
@@ -750,6 +765,7 @@
       b.addEventListener("click", () => {
         readJobUIToForm();
         state.lang = b.dataset.lang;
+        if ($("#siteLink")) $("#siteLink").href = viewSite("/");
         syncJobFormToUI();
       })
     );

@@ -3,6 +3,15 @@
   "use strict";
 
   const html = document.documentElement;
+  const documentLocale = () => {
+    const dataLang = html.getAttribute("data-lang");
+    if (dataLang === "vi" || dataLang === "en" || dataLang === "zh") return dataLang;
+    const htmlLang = html.getAttribute("lang") || "";
+    if (htmlLang === "vi" || htmlLang.startsWith("vi-")) return "vi";
+    if (htmlLang === "zh-Hans" || htmlLang.startsWith("zh")) return "zh";
+    if (htmlLang === "en" || htmlLang.startsWith("en-")) return "en";
+    return "vi";
+  };
 
   /* Cookie consent */
   const cookieBar = document.getElementById("cookieBar");
@@ -43,7 +52,7 @@
     if (!siteSearch) return;
     siteSearch.hidden = false;
     searchToggle?.setAttribute("aria-expanded", "true");
-    const lang = html.getAttribute("data-lang") || "en";
+    const lang = documentLocale();
     if (searchInput) {
       searchInput.placeholder = searchInput.dataset[`ph${lang[0].toUpperCase()}${lang.slice(1)}`] || searchInput.dataset.phEn || "";
       // data-ph-en style
@@ -69,7 +78,7 @@
 
   const renderSearch = (q) => {
     if (!searchResults) return;
-    const lang = html.getAttribute("data-lang") || "en";
+    const lang = documentLocale();
     const query = (q || "").trim().toLowerCase();
     searchResults.innerHTML = "";
     if (!query) {
@@ -105,7 +114,7 @@
 
     const syncInquiryLabels = () => {
       if (!typeEl) return;
-      const lang = html.getAttribute("data-lang") || "en";
+      const lang = documentLocale();
       const key = lang === "vi" ? "labelVi" : lang === "zh" ? "labelZh" : "labelEn";
       [...typeEl.options].forEach((opt) => {
         const label = opt.dataset[key];
@@ -139,7 +148,7 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const lang = html.getAttribute("data-lang") || "en";
+      const lang = documentLocale();
       const endpoint = form.getAttribute("action") || "";
       const data = new FormData(form);
       if (data.get("_gotcha")) return;

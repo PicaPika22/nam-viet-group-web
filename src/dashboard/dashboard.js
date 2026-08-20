@@ -70,6 +70,20 @@
     siteUrl: "http://localhost:8125/",
   };
 
+  function localeUrl(href, locale) {
+    const prefix = locale === "en" ? "/en" : locale === "zh" ? "/zh" : "";
+    if (!href.startsWith("/")) return href;
+    const url = new URL(href, "https://namvietjscom.vn");
+    return prefix + url.pathname + url.search + url.hash;
+  }
+
+  function viewSite(path) {
+    const origin = (state.siteUrl || "").replace(/\/$/, "");
+    const prefixed = localeUrl(path, state.lang === "en" || state.lang === "zh" ? state.lang : "vi");
+    if (!origin) return prefixed;
+    return origin + prefixed;
+  }
+
   class ApiError extends Error {
     constructor(status, data) {
       super(data.message || data.error || `HTTP ${status}`);
@@ -164,7 +178,7 @@
     try {
       const health = await api("/health");
       state.siteUrl = health.siteUrl && health.siteUrl !== "/" ? health.siteUrl : "http://localhost:8125/";
-      $("#siteLink").href = state.siteUrl;
+      $("#siteLink").href = viewSite("/");
       if (location.port !== "8125") {
         $("#homepageStyles").href = `${String(state.siteUrl).replace(/\/$/, "")}/css/style.css`;
       }
@@ -542,6 +556,7 @@
       if (!button) return;
       state.lang = button.dataset.lang;
       $$("#langTabs [data-lang]").forEach((tab) => tab.setAttribute("aria-selected", String(tab === button)));
+      $("#siteLink").href = viewSite("/");
       renderAll();
       setDirty(state.dirty);
     });

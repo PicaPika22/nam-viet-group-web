@@ -18,18 +18,10 @@
   // Safety: never keep the loader longer than 3s even if an image stalls
   setTimeout(finishLoader, 3000);
 
-  /* ─── Language switch (persisted dropdown) ─── */
+  /* ─── Language switch (dropdown only; locale comes from the URL) ─── */
   const langRoot = document.getElementById("langSwitch");
   const langToggle = document.getElementById("langToggle");
   const langMenu = document.getElementById("langMenu");
-  const langButtons = document.querySelectorAll("[data-set-lang]");
-  const langFlagEl = langRoot?.querySelector("[data-lang-flag]");
-  const langCodeEl = langRoot?.querySelector("[data-lang-code]");
-  const langMeta = {
-    en: { code: "EN", flag: "en", label: "English" },
-    vi: { code: "VI", flag: "vi", label: "Tiếng Việt" },
-    zh: { code: "中文", flag: "zh", label: "中文" },
-  };
   const closeLangMenu = () => {
     if (!langRoot || !langToggle || !langMenu) return;
     langRoot.classList.remove("is-open");
@@ -42,43 +34,17 @@
     langToggle.setAttribute("aria-expanded", "true");
     langMenu.hidden = false;
   };
-  const setLang = (lang, animate = true) => {
-    const next = langMeta[lang] ? lang : "en";
-    html.setAttribute("data-lang", next);
-    const htmlLang = { en: "en", vi: "vi", zh: "zh-CN" };
-    html.setAttribute("lang", htmlLang[next] || "en");
-    localStorage.setItem("nv-lang", next);
-    langButtons.forEach(b => {
-      const on = b.dataset.setLang === next;
-      b.classList.toggle("is-active", on);
-      b.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if (langFlagEl) langFlagEl.className = `lang-flag lang-flag--${langMeta[next].flag}`;
-    if (langCodeEl) langCodeEl.textContent = langMeta[next].code;
-    if (langToggle) langToggle.setAttribute("aria-label", `Language: ${langMeta[next].label}`);
-    closeLangMenu();
-    updateRailLabel();
-    restNavPill();
-    if (animate && !prefersReduced) {
-      document.body.classList.remove("lang-switching");
-      void document.body.offsetWidth; // restart animation
-      document.body.classList.add("lang-switching");
-    }
-  };
   langToggle?.addEventListener("click", (e) => {
     e.stopPropagation();
     if (langRoot?.classList.contains("is-open")) closeLangMenu();
     else openLangMenu();
   });
-  langButtons.forEach(b => b.addEventListener("click", () => setLang(b.dataset.setLang)));
   document.addEventListener("click", (e) => {
     if (langRoot && !langRoot.contains(e.target)) closeLangMenu();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLangMenu();
   });
-  // NOTE: initial setLang is called after the chapter-rail setup below,
-  // because updateRailLabel depends on variables declared there.
 
   /* ─── Header behaviour ─── */
   const header = document.getElementById("header");
@@ -412,7 +378,7 @@
     chapters.forEach(c => chapterIO.observe(c));
   }
 
-  setLang(localStorage.getItem("nv-lang") || "en", false);
+  updateRailLabel();
 
   /* ─── Scroll-linked effects (rAF batched) ─── */
   const parallaxBgs = [...document.querySelectorAll("[data-parallax]")];
