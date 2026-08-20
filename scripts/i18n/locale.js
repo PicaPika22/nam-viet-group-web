@@ -69,6 +69,7 @@ function pageIdentity(pathname) {
 
 function isExternalOrFragment(href) {
   if (href.startsWith("#")) return true;
+  if (href.startsWith("//")) return true;
   return /^[a-z][a-z0-9+.-]*:/i.test(href);
 }
 

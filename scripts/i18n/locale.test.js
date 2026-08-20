@@ -29,6 +29,7 @@ describe("localeUrl", () => {
     assert.equal(localeUrl("/downloads/file.pdf", "en"), "/downloads/file.pdf");
     assert.equal(localeUrl("https://partner.example/", "en"), "https://partner.example/");
     assert.equal(localeUrl("https://namvietjscom.vn/about/", "en"), "https://namvietjscom.vn/about/");
+    assert.equal(localeUrl("//example.com/about/", "en"), "//example.com/about/");
     assert.equal(localeUrl("mailto:a@b.c", "vi"), "mailto:a@b.c");
     assert.equal(localeUrl("tel:+1", "zh"), "tel:+1");
     assert.equal(localeUrl("#prod-engineer", "en"), "#prod-engineer");
