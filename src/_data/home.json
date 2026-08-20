@@ -1,0 +1,1107 @@
+{
+  "version": 1,
+  "sections": [
+    {
+      "id": "hero",
+      "visible": true,
+      "order": 1,
+      "content": {
+        "en": {
+          "chapterLabel": "INTRO",
+          "eyebrow": "Nam Viet Group",
+          "titleLine1": "Feeding Growth.",
+          "titleLine2": "Connecting the Future.",
+          "lead": "For more than two decades, Nam Viet Group has developed an integrated agricultural ecosystem that connects manufacturing, logistics, port infrastructure and global partnerships — delivering sustainable value across every stage of the supply chain.",
+          "ctaPrimary": "Explore Our Journey",
+          "ctaSecondary": "Explore the ecosystem",
+          "scroll": "Scroll to explore"
+        },
+        "vi": {
+          "chapterLabel": "MỞ ĐẦU",
+          "eyebrow": "Tập đoàn Nam Việt",
+          "titleLine1": "Nuôi dưỡng tăng trưởng.",
+          "titleLine2": "Kết nối tương lai.",
+          "lead": "Hơn hai thập kỷ xây dựng hệ sinh thái nông nghiệp toàn diện — kết nối sản xuất, logistics, kho cảng và đối tác toàn cầu.",
+          "ctaPrimary": "Khám phá hành trình",
+          "ctaSecondary": "Khám phá hệ sinh thái",
+          "scroll": "Cuộn để khám phá"
+        },
+        "zh": {
+          "chapterLabel": "开篇",
+          "eyebrow": "南越集团",
+          "titleLine1": "滋养增长。",
+          "titleLine2": "连接未来。",
+          "lead": "二十多年来，南越集团打造了覆盖生产、物流、港口基础设施与全球伙伴的农业一体化生态系统——在供应链每一环节创造可持续价值。",
+          "ctaPrimary": "探索我们的旅程",
+          "ctaSecondary": "探索生态体系",
+          "scroll": "向下滚动探索"
+        }
+      },
+      "images": {
+        "art": "/assets/img/hero-chuan/rect-02.png"
+      },
+      "stats": [
+        {
+          "id": "feed-capacity",
+          "value": "300.000+",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Tonnes of feed per year",
+            "vi": "Tấn thức ăn mỗi năm",
+            "zh": "吨饲料年产能"
+          }
+        },
+        {
+          "id": "factory-area",
+          "value": "40+ha",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Factories & port warehousing",
+            "vi": "Nhà xưởng & kho cảng",
+            "zh": "厂房与港口仓储"
+          }
+        }
+      ],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/#about"
+        },
+        "secondary": {
+          "href": "/#ecosystem"
+        },
+        "scroll": {
+          "href": "/#about"
+        }
+      }
+    },
+    {
+      "id": "about",
+      "visible": true,
+      "order": 2,
+      "content": {
+        "en": {
+          "chapterLabel": "WHO WE ARE",
+          "eyebrow": "Who We Are",
+          "titleLine1": "Built on Experience.",
+          "titleLine2": "Driven by Innovation.",
+          "lead": "For over 20 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.",
+          "body": "From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations."
+        },
+        "vi": {
+          "chapterLabel": "VỀ CHÚNG TÔI",
+          "eyebrow": "Về chúng tôi",
+          "titleLine1": "Xây dựng từ kinh nghiệm.",
+          "titleLine2": "Tiến bằng đổi mới.",
+          "lead": "Trong hơn hai thập kỷ qua, Nam Việt luôn theo đuổi mục tiêu phát triển bền vững thông qua đổi mới, sản xuất chất lượng cao và xây dựng những mối quan hệ hợp tác lâu dài.",
+          "body": "Từ lĩnh vực thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi không ngừng mở rộng hệ sinh thái để mang lại nhiều giá trị hơn cho khách hàng, đối tác và xã hội."
+        },
+        "zh": {
+          "chapterLabel": "关于我们",
+          "eyebrow": "关于我们",
+          "titleLine1": "以经验为基。",
+          "titleLine2": "以创新驱动。",
+          "lead": "二十多年来，南越集团致力于以创新、优质制造和长期合作，推动可持续增长。",
+          "body": "从饲料生产到物流、港口与战略投资，我们不断拓展生态系统，为客户、社区与未来世代创造更大价值。"
+        }
+      },
+      "images": {
+        "media": "/assets/img/about.png"
+      },
+      "stats": [
+        {
+          "id": "experience",
+          "value": "20+",
+          "suffix": "+",
+          "count": 20,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Years of Experience",
+            "vi": "Năm kinh nghiệm",
+            "zh": "年行业经验"
+          }
+        },
+        {
+          "id": "companies",
+          "value": "10",
+          "suffix": "",
+          "count": 10,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Member Companies",
+            "vi": "Công ty thành viên",
+            "zh": "成员企业"
+          }
+        },
+        {
+          "id": "projects",
+          "value": "186+",
+          "suffix": "+",
+          "count": 186,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Projects Delivered",
+            "vi": "Dự án đã triển khai",
+            "zh": "已交付项目"
+          }
+        },
+        {
+          "id": "capital",
+          "value": "542B+",
+          "suffix": "B+",
+          "count": 542,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "VND Charter Capital",
+            "vi": "Vốn điều lệ (VNĐ)",
+            "zh": "注册资本（越南盾）"
+          }
+        }
+      ],
+      "items": [],
+      "timeline": [],
+      "cta": {}
+    },
+    {
+      "id": "ecosystem",
+      "visible": true,
+      "order": 3,
+      "content": {
+        "en": {
+          "chapterLabel": "ECOSYSTEM",
+          "eyebrow": "Our Ecosystem",
+          "titleLine1": "One Ecosystem.",
+          "titleLine2": "Endless Possibilities.",
+          "lead": "Our integrated value chain enables us to control quality, optimize efficiency and create sustainable growth — from raw materials to global distribution.",
+          "ctaPrimary": "About Nam Viet"
+        },
+        "vi": {
+          "chapterLabel": "HỆ SINH THÁI",
+          "eyebrow": "Hệ sinh thái Nam Việt",
+          "titleLine1": "Một hệ sinh thái.",
+          "titleLine2": "Muôn vàn giá trị.",
+          "lead": "Chuỗi giá trị khép kín giúp Nam Việt kiểm soát chất lượng, tối ưu hiệu quả vận hành và tạo ra giá trị bền vững — từ nguyên liệu đầu vào đến thị trường quốc tế.",
+          "ctaPrimary": "Về Nam Việt"
+        },
+        "zh": {
+          "chapterLabel": "生态系统",
+          "eyebrow": "南越生态系统",
+          "titleLine1": "一个生态系统。",
+          "titleLine2": "无限可能。",
+          "lead": "一体化价值链使我们能够把控质量、优化效率、实现可持续增长——从原材料到全球分销。",
+          "ctaPrimary": "关于南越"
+        }
+      },
+      "images": {
+        "background": "/assets/img/ecosystem.png"
+      },
+      "stats": [],
+      "items": [
+        {
+          "id": "raw-materials",
+          "label": {
+            "en": "Raw Materials",
+            "vi": "Nguyên liệu",
+            "zh": "原材料"
+          }
+        },
+        {
+          "id": "research",
+          "label": {
+            "en": "R&D",
+            "vi": "R&D",
+            "zh": "研发"
+          }
+        },
+        {
+          "id": "manufacturing",
+          "label": {
+            "en": "Manufacturing",
+            "vi": "Sản xuất",
+            "zh": "生产制造"
+          }
+        },
+        {
+          "id": "packaging",
+          "label": {
+            "en": "Packaging",
+            "vi": "Đóng gói",
+            "zh": "包装"
+          }
+        },
+        {
+          "id": "warehousing",
+          "label": {
+            "en": "Warehousing",
+            "vi": "Kho vận",
+            "zh": "仓储"
+          }
+        },
+        {
+          "id": "logistics",
+          "label": {
+            "en": "Logistics",
+            "vi": "Logistics",
+            "zh": "物流"
+          }
+        },
+        {
+          "id": "port-operations",
+          "label": {
+            "en": "Port Operations",
+            "vi": "Khai thác cảng",
+            "zh": "港口运营"
+          }
+        },
+        {
+          "id": "global-distribution",
+          "label": {
+            "en": "Global Distribution",
+            "vi": "Phân phối toàn cầu",
+            "zh": "全球分销"
+          }
+        }
+      ],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/about/#ecosystem"
+        }
+      }
+    },
+    {
+      "id": "manufacturing",
+      "visible": true,
+      "order": 4,
+      "content": {
+        "en": {
+          "chapterLabel": "MANUFACTURING",
+          "eyebrow": "Advanced Manufacturing",
+          "titleLine1": "Engineering",
+          "titleLine2": "Better Agriculture.",
+          "lead": "Modern production facilities equipped with advanced technologies ensure consistent product quality, operational excellence and food safety standards across every stage of manufacturing.",
+          "ctaPrimary": "Discover Our Capabilities"
+        },
+        "vi": {
+          "chapterLabel": "SẢN XUẤT",
+          "eyebrow": "Năng lực sản xuất",
+          "titleLine1": "Công nghệ cho nông nghiệp",
+          "titleLine2": "bền vững hơn.",
+          "lead": "Hệ thống nhà máy hiện đại cùng dây chuyền công nghệ tiên tiến giúp Nam Việt đảm bảo chất lượng sản phẩm đồng nhất, tối ưu hiệu suất vận hành và đáp ứng các tiêu chuẩn an toàn nghiêm ngặt.",
+          "ctaPrimary": "Khám phá năng lực"
+        },
+        "zh": {
+          "chapterLabel": "生产制造",
+          "eyebrow": "先进制造",
+          "titleLine1": "以科技",
+          "titleLine2": "赋能可持续农业。",
+          "lead": "现代化生产基地与先进技术，确保制造各环节的产品质量、运营卓越与食品安全标准。",
+          "ctaPrimary": "了解我们的能力"
+        }
+      },
+      "images": {
+        "media": "/assets/img/manufacturing.png"
+      },
+      "stats": [
+        {
+          "id": "factories",
+          "value": "12+",
+          "suffix": "+",
+          "count": 12,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Factories",
+            "vi": "Nhà máy",
+            "zh": "工厂"
+          }
+        },
+        {
+          "id": "capacity",
+          "value": "1.2M",
+          "suffix": "M",
+          "count": 1.2,
+          "decimals": 1,
+          "icon": "",
+          "label": {
+            "en": "Tons Annual Capacity",
+            "vi": "Triệu tấn / năm",
+            "zh": "百万吨/年产能"
+          }
+        },
+        {
+          "id": "inspection",
+          "value": "100%",
+          "suffix": "%",
+          "count": 100,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Quality Inspection",
+            "vi": "Kiểm định chất lượng",
+            "zh": "质量检验"
+          }
+        },
+        {
+          "id": "certified",
+          "value": "ISO · GMP · HACCP",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Certified",
+            "vi": "Đạt chứng nhận",
+            "zh": "权威认证"
+          }
+        }
+      ],
+      "items": [
+        {
+          "id": "automated-production",
+          "label": {
+            "en": "Automated Production",
+            "vi": "Sản xuất tự động hóa",
+            "zh": "自动化生产"
+          }
+        },
+        {
+          "id": "quality-control",
+          "label": {
+            "en": "Quality Control",
+            "vi": "Kiểm soát chất lượng",
+            "zh": "质量控制"
+          }
+        },
+        {
+          "id": "international-standards",
+          "label": {
+            "en": "International Standards",
+            "vi": "Tiêu chuẩn quốc tế",
+            "zh": "国际标准"
+          }
+        },
+        {
+          "id": "continuous-innovation",
+          "label": {
+            "en": "Continuous Innovation",
+            "vi": "Đổi mới liên tục",
+            "zh": "持续创新"
+          }
+        }
+      ],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/products/"
+        }
+      }
+    },
+    {
+      "id": "products",
+      "visible": true,
+      "order": 5,
+      "content": {
+        "en": {
+          "chapterLabel": "PRODUCTS",
+          "eyebrow": "Our Products",
+          "titleLine1": "Nutrition Designed",
+          "titleLine2": "for Every Stage.",
+          "lead": "From pig and poultry feed to aquaculture and specialty nutrition, our products are developed through scientific research to maximize animal health and production efficiency.",
+          "ctaPrimary": "View All Products"
+        },
+        "vi": {
+          "chapterLabel": "SẢN PHẨM",
+          "eyebrow": "Sản phẩm",
+          "titleLine1": "Giải pháp dinh dưỡng",
+          "titleLine2": "cho mọi giai đoạn.",
+          "lead": "Mỗi dòng sản phẩm được phát triển dựa trên nghiên cứu khoa học nhằm tối ưu sức khỏe vật nuôi và nâng cao hiệu quả chăn nuôi.",
+          "ctaPrimary": "Xem tất cả sản phẩm"
+        },
+        "zh": {
+          "chapterLabel": "产品",
+          "eyebrow": "产品",
+          "titleLine1": "为每个阶段",
+          "titleLine2": "设计的营养方案。",
+          "lead": "从猪禽饲料到水产与特种营养，每款产品均基于科学研究，优化动物健康与生产效率。",
+          "ctaPrimary": "查看全部产品"
+        }
+      },
+      "images": {
+        "nv007": "/assets/img/products/nv007.jpg",
+        "nv-10s": "/assets/img/products/nv-10s.jpg",
+        "nv888": "/assets/img/products/nv888.jpg",
+        "nv40": "/assets/img/products/nv40.jpg",
+        "nv530": "/assets/img/products/nv530.jpg"
+      },
+      "stats": [],
+      "items": [
+        {
+          "id": "nv007",
+          "code": "NV007",
+          "href": "/products/nv007/",
+          "name": {
+            "en": "Pig Feed",
+            "vi": "Thức ăn heo",
+            "zh": "猪饲料"
+          }
+        },
+        {
+          "id": "nv-10s",
+          "code": "NV10S",
+          "href": "/products/nv-10s/",
+          "name": {
+            "en": "Broiler Starter",
+            "vi": "Gà trắng úm",
+            "zh": "肉鸡育雏"
+          }
+        },
+        {
+          "id": "nv888",
+          "code": "NV888",
+          "href": "/products/nv888/",
+          "name": {
+            "en": "Dairy Cattle",
+            "vi": "Bò sữa",
+            "zh": "奶牛精料"
+          }
+        },
+        {
+          "id": "nv40",
+          "code": "NV40",
+          "href": "/products/nv40/",
+          "name": {
+            "en": "Fingerling Feed",
+            "vi": "Cá giống",
+            "zh": "鱼苗浮料"
+          }
+        },
+        {
+          "id": "nv530",
+          "code": "NV530",
+          "href": "/products/nv530/",
+          "name": {
+            "en": "Frog Feed",
+            "vi": "Thức ăn ếch",
+            "zh": "蛙用浮料"
+          }
+        }
+      ],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/products/"
+        }
+      }
+    },
+    {
+      "id": "logistics",
+      "visible": true,
+      "order": 6,
+      "content": {
+        "en": {
+          "chapterLabel": "LOGISTICS",
+          "eyebrow": "Smart Logistics",
+          "titleLine1": "Connecting Vietnam",
+          "titleLine2": "to Global Markets.",
+          "lead": "An efficient logistics network with warehouses, transportation systems and port infrastructure ensures reliable delivery and seamless supply chain management.",
+          "ctaPrimary": "Explore Logistics"
+        },
+        "vi": {
+          "chapterLabel": "LOGISTICS",
+          "eyebrow": "Logistics",
+          "titleLine1": "Kết nối Việt Nam",
+          "titleLine2": "với thế giới.",
+          "lead": "Hệ thống logistics đồng bộ giúp tối ưu vận chuyển, kết nối chuỗi cung ứng và đưa sản phẩm đến khách hàng một cách nhanh chóng, an toàn.",
+          "ctaPrimary": "Khám phá logistics"
+        },
+        "zh": {
+          "chapterLabel": "物流",
+          "eyebrow": "智慧物流",
+          "titleLine1": "连接越南",
+          "titleLine2": "与全球市场。",
+          "lead": "高效的物流网络、仓储、运输与港口基础设施，确保可靠交付与无缝供应链管理。",
+          "ctaPrimary": "探索物流"
+        }
+      },
+      "images": {
+        "background": "/assets/img/logistics.png"
+      },
+      "stats": [
+        {
+          "id": "hubs",
+          "value": "20+",
+          "suffix": "+",
+          "count": 20,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Strategic Logistics Hubs",
+            "vi": "Trung tâm logistics",
+            "zh": "战略物流枢纽"
+          }
+        },
+        {
+          "id": "shipments",
+          "value": "500+",
+          "suffix": "+",
+          "count": 500,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Daily Shipments",
+            "vi": "Chuyến hàng mỗi ngày",
+            "zh": "日发货量"
+          }
+        },
+        {
+          "id": "visibility",
+          "value": "100%",
+          "suffix": "%",
+          "count": 100,
+          "decimals": 0,
+          "icon": "",
+          "label": {
+            "en": "Supply Chain Visibility",
+            "vi": "Minh bạch chuỗi",
+            "zh": "供应链可视化"
+          }
+        }
+      ],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/#network"
+        }
+      }
+    },
+    {
+      "id": "network",
+      "visible": true,
+      "order": 7,
+      "content": {
+        "en": {
+          "chapterLabel": "PARTNERS",
+          "eyebrow": "Global Partners",
+          "titleLine1": "Local Expertise.",
+          "titleLine2": "Global Partnerships.",
+          "lead": "We collaborate with leading international organizations to exchange knowledge, adopt advanced technologies and strengthen Vietnam's agricultural industry.",
+          "ctaPrimary": "Become Our Partner"
+        },
+        "vi": {
+          "chapterLabel": "ĐỐI TÁC",
+          "eyebrow": "Đối tác toàn cầu",
+          "titleLine1": "Hiểu thị trường Việt Nam.",
+          "titleLine2": "Kết nối thế giới.",
+          "lead": "Nam Việt hợp tác với nhiều tập đoàn hàng đầu thế giới nhằm chia sẻ công nghệ, kinh nghiệm và cùng kiến tạo giá trị bền vững.",
+          "ctaPrimary": "Trở thành đối tác"
+        },
+        "zh": {
+          "chapterLabel": "合作伙伴",
+          "eyebrow": "全球合作伙伴",
+          "titleLine1": "深耕本土。",
+          "titleLine2": "连接全球。",
+          "lead": "我们与全球领先机构合作，共享知识、引进先进技术，助力越南农业产业发展。",
+          "ctaPrimary": "成为合作伙伴"
+        }
+      },
+      "images": {},
+      "stats": [],
+      "items": [
+        {
+          "id": "van-aarsen",
+          "name": "Van Aarsen",
+          "url": "https://www.vanaarsen.com/",
+          "image": "/assets/img/partners/van-aarsen.png"
+        },
+        {
+          "id": "bunge",
+          "name": "Bunge",
+          "url": "https://www.bunge.com/",
+          "image": "/assets/img/partners/bunge.png"
+        },
+        {
+          "id": "wilmar",
+          "name": "Wilmar International",
+          "url": "https://www.wilmar-international.com/",
+          "image": "/assets/img/partners/wilmar.png"
+        },
+        {
+          "id": "ajinomoto",
+          "name": "Ajinomoto Group",
+          "url": "https://www.ajinomoto.com/",
+          "image": "/assets/img/partners/ajinomoto.png"
+        },
+        {
+          "id": "anderson",
+          "name": "Anderson International",
+          "url": "https://www.andersonintl.com/",
+          "image": "/assets/img/partners/anderson.png"
+        },
+        {
+          "id": "andritz",
+          "name": "Andritz",
+          "url": "https://www.andritz.com/",
+          "image": "/assets/img/partners/andritz.png"
+        },
+        {
+          "id": "cargill",
+          "name": "Cargill",
+          "url": "https://www.cargill.com/",
+          "image": "/assets/img/partners/cargill.png"
+        },
+        {
+          "id": "cj",
+          "name": "CJ Group",
+          "url": "https://www.cj.net/",
+          "image": "/assets/img/partners/cj.png"
+        },
+        {
+          "id": "olmix",
+          "name": "Olmix",
+          "url": "https://www.olmix.com/",
+          "image": "/assets/img/partners/olmix.png"
+        }
+      ],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/contact/?type=partner"
+        }
+      }
+    },
+    {
+      "id": "sustainability",
+      "visible": true,
+      "order": 8,
+      "content": {
+        "en": {
+          "chapterLabel": "ESG",
+          "eyebrow": "Sustainability",
+          "titleLine1": "Growing Together.",
+          "titleLine2": "Responsibly.",
+          "lead": "Sustainability is integrated into every decision we make — from responsible sourcing and environmentally conscious manufacturing to community development and transparent governance.",
+          "ctaPrimary": "Learn More About ESG"
+        },
+        "vi": {
+          "chapterLabel": "BỀN VỮNG",
+          "eyebrow": "Phát triển bền vững",
+          "titleLine1": "Cùng nhau phát triển.",
+          "titleLine2": "Có trách nhiệm.",
+          "lead": "Tính bền vững được đặt trong từng quyết định của chúng tôi — từ nguồn nguyên liệu có trách nhiệm, sản xuất thân thiện với môi trường đến phát triển cộng đồng và quản trị minh bạch.",
+          "ctaPrimary": "Tìm hiểu về ESG"
+        },
+        "zh": {
+          "chapterLabel": "可持续发展",
+          "eyebrow": "可持续发展",
+          "titleLine1": "共同成长。",
+          "titleLine2": "负责任地前行。",
+          "lead": "可持续发展融入我们每一项决策——从负责任采购、环保制造到社区发展与透明治理。",
+          "ctaPrimary": "了解更多 ESG"
+        }
+      },
+      "images": {
+        "media": "/assets/img/sustainability.png"
+      },
+      "stats": [],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/sustainability/"
+        }
+      }
+    },
+    {
+      "id": "leadership",
+      "visible": true,
+      "order": 9,
+      "content": {
+        "en": {
+          "chapterLabel": "LEADERSHIP",
+          "eyebrow": "Our Leadership",
+          "titleLine1": "Leadership That",
+          "titleLine2": "Steers the Group.",
+          "body": "Built on charter capital of VND 542 billion, Nam Viet is steered by a leadership bench that aligns Group strategy with execution across feed, trade, manufacturing and logistics — so growth stays disciplined and the ecosystem stays coherent.",
+          "ctaPrimary": "Meet the Leadership"
+        },
+        "vi": {
+          "chapterLabel": "LÃNH ĐẠO",
+          "eyebrow": "Ban lãnh đạo",
+          "titleLine1": "Ban lãnh đạo",
+          "titleLine2": "định hướng Tập đoàn.",
+          "body": "Trên nền vốn điều lệ 542 tỷ đồng, Nam Việt được dẫn dắt bởi đội ngũ lãnh đạo gắn chiến lược Tập đoàn với điều hành thực tế trên chuỗi thức ăn, thương mại, sản xuất và logistics — tăng trưởng có kỷ luật, hệ sinh thái vận hành thống nhất.",
+          "ctaPrimary": "Gặp ban lãnh đạo"
+        },
+        "zh": {
+          "chapterLabel": "领导团队",
+          "eyebrow": "领导团队",
+          "titleLine1": "以领导力",
+          "titleLine2": "掌舵集团。",
+          "body": "立足5,420亿越南盾注册资本，南越由高管团队统筹集团战略与日常执行，贯通饲料、贸易、制造与物流——增长有纪律，产业生态一体协同。",
+          "ctaPrimary": "认识集团领导"
+        }
+      },
+      "images": {
+        "media": "/assets/img/leadership.jpg"
+      },
+      "stats": [],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/about/leadership/"
+        }
+      }
+    },
+    {
+      "id": "milestones",
+      "visible": true,
+      "order": 10,
+      "content": {
+        "en": {
+          "chapterLabel": "JOURNEY",
+          "eyebrow": "Our Journey",
+          "titleLine1": "Milestones That",
+          "titleLine2": "Built Who We Are.",
+          "lead": "From our founding to today’s multi-industry ecosystem, each milestone shows how Nam Viet grows — through technology, infrastructure and people — for stronger agriculture.",
+          "bannerStatement": "The journey continues — for agriculture that lasts and prospers."
+        },
+        "vi": {
+          "chapterLabel": "HÀNH TRÌNH",
+          "eyebrow": "Hành trình phát triển",
+          "titleLine1": "Những cột mốc",
+          "titleLine2": "làm nên Nam Việt.",
+          "lead": "Từ ngày thành lập đến hệ sinh thái đa ngành hôm nay, mỗi cột mốc cho thấy cách Nam Việt phát triển: bằng công nghệ, hạ tầng và con người — vì nông nghiệp vững chắc hơn.",
+          "bannerStatement": "Hành trình còn tiếp tục — vì nông nghiệp bền vững và thịnh vượng."
+        },
+        "zh": {
+          "chapterLabel": "发展历程",
+          "eyebrow": "发展历程",
+          "titleLine1": "里程碑",
+          "titleLine2": "铸就南越。",
+          "lead": "从创立到今日的多产业生态，每一个里程碑都说明南越如何成长——依靠技术、基础设施与人才，建设更强的农业。",
+          "bannerStatement": "旅程仍在继续——为了可持续且繁荣的农业。"
+        }
+      },
+      "images": {
+        "banner": "/assets/img/milestones/banner.jpg"
+      },
+      "stats": [
+        {
+          "id": "banner-1",
+          "value": "20+",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "years",
+          "label": {
+            "en": "Years of growth",
+            "vi": "Năm phát triển",
+            "zh": "年持续发展"
+          }
+        },
+        {
+          "id": "banner-2",
+          "value": "12+",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "companies",
+          "label": {
+            "en": "Member companies & units",
+            "vi": "Công ty & đơn vị thành viên",
+            "zh": "成员企业与单位"
+          }
+        },
+        {
+          "id": "banner-3",
+          "value": "300k",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "projects",
+          "label": {
+            "en": "Tonnes feed capacity / year",
+            "vi": "Tấn công suất TACN / năm",
+            "zh": "吨饲料年产能"
+          }
+        },
+        {
+          "id": "banner-4",
+          "value": "542B+",
+          "suffix": "",
+          "count": null,
+          "decimals": 0,
+          "icon": "revenue",
+          "label": {
+            "en": "Charter capital (VND)",
+            "vi": "Vốn điều lệ (VNĐ)",
+            "zh": "注册资本（越南盾）"
+          }
+        }
+      ],
+      "items": [],
+      "timeline": [
+        {
+          "id": "m-2002",
+          "year": "2002",
+          "icon": "building",
+          "image": "/assets/img/milestones/2002.jpg",
+          "title": {
+            "en": "Nam Viet is founded",
+            "vi": "Thành lập Nam Việt",
+            "zh": "南越成立"
+          },
+          "description": {
+            "en": "Nam Viet Joint Stock Company is established — today Namviet Investment and Development Group.",
+            "vi": "Thành lập Công ty Cổ phần Nam Việt — nay là Tập đoàn Đầu tư và Phát triển Nam Việt.",
+            "zh": "南越股份公司成立——即今日南越投资与发展集团。"
+          }
+        },
+        {
+          "id": "m-2013",
+          "year": "2013",
+          "icon": "warehouse",
+          "image": "/assets/img/milestones/2013.jpg",
+          "title": {
+            "en": "Feed Trading Vietnam",
+            "vi": "Feed Trading Việt Nam",
+            "zh": "Feed Trading 越南"
+          },
+          "description": {
+            "en": "Feedtrading Vietnam Co., Ltd. is founded for road and waterway cargo transport.",
+            "vi": "Thành lập Công ty TNHH Feedtrading Việt Nam — vận chuyển hàng hóa đường bộ và đường thủy.",
+            "zh": "成立 Feedtrading 越南有限公司，从事公路与水路货运。"
+          }
+        },
+        {
+          "id": "m-2014",
+          "year": "2014",
+          "icon": "farm",
+          "image": "/assets/img/milestones/2014.jpg",
+          "title": {
+            "en": "Pilmico & Định Hóa farm",
+            "vi": "Pilmico & trang trại Định Hóa",
+            "zh": "Pilmico 与定化农场"
+          },
+          "description": {
+            "en": "Pilmico Group JSC is founded and a high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
+            "vi": "Thành lập CTCP Pilmico Group và xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+            "zh": "成立 Pilmico 集团股份，并在太原定化建设优质牛猪繁殖场。"
+          }
+        },
+        {
+          "id": "m-2016",
+          "year": "2016",
+          "icon": "lab",
+          "image": "/assets/img/milestones/2016.jpg",
+          "title": {
+            "en": "Nam Viet Fuel launches",
+            "vi": "Xăng dầu Nam Việt",
+            "zh": "南越石油投运"
+          },
+          "description": {
+            "en": "Nam Viet Petroleum / fuel retail operations begin.",
+            "vi": "Đưa vào hoạt động Công ty Xăng dầu Nam Việt.",
+            "zh": "南越石油公司投入运营。"
+          }
+        },
+        {
+          "id": "m-2018",
+          "year": "2018",
+          "icon": "warehouse",
+          "image": "/assets/img/milestones/2018.jpg",
+          "title": {
+            "en": "VAPCO premises & logistics",
+            "vi": "VAPCO mặt bằng & logistics",
+            "zh": "VAPCO 场地与物流"
+          },
+          "description": {
+            "en": "VAPCO Production & Trading Co., Ltd. is founded — premises leasing and logistics on nearly 3 ha, hosting industrial tenants.",
+            "vi": "Thành lập Công ty TNHH sản xuất và thương mại VAPCO — cho thuê mặt bằng và logistics gần 3ha, đón doanh nghiệp thuê sản xuất.",
+            "zh": "成立 VAPCO 生产贸易有限公司——近3公顷场地租赁与物流，服务入驻企业。"
+          }
+        },
+        {
+          "id": "m-2019",
+          "year": "2019",
+          "icon": "warehouse",
+          "image": "/assets/img/milestones/2019.jpg",
+          "title": {
+            "en": "Cai Lan port warehouse",
+            "vi": "Kho cảng Cái Lân",
+            "zh": "盖麟港仓"
+          },
+          "description": {
+            "en": "Port warehouse system at Cái Lân, Quảng Ninh opens — nearly 5 ha, about 190,000 tonnes of storage capacity.",
+            "vi": "Hoàn thành hệ thống kho cảng tại Cái Lân, Quảng Ninh — gần 5ha, lưu giữ khoảng 190.000 tấn hàng hóa.",
+            "zh": "广宁盖麟港仓储系统建成——近5公顷，约19万吨仓储能力。"
+          }
+        },
+        {
+          "id": "m-2020",
+          "year": "2020",
+          "icon": "globe",
+          "image": "/assets/img/milestones/2020.jpg",
+          "title": {
+            "en": "Hospitality & agri construction",
+            "vi": "Khách sạn & XDNN Thái Nguyên",
+            "zh": "酒店与太原农建"
+          },
+          "description": {
+            "en": "High-quality hotel and restaurant system expands; Thai Nguyen Agricultural Construction & Rural Development JSC is founded.",
+            "vi": "Xây dựng hệ thống khách sạn, nhà hàng chất lượng cao; thành lập CTCP xây dựng nông nghiệp và phát triển nông thôn Thái Nguyên.",
+            "zh": "建设高品质酒店餐饮体系；成立太原农业建设与农村发展股份公司。"
+          }
+        },
+        {
+          "id": "m-2021",
+          "year": "2021",
+          "icon": "building",
+          "image": "/assets/img/milestones/2021.jpg",
+          "title": {
+            "en": "Song Cong Industrial Development",
+            "vi": "PT Công nghiệp Sông Công",
+            "zh": "宋功工业发展"
+          },
+          "description": {
+            "en": "Song Cong Industrial Development JSC is founded — cargo management, FDI advisory, workshops and services on 20 ha.",
+            "vi": "Thành lập CTCP Phát triển Công nghiệp Sông Công — quản lý hàng hóa, tư vấn FDI, nhà xưởng và dịch vụ trên 20ha.",
+            "zh": "成立宋功工业发展股份公司——20公顷货物管理、FDI咨询、厂房与服务。"
+          }
+        },
+        {
+          "id": "m-2023",
+          "year": "2023",
+          "icon": "warehouse",
+          "image": "/assets/img/milestones/2023.jpg",
+          "title": {
+            "en": "Nam Viet Trade Logistics",
+            "vi": "TM Logistics Nam Việt",
+            "zh": "南越贸易物流"
+          },
+          "description": {
+            "en": "Nam Viet Trade Logistics JSC is founded — FDI advisory, warehouses and workshops on 15 ha, international cargo.",
+            "vi": "Thành lập CTCP Thương mại Logistics Nam Việt — tư vấn FDI, kho bãi và nhà xưởng 15ha, vận chuyển hàng hóa quốc tế.",
+            "zh": "成立南越贸易物流股份——FDI咨询、15公顷仓储厂房与国际货运。"
+          }
+        },
+        {
+          "id": "m-2024",
+          "year": "2024",
+          "icon": "globe",
+          "image": "/assets/img/milestones/2024.jpg",
+          "title": {
+            "en": "AG & AH Logistics",
+            "vi": "AG & AH Logistics",
+            "zh": "AG & AH Logistics"
+          },
+          "description": {
+            "en": "AG & AH Logistics JSC is founded — premises leasing and logistics on 5 ha for regional industrial tenants.",
+            "vi": "Thành lập CTCP AG & AH Logistics — cho thuê mặt bằng và logistics trên 5ha cho doanh nghiệp sản xuất trong khu vực.",
+            "zh": "成立 AG & AH Logistics 股份——5公顷场地租赁与物流，服务区域制造企业。"
+          }
+        }
+      ],
+      "cta": {}
+    },
+    {
+      "id": "news",
+      "visible": true,
+      "order": 11,
+      "content": {
+        "en": {
+          "chapterLabel": "NEWS",
+          "eyebrow": "News",
+          "titleLine1": "What’s Happening",
+          "titleLine2": "at Nam Viet.",
+          "lead": "Project updates, business activities and key developments across the Nam Viet ecosystem.",
+          "ctaPrimary": "View All News"
+        },
+        "vi": {
+          "chapterLabel": "TIN TỨC",
+          "eyebrow": "Tin tức",
+          "titleLine1": "Tin mới",
+          "titleLine2": "từ Nam Việt.",
+          "lead": "Cập nhật dự án, hoạt động doanh nghiệp và những diễn biến đáng chú ý trong hệ sinh thái Nam Việt.",
+          "ctaPrimary": "Xem tất cả tin tức"
+        },
+        "zh": {
+          "chapterLabel": "新闻",
+          "eyebrow": "新闻",
+          "titleLine1": "南越",
+          "titleLine2": "最新动态。",
+          "lead": "了解南越的项目进展、企业动态与重要更新。",
+          "ctaPrimary": "查看全部新闻"
+        }
+      },
+      "images": {},
+      "stats": [],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/news/"
+        }
+      }
+    },
+    {
+      "id": "contact",
+      "visible": true,
+      "order": 12,
+      "content": {
+        "en": {
+          "chapterLabel": "CONTACT",
+          "titleLine1": "Let's Grow the Future",
+          "titleLine2": "Together.",
+          "lead": "Whether you're looking for a trusted manufacturing partner, logistics solutions or long-term strategic collaboration, Nam Viet is ready to grow with you.",
+          "ctaPrimary": "Become Our Partner",
+          "ctaSecondary": "Contact Us"
+        },
+        "vi": {
+          "chapterLabel": "LIÊN HỆ",
+          "titleLine1": "Cùng kiến tạo",
+          "titleLine2": "tương lai bền vững.",
+          "lead": "Đối tác sản xuất, giải pháp logistics hay hợp tác chiến lược — Nam Việt sẵn sàng đồng hành cùng bạn.",
+          "ctaPrimary": "Trở thành đối tác",
+          "ctaSecondary": "Liên hệ ngay"
+        },
+        "zh": {
+          "chapterLabel": "联系我们",
+          "titleLine1": "携手共创",
+          "titleLine2": "可持续未来。",
+          "lead": "无论您需要可靠的制造伙伴、物流方案还是长期战略合作，南越都已准备好与您共同成长。",
+          "ctaPrimary": "成为合作伙伴",
+          "ctaSecondary": "立即联系"
+        }
+      },
+      "images": {
+        "background": "/assets/img/cta.png"
+      },
+      "stats": [],
+      "items": [],
+      "timeline": [],
+      "cta": {
+        "primary": {
+          "href": "/contact/?type=partner"
+        },
+        "secondary": {
+          "href": "/contact/"
+        }
+      }
+    }
+  ]
+}

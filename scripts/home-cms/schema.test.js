@@ -17,6 +17,12 @@ describe("validateHome", () => {
     assert.equal(r.fields.length, 0);
   });
 
+  it("seed document validates", () => {
+    const { buildSeedDocument } = require("./seed");
+    const r = validateHome(buildSeedDocument());
+    assert.equal(r.ok, true, JSON.stringify(r.fields, null, 2));
+  });
+
   it("rejects wrong section count", () => {
     const doc = minimalValidDocument();
     doc.sections.pop();
