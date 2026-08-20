@@ -18,7 +18,7 @@ image: >-
   /assets/img/news/tap-doan-nam-viet-di-tham-nha-may-cua-tap-doan-dai-cuu-chau-quang-tay-trung-quoc.png
 excerpt:
   vi: >-
-    Vào ngày  25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
+    Vào ngày 25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu…
   en: >-
