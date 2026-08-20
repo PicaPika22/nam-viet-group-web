@@ -1,15 +1,3 @@
 {% for section in home | visibleHome %}
-  {% if section.id == "hero" %}{% include "home-blocks/hero.njk" %}
-  {% elif section.id == "about" %}{% include "home-blocks/about.njk" %}
-  {% elif section.id == "ecosystem" %}{% include "home-blocks/ecosystem.njk" %}
-  {% elif section.id == "manufacturing" %}{% include "home-blocks/manufacturing.njk" %}
-  {% elif section.id == "products" %}{% include "home-blocks/products.njk" %}
-  {% elif section.id == "logistics" %}{% include "home-blocks/logistics.njk" %}
-  {% elif section.id == "network" %}{% include "home-blocks/network.njk" %}
-  {% elif section.id == "sustainability" %}{% include "home-blocks/sustainability.njk" %}
-  {% elif section.id == "leadership" %}{% include "home-blocks/leadership.njk" %}
-  {% elif section.id == "milestones" %}{% include "home-blocks/milestones.njk" %}
-  {% elif section.id == "news" %}{% include "home-blocks/news.njk" %}
-  {% elif section.id == "contact" %}{% include "home-blocks/contact.njk" %}
-  {% endif %}
+  {% include "home-blocks/" + section.id + ".njk" %}
 {% endfor %}

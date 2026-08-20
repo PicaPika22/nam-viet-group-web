@@ -51,7 +51,21 @@
         <div class="{{ 'jour' ~ 'ney' }}-banner__cta"><span class="{{ 'jour' ~ 'ney' }}-banner__sprout" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1f7a46"/><path d="M32 46V28M32 28c0-8 6-14 14-14-1 10-6 14-14 14Zm0 0c0-8-6-14-14-14 1 10 6 14 14 14Z" stroke="#f4f1ea" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><span class="lang en">{{ section.content.en.bannerStatement }}</span><span class="lang vi">{{ section.content.vi.bannerStatement }}</span><span class="lang zh">{{ section.content.zh.bannerStatement }}</span></p></div>
         <ul class="{{ 'jour' ~ 'ney' }}-banner__stats">
           {% for stat in section.stats %}
-          <li><span class="{{ 'jour' ~ 'ney' }}-stat__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5M4 19h16M8 16V10M12 16V7M16 16v-4"/></svg></span><strong>{{ stat.value }}</strong><span><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span></li>
+          <li>
+            <span class="{{ 'jour' ~ 'ney' }}-stat__icon" aria-hidden="true">
+              {% if stat.icon == "years" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+              {% elif stat.icon == "companies" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c1-3 3.5-4.5 6-4.5S14 16 15 19M14 14.5c2-.2 4 1 5 3.5"/></svg>
+              {% elif stat.icon == "projects" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 7h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/></svg>
+              {% else %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5M4 19h16M8 16V10M12 16V7M16 16v-4"/></svg>
+              {% endif %}
+            </span>
+            <strong>{{ stat.value }}</strong>
+            <span><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
+          </li>
           {% endfor %}
         </ul>
       </div>
