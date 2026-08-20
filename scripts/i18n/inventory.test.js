@@ -22,8 +22,21 @@ describe("current emission inventory", () => {
     assert.match(person, /localeUrl\('\/about\/leadership\/' \+ render\.item\.id/);
     assert.doesNotMatch(person, /pagination:[\s\S]*pagination:/);
   });
-  it("news and products use permalink functions, not nested locale pagination yet", () => {
-    assert.match(src("news/posts/posts.11tydata.js"), /permalink/);
-    assert.match(src("products/items/items.11tydata.js"), /permalink/);
+  it("news and products paginate flattenPairs (one axis)", () => {
+    const post = src("news/post-locale.njk");
+    const product = src("products/product-locale.njk");
+    const eleventy = fs.readFileSync(path.resolve(__dirname, "../../.eleventy.js"), "utf8");
+    assert.match(eleventy, /addGlobalData\("newsLocales"/);
+    assert.match(eleventy, /addGlobalData\("productLocales"/);
+    assert.match(src("news/posts/posts.11tydata.js"), /permalink:\s*false/);
+    assert.match(src("products/items/items.11tydata.js"), /permalink:\s*false/);
+    assert.match(post, /data:\s*newsLocales/);
+    assert.match(post, /alias:\s*render/);
+    assert.match(post, /localeUrl\('\/news\/' \+ render\.item\.fileSlug/);
+    assert.doesNotMatch(post, /pagination:[\s\S]*pagination:/);
+    assert.match(product, /data:\s*productLocales/);
+    assert.match(product, /alias:\s*render/);
+    assert.match(product, /localeUrl\('\/products\/' \+ render\.item\.fileSlug/);
+    assert.doesNotMatch(product, /pagination:[\s\S]*pagination:/);
   });
 });

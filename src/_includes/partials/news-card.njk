@@ -4,7 +4,7 @@
     url, image, category, title, excerpt (optional)
 #}
 {% from "macros/i18n.njk" import inline %}
-{% set href = post.url if post else url %}
+{% set href = ('/news/' + post.fileSlug + '/') if post else url %}
 {% set img = (post.data.image if post else image) %}
 {% set cat = (post.data.category if post else category) %}
 {% set ttl = (post.data.title if post else title) %}

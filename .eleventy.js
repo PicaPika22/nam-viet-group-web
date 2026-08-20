@@ -121,6 +121,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("leadershipPersonLocales", () =>
     flattenPairs(require("./src/_data/leadership"))
   );
+  eleventyConfig.addGlobalData("newsLocales", () =>
+    flattenPairs(
+      markdownEntries("src/news/posts").map(({ slug, data }) => ({
+        fileSlug: slug,
+        data,
+      }))
+    )
+  );
+  eleventyConfig.addGlobalData("productLocales", () =>
+    flattenPairs(
+      markdownEntries("src/products/items").map(({ slug, data }) => ({
+        fileSlug: slug,
+        data,
+      }))
+    )
+  );
 
   eleventyConfig.on("eleventy.before", () => {
     for (const { slug, data } of markdownEntries("src/news/posts")) {

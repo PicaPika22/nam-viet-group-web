@@ -1,0 +1,10 @@
+---
+pagination:
+  data: newsLocales
+  size: 1
+  alias: render
+permalink: "{{ localeUrl('/news/' + render.item.fileSlug + '/', render.locale) }}"
+layout: layouts/article.njk
+eleventyComputed:
+  locale: "{{ render.locale }}"
+---

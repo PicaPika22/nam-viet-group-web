@@ -45,7 +45,7 @@ lead:
 
 <div class="products__grid products__grid--page">
   {% for product in collections.products %}
-  <a href="{{ product.url | url }}" class="pcard pcard--media" style="--pc:{{ product.data.color }}">
+  <a href="{{ ('/products/' + product.fileSlug + '/') | url }}" class="pcard pcard--media" style="--pc:{{ product.data.color }}">
     {% if product.data.image %}
     <span class="pcard__media"><img src="{{ product.data.image | url }}" alt="{{ product.data.code }}" loading="lazy" width="400" height="560" decoding="async"></span>
     {% endif %}

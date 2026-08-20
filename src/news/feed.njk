@@ -11,8 +11,8 @@ eleventyExcludeFromCollections: true
     {%- for post in collections.news %}
     <item>
       <title>{{ post.data.title.en }}</title>
-      <link>{{ post.url | absoluteUrl(site.url) }}</link>
-      <guid>{{ post.url | absoluteUrl(site.url) }}</guid>
+      <link>{{ ('/news/' + post.fileSlug + '/') | absoluteUrl(site.url) }}</link>
+      <guid>{{ ('/news/' + post.fileSlug + '/') | absoluteUrl(site.url) }}</guid>
       <pubDate>{{ post.data.date }}</pubDate>
       <description>{{ post.data.title.en }}</description>
     </item>
