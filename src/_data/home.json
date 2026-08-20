@@ -92,7 +92,7 @@
           "eyebrow": "Who We Are",
           "titleLine1": "Built on Experience.",
           "titleLine2": "Driven by Innovation.",
-          "lead": "For over 20 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.",
+          "lead": "For over 25 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.",
           "body": "From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations."
         },
         "vi": {
@@ -118,9 +118,9 @@
       "stats": [
         {
           "id": "experience",
-          "value": "20+",
+          "value": "25+",
           "suffix": "+",
-          "count": 20,
+          "count": 25,
           "decimals": 0,
           "icon": "",
           "label": {
@@ -802,7 +802,7 @@
       "stats": [
         {
           "id": "banner-1",
-          "value": "20+",
+          "value": "25+",
           "suffix": "",
           "count": null,
           "decimals": 0,
@@ -857,7 +857,7 @@
       "timeline": [
         {
           "id": "m-2002",
-          "year": "2002",
+          "year": "2001",
           "icon": "building",
           "image": "/assets/img/milestones/2002.jpg",
           "title": {

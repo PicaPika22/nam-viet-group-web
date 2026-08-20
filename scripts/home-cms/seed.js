@@ -77,14 +77,14 @@ function buildSeedDocument() {
         2,
         i18n("WHO WE ARE", "VỀ CHÚNG TÔI", "关于我们"),
         {
-          en: { eyebrow: "Who We Are", titleLine1: "Built on Experience.", titleLine2: "Driven by Innovation.", lead: "For over 20 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.", body: "From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations." },
+          en: { eyebrow: "Who We Are", titleLine1: "Built on Experience.", titleLine2: "Driven by Innovation.", lead: "For over 25 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.", body: "From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations." },
           vi: { eyebrow: "Về chúng tôi", titleLine1: "Xây dựng từ kinh nghiệm.", titleLine2: "Tiến bằng đổi mới.", lead: "Trong hơn hai thập kỷ qua, Nam Việt luôn theo đuổi mục tiêu phát triển bền vững thông qua đổi mới, sản xuất chất lượng cao và xây dựng những mối quan hệ hợp tác lâu dài.", body: "Từ lĩnh vực thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi không ngừng mở rộng hệ sinh thái để mang lại nhiều giá trị hơn cho khách hàng, đối tác và xã hội." },
           zh: { eyebrow: "关于我们", titleLine1: "以经验为基。", titleLine2: "以创新驱动。", lead: "二十多年来，南越集团致力于以创新、优质制造和长期合作，推动可持续增长。", body: "从饲料生产到物流、港口与战略投资，我们不断拓展生态系统，为客户、社区与未来世代创造更大价值。" },
         },
         {
           images: { media: "/assets/img/about.png" },
           stats: [
-            stat("experience", "20+", i18n("Years of Experience", "Năm kinh nghiệm", "年行业经验"), { count: 20, suffix: "+" }),
+            stat("experience", "25+", i18n("Years of Experience", "Năm kinh nghiệm", "年行业经验"), { count: 25, suffix: "+" }),
             stat("companies", "10", i18n("Member Companies", "Công ty thành viên", "成员企业"), { count: 10 }),
             stat("projects", "186+", i18n("Projects Delivered", "Dự án đã triển khai", "已交付项目"), { count: 186, suffix: "+" }),
             stat("capital", "542B+", i18n("VND Charter Capital", "Vốn điều lệ (VNĐ)", "注册资本（越南盾）"), { count: 542, suffix: "B+" }),

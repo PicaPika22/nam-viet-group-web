@@ -23,7 +23,7 @@ module.exports = {
       companies: [
         {
           id: "nam-viet",
-          year: "2002",
+          year: "2001",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
             en: "Nam Viet Joint Stock Company",
