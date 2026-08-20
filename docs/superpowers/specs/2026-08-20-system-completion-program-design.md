@@ -1,7 +1,7 @@
 # System completion program (lock + locales)
 
 Date: 2026-08-20  
-Status: approved (program charter). Next: child spec 1 — Production lock.  
+Status: approved (program charter). Child spec 1 — Production lock: **done**. Next: child spec 2 — Locale URLs.  
 Site: Nam Viet Group Eleventy 3 (VI / EN / 中文)
 
 Thin **program charter**. Departments sign requirements and sequence here. Detailed design lives in **child specs**, written and implemented one at a time. This file does not specify Eleventy i18n plugins, login UI, environment-variable names for mode detection, or JSON-LD field lists.
@@ -206,4 +206,4 @@ Each child spec’s implementation plan owns concrete tests. This charter only s
 
 ## 9. What this file is not
 
-Do not implement code from this document. Next artifact after approval: **child spec 1 (Production lock)** at `docs/superpowers/specs/`, then a plan **only for spec 1**. Specs 2 and 3 wait until spec 1 is done (or explicitly re-queued).
+Do not implement code from this document. Child spec 1 is done. Next: [child spec 2 — Locale URLs](2026-08-20-locale-urls-design.md), then a plan **only for spec 2**. Spec 3 waits until spec 2 is done (or explicitly re-queued).
