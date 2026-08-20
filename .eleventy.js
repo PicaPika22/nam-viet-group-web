@@ -106,6 +106,13 @@ module.exports = function (eleventyConfig) {
     canonicalUrl(origin, href, locale)
   );
   eleventyConfig.addFilter("htmlLang", (locale) => htmlLang(locale));
+  eleventyConfig.addNunjucksGlobal("localeUrl", (href, locale) => localeUrl(href, locale));
+  eleventyConfig.addNunjucksGlobal("localized", (value, locale) => localized(value, locale));
+  eleventyConfig.addNunjucksGlobal("pageIdentity", (pathname) => pageIdentity(pathname));
+  eleventyConfig.addNunjucksGlobal("canonicalUrl", (origin, href, locale) =>
+    canonicalUrl(origin, href, locale)
+  );
+  eleventyConfig.addNunjucksGlobal("htmlLang", (locale) => htmlLang(locale));
   eleventyConfig.addGlobalData("locales", Object.keys(LOCALES));
 
   eleventyConfig.on("eleventy.before", () => {
