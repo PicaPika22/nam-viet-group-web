@@ -1,0 +1,10 @@
+---
+pagination:
+  data: productLocales
+  size: 1
+  alias: render
+permalink: "{{ localeUrl('/products/' + render.item.fileSlug + '/', render.locale) }}"
+layout: layouts/product.njk
+eleventyComputed:
+  locale: "{{ render.locale }}"
+---

@@ -3,13 +3,11 @@
   <div class="container">
     <header class="chapter__head">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow eyebrow--light reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow eyebrow--light reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
-      <p class="chapter__desc reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+      <p class="chapter__desc reveal" data-delay="200">{{ section.content[locale].lead }}</p>
     </header>
     <ol class="flow">
       {% for item in section.items %}
@@ -32,7 +30,7 @@
         {% else %}
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18-3-3.5-3-14.5 0-18z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
         {% endif %}
-        <span class="flow__name"><span class="lang en">{{ item.label.en }}</span><span class="lang vi">{{ item.label.vi }}</span><span class="lang zh">{{ item.label.zh }}</span></span>
+        <span class="flow__name">{{ item.label[locale] }}</span>
       </li>
       {% endfor %}
     </ol>
@@ -40,6 +38,6 @@
     {% set ecoMapShowHead = true %}
     {% set ecoMapId = "home-eco" %}
     {% include "partials/ecosystem-map.njk" %}
-    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | url }}" class="btn btn--light"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--light"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
   </div>
 </section>

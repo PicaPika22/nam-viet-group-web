@@ -3,14 +3,12 @@
   <div class="container cta__inner">
     <span class="chapter__num reveal">{{ section.displayNum }}</span>
     <h2 class="chapter__title chapter__title--center">
-      <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
-      <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
-      <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+      <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content[locale].titleLine2 }}</span></span>
     </h2>
-    <p class="chapter__desc chapter__desc--center reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+    <p class="chapter__desc chapter__desc--center reveal" data-delay="200">{{ section.content[locale].lead }}</p>
     <div class="cta__actions reveal" data-delay="350">
-      <a href="{{ section.cta.primary.href | url }}" class="btn btn--solid btn--big"><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a>
-      <a href="{{ section.cta.secondary.href | url }}" class="btn btn--light btn--big"><span class="lang en">{{ section.content.en.ctaSecondary }}</span><span class="lang vi">{{ section.content.vi.ctaSecondary }}</span><span class="lang zh">{{ section.content.zh.ctaSecondary }}</span></a>
+      <a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--solid btn--big">{{ section.content[locale].ctaPrimary }}</a>
+      <a href="{{ section.cta.secondary.href | localeUrl(locale) | url }}" class="btn btn--light btn--big">{{ section.content[locale].ctaSecondary }}</a>
     </div>
   </div>
 </section>

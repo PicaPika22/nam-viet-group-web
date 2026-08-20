@@ -7,43 +7,33 @@ showRail: false
 <section class="chapter chapter--light news-list-hero">
   <div class="container">
     <nav class="breadcrumb news-list-hero__crumb" aria-label="Breadcrumb">
-      <a href="{{ '/' | url }}">
-        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
-        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
-        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      <a href="{{ '/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].breadcrumbHome }}
       </a>
       <span aria-hidden="true">/</span>
       <span>
-        <span class="lang en">News</span>
-        <span class="lang vi">Tin tức</span>
-        <span class="lang zh">新闻</span>
+        {{ ({ en: 'News', vi: 'Tin tức', zh: '新闻' })[locale] }}
       </span>
     </nav>
     <header class="chapter__head">
       <span class="chapter__num reveal">11</span>
       <p class="eyebrow reveal">
-        <span class="lang en">News</span>
-        <span class="lang vi">Tin tức</span>
-        <span class="lang zh">新闻</span>
+        {{ ({ en: 'News', vi: 'Tin tức', zh: '新闻' })[locale] }}
       </p>
       <h1 class="chapter__title">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">What’s Happening</span></span>
           <span class="line-mask"><span class="line line--muted">at Nam Viet.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Tin mới</span></span>
-          <span class="line-mask"><span class="line line--muted">từ Nam Việt.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">南越</span></span>
           <span class="line-mask"><span class="line line--muted">最新动态。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Tin mới</span></span>
+          <span class="line-mask"><span class="line line--muted">từ Nam Việt.</span></span>
+        {% endif %}
       </h1>
       <p class="chapter__desc reveal" data-delay="200">
-        <span class="lang en">Project updates, business activities and key developments across the Nam Viet ecosystem.</span>
-        <span class="lang vi">Cập nhật dự án, hoạt động doanh nghiệp và những diễn biến đáng chú ý trong hệ sinh thái Nam Việt.</span>
-        <span class="lang zh">了解南越的项目进展、企业动态与重要更新。</span>
+        {{ ({ en: 'Project updates, business activities and key developments across the Nam Viet ecosystem.', vi: 'Cập nhật dự án, hoạt động doanh nghiệp và những diễn biến đáng chú ý trong hệ sinh thái Nam Việt.', zh: '了解南越的项目进展、企业动态与重要更新。' })[locale] }}
       </p>
     </header>
   </div>

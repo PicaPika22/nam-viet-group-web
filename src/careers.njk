@@ -1,7 +1,11 @@
 ---
 layout: layouts/inner.njk
 title: Careers
-permalink: /careers/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/careers/', locale) }}"
 eyebrow:
   en: Careers
   vi: Tuyển dụng
@@ -18,9 +22,7 @@ lead:
 
 <section class="page-section">
   <h2>
-    <span class="lang en">{{ i18n.en.openRoles }}</span>
-    <span class="lang vi">{{ i18n.vi.openRoles }}</span>
-    <span class="lang zh">{{ i18n.zh.openRoles }}</span>
+    {{ i18n[locale].openRoles }}
   </h2>
 
   {% if collections.careers and (collections.careers | length) %}
@@ -31,9 +33,7 @@ lead:
   </div>
   {% else %}
   <p class="career-empty">
-    <span class="lang en">No open roles right now. Send a general application via Contact.</span>
-    <span class="lang vi">Hiện chưa có vị trí mở. Gửi hồ sơ qua trang Liên hệ.</span>
-    <span class="lang zh">暂无开放职位。请通过联系页投递。</span>
+    {{ ({ en: 'No open roles right now. Send a general application via Contact.', vi: 'Hiện chưa có vị trí mở. Gửi hồ sơ qua trang Liên hệ.', zh: '暂无开放职位。请通过联系页投递。' })[locale] }}
   </p>
   {% endif %}
 </section>

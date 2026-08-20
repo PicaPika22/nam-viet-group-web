@@ -2,14 +2,12 @@
   <div class="container"><div class="leader__grid">
     <div class="leader__body">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
-      <p class="body-text reveal" data-delay="150"><span class="lang en">{{ section.content.en.body }}</span><span class="lang vi">{{ section.content.vi.body }}</span><span class="lang zh">{{ section.content.zh.body }}</span></p>
-      <div class="reveal page-actions page-actions--tight" data-delay="250"><a href="{{ section.cta.primary.href | url }}" class="btn btn--dark"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+      <p class="body-text reveal" data-delay="150">{{ section.content[locale].body }}</p>
+      <div class="reveal page-actions page-actions--tight" data-delay="250"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--dark"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
     </div>
     <div class="leader__media reveal-img" data-parallax-img><img src="{{ section.images.media | url }}" alt="Nam Viet Group leadership team" loading="lazy"></div>
   </div></div>

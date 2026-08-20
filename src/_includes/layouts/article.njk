@@ -9,10 +9,8 @@ ogType: article
 {% set eyebrow = category %}
 {% set breadcrumbHtml %}
       <span aria-hidden="true">/</span>
-      <a href="{{ '/news/' | url }}">
-        <span class="lang en">{{ i18n.en.news }}</span>
-        <span class="lang vi">{{ i18n.vi.news }}</span>
-        <span class="lang zh">{{ i18n.zh.news }}</span>
+      <a href="{{ '/news/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].news }}
       </a>
       <span aria-hidden="true">/</span>
       <span>{{ date | isoDate }}</span>
@@ -25,16 +23,14 @@ ogType: article
 {% endif %}
 <section class="inner-body">
   <div class="container prose article-body">
-    {% if body and body.en %}
+    {% if body and body[locale] %}
     {{ rich(body) }}
     {% else %}
     {{ content | safe }}
     {% endif %}
     <p class="article-back">
-      <a href="{{ '/news/' | url }}">←
-        <span class="lang en">{{ i18n.en.backToNews }}</span>
-        <span class="lang vi">{{ i18n.vi.backToNews }}</span>
-        <span class="lang zh">{{ i18n.zh.backToNews }}</span>
+      <a href="{{ '/news/'  | localeUrl(locale) | url }}">←
+        {{ i18n[locale].backToNews }}
       </a>
     </p>
   </div>

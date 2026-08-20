@@ -1,7 +1,11 @@
 ---
 layout: layouts/inner.njk
 title: Downloads
-permalink: /downloads/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/downloads/', locale) }}"
 eyebrow:
   en: Resources
   vi: Tài liệu
@@ -22,21 +26,15 @@ lead:
     <li>
       <div>
         <span class="download-list__cat">
-          <span class="lang en">{{ doc.category.en }}</span>
-          <span class="lang vi">{{ doc.category.vi }}</span>
-          <span class="lang zh">{{ doc.category.zh }}</span>
+          {{ doc.category[locale] }}
         </span>
         <strong>
-          <span class="lang en">{{ doc.title.en }}</span>
-          <span class="lang vi">{{ doc.title.vi }}</span>
-          <span class="lang zh">{{ doc.title.zh }}</span>
+          {{ doc.title[locale] }}
         </strong>
         <span class="download-list__size">{{ doc.size }}</span>
       </div>
       <a class="btn btn--small btn--solid" href="{{ doc.file | url }}" download>
-        <span class="lang en">{{ i18n.en.download }}</span>
-        <span class="lang vi">{{ i18n.vi.download }}</span>
-        <span class="lang zh">{{ i18n.zh.download }}</span>
+        {{ i18n[locale].download }}
       </a>
     </li>
     {% endfor %}

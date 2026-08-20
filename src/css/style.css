@@ -561,7 +561,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   color: var(--ink);
 }
 .lang-switch__menu[hidden] { display: none; }
-.lang-switch__menu button {
+.lang-switch__menu a {
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -573,17 +573,18 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   letter-spacing: 0.04em;
   color: var(--ink);
   text-align: left;
+  text-decoration: none;
   transition: background 0.2s;
 }
-.lang-switch__menu button:hover,
-.lang-switch__menu button:focus-visible {
+.lang-switch__menu a:hover,
+.lang-switch__menu a:focus-visible {
   background: color-mix(in srgb, var(--green-600) 10%, transparent);
 }
-.lang-switch__menu button.is-active {
+.lang-switch__menu a.is-active {
   background: color-mix(in srgb, var(--green-600) 14%, transparent);
   color: var(--green-800, #1b7441);
 }
-.lang-switch__menu button[data-set-lang="zh"] {
+.lang-switch__menu a[lang="zh-Hans"] {
   letter-spacing: 0;
   font-size: 0.78rem;
 }

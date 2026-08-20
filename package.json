@@ -11,7 +11,9 @@
     "build": "eleventy",
     "start": "node scripts/admin-api.js",
     "start:site": "npm run build && npx serve _site -l 8125",
-    "test:cms": "node --test scripts/home-cms/schema.test.js scripts/home-cms/store.test.js scripts/home-cms/routes.test.js scripts/cms-guard.test.js scripts/admin-api.http.test.js"
+    "test:cms": "node --test scripts/home-cms/schema.test.js scripts/home-cms/store.test.js scripts/home-cms/routes.test.js scripts/cms-guard.test.js scripts/admin-api.http.test.js",
+    "test:i18n": "node --test scripts/i18n/locale.test.js scripts/i18n/audit-absolute.test.js scripts/i18n/inventory.test.js scripts/i18n/required.test.js scripts/i18n/search-nav.test.js",
+    "test:i18n:site": "node --test scripts/i18n/tree-parity.test.js"
   },
   "engines": {
     "node": ">=20"

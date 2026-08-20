@@ -1,5 +1,6 @@
+{% set locale = locale or render.locale or "vi" %}
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="{{ locale | htmlLang }}" data-lang="{{ locale }}">
 <head>
 {% include "partials/head.njk" %}
 </head>

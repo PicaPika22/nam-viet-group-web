@@ -1,7 +1,11 @@
 ---
 layout: layouts/inner.njk
 title: Companies
-permalink: /companies/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/companies/', locale) }}"
 eyebrow:
   en: Ecosystem
   vi: Hệ sinh thái
@@ -22,14 +26,10 @@ lead:
 {% include "partials/ecosystem-map.njk" %}
 
 <p class="page-actions">
-  <a class="btn btn--outline btn--dark" href="{{ '/products/' | url }}">
-    <span class="lang en">Feed product catalog</span>
-    <span class="lang vi">Danh mục thức ăn</span>
-    <span class="lang zh">饲料产品目录</span>
+  <a class="btn btn--outline btn--dark" href="{{ '/products/'  | localeUrl(locale) | url }}">
+    {{ ({ en: 'Feed product catalog', vi: 'Danh mục thức ăn', zh: '饲料产品目录' })[locale] }}
   </a>
-  <a class="btn btn--solid" href="{{ '/contact/' | url }}">
-    <span class="lang en">{{ i18n.en.contact }}</span>
-    <span class="lang vi">{{ i18n.vi.contact }}</span>
-    <span class="lang zh">{{ i18n.zh.contact }}</span>
+  <a class="btn btn--solid" href="{{ '/contact/'  | localeUrl(locale) | url }}">
+    {{ i18n[locale].contact }}
   </a>
 </p>

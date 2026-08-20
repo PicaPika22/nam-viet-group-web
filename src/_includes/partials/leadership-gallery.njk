@@ -18,49 +18,35 @@
   <div class="leader-gallery__inner">
     <header class="leader-gallery__head reveal">
       <p class="leader-gallery__eyebrow">
-        <span class="lang en">Leadership</span>
-        <span class="lang vi">Ban lãnh đạo</span>
-        <span class="lang zh">领导团队</span>
+        {{ ({ en: 'Leadership', vi: 'Ban lãnh đạo', zh: '领导团队' })[locale] }}
       </p>
       <h1 class="leader-gallery__title">
-        <span class="lang en">People who steer Nam Viet</span>
-        <span class="lang vi">Những người định hướng Nam Việt</span>
-        <span class="lang zh">掌舵南越的领导团队</span>
+        {{ ({ en: 'People who steer Nam Viet', vi: 'Những người định hướng Nam Việt', zh: '掌舵南越的领导团队' })[locale] }}
       </h1>
       <p class="leader-gallery__meta">
-        <span class="lang en">From the Chairman to Group support and directors of member companies — one team guiding Nam Viet’s reach.</span>
-        <span class="lang vi">Từ Chủ tịch đến đội ngũ hỗ trợ cấp Tập đoàn và giám đốc các công ty thành viên — cùng dẫn dắt Nam Việt vươn ra thế giới.</span>
-        <span class="lang zh">从集团主席到集团支持团队与成员企业负责人——共同引领南越走向世界。</span>
+        {{ ({ en: 'From the Chairman to Group support and directors of member companies — one team guiding Nam Viet’s reach.', vi: 'Từ Chủ tịch đến đội ngũ hỗ trợ cấp Tập đoàn và giám đốc các công ty thành viên — cùng dẫn dắt Nam Việt vươn ra thế giới.', zh: '从集团主席到集团支持团队与成员企业负责人——共同引领南越走向世界。' })[locale] }}
       </p>
     </header>
 
     <nav class="leader-gallery__jump" aria-label="Leadership sections">
       <a href="#leadership-chairman">
-        <span class="lang en">Chairman</span>
-        <span class="lang vi">Chủ tịch</span>
-        <span class="lang zh">主席</span>
+        {{ ({ en: 'Chairman', vi: 'Chủ tịch', zh: '主席' })[locale] }}
       </a>
       <a href="#leadership-office">
-        <span class="lang en">Group support</span>
-        <span class="lang vi">Hỗ trợ Tập đoàn</span>
-        <span class="lang zh">集团支持</span>
+        {{ ({ en: 'Group support', vi: 'Hỗ trợ Tập đoàn', zh: '集团支持' })[locale] }}
       </a>
       <a href="#leadership-companies">
-        <span class="lang en">Member companies</span>
-        <span class="lang vi">Công ty thành viên</span>
-        <span class="lang zh">成员企业</span>
+        {{ ({ en: 'Member companies', vi: 'Công ty thành viên', zh: '成员企业' })[locale] }}
       </a>
     </nav>
 
     {% if chairman %}
     <section id="leadership-chairman" class="leader-gallery__band leader-gallery__band--chairman reveal">
       <h2 class="leader-gallery__band-title">
-        <span class="lang en">Chairman of the Group</span>
-        <span class="lang vi">Chủ tịch Tập đoàn</span>
-        <span class="lang zh">集团主席</span>
+        {{ ({ en: 'Chairman of the Group', vi: 'Chủ tịch Tập đoàn', zh: '集团主席' })[locale] }}
       </h2>
       <article class="lgallery-feature">
-        <a href="{{ ('/about/leadership/' + chairman.id + '/') | url }}" class="lgallery-feature__link">
+        <a href="{{ ('/about/leadership/' + chairman.id + '/') | localeUrl(locale) | url }}" class="lgallery-feature__link">
           <div class="lgallery-feature__media">
             <img
               src="{{ chairman.image | url }}"
@@ -74,29 +60,19 @@
           </div>
           <div class="lgallery-feature__copy">
             <p class="lgallery-feature__group">
-              <span class="lang en">Group leadership</span>
-              <span class="lang vi">Lãnh đạo Tập đoàn</span>
-              <span class="lang zh">集团领导</span>
+              {{ ({ en: 'Group leadership', vi: 'Lãnh đạo Tập đoàn', zh: '集团领导' })[locale] }}
             </p>
             <h3 class="lgallery-feature__name">
-              <span class="lang en">{{ chairman.name.en }}</span>
-              <span class="lang vi">{{ chairman.name.vi }}</span>
-              <span class="lang zh">{{ chairman.name.zh }}</span>
+              {{ chairman.name[locale] }}
             </h3>
             <p class="lgallery-feature__role">
-              <span class="lang en">{{ chairman.role.en }}</span>
-              <span class="lang vi">{{ chairman.role.vi }}</span>
-              <span class="lang zh">{{ chairman.role.zh }}</span>
+              {{ chairman.role[locale] }}
             </p>
             <p class="lgallery-feature__bio">
-              <span class="lang en">{{ chairman.bio.en | truncate(220) }}</span>
-              <span class="lang vi">{{ chairman.bio.vi | truncate(220) }}</span>
-              <span class="lang zh">{{ chairman.bio.zh | truncate(180) }}</span>
+              {% if locale == 'en' %}{{ chairman.bio.en | truncate(220) }}{% elif locale == 'zh' %}{{ chairman.bio.zh | truncate(180) }}{% else %}{{ chairman.bio.vi | truncate(220) }}{% endif %}
             </p>
             <span class="lgallery-feature__cue">
-              <span class="lang en">View profile</span>
-              <span class="lang vi">Xem hồ sơ</span>
-              <span class="lang zh">查看简介</span>
+              {{ ({ en: 'View profile', vi: 'Xem hồ sơ', zh: '查看简介' })[locale] }}
             </span>
           </div>
         </a>
@@ -106,20 +82,16 @@
 
     <section id="leadership-office" class="leader-gallery__band reveal">
       <h2 class="leader-gallery__band-title leader-gallery__band-title--sticky">
-        <span class="lang en">Group support</span>
-        <span class="lang vi">Hỗ trợ cấp Tập đoàn</span>
-        <span class="lang zh">集团支持团队</span>
+        {{ ({ en: 'Group support', vi: 'Hỗ trợ cấp Tập đoàn', zh: '集团支持团队' })[locale] }}
       </h2>
       <p class="leader-gallery__band-lead">
-        <span class="lang en">Deputy General Director, Chief Accountant, and Assistant to the General Director — the core support around Group leadership.</span>
-        <span class="lang vi">Phó Tổng giám đốc, Kế toán trưởng và Trợ lý Tổng giám đốc — đội ngũ hỗ trợ cốt lõi bên cạnh lãnh đạo Tập đoàn.</span>
-        <span class="lang zh">副总经理、总会计师与总经理助理——围绕集团领导的核心支持团队。</span>
+        {{ ({ en: 'Deputy General Director, Chief Accountant, and Assistant to the General Director — the core support around Group leadership.', vi: 'Phó Tổng giám đốc, Kế toán trưởng và Trợ lý Tổng giám đốc — đội ngũ hỗ trợ cốt lõi bên cạnh lãnh đạo Tập đoàn.', zh: '副总经理、总会计师与总经理助理——围绕集团领导的核心支持团队。' })[locale] }}
       </p>
       <div class="leader-gallery__grid leader-gallery__grid--office">
         {% for person in leadership %}
           {% if person.isGroupSupport %}
           <article class="lgallery-card">
-            <a href="{{ ('/about/leadership/' + person.id + '/') | url }}" class="lgallery-card__link">
+            <a href="{{ ('/about/leadership/' + person.id + '/') | localeUrl(locale) | url }}" class="lgallery-card__link">
               <div class="lgallery-card__media">
                 <img
                   src="{{ person.image | url }}"
@@ -133,24 +105,16 @@
               </div>
               <div class="lgallery-card__info">
                 <p class="lgallery-card__group">
-                  <span class="lang en">Group support</span>
-                  <span class="lang vi">Hỗ trợ Tập đoàn</span>
-                  <span class="lang zh">集团支持</span>
+                  {{ ({ en: 'Group support', vi: 'Hỗ trợ Tập đoàn', zh: '集团支持' })[locale] }}
                 </p>
                 <h3 class="lgallery-card__name">
-                  <span class="lang en">{{ person.name.en }}</span>
-                  <span class="lang vi">{{ person.name.vi }}</span>
-                  <span class="lang zh">{{ person.name.zh }}</span>
+                  {{ person.name[locale] }}
                 </h3>
                 <p class="lgallery-card__role">
-                  <span class="lang en">{{ person.role.en }}</span>
-                  <span class="lang vi">{{ person.role.vi }}</span>
-                  <span class="lang zh">{{ person.role.zh }}</span>
+                  {{ person.role[locale] }}
                 </p>
                 <span class="lgallery-card__cue">
-                  <span class="lang en">View profile</span>
-                  <span class="lang vi">Xem hồ sơ</span>
-                  <span class="lang zh">查看简介</span>
+                  {{ ({ en: 'View profile', vi: 'Xem hồ sơ', zh: '查看简介' })[locale] }}
                 </span>
               </div>
             </a>
@@ -162,20 +126,16 @@
 
     <section id="leadership-companies" class="leader-gallery__band reveal">
       <h2 class="leader-gallery__band-title leader-gallery__band-title--sticky">
-        <span class="lang en">Directors of member companies</span>
-        <span class="lang vi">Giám đốc công ty thành viên</span>
-        <span class="lang zh">成员企业负责人</span>
+        {{ ({ en: 'Directors of member companies', vi: 'Giám đốc công ty thành viên', zh: '成员企业负责人' })[locale] }}
       </h2>
       <p class="leader-gallery__band-lead">
-        <span class="lang en">Directors who run member companies across feed, trade, logistics, hospitality and rural development.</span>
-        <span class="lang vi">Giám đốc điều hành các công ty thành viên — thức ăn, thương mại, logistics, du lịch và phát triển nông thôn.</span>
-        <span class="lang zh">执掌成员企业的负责人——覆盖饲料、贸易、物流、旅游与农村发展。</span>
+        {{ ({ en: 'Directors who run member companies across feed, trade, logistics, hospitality and rural development.', vi: 'Giám đốc điều hành các công ty thành viên — thức ăn, thương mại, logistics, du lịch và phát triển nông thôn.', zh: '执掌成员企业的负责人——覆盖饲料、贸易、物流、旅游与农村发展。' })[locale] }}
       </p>
       <div class="leader-gallery__grid leader-gallery__grid--companies">
         {% for person in leadership %}
           {% if person.isMemberDirector %}
           <article class="lgallery-card">
-            <a href="{{ ('/about/leadership/' + person.id + '/') | url }}" class="lgallery-card__link">
+            <a href="{{ ('/about/leadership/' + person.id + '/') | localeUrl(locale) | url }}" class="lgallery-card__link">
               <div class="lgallery-card__media">
                 <img
                   src="{{ person.image | url }}"
@@ -189,24 +149,16 @@
               </div>
               <div class="lgallery-card__info">
                 <p class="lgallery-card__group">
-                  <span class="lang en">Member company</span>
-                  <span class="lang vi">Công ty thành viên</span>
-                  <span class="lang zh">成员企业</span>
+                  {{ ({ en: 'Member company', vi: 'Công ty thành viên', zh: '成员企业' })[locale] }}
                 </p>
                 <h3 class="lgallery-card__name">
-                  <span class="lang en">{{ person.name.en }}</span>
-                  <span class="lang vi">{{ person.name.vi }}</span>
-                  <span class="lang zh">{{ person.name.zh }}</span>
+                  {{ person.name[locale] }}
                 </h3>
                 <p class="lgallery-card__role">
-                  <span class="lang en">{{ person.role.en }}</span>
-                  <span class="lang vi">{{ person.role.vi }}</span>
-                  <span class="lang zh">{{ person.role.zh }}</span>
+                  {{ person.role[locale] }}
                 </p>
                 <span class="lgallery-card__cue">
-                  <span class="lang en">View profile</span>
-                  <span class="lang vi">Xem hồ sơ</span>
-                  <span class="lang zh">查看简介</span>
+                  {{ ({ en: 'View profile', vi: 'Xem hồ sơ', zh: '查看简介' })[locale] }}
                 </span>
               </div>
             </a>

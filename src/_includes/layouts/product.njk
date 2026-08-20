@@ -8,10 +8,8 @@ pageLayout: inner
 {% set lead = summary %}
 {% set breadcrumbHtml %}
       <span aria-hidden="true">/</span>
-      <a href="{{ '/products/' | url }}">
-        <span class="lang en">{{ i18n.en.products }}</span>
-        <span class="lang vi">{{ i18n.vi.products }}</span>
-        <span class="lang zh">{{ i18n.zh.products }}</span>
+      <a href="{{ '/products/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].products }}
       </a>
       <span aria-hidden="true">/</span>
       <span>{{ code }}</span>
@@ -27,34 +25,24 @@ pageLayout: inner
       {% endif %}
       <div class="product-detail__panel" style="--pc:{{ color }}">
         <h2>
-          <span class="lang en">Key specifications</span>
-          <span class="lang vi">Thông số chính</span>
-          <span class="lang zh">核心规格</span>
+          {{ ({ en: 'Key specifications', vi: 'Thông số chính', zh: '核心规格' })[locale] }}
         </h2>
         <ul class="checks">
           {% for s in specs %}
           <li><i></i>
-            <span class="lang en">{{ s.en }}</span>
-            <span class="lang vi">{{ s.vi }}</span>
-            <span class="lang zh">{{ s.zh }}</span>
+            {{ s[locale] }}
           </li>
           {% endfor %}
         </ul>
         <div class="product-detail__actions page-actions">
-          <a class="btn btn--solid" href="{{ '/contact/' | url }}?type=product&product={{ code }}">
-            <span class="lang en">{{ i18n.en.inquire }}</span>
-            <span class="lang vi">{{ i18n.vi.inquire }}</span>
-            <span class="lang zh">{{ i18n.zh.inquire }}</span>
+          <a class="btn btn--solid" href="{{ ('/contact/?type=product&product=' + code) | localeUrl(locale) | url }}">
+            {{ i18n[locale].inquire }}
           </a>
-          <a class="btn btn--outline" href="{{ '/downloads/' | url }}">
-            <span class="lang en">{{ i18n.en.download }}</span>
-            <span class="lang vi">{{ i18n.vi.download }}</span>
-            <span class="lang zh">{{ i18n.zh.download }}</span>
+          <a class="btn btn--outline" href="{{ '/downloads/'  | localeUrl(locale) | url }}">
+            {{ i18n[locale].download }}
           </a>
-          <a class="btn btn--outline" href="{{ '/products/' | url }}">
-            <span class="lang en">{{ i18n.en.backToProducts }}</span>
-            <span class="lang vi">{{ i18n.vi.backToProducts }}</span>
-            <span class="lang zh">{{ i18n.zh.backToProducts }}</span>
+          <a class="btn btn--outline" href="{{ '/products/'  | localeUrl(locale) | url }}">
+            {{ i18n[locale].backToProducts }}
           </a>
         </div>
       </div>

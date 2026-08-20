@@ -2,29 +2,27 @@
   <div class="container">
     <header class="chapter__head">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
     </header>
     <div class="esg__grid">
       <div class="esg__media reveal-img" data-parallax-img><img src="{{ section.images.media | url }}" alt="Young seedling in hands" loading="lazy"></div>
       <div class="esg__body">
-        <p class="lead reveal"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+        <p class="lead reveal">{{ section.content[locale].lead }}</p>
         {% if sustainability and sustainability.pillars %}
         <div class="pillars">
           {% for pillar in sustainability.pillars %}
           <article class="pillar reveal" data-delay="{{ loop.index0 * 120 }}">
             <span class="pillar__letter">{{ pillar.letter }}</span>
-            <h3><span class="lang en">{{ pillar.title.en }}</span><span class="lang vi">{{ pillar.title.vi }}</span><span class="lang zh">{{ pillar.title.zh }}</span></h3>
-            <p><span class="lang en">{{ pillar.teaser.en if pillar.teaser else pillar.lead.en }}</span><span class="lang vi">{{ pillar.teaser.vi if pillar.teaser else pillar.lead.vi }}</span><span class="lang zh">{{ pillar.teaser.zh if pillar.teaser else pillar.lead.zh }}</span></p>
+            <h3>{{ pillar.title[locale] }}</h3>
+            <p>{{ pillar.teaser[locale] if pillar.teaser else pillar.lead[locale] }}</p>
           </article>
           {% endfor %}
         </div>
         {% endif %}
-        <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | url }}" class="btn btn--dark"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+        <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--dark"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
       </div>
     </div>
   </div>

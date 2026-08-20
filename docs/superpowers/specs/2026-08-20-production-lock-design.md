@@ -1,7 +1,7 @@
 # Child spec 1 — Production lock
 
 Date: 2026-08-20  
-Status: approved for implementation planning  
+Status: done (publishing CMS)  
 Parent: [System completion program](2026-08-20-system-completion-program-design.md)  
 Site: Nam Viet Group Eleventy 3 CMS (`scripts/admin-api.js`)
 

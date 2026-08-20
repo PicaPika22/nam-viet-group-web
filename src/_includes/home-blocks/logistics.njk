@@ -3,22 +3,20 @@
   <div class="container">
     <header class="chapter__head">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow eyebrow--light reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow eyebrow--light reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
-      <p class="chapter__desc reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+      <p class="chapter__desc reveal" data-delay="200">{{ section.content[locale].lead }}</p>
     </header>
     <div class="logi__stats">
       {% for stat in section.stats %}
       <div class="stat stat--glass reveal" data-delay="{{ loop.index0 * 120 }}">
         <span class="stat__value">{{ stat.value }}</span>
-        <span class="stat__label"><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
+        <span class="stat__label">{{ stat.label[locale] }}</span>
       </div>
       {% endfor %}
     </div>
-    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | url }}" class="btn btn--light"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--light"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
   </div>
 </section>

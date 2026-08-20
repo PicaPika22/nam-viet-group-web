@@ -7,22 +7,16 @@ showRail: false
 <section class="leadership-hero leadership-hero--compact">
   <div class="container">
     <nav class="breadcrumb leadership-hero__crumb" aria-label="Breadcrumb">
-      <a href="{{ '/' | url }}">
-        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
-        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
-        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      <a href="{{ '/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].breadcrumbHome }}
       </a>
       <span aria-hidden="true">/</span>
-      <a href="{{ '/about/' | url }}">
-        <span class="lang en">About</span>
-        <span class="lang vi">Giới thiệu</span>
-        <span class="lang zh">关于</span>
+      <a href="{{ '/about/'  | localeUrl(locale) | url }}">
+        {{ ({ en: 'About', vi: 'Giới thiệu', zh: '关于' })[locale] }}
       </a>
       <span aria-hidden="true">/</span>
       <span>
-        <span class="lang en">Leadership</span>
-        <span class="lang vi">Ban lãnh đạo</span>
-        <span class="lang zh">领导团队</span>
+        {{ ({ en: 'Leadership', vi: 'Ban lãnh đạo', zh: '领导团队' })[locale] }}
       </span>
     </nav>
   </div>

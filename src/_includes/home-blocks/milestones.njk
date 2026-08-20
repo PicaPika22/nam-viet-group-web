@@ -2,20 +2,18 @@
   <div class="container">
     <header class="{{ 'jour' ~ 'ney' }}__head">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
-      <p class="{{ 'jour' ~ 'ney' }}__intro reveal" data-delay="150"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+      <p class="{{ 'jour' ~ 'ney' }}__intro reveal" data-delay="150">{{ section.content[locale].lead }}</p>
       <span class="{{ 'jour' ~ 'ney' }}__rule reveal" data-delay="200" aria-hidden="true"></span>
     </header>
     {% if section.timeline and (section.timeline | length) %}
     <div class="{{ 'jour' ~ 'ney' }}-tl" data-{{ 'jour' ~ 'ney' }}-tl>
       <div class="{{ 'jour' ~ 'ney' }}-tl__controls">
-        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-prev aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden"><span class="lang en">Previous milestones</span><span class="lang vi">Cột mốc trước</span><span class="lang zh">上一里程碑</span></span><span aria-hidden="true">←</span></button>
-        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-next aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden"><span class="lang en">Next milestones</span><span class="lang vi">Cột mốc sau</span><span class="lang zh">下一里程碑</span></span><span aria-hidden="true">→</span></button>
+        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-prev aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden">{{ ({ en: 'Previous milestones', vi: 'Cột mốc trước', zh: '上一里程碑' })[locale] }}</span><span aria-hidden="true">←</span></button>
+        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-next aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden">{{ ({ en: 'Next milestones', vi: 'Cột mốc sau', zh: '下一里程碑' })[locale] }}</span><span aria-hidden="true">→</span></button>
       </div>
       <div class="{{ 'jour' ~ 'ney' }}-tl__stage">
         <div class="{{ 'jour' ~ 'ney' }}-tl__rail" aria-hidden="true"><span class="{{ 'jour' ~ 'ney' }}-tl__fill" id="timelineFill"></span></div>
@@ -34,8 +32,8 @@
                   {% elif item.icon == "warehouse" %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5ZM7 21v-7h10v7"/></svg>
                   {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>{% endif %}
                 </span>
-                <h3 class="jcard__title"><span class="lang en">{{ item.title.en }}</span><span class="lang vi">{{ item.title.vi }}</span><span class="lang zh">{{ item.title.zh }}</span></h3>
-                <p class="jcard__text"><span class="lang en">{{ item.description.en }}</span><span class="lang vi">{{ item.description.vi }}</span><span class="lang zh">{{ item.description.zh }}</span></p>
+                <h3 class="jcard__title">{{ item.title[locale] }}</h3>
+                <p class="jcard__text">{{ item.description[locale] }}</p>
               </div>
             </article>
           </li>
@@ -48,7 +46,7 @@
       <div class="{{ 'jour' ~ 'ney' }}-banner__media"><img src="{{ section.images.banner | url }}" alt="Nam Viet agricultural landscape" loading="lazy" width="1920" height="820" decoding="async"></div>
       <div class="{{ 'jour' ~ 'ney' }}-banner__overlay" aria-hidden="true"></div>
       <div class="{{ 'jour' ~ 'ney' }}-banner__inner">
-        <div class="{{ 'jour' ~ 'ney' }}-banner__cta"><span class="{{ 'jour' ~ 'ney' }}-banner__sprout" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1f7a46"/><path d="M32 46V28M32 28c0-8 6-14 14-14-1 10-6 14-14 14Zm0 0c0-8-6-14-14-14 1 10 6 14 14 14Z" stroke="#f4f1ea" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><span class="lang en">{{ section.content.en.bannerStatement }}</span><span class="lang vi">{{ section.content.vi.bannerStatement }}</span><span class="lang zh">{{ section.content.zh.bannerStatement }}</span></p></div>
+        <div class="{{ 'jour' ~ 'ney' }}-banner__cta"><span class="{{ 'jour' ~ 'ney' }}-banner__sprout" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1f7a46"/><path d="M32 46V28M32 28c0-8 6-14 14-14-1 10-6 14-14 14Zm0 0c0-8-6-14-14-14 1 10 6 14 14 14Z" stroke="#f4f1ea" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>{{ section.content[locale].bannerStatement }}</p></div>
         <ul class="{{ 'jour' ~ 'ney' }}-banner__stats">
           {% for stat in section.stats %}
           <li>
@@ -64,7 +62,7 @@
               {% endif %}
             </span>
             <strong>{{ stat.value }}</strong>
-            <span><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
+            <span>{{ stat.label[locale] }}</span>
           </li>
           {% endfor %}
         </ul>
