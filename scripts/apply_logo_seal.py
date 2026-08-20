@@ -2,7 +2,9 @@
 """Install the official NV-JSC oval seal (lion + globe + red ring).
 
 Reads the uploaded source, knocks out fringe outside the red oval, and
-writes logo.png + logo-light.png (same full-color seal on both).
+writes:
+  logo.png        — full-color seal (blue lion) for light backgrounds
+  logo-light.png  — cream lion on the same red oval for dark backgrounds
 """
 from __future__ import annotations
 
@@ -18,6 +20,7 @@ SRC = ROOT / "src" / "assets" / "img"
 SITE = ROOT / "_site" / "assets" / "img"
 ASSETS = ROOT / "assets" / "img"
 BACKUP = ROOT / "_backup-original"
+CREAM = (244, 241, 234)
 
 SOURCE_CANDIDATES = [
     BACKUP / "logo-seal.png",
@@ -111,15 +114,35 @@ def clean_seal(im: Image.Image) -> Image.Image:
     return cropped
 
 
-def write_all(im: Image.Image) -> None:
-    dests = [SRC / "logo.png", SRC / "logo-light.png"]
+def make_light(im: Image.Image) -> Image.Image:
+    """Recolor the navy lion/globe to cream; keep red oval, crown, NV-JSC."""
+    out = im.copy()
+    px = out.load()
+    w, h = out.size
+    cr, cg, cb = CREAM
+    for y in range(h):
+        for x in range(w):
+            r, g, b, a = px[x, y]
+            if a < 12:
+                continue
+            if r >= 90 and r > g + 22 and r > b + 18:
+                continue
+            px[x, y] = (cr, cg, cb, a)
+    return out
+
+
+def write_pair(color: Image.Image, light: Image.Image) -> None:
+    pairs = [
+        (SRC / "logo.png", SRC / "logo-light.png"),
+    ]
     if ASSETS.exists():
-        dests += [ASSETS / "logo.png", ASSETS / "logo-light.png"]
+        pairs.append((ASSETS / "logo.png", ASSETS / "logo-light.png"))
     if SITE.exists():
-        dests += [SITE / "logo.png", SITE / "logo-light.png"]
-    for dest in dests:
-        save_replace(im, dest)
-        print(f"  wrote {dest}")
+        pairs.append((SITE / "logo.png", SITE / "logo-light.png"))
+    for dark_path, light_path in pairs:
+        save_replace(color, dark_path)
+        save_replace(light, light_path)
+        print(f"  wrote {dark_path.name} + {light_path.name} -> {dark_path.parent}")
 
 
 def main() -> None:
@@ -129,10 +152,11 @@ def main() -> None:
     if src.resolve() != bak.resolve():
         shutil.copyfile(src, bak)
         print(f"backed up -> {bak}")
-    im = clean_seal(Image.open(src))
-    write_all(im)
-    sample = im.getpixel((im.size[0] // 2, im.size[1] // 2))
-    print(f"center={sample} corner={im.getpixel((0, 0))}")
+    color = clean_seal(Image.open(src))
+    light = make_light(color)
+    write_pair(color, light)
+    print(f"color center={color.getpixel((color.size[0] // 2, color.size[1] // 2))}")
+    print(f"light center={light.getpixel((light.size[0] // 2, light.size[1] // 2))}")
 
 
 if __name__ == "__main__":
