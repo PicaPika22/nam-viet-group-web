@@ -1844,11 +1844,15 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 
 .eco-map__tabs-wrap {
   margin-bottom: 1rem;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
+.eco-map__tabs-wrap::-webkit-scrollbar { display: none; }
 .eco-map__tabs {
   display: flex;
   gap: 0.35rem;
+  min-width: 0;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x proximity;
@@ -1858,14 +1862,14 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 }
 .eco-map__tabs::-webkit-scrollbar { display: none; }
 .eco-map__tab {
-  flex: 1 0 auto;
-  min-width: max(9.5rem, 14%);
+  flex: 1 1 0;
+  min-width: 0;
   scroll-snap-align: start;
   display: grid;
   gap: 0.35rem;
   align-content: start;
   text-align: left;
-  padding: 0.85rem 1rem 0.95rem;
+  padding: 0.85rem 0.75rem 0.95rem;
   border-radius: 10px;
   border: 1px solid transparent;
   transition:
@@ -1949,6 +1953,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   position: relative;
   border-radius: 16px;
   overflow: hidden;
+  background: var(--green-900);
   border: 1px solid color-mix(in srgb, var(--cream) 12%, transparent);
 }
 .eco-map--ink .eco-map__stage {
@@ -1959,7 +1964,8 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 .eco-map__panel {
   display: none;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  min-height: min(28rem, 70vh);
+  grid-template-rows: minmax(min(32rem, 70vh), 1fr);
+  min-height: min(32rem, 70vh);
 }
 .eco-map__panel.is-active {
   display: grid;
@@ -1974,11 +1980,15 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 
 .eco-map__media {
   position: relative;
-  min-height: 16rem;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-height: min(32rem, 70vh);
   overflow: hidden;
   background: var(--green-900);
 }
 .eco-map__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2031,9 +2041,13 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 2;
+  min-height: 0;
+  max-height: none;
   background: color-mix(in srgb, var(--green-900) 92%, #000);
   overflow: auto;
-  max-height: min(28rem, 70vh);
 }
 .eco-map--ink .eco-map__companies {
   background: color-mix(in srgb, var(--ink) 3%, var(--paper));
@@ -2134,10 +2148,18 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 @media (max-width: 900px) {
   .eco-map__panel.is-active {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     min-height: 0;
   }
-  .eco-map__media { aspect-ratio: 16 / 10; min-height: 0; }
+  .eco-map__media {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
   .eco-map__companies {
+    grid-column: auto;
+    grid-row: auto;
     max-height: none;
     padding: 0.65rem 0.85rem 0.85rem;
   }
