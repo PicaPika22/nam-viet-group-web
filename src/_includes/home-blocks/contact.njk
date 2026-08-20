@@ -1,0 +1,16 @@
+<section class="chapter cta" id="contact" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
+  <div class="chapter__bg" data-parallax="0.15"><img src="{{ section.images.background | url }}" alt="" loading="lazy"><div class="chapter__bg-veil chapter__bg-veil--warm"></div></div>
+  <div class="container cta__inner">
+    <span class="chapter__num reveal">{{ section.displayNum }}</span>
+    <h2 class="chapter__title chapter__title--center">
+      <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
+      <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
+      <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+    </h2>
+    <p class="chapter__desc chapter__desc--center reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+    <div class="cta__actions reveal" data-delay="350">
+      <a href="{{ section.cta.primary.href | url }}" class="btn btn--solid btn--big"><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a>
+      <a href="{{ section.cta.secondary.href | url }}" class="btn btn--light btn--big"><span class="lang en">{{ section.content.en.ctaSecondary }}</span><span class="lang vi">{{ section.content.vi.ctaSecondary }}</span><span class="lang zh">{{ section.content.zh.ctaSecondary }}</span></a>
+    </div>
+  </div>
+</section>

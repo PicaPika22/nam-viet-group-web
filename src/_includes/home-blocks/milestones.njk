@@ -1,0 +1,74 @@
+<section class="chapter chapter--cream chapter--{{ 'jour' ~ 'ney' }}" id="milestones" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
+  <div class="container">
+    <header class="{{ 'jour' ~ 'ney' }}__head">
+      <span class="chapter__num reveal">{{ section.displayNum }}</span>
+      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <h2 class="chapter__title chapter__title--sm">
+        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
+        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
+        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+      </h2>
+      <p class="{{ 'jour' ~ 'ney' }}__intro reveal" data-delay="150"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+      <span class="{{ 'jour' ~ 'ney' }}__rule reveal" data-delay="200" aria-hidden="true"></span>
+    </header>
+    {% if section.timeline and (section.timeline | length) %}
+    <div class="{{ 'jour' ~ 'ney' }}-tl" data-{{ 'jour' ~ 'ney' }}-tl>
+      <div class="{{ 'jour' ~ 'ney' }}-tl__controls">
+        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-prev aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden"><span class="lang en">Previous milestones</span><span class="lang vi">Cột mốc trước</span><span class="lang zh">上一里程碑</span></span><span aria-hidden="true">←</span></button>
+        <button type="button" class="{{ 'jour' ~ 'ney' }}-tl__nav" data-{{ 'jour' ~ 'ney' }}-next aria-controls="{{ 'jour' ~ 'ney' }}Track"><span class="visually-hidden"><span class="lang en">Next milestones</span><span class="lang vi">Cột mốc sau</span><span class="lang zh">下一里程碑</span></span><span aria-hidden="true">→</span></button>
+      </div>
+      <div class="{{ 'jour' ~ 'ney' }}-tl__stage">
+        <div class="{{ 'jour' ~ 'ney' }}-tl__rail" aria-hidden="true"><span class="{{ 'jour' ~ 'ney' }}-tl__fill" id="timelineFill"></span></div>
+        <ol class="{{ 'jour' ~ 'ney' }}-tl__track" id="{{ 'jour' ~ 'ney' }}Track" tabindex="0">
+          {% for item in section.timeline %}
+          <li class="jcard{% if loop.first %} is-active{% endif %} reveal" data-delay="{{ loop.index0 * 70 }}" data-year="{{ item.year }}">
+            <div class="jcard__meta"><span class="jcard__marker" aria-hidden="true"><span></span></span></div>
+            <article class="jcard__panel">
+              {% if item.image %}<div class="jcard__media"><img src="{{ item.image | url }}" alt="{{ item.title.en }}" loading="lazy" width="960" height="1200" decoding="async"></div>{% endif %}
+              <div class="jcard__veil" aria-hidden="true"></div><span class="jcard__year" aria-hidden="true">{{ item.year }}</span>
+              <div class="jcard__copy">
+                <span class="jcard__icon" aria-hidden="true">
+                  {% if item.icon == "building" %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 21V10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11M2 21h20M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg>
+                  {% elif item.icon == "farm" %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c2-4 4-7 8-7s6 3 8 7M8 10c0-2.2 1.8-4 4-4s4 1.8 4 4M9 20v-3h6v3"/></svg>
+                  {% elif item.icon == "lab" %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v6.5L5.5 18a2.5 2.5 0 0 0 2.2 3.5h8.6a2.5 2.5 0 0 0 2.2-3.5L14 9.5V3M8.5 14h7"/></svg>
+                  {% elif item.icon == "warehouse" %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5ZM7 21v-7h10v7"/></svg>
+                  {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>{% endif %}
+                </span>
+                <h3 class="jcard__title"><span class="lang en">{{ item.title.en }}</span><span class="lang vi">{{ item.title.vi }}</span><span class="lang zh">{{ item.title.zh }}</span></h3>
+                <p class="jcard__text"><span class="lang en">{{ item.description.en }}</span><span class="lang vi">{{ item.description.vi }}</span><span class="lang zh">{{ item.description.zh }}</span></p>
+              </div>
+            </article>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+    {% endif %}
+    <aside class="{{ 'jour' ~ 'ney' }}-banner reveal" data-delay="120">
+      <div class="{{ 'jour' ~ 'ney' }}-banner__media"><img src="{{ section.images.banner | url }}" alt="Nam Viet agricultural landscape" loading="lazy" width="1920" height="820" decoding="async"></div>
+      <div class="{{ 'jour' ~ 'ney' }}-banner__overlay" aria-hidden="true"></div>
+      <div class="{{ 'jour' ~ 'ney' }}-banner__inner">
+        <div class="{{ 'jour' ~ 'ney' }}-banner__cta"><span class="{{ 'jour' ~ 'ney' }}-banner__sprout" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#1f7a46"/><path d="M32 46V28M32 28c0-8 6-14 14-14-1 10-6 14-14 14Zm0 0c0-8-6-14-14-14 1 10 6 14 14 14Z" stroke="#f4f1ea" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><span class="lang en">{{ section.content.en.bannerStatement }}</span><span class="lang vi">{{ section.content.vi.bannerStatement }}</span><span class="lang zh">{{ section.content.zh.bannerStatement }}</span></p></div>
+        <ul class="{{ 'jour' ~ 'ney' }}-banner__stats">
+          {% for stat in section.stats %}
+          <li>
+            <span class="{{ 'jour' ~ 'ney' }}-stat__icon" aria-hidden="true">
+              {% if stat.icon == "years" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+              {% elif stat.icon == "companies" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 19c1-3 3.5-4.5 6-4.5S14 16 15 19M14 14.5c2-.2 4 1 5 3.5"/></svg>
+              {% elif stat.icon == "projects" %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 7h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Z"/></svg>
+              {% else %}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5M4 19h16M8 16V10M12 16V7M16 16v-4"/></svg>
+              {% endif %}
+            </span>
+            <strong>{{ stat.value }}</strong>
+            <span><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>

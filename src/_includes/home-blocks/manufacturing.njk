@@ -1,0 +1,29 @@
+<section class="chapter chapter--light" id="manufacturing" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
+  <div class="container">
+    <header class="chapter__head">
+      <span class="chapter__num reveal">{{ section.displayNum }}</span>
+      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <h2 class="chapter__title">
+        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
+        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
+        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+      </h2>
+    </header>
+    <div class="manu__grid">
+      <div class="manu__body">
+        <p class="lead reveal"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+        <ul class="checks">{% for item in section.items %}<li class="reveal" data-delay="{{ loop.index0 * 100 }}"><i></i><span class="lang en">{{ item.label.en }}</span><span class="lang vi">{{ item.label.vi }}</span><span class="lang zh">{{ item.label.zh }}</span></li>{% endfor %}</ul>
+        <div class="reveal" data-delay="350"><a href="{{ section.cta.primary.href | url }}" class="btn btn--dark"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+      </div>
+      <div class="manu__media reveal-img" data-parallax-img><img src="{{ section.images.media | url }}" alt="Automated feed production line" loading="lazy"></div>
+    </div>
+    <div class="manu__stats">
+      {% for stat in section.stats %}
+      <div class="stat stat--boxed reveal" data-delay="{{ loop.index0 * 100 }}">
+        <span class="stat__value{% if stat.count == null %} stat__value--text{% endif %}">{{ stat.value }}</span>
+        <span class="stat__label"><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

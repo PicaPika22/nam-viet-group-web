@@ -1,0 +1,45 @@
+<section class="chapter chapter--dark" id="ecosystem" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
+  <div class="chapter__bg" data-parallax="0.15"><img src="{{ section.images.background | url }}" alt="" loading="lazy"><div class="chapter__bg-veil"></div></div>
+  <div class="container">
+    <header class="chapter__head">
+      <span class="chapter__num reveal">{{ section.displayNum }}</span>
+      <p class="eyebrow eyebrow--light reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <h2 class="chapter__title">
+        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
+        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
+        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+      </h2>
+      <p class="chapter__desc reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+    </header>
+    <ol class="flow">
+      {% for item in section.items %}
+      <li class="flow__step reveal" data-delay="{{ loop.index0 * 80 }}">
+        <span class="flow__no">{{ "0" if loop.index < 10 }}{{ loop.index }}</span>
+        {% if loop.index == 1 %}
+        <svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 2 %}
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 3 %}
+        <svg viewBox="0 0 24 24"><path d="M3 21V9l6 4V9l6 4V5h6v16z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 4 %}
+        <svg viewBox="0 0 24 24"><path d="M12 2l8 4.5v11L12 22l-8-4.5v-11z M12 2v9m8-4.5L12 11 4 6.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 5 %}
+        <svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 6 %}
+        <svg viewBox="0 0 24 24"><path d="M1 16V6h13v10M14 9h5l4 4v3h-2M1 16h2m4 0h7" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="19" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% elif loop.index == 7 %}
+        <svg viewBox="0 0 24 24"><path d="M2 18h20l-2 4H5zM4 14l1-6h5V4h4v4h5l1 6z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% else %}
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18-3-3.5-3-14.5 0-18z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        {% endif %}
+        <span class="flow__name"><span class="lang en">{{ item.label.en }}</span><span class="lang vi">{{ item.label.vi }}</span><span class="lang zh">{{ item.label.zh }}</span></span>
+      </li>
+      {% endfor %}
+    </ol>
+    {% set ecoMapVariant = "dark" %}
+    {% set ecoMapShowHead = true %}
+    {% set ecoMapId = "home-eco" %}
+    {% include "partials/ecosystem-map.njk" %}
+    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | url }}" class="btn btn--light"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+  </div>
+</section>

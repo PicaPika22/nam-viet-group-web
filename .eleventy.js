@@ -4,18 +4,32 @@ const md = markdownIt({ html: false, linkify: true, breaks: true });
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("src/admin/**");
+  eleventyConfig.ignores.add("src/_cms/**");
+  eleventyConfig.ignores.add("src/dashboard/**");
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
   eleventyConfig.addPassthroughCopy({ "src/js": "js" });
   // Admin UI runs on Railway in production — skip on Vercel builds
   if (!process.env.VERCEL) {
     eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+    eleventyConfig.addPassthroughCopy({ "src/dashboard": "dashboard" });
   }
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
   eleventyConfig.addFilter("md", (value) => {
     if (value == null || value === "") return "";
     return md.render(String(value));
+  });
+
+  eleventyConfig.addFilter("visibleHome", (home) => {
+    const sections = (home && home.sections) || [];
+    let n = 0;
+    return sections
+      .filter((section) => section && section.visible)
+      .map((section) => {
+        n += 1;
+        return { ...section, displayNum: String(n).padStart(2, "0") };
+      });
   });
 
   eleventyConfig.addFilter("pathOnly", (value) => {

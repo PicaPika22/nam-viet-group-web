@@ -15,3 +15,4 @@ _site/
 .vercel
 .env*
 src/js/vendor/
+.worktrees/
