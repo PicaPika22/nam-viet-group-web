@@ -1,7 +1,7 @@
 <section class="hero-nv chapter" id="hero" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
   <div class="hero-nv__scene" aria-hidden="true"><div class="hero-nv__art">
     <img src="{{ section.images.art | url }}" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
-    <span class="hero-nv__ring"><img src="{{ '/assets/img/logo.png' | url }}" alt="" width="120" height="120"></span>
+    <span class="hero-nv__ring"><img src="{{ '/assets/img/logo.png' | url }}?v=seal" alt="" width="120" height="82"></span>
   </div><span class="hero-nv__focus-veil"></span></div>
   <ul class="hero-nv__metrics">
     {% for stat in section.stats %}
