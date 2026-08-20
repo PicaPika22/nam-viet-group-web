@@ -5,9 +5,25 @@ module.exports = {
     vi: "Một tập đoàn. Nhiều trụ cột. Các công ty và đơn vị vận hành như một chuỗi giá trị.",
     zh: "一个集团，多支柱协同。成员企业与单位形成一体化价值链。",
   },
+  /**
+   * Mill-to-port value chain steps, home page #ecosystem only (see
+   * docs/superpowers/specs/2026-08-20-home-ecosystem-redesign.md). Stable ids —
+   * referenced by sectors[].chainSteps below. Order is real process order.
+   */
+  chain: [
+    { id: "raw-materials", en: "Raw Materials", vi: "Nguyên liệu", zh: "原材料" },
+    { id: "rd", en: "R&D", vi: "R&D", zh: "研发" },
+    { id: "manufacturing", en: "Manufacturing", vi: "Sản xuất", zh: "生产制造" },
+    { id: "packaging", en: "Packaging", vi: "Đóng gói", zh: "包装" },
+    { id: "warehousing", en: "Warehousing", vi: "Kho vận", zh: "仓储" },
+    { id: "logistics", en: "Logistics", vi: "Logistics", zh: "物流" },
+    { id: "port", en: "Port Operations", vi: "Khai thác cảng", zh: "港口运营" },
+    { id: "distribution", en: "Global Distribution", vi: "Phân phối toàn cầu", zh: "全球分销" },
+  ],
   sectors: [
     {
       id: "feed",
+      chainSteps: ["raw-materials", "rd", "manufacturing", "packaging"],
       image: "/assets/img/products-hero.jpg",
       key: { en: "01", vi: "01", zh: "01" },
       title: {
@@ -70,6 +86,7 @@ module.exports = {
     },
     {
       id: "logistics",
+      chainSteps: ["warehousing", "logistics", "port", "distribution"],
       image: "/assets/img/logistics.png",
       key: { en: "02", vi: "02", zh: "02" },
       title: {
@@ -163,6 +180,7 @@ module.exports = {
     },
     {
       id: "trade",
+      chainSteps: ["raw-materials", "distribution"],
       image: "/assets/img/manufacturing.png",
       key: { en: "03", vi: "03", zh: "03" },
       title: {
@@ -210,6 +228,7 @@ module.exports = {
     },
     {
       id: "infra",
+      chainSteps: ["manufacturing", "warehousing"],
       image: "/assets/img/about.png",
       key: { en: "04", vi: "04", zh: "04" },
       title: {
@@ -257,6 +276,7 @@ module.exports = {
     },
     {
       id: "hospitality",
+      chainSteps: [],
       image: "/assets/img/cta.png",
       key: { en: "05", vi: "05", zh: "05" },
       title: {
@@ -289,6 +309,7 @@ module.exports = {
     },
     {
       id: "research",
+      chainSteps: ["rd"],
       image: "/assets/img/sustainability.png",
       key: { en: "06", vi: "06", zh: "06" },
       title: {

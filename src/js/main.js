@@ -704,6 +704,93 @@
     activate(initial, { scrollTab: false });
   });
 
+  /* ─── Ecosystem mill pipeline — home #ecosystem sector gates ───
+     State machine only; motion is layered on top separately (see
+     docs/superpowers/specs/2026-08-20-home-ecosystem-redesign.md). One sector
+     is always active: its gate, its mapped chain stations + connecting path
+     segments, and its company dock all update together, instantly. */
+  document.querySelectorAll("[data-eco-mill]").forEach((root) => {
+    const gates = [...root.querySelectorAll("[data-eco-gate]")];
+    const docks = [...root.querySelectorAll("[data-eco-dock]")];
+    const stations = [...root.querySelectorAll("[data-chain-step]")];
+    const segs = [...root.querySelectorAll("[data-eco-seg]")];
+    const status = root.querySelector("[data-eco-status]");
+    if (!gates.length || !docks.length) return;
+
+    const NO_STEPS = {
+      en: (title) => `${title} has no steps on the value chain.`,
+      vi: (title) => `${title} không nằm trên chuỗi giá trị.`,
+      zh: (title) => `${title}不在价值链环节上。`,
+    };
+
+    const activate = (id, { focus = false } = {}) => {
+      let activeGate = null;
+      gates.forEach((gate) => {
+        const on = gate.dataset.ecoGate === id;
+        gate.classList.toggle("is-active", on);
+        gate.setAttribute("aria-selected", on ? "true" : "false");
+        gate.tabIndex = on ? 0 : -1;
+        if (on) activeGate = gate;
+      });
+      if (!activeGate) return;
+
+      docks.forEach((dock) => {
+        const on = dock.dataset.ecoDock === id;
+        dock.classList.toggle("is-active", on);
+        if (on) dock.removeAttribute("hidden");
+        else dock.setAttribute("hidden", "");
+      });
+
+      const litSteps = (activeGate.dataset.chainSteps || "").split(",").filter(Boolean);
+      const litSet = new Set(litSteps);
+      stations.forEach((st) => st.classList.toggle("is-lit", litSet.has(st.dataset.chainStep)));
+      segs.forEach((seg) => {
+        const [a, b] = seg.dataset.ecoSeg.split("-").map(Number);
+        const stepA = stations[a]?.dataset.chainStep;
+        const stepB = stations[b]?.dataset.chainStep;
+        seg.classList.toggle("is-live", Boolean(stepA && stepB && litSet.has(stepA) && litSet.has(stepB)));
+      });
+
+      if (status) {
+        const title = activeGate.querySelector(".eco-mill__gate-label")?.textContent.trim() || "";
+        const litLabels = stations
+          .filter((st) => litSet.has(st.dataset.chainStep))
+          .map((st) => st.querySelector(".eco-mill__station-label")?.textContent.trim())
+          .filter(Boolean);
+        const lang = html.getAttribute("data-lang") || "en";
+        status.textContent = litLabels.length
+          ? `${title}: ${litLabels.join(", ")}`
+          : (NO_STEPS[lang] || NO_STEPS.en)(title);
+      }
+
+      if (focus) activeGate.focus({ preventScroll: true });
+    };
+
+    gates.forEach((gate) => {
+      gate.addEventListener("click", () => activate(gate.dataset.ecoGate));
+    });
+
+    const tablist = root.querySelector('.eco-mill__gates[role="tablist"]');
+    tablist?.addEventListener("keydown", (e) => {
+      const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const i = gates.findIndex((g) => g.classList.contains("is-active"));
+      let next = i;
+      if (e.key === "ArrowRight") next = (i + 1) % gates.length;
+      else if (e.key === "ArrowLeft") next = (i - 1 + gates.length) % gates.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = gates.length - 1;
+      activate(gates[next].dataset.ecoGate, { focus: true });
+    });
+
+    const initial =
+      root.dataset.ecoDefault ||
+      gates.find((g) => g.classList.contains("is-active"))?.dataset.ecoGate ||
+      gates[0].dataset.ecoGate;
+    activate(initial);
+  });
+
   /* ─── Smooth anchor offset for fixed header (+ sticky page subnav) ─── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", ev => {
