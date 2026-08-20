@@ -164,7 +164,7 @@ function emptySection(id) {
       ? [
           {
             id: "m-seed",
-            year: "2002",
+            year: "2001",
             icon: "building",
             image: "/assets/img/milestones/2002.jpg",
             title: emptyI18n("x"),

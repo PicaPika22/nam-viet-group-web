@@ -6,7 +6,7 @@ module.exports = {
   },
   items: [
     {
-      year: "2002",
+      year: "2001",
       icon: "building",
       file: "2002.jpg",
       en: {
@@ -186,7 +186,7 @@ module.exports = {
     stats: [
       {
         icon: "years",
-        value: "20+",
+        value: "25+",
         en: "Years of growth",
         vi: "Năm phát triển",
         zh: "年持续发展",

@@ -1,7 +1,7 @@
 {
   "highlights": [
     {
-      "value": "20+",
+      "value": "25+",
       "label": { "en": "Years of growth", "vi": "Năm tăng trưởng", "zh": "年成长历程" }
     },
     {
@@ -26,7 +26,7 @@
     }
   ],
   "milestones": [
-    { "year": "2002", "en": "Nam Viet JSC founded", "vi": "Thành lập CTCP Nam Việt", "zh": "南越股份成立" },
+    { "year": "2001", "en": "Nam Viet JSC founded", "vi": "Thành lập CTCP Nam Việt", "zh": "南越股份成立" },
     { "year": "2014", "en": "Pilmico Group & Định Hóa farm", "vi": "Pilmico Group & trang trại Định Hóa", "zh": "Pilmico 与定化农场" },
     { "year": "2019", "en": "Cai Lan port warehouse (~190kt)", "vi": "Kho cảng Cái Lân (~190 nghìn tấn)", "zh": "盖麟港仓（约19万吨）" },
     { "year": "2023", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },

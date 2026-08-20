@@ -5,9 +5,25 @@ module.exports = {
     vi: "Một tập đoàn. Nhiều trụ cột. Các công ty và đơn vị vận hành như một chuỗi giá trị.",
     zh: "一个集团，多支柱协同。成员企业与单位形成一体化价值链。",
   },
+  /**
+   * Mill-to-port value chain steps, home page #ecosystem only (see
+   * docs/superpowers/specs/2026-08-20-home-ecosystem-redesign.md). Stable ids —
+   * referenced by sectors[].chainSteps below. Order is real process order.
+   */
+  chain: [
+    { id: "raw-materials", en: "Raw Materials", vi: "Nguyên liệu", zh: "原材料" },
+    { id: "rd", en: "R&D", vi: "R&D", zh: "研发" },
+    { id: "manufacturing", en: "Manufacturing", vi: "Sản xuất", zh: "生产制造" },
+    { id: "packaging", en: "Packaging", vi: "Đóng gói", zh: "包装" },
+    { id: "warehousing", en: "Warehousing", vi: "Kho vận", zh: "仓储" },
+    { id: "logistics", en: "Logistics", vi: "Logistics", zh: "物流" },
+    { id: "port", en: "Port Operations", vi: "Khai thác cảng", zh: "港口运营" },
+    { id: "distribution", en: "Global Distribution", vi: "Phân phối toàn cầu", zh: "全球分销" },
+  ],
   sectors: [
     {
       id: "feed",
+      chainSteps: ["raw-materials", "rd", "manufacturing", "packaging"],
       image: "/assets/img/products-hero.jpg",
       key: { en: "01", vi: "01", zh: "01" },
       title: {
@@ -23,7 +39,7 @@ module.exports = {
       companies: [
         {
           id: "nam-viet",
-          year: "2002",
+          year: "2001",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
             en: "Nam Viet Joint Stock Company",
@@ -34,21 +50,6 @@ module.exports = {
             en: "Core company — livestock, poultry and aquaculture feed manufacturing.",
             vi: "Đơn vị cốt lõi sản xuất thức ăn chăn nuôi gia súc, gia cầm, thủy sản.",
             zh: "核心企业，专注畜禽与水产饲料生产。",
-          },
-        },
-        {
-          id: "pilmico",
-          year: "2014",
-          short: { en: "Pilmico Group", vi: "Pilmico Group", zh: "Pilmico" },
-          name: {
-            en: "Pilmico Group Joint Stock Company",
-            vi: "Công ty Cổ phần Pilmico Group",
-            zh: "Pilmico 集团股份公司",
-          },
-          desc: {
-            en: "Feed manufacturing within the Nam Viet ecosystem; premises and logistics for partners.",
-            vi: "Sản xuất thức ăn trong hệ sinh thái Nam Việt; mặt bằng và logistics cho đối tác.",
-            zh: "南越生态内饲料生产；为伙伴提供场地与物流。",
           },
         },
         {
@@ -66,10 +67,26 @@ module.exports = {
             zh: "公路与水路货运，支撑饲料与农产品物流。",
           },
         },
+        {
+          id: "pilmico",
+          year: "2014",
+          short: { en: "Pilmico Group", vi: "Pilmico Group", zh: "Pilmico" },
+          name: {
+            en: "Pilmico Group Joint Stock Company",
+            vi: "Công ty Cổ phần Pilmico Group",
+            zh: "Pilmico 集团股份公司",
+          },
+          desc: {
+            en: "Feed manufacturing within the Nam Viet ecosystem; premises and logistics for partners.",
+            vi: "Sản xuất thức ăn trong hệ sinh thái Nam Việt; mặt bằng và logistics cho đối tác.",
+            zh: "南越生态内饲料生产；为伙伴提供场地与物流。",
+          },
+        },
       ],
     },
     {
       id: "logistics",
+      chainSteps: ["warehousing", "logistics", "port", "distribution"],
       image: "/assets/img/logistics.png",
       key: { en: "02", vi: "02", zh: "02" },
       title: {
@@ -83,6 +100,52 @@ module.exports = {
         zh: "仓储、运输、港口仓储与工业场地租赁。",
       },
       companies: [
+        {
+          id: "vapco",
+          year: "2018",
+          short: { en: "Vapco", vi: "Vapco", zh: "Vapco" },
+          name: {
+            en: "Vapco Production & Trading Co., Ltd.",
+            vi: "Công ty TNHH Sản xuất và Thương mại Vapco",
+            zh: "Vapco 生产与贸易有限公司",
+          },
+          desc: {
+            en: "Premises leasing and logistics on nearly 3 ha for industrial tenants.",
+            vi: "Cho thuê mặt bằng và logistics gần 3ha cho doanh nghiệp sản xuất.",
+            zh: "近3公顷场地租赁与物流，服务入驻企业。",
+          },
+        },
+        {
+          id: "warehouse-qn",
+          year: "2019",
+          unit: true,
+          short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
+          name: {
+            en: "Nam Viet Port Warehouse (Cai Lan, Quang Ninh)",
+            vi: "Hệ thống kho cảng Nam Việt — Cái Lân, Quảng Ninh",
+            zh: "南越港仓（广宁盖麟）",
+          },
+          desc: {
+            en: "Opened 2019 — nearly 5 ha, about 190,000 tonnes storage capacity.",
+            vi: "Hoàn thành 2019 — gần 5ha, lưu giữ khoảng 190.000 tấn hàng hóa.",
+            zh: "2019年建成——近5公顷，约19万吨仓储能力。",
+          },
+        },
+        {
+          id: "hutech",
+          year: "2022",
+          short: { en: "Hutech Vietnam", vi: "Hutech Việt Nam", zh: "Hutech" },
+          name: {
+            en: "Hutech Vietnam Co., Ltd.",
+            vi: "Công ty TNHH Hutech Việt Nam",
+            zh: "Hutech Vietnam 有限公司",
+          },
+          desc: {
+            en: "International-standard warehousing and logistics within the Group network.",
+            vi: "Kho bãi và logistics chuẩn quốc tế trong mạng lưới Tập đoàn.",
+            zh: "集团网络内的国际标准仓储物流。",
+          },
+        },
         {
           id: "logistics-nv",
           year: "2023",
@@ -113,56 +176,11 @@ module.exports = {
             zh: "5公顷场地租赁与物流，服务区域制造企业。",
           },
         },
-        {
-          id: "warehouse-qn",
-          year: "2019",
-          unit: true,
-          short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
-          name: {
-            en: "Nam Viet Port Warehouse (Cai Lan, Quang Ninh)",
-            vi: "Hệ thống kho cảng Nam Việt — Cái Lân, Quảng Ninh",
-            zh: "南越港仓（广宁盖麟）",
-          },
-          desc: {
-            en: "Opened 2019 — nearly 5 ha, about 190,000 tonnes storage capacity.",
-            vi: "Hoàn thành 2019 — gần 5ha, lưu giữ khoảng 190.000 tấn hàng hóa.",
-            zh: "2019年建成——近5公顷，约19万吨仓储能力。",
-          },
-        },
-        {
-          id: "vapco",
-          year: "2018",
-          short: { en: "Vapco", vi: "Vapco", zh: "Vapco" },
-          name: {
-            en: "Vapco Production & Trading Co., Ltd.",
-            vi: "Công ty TNHH Sản xuất và Thương mại Vapco",
-            zh: "Vapco 生产与贸易有限公司",
-          },
-          desc: {
-            en: "Premises leasing and logistics on nearly 3 ha for industrial tenants.",
-            vi: "Cho thuê mặt bằng và logistics gần 3ha cho doanh nghiệp sản xuất.",
-            zh: "近3公顷场地租赁与物流，服务入驻企业。",
-          },
-        },
-        {
-          id: "hutech",
-          year: "2022",
-          short: { en: "Hutech Vietnam", vi: "Hutech Việt Nam", zh: "Hutech" },
-          name: {
-            en: "Hutech Vietnam Co., Ltd.",
-            vi: "Công ty TNHH Hutech Việt Nam",
-            zh: "Hutech Vietnam 有限公司",
-          },
-          desc: {
-            en: "International-standard warehousing and logistics within the Group network.",
-            vi: "Kho bãi và logistics chuẩn quốc tế trong mạng lưới Tập đoàn.",
-            zh: "集团网络内的国际标准仓储物流。",
-          },
-        },
       ],
     },
     {
       id: "trade",
+      chainSteps: ["raw-materials", "distribution"],
       image: "/assets/img/manufacturing.png",
       key: { en: "03", vi: "03", zh: "03" },
       title: {
@@ -176,21 +194,6 @@ module.exports = {
         zh: "农林贸易、燃油零售及相关商务服务。",
       },
       companies: [
-        {
-          id: "trading-vn",
-          year: null,
-          short: { en: "Trading Vietnam", vi: "Trading Việt Nam", zh: "Trading VN" },
-          name: {
-            en: "Trading Vietnam Co., Ltd.",
-            vi: "Công ty TNHH Trading Việt Nam",
-            zh: "Trading Vietnam 有限公司",
-          },
-          desc: {
-            en: "Agricultural imports for feed and international trade programs.",
-            vi: "Nhập khẩu nông sản phục vụ sản xuất thức ăn và thương mại quốc tế.",
-            zh: "服务饲料生产的农产品进口与国际贸易。",
-          },
-        },
         {
           id: "fuel",
           year: "2016",
@@ -206,10 +209,26 @@ module.exports = {
             zh: "2016年起燃油零售。",
           },
         },
+        {
+          id: "trading-vn",
+          year: null,
+          short: { en: "Trading Vietnam", vi: "Trading Việt Nam", zh: "Trading VN" },
+          name: {
+            en: "Trading Vietnam Co., Ltd.",
+            vi: "Công ty TNHH Trading Việt Nam",
+            zh: "Trading Vietnam 有限公司",
+          },
+          desc: {
+            en: "Agricultural imports for feed and international trade programs.",
+            vi: "Nhập khẩu nông sản phục vụ sản xuất thức ăn và thương mại quốc tế.",
+            zh: "服务饲料生产的农产品进口与国际贸易。",
+          },
+        },
       ],
     },
     {
       id: "infra",
+      chainSteps: ["manufacturing", "warehousing"],
       image: "/assets/img/about.png",
       key: { en: "04", vi: "04", zh: "04" },
       title: {
@@ -257,6 +276,7 @@ module.exports = {
     },
     {
       id: "hospitality",
+      chainSteps: [],
       image: "/assets/img/cta.png",
       key: { en: "05", vi: "05", zh: "05" },
       title: {
@@ -289,6 +309,7 @@ module.exports = {
     },
     {
       id: "research",
+      chainSteps: ["rd"],
       image: "/assets/img/sustainability.png",
       key: { en: "06", vi: "06", zh: "06" },
       title: {

@@ -92,7 +92,7 @@
           "eyebrow": "Who We Are",
           "titleLine1": "Built on Experience.",
           "titleLine2": "Driven by Innovation.",
-          "lead": "For over 20 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.",
+          "lead": "For over 25 years, Nam Viet Group has been committed to creating sustainable growth through innovation, quality manufacturing and long-term partnerships.",
           "body": "From feed production to logistics, ports and strategic investments, we continuously expand our ecosystem to deliver greater value for customers, communities and future generations."
         },
         "vi": {
@@ -118,9 +118,9 @@
       "stats": [
         {
           "id": "experience",
-          "value": "20+",
+          "value": "25+",
           "suffix": "+",
-          "count": 20,
+          "count": 25,
           "decimals": 0,
           "icon": "",
           "label": {
@@ -183,24 +183,24 @@
           "eyebrow": "Our Ecosystem",
           "titleLine1": "One Ecosystem.",
           "titleLine2": "Endless Possibilities.",
-          "lead": "Our integrated value chain enables us to control quality, optimize efficiency and create sustainable growth — from raw materials to global distribution.",
-          "ctaPrimary": "About Nam Viet"
+          "lead": "From raw materials to global distribution, Nam Viet's member companies run as one chain — choose a pillar to see where it sits and who operates it.",
+          "ctaPrimary": "Explore the ecosystem"
         },
         "vi": {
           "chapterLabel": "HỆ SINH THÁI",
           "eyebrow": "Hệ sinh thái Nam Việt",
           "titleLine1": "Một hệ sinh thái.",
           "titleLine2": "Muôn vàn giá trị.",
-          "lead": "Chuỗi giá trị khép kín giúp Nam Việt kiểm soát chất lượng, tối ưu hiệu quả vận hành và tạo ra giá trị bền vững — từ nguyên liệu đầu vào đến thị trường quốc tế.",
-          "ctaPrimary": "Về Nam Việt"
+          "lead": "Từ nguyên liệu đến phân phối toàn cầu, các công ty thành viên Nam Việt vận hành như một chuỗi — chọn trụ cột để thấy vị trí trên chuỗi và đơn vị phụ trách.",
+          "ctaPrimary": "Xem hệ sinh thái"
         },
         "zh": {
           "chapterLabel": "生态系统",
           "eyebrow": "南越生态系统",
           "titleLine1": "一个生态系统。",
           "titleLine2": "无限可能。",
-          "lead": "一体化价值链使我们能够把控质量、优化效率、实现可持续增长——从原材料到全球分销。",
-          "ctaPrimary": "关于南越"
+          "lead": "从原材料到全球分销，南越成员企业作为一条链运转——选择支柱即可看到其所在环节与运营单位。",
+          "ctaPrimary": "了解生态系统"
         }
       },
       "images": {
@@ -802,7 +802,7 @@
       "stats": [
         {
           "id": "banner-1",
-          "value": "20+",
+          "value": "25+",
           "suffix": "",
           "count": null,
           "decimals": 0,
@@ -857,7 +857,7 @@
       "timeline": [
         {
           "id": "m-2002",
-          "year": "2002",
+          "year": "2001",
           "icon": "building",
           "image": "/assets/img/milestones/2002.jpg",
           "title": {

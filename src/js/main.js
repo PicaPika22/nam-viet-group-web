@@ -704,6 +704,234 @@
     activate(initial, { scrollTab: false });
   });
 
+  /* ─── Ecosystem mill pipeline — home #ecosystem sector gates ───
+     State machine only; motion is layered on top separately (see
+     docs/superpowers/specs/2026-08-20-home-ecosystem-redesign.md). One sector
+     is always active: its gate, its mapped chain stations + connecting path
+     segments, and its company dock all update together, instantly. */
+  document.querySelectorAll("[data-eco-mill]").forEach((root) => {
+    const gates = [...root.querySelectorAll("[data-eco-gate]")];
+    const docks = [...root.querySelectorAll("[data-eco-dock]")];
+    const stations = [...root.querySelectorAll("[data-chain-step]")];
+    const segs = [...root.querySelectorAll("[data-eco-seg]")];
+    const status = root.querySelector("[data-eco-status]");
+    const pathBg = root.querySelector(".eco-mill__path-bg");
+    if (!gates.length || !docks.length) return;
+
+    const NO_STEPS = {
+      en: (title) => `${title} has no steps on the value chain.`,
+      vi: (title) => `${title} không nằm trên chuỗi giá trị.`,
+      zh: (title) => `${title}不在价值链环节上。`,
+    };
+
+    /* Gate control state (aria-selected/tabindex/focus) moves immediately —
+       never waits on motion, keyboard/AT users get instant feedback. */
+    const setGateState = (id, { focus = false } = {}) => {
+      let activeGate = null;
+      gates.forEach((gate) => {
+        const on = gate.dataset.ecoGate === id;
+        gate.classList.toggle("is-active", on);
+        gate.setAttribute("aria-selected", on ? "true" : "false");
+        gate.tabIndex = on ? 0 : -1;
+        if (on) activeGate = gate;
+      });
+      if (focus) activeGate?.focus({ preventScroll: true });
+      return activeGate;
+    };
+
+    /* Dock/station/path/live-region content — the part motion can stagger. */
+    const applyContent = (activeGate) => {
+      const id = activeGate.dataset.ecoGate;
+      docks.forEach((dock) => {
+        const on = dock.dataset.ecoDock === id;
+        dock.classList.toggle("is-active", on);
+        if (on) dock.removeAttribute("hidden");
+        else dock.setAttribute("hidden", "");
+      });
+
+      const litSteps = (activeGate.dataset.chainSteps || "").split(",").filter(Boolean);
+      const litSet = new Set(litSteps);
+      stations.forEach((st) => st.classList.toggle("is-lit", litSet.has(st.dataset.chainStep)));
+      segs.forEach((seg) => {
+        const [a, b] = seg.dataset.ecoSeg.split("-").map(Number);
+        const stepA = stations[a]?.dataset.chainStep;
+        const stepB = stations[b]?.dataset.chainStep;
+        seg.classList.toggle("is-live", Boolean(stepA && stepB && litSet.has(stepA) && litSet.has(stepB)));
+      });
+
+      if (status) {
+        const title = activeGate.querySelector(".eco-mill__gate-label")?.textContent.trim() || "";
+        const litLabels = stations
+          .filter((st) => litSet.has(st.dataset.chainStep))
+          .map((st) => st.querySelector(".eco-mill__station-label")?.textContent.trim())
+          .filter(Boolean);
+        const lang = html.getAttribute("data-lang") || "en";
+        status.textContent = litLabels.length
+          ? `${title}: ${litLabels.join(", ")}`
+          : (NO_STEPS[lang] || NO_STEPS.en)(title);
+      }
+      return litSet;
+    };
+
+    const activate = (id, opts = {}) => {
+      const activeGate = setGateState(id, opts);
+      if (!activeGate) return;
+      applyContent(activeGate);
+    };
+
+    /* ── Motion: one beat per sector change, GSAP only, gated by gsapReady
+       (already false under prefers-reduced-motion — see top of file). State
+       above always applies synchronously; this layer only decorates it. ── */
+    const canAnimate = gsapReady && pathBg;
+    let idleTween = null;
+    let inView = false;
+
+    const runsOf = (litSet) => {
+      const runs = [];
+      let cur = [];
+      stations.forEach((st, i) => {
+        if (litSet.has(st.dataset.chainStep)) cur.push(i);
+        else if (cur.length) {
+          runs.push(cur);
+          cur = [];
+        }
+      });
+      if (cur.length) runs.push(cur);
+      return runs;
+    };
+
+    const killIdle = () => {
+      idleTween?.kill();
+      idleTween = null;
+    };
+
+    /* Slow repeating dash creep on the currently-lit stretch only, while
+       #ecosystem is in view. No scroll listener, no un-killed rAF loop. */
+    const startIdle = (litSet) => {
+      killIdle();
+      if (!canAnimate || !inView || !litSet.size) return;
+      const liveNow = segs.filter((seg) => seg.classList.contains("is-live"));
+      if (!liveNow.length) return;
+      idleTween = gsap.to(liveNow, { strokeDashoffset: "-=18", duration: 2.6, ease: "none", repeat: -1 });
+    };
+
+    const playBeat = (id, { focus = false } = {}) => {
+      if (!canAnimate) {
+        activate(id, { focus });
+        startIdle(new Set((gates.find((g) => g.dataset.ecoGate === id)?.dataset.chainSteps || "").split(",").filter(Boolean)));
+        return;
+      }
+
+      const activeGate = setGateState(id, { focus });
+      if (!activeGate) return;
+      killIdle();
+
+      const prevDock = root.querySelector(".eco-mill__dock.is-active");
+      const prevItems = prevDock ? [...prevDock.children] : [];
+
+      const tl = gsap.timeline();
+      if (prevItems.length) {
+        tl.to(prevItems, { opacity: 0, y: 12, duration: 0.18, ease: "power1.in" });
+      }
+      tl.call(() => {
+        const litSet = applyContent(activeGate);
+        const runs = runsOf(litSet);
+
+        if (!litSet.size) {
+          gsap.fromTo(pathBg, { opacity: 0.5 }, { opacity: 1, duration: 0.4, ease: "power1.out" });
+        } else {
+          runs.forEach((run) => {
+            if (run.length >= 2) {
+              for (let i = 0; i < run.length - 1; i++) {
+                const seg = segs.find((s) => s.dataset.ecoSeg === `${run[i]}-${run[i + 1]}`);
+                if (!seg) continue;
+                const len = seg.getTotalLength();
+                gsap.fromTo(
+                  seg,
+                  { strokeDasharray: len, strokeDashoffset: len },
+                  { strokeDashoffset: 0, duration: 0.22, ease: "none", delay: i * 0.08 }
+                );
+              }
+            } else {
+              const stamp = stations[run[0]]?.querySelector(".eco-mill__station-stamp");
+              if (stamp) gsap.fromTo(stamp, { scale: 1 }, { scale: 1.08, duration: 0.15, yoyo: true, repeat: 1, ease: "power1.inOut" });
+            }
+          });
+        }
+
+        const newDock = root.querySelector(".eco-mill__dock.is-active");
+        const newItems = newDock ? [...newDock.children] : [];
+        gsap.set(newItems, { opacity: 0, x: 16 });
+        // 50ms between items, capped at the first 4 so the beat stays short.
+        newItems.forEach((item, i) => {
+          gsap.to(item, { opacity: 1, x: 0, duration: 0.25, ease: "power1.out", delay: 0.1 + Math.min(i, 3) * 0.05 });
+        });
+
+        startIdle(litSet);
+      });
+    };
+
+    gates.forEach((gate) => {
+      gate.addEventListener("click", () => playBeat(gate.dataset.ecoGate));
+    });
+
+    const tablist = root.querySelector('.eco-mill__gates[role="tablist"]');
+    tablist?.addEventListener("keydown", (e) => {
+      const keys = ["ArrowRight", "ArrowLeft", "Home", "End"];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const i = gates.findIndex((g) => g.classList.contains("is-active"));
+      let next = i;
+      if (e.key === "ArrowRight") next = (i + 1) % gates.length;
+      else if (e.key === "ArrowLeft") next = (i - 1 + gates.length) % gates.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = gates.length - 1;
+      playBeat(gates[next].dataset.ecoGate, { focus: true });
+    });
+
+    const initial =
+      root.dataset.ecoDefault ||
+      gates.find((g) => g.classList.contains("is-active"))?.dataset.ecoGate ||
+      gates[0].dataset.ecoGate;
+    activate(initial);
+
+    /* On section enter (once): draw the path, then light the default
+       sector. Content is already correct from the instant activate() above
+       — pre-hide only the decorated bits so there's no flash before draw. */
+    if (canAnimate) {
+      const initialDock = root.querySelector(".eco-mill__dock.is-active");
+      gsap.set(pathBg, { strokeDasharray: pathBg.getTotalLength(), strokeDashoffset: pathBg.getTotalLength() });
+      if (initialDock) gsap.set([...initialDock.children], { opacity: 0, x: 16 });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            inView = e.isIntersecting;
+            if (e.isIntersecting) {
+              if (!root.dataset.ecoEntered) {
+                root.dataset.ecoEntered = "1";
+                gsap.to(pathBg, {
+                  strokeDashoffset: 0,
+                  duration: 0.9,
+                  ease: "power2.inOut",
+                  onComplete: () => playBeat(initial),
+                });
+              } else {
+                startIdle(new Set((root.querySelector(".eco-mill__gate.is-active")?.dataset.chainSteps || "").split(",").filter(Boolean)));
+              }
+            } else {
+              killIdle();
+            }
+          }
+        },
+        { threshold: 0.25 }
+      );
+      io.observe(root);
+    } else {
+      startIdle(new Set());
+    }
+  });
+
   /* ─── Smooth anchor offset for fixed header (+ sticky page subnav) ─── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener("click", ev => {

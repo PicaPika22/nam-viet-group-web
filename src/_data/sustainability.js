@@ -7,7 +7,7 @@ module.exports = {
   },
   highlights: [
     {
-      value: "20+",
+      value: "25+",
       label: {
         en: "Years of responsible growth",
         vi: "Năm phát triển có trách nhiệm",
