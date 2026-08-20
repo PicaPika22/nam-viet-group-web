@@ -1,6 +1,6 @@
 # Nam Viet Content Studio
 
-CMS for **News** and **Careers** (EN / VI / 中文).
+CMS for **News** and **Careers** (EN / VI / 中文). Homepage blocks are edited separately in **Home Editor** (`/dashboard/`).
 
 ## Local
 
@@ -13,6 +13,30 @@ npm run dev:cms
 - API: http://127.0.0.1:8081/api/health
 
 Local mode writes files on disk under `src/news/posts/` and `src/careers/jobs/`.
+
+## Home Editor (homepage blocks)
+
+- Local: http://127.0.0.1:8081/dashboard/ (or http://localhost:8125/dashboard/ with `npm run dev:cms`)
+- Studio (news/jobs): /admin/ — unchanged
+- Draft file: `src/_cms/home.draft.json` (not used by Eleventy)
+- Published: `src/_data/home.json`
+
+**Lưu nháp** writes the draft file only. It does not change the public homepage. **Xuất bản** copies the validated draft onto `src/_data/home.json` and triggers a rebuild (local Eleventy watch, or Vercel ~1–2 minutes in production). **Hủy nháp** restores the draft from the published file.
+
+### UAT checklist
+
+Tick in the PR / chat (not a product feature):
+
+1. Reorder two blocks, publish, homepage order matches.
+2. Hide a block, publish, omitted from HTML.
+3. Edit VI/EN/ZH of hero title, publish, all three `.lang` spans update.
+4. Replace about image, save draft — live still old image; publish — new image.
+5. Add a milestone, publish, timeline has the new card.
+6. Two tabs: second publish with old revision → 409 + reload copy.
+7. Discard restores draft to published.
+8. `/admin/` news create still works.
+9. `npm run test:cms` green.
+10. `npx @11ty/eleventy --quiet` green.
 
 ## Production (Railway → GitHub → Vercel)
 
