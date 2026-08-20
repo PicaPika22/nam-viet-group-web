@@ -18,7 +18,7 @@ image: >-
   /assets/img/news/tap-doan-nam-viet-di-tham-nha-may-cua-tap-doan-dai-cuu-chau-quang-tay-trung-quoc.png
 excerpt:
   vi: >-
-    Vào ngày 25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
+    Vào ngày  25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu…
   en: >-
@@ -30,7 +30,7 @@ excerpt:
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu…
 body:
-  vi: >
+  vi: >-
     Vào ngày 25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu Châu (大九洲集团板材), tại Quảng Tây, Trung Quốc. Wang
@@ -54,7 +54,7 @@ body:
     trao đổi trong tương lai, đồng thời mong muốn được cùng nhau xây dựng Gaoren
     thành một thương hiệu hạng nhất quốc tế với “tiêu chuẩn chất lượng cao và
     mức độ dịch vụ cao”
-  en: >
+  en: >-
     Vào ngày 25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu Châu (大九洲集团板材), tại Quảng Tây, Trung Quốc. Wang
@@ -78,7 +78,7 @@ body:
     trao đổi trong tương lai, đồng thời mong muốn được cùng nhau xây dựng Gaoren
     thành một thương hiệu hạng nhất quốc tế với “tiêu chuẩn chất lượng cao và
     mức độ dịch vụ cao”
-  zh: >
+  zh: >-
     Vào ngày 25 tháng 7, Chủ tịch HĐQT Tập đoàn Nam Việt Hà Văn An đã dẫn đầu
     đoàn công tác của tập đoàn đến thăm và làm việc với Nhà máy Công nghiệp gỗ
     Gaoren của tập đoàn Đại Cửu Châu (大九洲集团板材), tại Quảng Tây, Trung Quốc. Wang
@@ -102,7 +102,5 @@ body:
     trao đổi trong tương lai, đồng thời mong muốn được cùng nhau xây dựng Gaoren
     thành một thương hiệu hạng nhất quốc tế với “tiêu chuẩn chất lượng cao và
     mức độ dịch vụ cao”
-source: >-
-  https://www.namviet-jsc.com/vn/projects/tap-doan-nam-viet-di-tham-nha-may-cua-tap-doan-dai-cuu-chau-quang-tay-trung-quoc
 ---
 
