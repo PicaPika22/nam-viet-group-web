@@ -2366,6 +2366,13 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   .eco-mill__docks { grid-column: 1; grid-row: 3; margin-top: 1rem; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .eco-mill__station,
+  .eco-mill__station-stamp,
+  .eco-mill__path-seg,
+  .eco-mill__co-link { transition: none; }
+}
+
 /* ─── 04 · Manufacturing ─── */
 .manu__grid {
   display: grid; grid-template-columns: 5fr 6fr;
