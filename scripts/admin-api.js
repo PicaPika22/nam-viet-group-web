@@ -11,6 +11,12 @@ const multer = require("multer");
 const matter = require("gray-matter");
 const { createStore } = require("./home-cms/store");
 const { mountHomeRoutes } = require("./home-cms/routes");
+const {
+  bootCheck,
+  githubPublishReady,
+  isSafeSlug,
+  authConfigured,
+} = require("./cms-guard");
 
 const ROOT = path.resolve(__dirname, "..");
 const NEWS_DIR = path.join(ROOT, "src/news/posts");
@@ -24,28 +30,15 @@ const DASHBOARD_DIR = path.join(ROOT, "src/dashboard");
 const PORT = Number(process.env.PORT || process.env.ADMIN_API_PORT || 8081);
 const HOST = process.env.HOST || "0.0.0.0";
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || "";
-const GITHUB_REPO = process.env.GITHUB_REPO || ""; // owner/repo
-const GITHUB_BRANCH = process.env.GITHUB_BRANCH || "main";
-const REMOTE = Boolean(GITHUB_TOKEN && GITHUB_REPO);
-
-const ADMIN_USER = process.env.ADMIN_USER || "";
-const ADMIN_PASS = process.env.ADMIN_PASS || "";
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "";
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
-
-const app = express();
-app.use(express.json({ limit: "8mb" }));
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", CORS_ORIGIN);
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, X-Admin-Token"
-  );
-  if (req.method === "OPTIONS") return res.sendStatus(204);
-  next();
-});
+function slugRequestLooksUnsafe(originalUrl) {
+  const pathOnly = String(originalUrl || "").split("?")[0];
+  if (!pathOnly.startsWith("/api/news/") && !pathOnly.startsWith("/api/careers/")) {
+    return false;
+  }
+  if (/%2f/i.test(pathOnly) || /%5c/i.test(pathOnly)) return true;
+  if (/%(?![0-9a-fA-F]{2})/.test(pathOnly)) return true;
+  return false;
+}
 
 function ensureDirs() {
   for (const d of [NEWS_DIR, JOBS_DIR, IMG_DIR, NEWS_IMG_DIR, HOME_IMG_DIR]) {
@@ -105,52 +98,82 @@ function jobMarkdown(payload, slug) {
   return matter.stringify("\n", data);
 }
 
-/* ── Auth ── */
-function authEnabled() {
-  return Boolean(ADMIN_TOKEN || (ADMIN_USER && ADMIN_PASS));
-}
+function createCmsApp(env) {
+  env = env || process.env;
+  const boot = bootCheck(env);
+  if (!boot.ok) return { ok: false, errors: boot.errors };
 
-function checkAuth(req) {
-  if (!authEnabled()) return true;
-  const header = req.headers.authorization || "";
-  const tokenHeader = req.headers["x-admin-token"];
-  if (ADMIN_TOKEN && (tokenHeader === ADMIN_TOKEN || header === `Bearer ${ADMIN_TOKEN}`)) {
-    return true;
-  }
-  if (ADMIN_USER && ADMIN_PASS && header.startsWith("Basic ")) {
-    const decoded = Buffer.from(header.slice(6), "base64").toString("utf8");
-    const [u, p] = decoded.split(":");
-    return u === ADMIN_USER && p === ADMIN_PASS;
-  }
-  return false;
-}
+  const GITHUB_TOKEN = env.GITHUB_TOKEN || "";
+  const GITHUB_REPO = env.GITHUB_REPO || ""; // owner/repo
+  const GITHUB_BRANCH = env.GITHUB_BRANCH || "main";
+  const remote = githubPublishReady(env);
 
-function requireAuth(req, res, next) {
-  if (req.method === "OPTIONS") return next();
-  if (req.path === "/api/health" || req.path === "/api/login") return next();
-  if (!authEnabled()) return next();
-  if (checkAuth(req)) return next();
-  res.setHeader("WWW-Authenticate", 'Basic realm="Nam Viet Studio"');
-  return res.status(401).json({ error: "Unauthorized" });
-}
+  const ADMIN_USER = env.ADMIN_USER || "";
+  const ADMIN_PASS = env.ADMIN_PASS || "";
+  const ADMIN_TOKEN = env.ADMIN_TOKEN || "";
 
-app.use((req, res, next) => {
-  if (!req.path.startsWith("/api")) return next();
-  return requireAuth(req, res, next);
-});
+  const app = express();
+  app.use(express.json({ limit: "8mb" }));
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", boot.corsOrigin);
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization, X-Admin-Token"
+    );
+    if (req.method === "OPTIONS") return res.sendStatus(204);
+    next();
+  });
 
-app.post("/api/login", (req, res) => {
-  if (!authEnabled()) return res.json({ ok: true, mode: "open" });
-  const { user, password, token } = req.body || {};
-  if (ADMIN_TOKEN && token === ADMIN_TOKEN) {
-    return res.json({ ok: true, token: ADMIN_TOKEN });
+  app.use((req, res, next) => {
+    if (slugRequestLooksUnsafe(req.originalUrl)) {
+      return res.status(400).json({ error: "Invalid slug" });
+    }
+    next();
+  });
+
+  /* ── Auth ── */
+  function checkAuth(req) {
+    if (!authConfigured(env)) return true;
+    const header = req.headers.authorization || "";
+    const tokenHeader = req.headers["x-admin-token"];
+    if (ADMIN_TOKEN && (tokenHeader === ADMIN_TOKEN || header === `Bearer ${ADMIN_TOKEN}`)) {
+      return true;
+    }
+    if (ADMIN_USER && ADMIN_PASS && header.startsWith("Basic ")) {
+      const decoded = Buffer.from(header.slice(6), "base64").toString("utf8");
+      const [u, p] = decoded.split(":");
+      return u === ADMIN_USER && p === ADMIN_PASS;
+    }
+    return false;
   }
-  if (ADMIN_USER && ADMIN_PASS && user === ADMIN_USER && password === ADMIN_PASS) {
-    const basic = Buffer.from(`${ADMIN_USER}:${ADMIN_PASS}`).toString("base64");
-    return res.json({ ok: true, basic });
+
+  function requireAuth(req, res, next) {
+    if (req.method === "OPTIONS") return next();
+    if (req.path === "/api/health" || req.path === "/api/login") return next();
+    if (!authConfigured(env)) return next();
+    if (checkAuth(req)) return next();
+    res.setHeader("WWW-Authenticate", 'Basic realm="Nam Viet Studio"');
+    return res.status(401).json({ error: "Unauthorized" });
   }
-  return res.status(401).json({ error: "Sai tài khoản hoặc mật khẩu" });
-});
+
+  app.use((req, res, next) => {
+    if (!req.path.startsWith("/api")) return next();
+    return requireAuth(req, res, next);
+  });
+
+  app.post("/api/login", (req, res) => {
+    if (!authConfigured(env)) return res.json({ ok: true, mode: "open" });
+    const { user, password, token } = req.body || {};
+    if (ADMIN_TOKEN && token === ADMIN_TOKEN) {
+      return res.json({ ok: true, token: ADMIN_TOKEN });
+    }
+    if (ADMIN_USER && ADMIN_PASS && user === ADMIN_USER && password === ADMIN_PASS) {
+      const basic = Buffer.from(`${ADMIN_USER}:${ADMIN_PASS}`).toString("base64");
+      return res.json({ ok: true, basic });
+    }
+    return res.status(401).json({ error: "Sai tài khoản hoặc mật khẩu" });
+  });
 
 /* ── GitHub Contents API ── */
 async function gh(pathname, opts = {}) {
@@ -307,7 +330,7 @@ function writeJobLocal(slug, payload) {
 /* ── News routes ── */
 app.get("/api/news", async (_req, res) => {
   try {
-    const items = REMOTE
+    const items = remote
       ? await remoteListMarkdown("src/news/posts")
       : listMarkdown(NEWS_DIR);
     items.sort((a, b) => new Date(b.data.date || 0) - new Date(a.data.date || 0));
@@ -318,8 +341,11 @@ app.get("/api/news", async (_req, res) => {
 });
 
 app.get("/api/news/:slug", async (req, res) => {
+  if (!isSafeSlug(req.params.slug)) {
+    return res.status(400).json({ error: "Invalid slug" });
+  }
   try {
-    if (REMOTE) {
+    if (remote) {
       const file = await ghGetFile(`src/news/posts/${req.params.slug}.md`);
       if (!file) return res.status(404).json({ error: "Not found" });
       const raw = Buffer.from(file.content, "base64").toString("utf8");
@@ -344,7 +370,7 @@ app.post("/api/news", async (req, res) => {
   try {
     const titleVi = req.body?.title?.vi || req.body?.title?.en || "bai-viet";
     const base = slugify(titleVi);
-    if (REMOTE) {
+    if (remote) {
       const slug = await remoteUniqueSlug("src/news/posts", base);
       const content = newsMarkdown(req.body);
       await ghPutFile(
@@ -363,9 +389,12 @@ app.post("/api/news", async (req, res) => {
 });
 
 app.put("/api/news/:slug", async (req, res) => {
+  if (!isSafeSlug(req.params.slug)) {
+    return res.status(400).json({ error: "Invalid slug" });
+  }
   try {
     const slug = req.params.slug;
-    if (REMOTE) {
+    if (remote) {
       const existing = await ghGetFile(`src/news/posts/${slug}.md`);
       if (!existing) return res.status(404).json({ error: "Not found" });
       const content = newsMarkdown(req.body);
@@ -387,9 +416,12 @@ app.put("/api/news/:slug", async (req, res) => {
 });
 
 app.delete("/api/news/:slug", async (req, res) => {
+  if (!isSafeSlug(req.params.slug)) {
+    return res.status(400).json({ error: "Invalid slug" });
+  }
   try {
     const slug = req.params.slug;
-    if (REMOTE) {
+    if (remote) {
       const existing = await ghGetFile(`src/news/posts/${slug}.md`);
       if (!existing) return res.status(404).json({ error: "Not found" });
       await ghDeleteFile(
@@ -411,7 +443,7 @@ app.delete("/api/news/:slug", async (req, res) => {
 /* ── Careers ── */
 app.get("/api/careers", async (_req, res) => {
   try {
-    const items = REMOTE
+    const items = remote
       ? await remoteListMarkdown("src/careers/jobs")
       : listMarkdown(JOBS_DIR);
     items.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
@@ -424,7 +456,7 @@ app.get("/api/careers", async (_req, res) => {
 app.post("/api/careers", async (req, res) => {
   try {
     const id = slugify(req.body?.id || req.body?.title?.vi || "vi-tri");
-    if (REMOTE) {
+    if (remote) {
       const slug = await remoteUniqueSlug("src/careers/jobs", id);
       const content = jobMarkdown({ ...req.body, id: slug }, slug);
       await ghPutFile(
@@ -443,9 +475,12 @@ app.post("/api/careers", async (req, res) => {
 });
 
 app.put("/api/careers/:slug", async (req, res) => {
+  if (!isSafeSlug(req.params.slug)) {
+    return res.status(400).json({ error: "Invalid slug" });
+  }
   try {
     const slug = req.params.slug;
-    if (REMOTE) {
+    if (remote) {
       const existing = await ghGetFile(`src/careers/jobs/${slug}.md`);
       if (!existing) return res.status(404).json({ error: "Not found" });
       const content = jobMarkdown(
@@ -470,9 +505,12 @@ app.put("/api/careers/:slug", async (req, res) => {
 });
 
 app.delete("/api/careers/:slug", async (req, res) => {
+  if (!isSafeSlug(req.params.slug)) {
+    return res.status(400).json({ error: "Invalid slug" });
+  }
   try {
     const slug = req.params.slug;
-    if (REMOTE) {
+    if (remote) {
       const existing = await ghGetFile(`src/careers/jobs/${slug}.md`);
       if (!existing) return res.status(404).json({ error: "Not found" });
       await ghDeleteFile(
@@ -503,7 +541,7 @@ const upload = multer({
 
 const homeStore = createStore({
   rootDir: ROOT,
-  remote: REMOTE,
+  remote: remote,
   ghGetFile,
   ghPutFile,
   ghPutBinary,
@@ -522,7 +560,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     const rel = `src/assets/img/news/${filename}`;
     const publicUrl = `/assets/img/news/${filename}`;
 
-    if (REMOTE) {
+    if (remote) {
       await ghPutBinary(rel, req.file.buffer, `content: upload ${filename}`);
       return res.json({ ok: true, url: publicUrl, remote: true });
     }
@@ -537,11 +575,11 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 app.get("/api/health", (_req, res) =>
   res.json({
     ok: true,
-    mode: REMOTE ? "github" : "local",
-    repo: REMOTE ? GITHUB_REPO : null,
-    branch: REMOTE ? GITHUB_BRANCH : null,
-    auth: authEnabled(),
-    siteUrl: process.env.SITE_URL || "/",
+    mode: remote ? "github" : "local",
+    repo: remote ? GITHUB_REPO : null,
+    branch: remote ? GITHUB_BRANCH : null,
+    auth: authConfigured(env),
+    siteUrl: env.SITE_URL || "/",
   })
 );
 
@@ -555,9 +593,32 @@ if (fs.existsSync(DASHBOARD_DIR)) {
 }
 app.use("/assets", express.static(path.join(ROOT, "src/assets")));
 
-ensureDirs();
-app.listen(PORT, HOST, () => {
-  console.log(`[admin-api] http://${HOST}:${PORT}`);
-  console.log(`[admin-api] mode=${REMOTE ? "github:" + GITHUB_REPO : "local"}`);
-  if (authEnabled()) console.log("[admin-api] auth=on");
-});
+  app.use((err, req, res, next) => {
+    if (err instanceof URIError) {
+      return res.status(400).json({ error: "Invalid slug" });
+    }
+    return next(err);
+  });
+
+  ensureDirs();
+  return { ok: true, app, corsOrigin: boot.corsOrigin, remote };
+}
+
+module.exports = { createCmsApp };
+
+if (require.main === module) {
+  const result = createCmsApp(process.env);
+  if (!result.ok) {
+    for (const err of result.errors) {
+      console.error(`[admin-api] ${err.code}: ${err.message}`);
+    }
+    process.exit(1);
+  }
+  result.app.listen(PORT, HOST, () => {
+    console.log(`[admin-api] http://${HOST}:${PORT}`);
+    console.log(
+      `[admin-api] mode=${result.remote ? "github:" + (process.env.GITHUB_REPO || "") : "local"}`,
+    );
+    if (authConfigured(process.env)) console.log("[admin-api] auth=on");
+  });
+}
