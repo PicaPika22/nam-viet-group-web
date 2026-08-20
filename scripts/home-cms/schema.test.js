@@ -46,6 +46,22 @@ describe("validateHome", () => {
     assert.equal(isAllowedUpload("hero", "logo"), false);
     assert.equal(isAllowedUpload("news", "art"), false);
   });
+
+  it("rejects null section without throwing", () => {
+    const doc = minimalValidDocument();
+    doc.sections[0] = null;
+    const r = validateHome(doc);
+    assert.equal(r.ok, false);
+    assert.ok(r.fields.some((f) => f.path === "sections[0]"));
+  });
+
+  it("rejects stats object without throwing", () => {
+    const doc = minimalValidDocument();
+    doc.sections[0].stats = {};
+    const r = validateHome(doc);
+    assert.equal(r.ok, false);
+    assert.ok(r.fields.some((f) => f.path === "hero.stats"));
+  });
 });
 
 describe("mergeLockedHrefs", () => {

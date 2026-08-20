@@ -257,58 +257,71 @@ function validateHome(doc) {
   }
   const seen = new Set();
   for (const id of SECTION_IDS) {
-    const section = doc.sections.find((s) => s.id === id);
+    const section = doc.sections.find((s) => s && s.id === id);
     if (!section) field("sections", `Missing section ${id}`, fields);
   }
-  for (const section of doc.sections) {
+  for (let i = 0; i < doc.sections.length; i++) {
+    const section = doc.sections[i];
+    if (!section || typeof section !== "object") {
+      field(`sections[${i}]`, "Section must be an object", fields);
+      continue;
+    }
+    const sectionId = section.id || `sections[${i}]`;
     if (!SECTION_IDS.includes(section.id)) field(`sections.${section.id}`, "Unknown id", fields);
     if (seen.has(section.id)) field(`sections.${section.id}`, "Duplicate id", fields);
     seen.add(section.id);
-    if (typeof section.visible !== "boolean") field(`${section.id}.visible`, "visible must be boolean", fields);
+    if (typeof section.visible !== "boolean") field(`${sectionId}.visible`, "visible must be boolean", fields);
     const keys = CONTENT_KEYS[section.id] || [];
     for (const lang of LANGS) {
       for (const key of keys) {
         if (!nonEmpty(section.content?.[lang]?.[key])) {
-          field(`${section.id}.content.${lang}.${key}`, "Required", fields);
+          field(`${sectionId}.content.${lang}.${key}`, "Required", fields);
         }
       }
     }
     for (const slot of IMAGE_SLOTS[section.id] || []) {
       const url = section.images?.[slot];
       if (!nonEmpty(url) || !String(url).startsWith("/assets/img/")) {
-        field(`${section.id}.images.${slot}`, "Image slot required", fields);
+        field(`${sectionId}.images.${slot}`, "Image slot required", fields);
       }
     }
     const wantStats = STAT_COUNTS[section.id] || 0;
-    if ((section.stats || []).length !== wantStats) {
-      field(`${section.id}.stats`, `Must have ${wantStats} stats`, fields);
-    }
-    for (const stat of section.stats || []) {
-      for (const lang of LANGS) {
-        if (!nonEmpty(stat.label?.[lang])) field(`${section.id}.stats.${stat.id}.${lang}`, "Required", fields);
+    if (section.stats != null && !Array.isArray(section.stats)) {
+      field(`${sectionId}.stats`, "stats must be an array", fields);
+    } else {
+      const statsList = Array.isArray(section.stats) ? section.stats : [];
+      if (statsList.length !== wantStats) {
+        field(`${sectionId}.stats`, `Must have ${wantStats} stats`, fields);
+      }
+      for (const stat of statsList) {
+        for (const lang of LANGS) {
+          if (!nonEmpty(stat.label?.[lang])) field(`${sectionId}.stats.${stat.id}.${lang}`, "Required", fields);
+        }
       }
     }
-    if (section.id === "ecosystem" && (section.items || []).length !== FLOW_COUNT) {
+    const itemsList = Array.isArray(section.items) ? section.items : [];
+    if (section.id === "ecosystem" && itemsList.length !== FLOW_COUNT) {
       field("ecosystem.items", `Must have ${FLOW_COUNT} flow steps`, fields);
     }
-    if (section.id === "manufacturing" && (section.items || []).length !== CHECK_COUNT) {
+    if (section.id === "manufacturing" && itemsList.length !== CHECK_COUNT) {
       field("manufacturing.items", `Must have ${CHECK_COUNT} checks`, fields);
     }
     if (section.id === "products") {
-      const ids = (section.items || []).map((i) => i.id);
+      const ids = itemsList.map((item) => item.id);
       if (ids.join() !== PRODUCT_IDS.join()) field("products.items", "Product ids/order are fixed", fields);
     }
     if (section.id === "network") {
-      const ids = new Set((section.items || []).map((i) => i.id));
+      const ids = new Set(itemsList.map((item) => item.id));
       for (const pid of PARTNER_IDS) {
         if (!ids.has(pid)) field("network.items", `Missing partner ${pid}`, fields);
       }
-      if ((section.items || []).length !== PARTNER_IDS.length) {
+      if (itemsList.length !== PARTNER_IDS.length) {
         field("network.items", "Cannot add or delete partners in phase 1", fields);
       }
     }
+    const timelineList = Array.isArray(section.timeline) ? section.timeline : [];
     if (section.id === "milestones") {
-      for (const row of section.timeline || []) {
+      for (const row of timelineList) {
         if (!nonEmpty(row.id) || !nonEmpty(row.year)) field(`milestones.timeline.${row.id}`, "id and year required", fields);
         if (row.icon && !TIMELINE_ICONS.includes(row.icon)) {
           field(`milestones.timeline.${row.id}.icon`, "Invalid icon", fields);

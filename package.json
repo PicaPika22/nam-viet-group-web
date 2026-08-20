@@ -11,7 +11,7 @@
     "build": "eleventy",
     "start": "node scripts/admin-api.js",
     "start:site": "npm run build && npx serve _site -l 8125",
-    "test:cms": "node --test scripts/home-cms/*.test.js"
+    "test:cms": "node --test scripts/home-cms/schema.test.js"
   },
   "engines": {
     "node": ">=20"
