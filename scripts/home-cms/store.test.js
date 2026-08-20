@@ -107,4 +107,51 @@ describe("createStore", () => {
     assert.deepEqual(fs.readFileSync(publishedPath), publishedBefore);
     assert.deepEqual(fs.readFileSync(path.join(rootDir, result.relPath)), Buffer.from("webp"));
   });
+
+  it("rejects path traversal in an otherwise allowed image slot", () => {
+    const store = createStore({ rootDir });
+    const imageDir = path.join(rootDir, "src", "assets", "img", "home");
+
+    assert.throws(
+      () =>
+        store.writeImage({
+          sectionId: "milestones",
+          slot: "timeline:../../etc",
+          buffer: Buffer.from("webp"),
+          ext: ".webp",
+        }),
+      (error) => error instanceof HttpError && error.status === 400,
+    );
+    assert.equal(fs.existsSync(imageDir), false);
+  });
+
+  it("rejects image buffers larger than 8 MB", () => {
+    const store = createStore({ rootDir });
+
+    assert.throws(
+      () =>
+        store.writeImage({
+          sectionId: "hero",
+          slot: "art",
+          buffer: Buffer.alloc(8 * 1024 * 1024 + 1),
+          ext: ".webp",
+        }),
+      (error) => error instanceof HttpError && error.status === 413,
+    );
+  });
+
+  it("rejects unsupported image extensions", () => {
+    const store = createStore({ rootDir });
+
+    assert.throws(
+      () =>
+        store.writeImage({
+          sectionId: "hero",
+          slot: "art",
+          buffer: Buffer.from("gif"),
+          ext: ".gif",
+        }),
+      (error) => error instanceof HttpError && error.status === 415,
+    );
+  });
 });

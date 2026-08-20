@@ -9,6 +9,9 @@ const {
   isAllowedUpload,
 } = require("./schema");
 
+const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+const SAFE_IMAGE_IDENTIFIER = /^[a-z0-9-]+(?::[a-z0-9-]+)?$/i;
+
 class HttpError extends Error {
   constructor(status, body) {
     super(body.message || "Error");
@@ -105,16 +108,32 @@ function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
   }
 
   function writeImage({ sectionId, slot, buffer, ext }) {
-    if (!isAllowedUpload(sectionId, slot)) {
+    if (
+      typeof sectionId !== "string" ||
+      typeof slot !== "string" ||
+      !SAFE_IMAGE_IDENTIFIER.test(sectionId) ||
+      !SAFE_IMAGE_IDENTIFIER.test(slot) ||
+      !isAllowedUpload(sectionId, slot)
+    ) {
       throw new HttpError(400, { error: "Invalid image slot" });
     }
     if (![".jpg", ".jpeg", ".png", ".webp"].includes(ext)) {
       throw new HttpError(415, { error: "Unsupported image type" });
     }
+    if (!Buffer.isBuffer(buffer)) {
+      throw new HttpError(400, { error: "Invalid image buffer" });
+    }
+    if (buffer.length > MAX_IMAGE_BYTES) {
+      throw new HttpError(413, { error: "Image too large" });
+    }
     const filename = `${sectionId}-${slot.replace(/:/g, "-")}-${Date.now()}${ext}`;
     const relPath = path.posix.join("src", "assets", "img", "home", filename);
+    const imagePath = path.resolve(imageDir, filename);
+    if (path.dirname(imagePath) !== path.resolve(imageDir)) {
+      throw new HttpError(400, { error: "Invalid image slot" });
+    }
     fsImpl.mkdirSync(imageDir, { recursive: true });
-    fsImpl.writeFileSync(path.join(imageDir, filename), buffer);
+    fsImpl.writeFileSync(imagePath, buffer);
     return {
       url: `/assets/img/home/${filename}`,
       relPath,
