@@ -9,13 +9,17 @@ const fs = require("fs");
 const express = require("express");
 const multer = require("multer");
 const matter = require("gray-matter");
+const { createStore } = require("./home-cms/store");
+const { mountHomeRoutes } = require("./home-cms/routes");
 
 const ROOT = path.resolve(__dirname, "..");
 const NEWS_DIR = path.join(ROOT, "src/news/posts");
 const JOBS_DIR = path.join(ROOT, "src/careers/jobs");
 const IMG_DIR = path.join(ROOT, "src/assets/img");
 const NEWS_IMG_DIR = path.join(IMG_DIR, "news");
+const HOME_IMG_DIR = path.join(IMG_DIR, "home");
 const ADMIN_DIR = path.join(ROOT, "src/admin");
+const DASHBOARD_DIR = path.join(ROOT, "src/dashboard");
 
 const PORT = Number(process.env.PORT || process.env.ADMIN_API_PORT || 8081);
 const HOST = process.env.HOST || "0.0.0.0";
@@ -44,7 +48,7 @@ app.use((req, res, next) => {
 });
 
 function ensureDirs() {
-  for (const d of [NEWS_DIR, JOBS_DIR, IMG_DIR, NEWS_IMG_DIR]) {
+  for (const d of [NEWS_DIR, JOBS_DIR, IMG_DIR, NEWS_IMG_DIR, HOME_IMG_DIR]) {
     if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
   }
 }
@@ -497,6 +501,15 @@ const upload = multer({
   },
 });
 
+const homeStore = createStore({
+  rootDir: ROOT,
+  remote: REMOTE,
+  ghGetFile,
+  ghPutFile,
+  ghPutBinary,
+});
+mountHomeRoutes(app, { store: homeStore, upload });
+
 app.post("/api/upload", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: "No file" });
@@ -536,6 +549,9 @@ app.get("/api/health", (_req, res) =>
 app.get("/", (_req, res) => res.redirect("/admin/"));
 if (fs.existsSync(ADMIN_DIR)) {
   app.use("/admin", express.static(ADMIN_DIR, { index: "index.html" }));
+}
+if (fs.existsSync(DASHBOARD_DIR)) {
+  app.use("/dashboard", express.static(DASHBOARD_DIR, { index: "index.html" }));
 }
 app.use("/assets", express.static(path.join(ROOT, "src/assets")));
 
