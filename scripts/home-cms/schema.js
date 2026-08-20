@@ -318,6 +318,11 @@ function validateHome(doc) {
       if (itemsList.length !== PARTNER_IDS.length) {
         field("network.items", "Cannot add or delete partners in phase 1", fields);
       }
+      for (const item of itemsList) {
+        if (!nonEmpty(item.image) || !String(item.image).startsWith("/assets/img/")) {
+          field(`network.items.${item.id}.image`, "Image required", fields);
+        }
+      }
     }
     const timelineList = Array.isArray(section.timeline) ? section.timeline : [];
     if (section.id === "milestones") {

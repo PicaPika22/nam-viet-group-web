@@ -68,6 +68,15 @@ describe("validateHome", () => {
     assert.equal(r.ok, false);
     assert.ok(r.fields.some((f) => f.path === "hero.stats"));
   });
+
+  it("rejects javascript: partner image", () => {
+    const doc = minimalValidDocument();
+    const network = doc.sections.find((s) => s.id === "network");
+    network.items[0].image = "javascript:alert(1)";
+    const r = validateHome(doc);
+    assert.equal(r.ok, false);
+    assert.ok(r.fields.some((f) => f.path.includes("network") && f.path.includes("image")));
+  });
 });
 
 describe("mergeLockedHrefs", () => {

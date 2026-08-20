@@ -14,7 +14,7 @@
     <div class="logi__stats">
       {% for stat in section.stats %}
       <div class="stat stat--glass reveal" data-delay="{{ loop.index0 * 120 }}">
-        <span class="stat__value">{% if stat.count != null %}<span data-count="{{ stat.count }}"{% if stat.decimals %} data-decimals="{{ stat.decimals }}"{% endif %}>0</span>{{ stat.suffix }}{% else %}{{ stat.value }}{% endif %}</span>
+        <span class="stat__value">{{ stat.value }}</span>
         <span class="stat__label"><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></span>
       </div>
       {% endfor %}

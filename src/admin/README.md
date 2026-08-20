@@ -42,7 +42,9 @@ Tick in the PR / chat (not a product feature):
 
 1. Deploy this repo on **Railway** with start command `node scripts/admin-api.js`.
 2. Set env vars from [`.env.example`](../../.env.example) (`GITHUB_TOKEN`, `GITHUB_REPO`, `ADMIN_USER`, `ADMIN_PASS`).
-3. Give editors the Railway URL: `https://your-cms.up.railway.app/admin/`
+3. Give editors the Railway URLs:
+   - Content Studio (news/jobs): `https://your-cms.up.railway.app/admin/`
+   - Home Editor (homepage blocks): `https://your-cms.up.railway.app/dashboard/`
 4. Publishing creates a GitHub commit → **Vercel** rebuilds the public site in ~1–2 minutes.
 
 ### GitHub token
