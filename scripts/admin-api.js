@@ -530,11 +530,13 @@ app.delete("/api/careers/:slug", async (req, res) => {
 });
 
 /* ── Upload ── */
+const NEWS_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 8 * 1024 * 1024 },
   fileFilter: (_req, file, cb) => {
-    if (/^image\//.test(file.mimetype)) cb(null, true);
+    if (NEWS_IMAGE_TYPES.has(file.mimetype)) cb(null, true);
     else cb(new Error("Chỉ nhận file ảnh"));
   },
 });
@@ -548,28 +550,36 @@ const homeStore = createStore({
 });
 mountHomeRoutes(app, { store: homeStore, upload });
 
-app.post("/api/upload", upload.single("file"), async (req, res) => {
-  try {
-    if (!req.file) return res.status(400).json({ error: "No file" });
-    const ext = path.extname(req.file.originalname).toLowerCase() || ".jpg";
-    const safeExt = [".jpg", ".jpeg", ".png", ".webp", ".gif"].includes(ext)
-      ? ext
-      : ".jpg";
-    const base = slugify(path.basename(req.file.originalname, ext)) || "upload";
-    const filename = `${base}-${Date.now()}${safeExt}`;
-    const rel = `src/assets/img/news/${filename}`;
-    const publicUrl = `/assets/img/news/${filename}`;
+app.post("/api/upload", (req, res) => {
+  upload.single("file")(req, res, async (uploadError) => {
+    try {
+      if (uploadError) {
+        if (uploadError.message === "Chỉ nhận file ảnh") {
+          return res.status(415).json({ error: "Unsupported image type" });
+        }
+        throw uploadError;
+      }
+      if (!req.file) return res.status(400).json({ error: "No file" });
+      const ext = path.extname(req.file.originalname).toLowerCase() || ".jpg";
+      const safeExt = [".jpg", ".jpeg", ".png", ".webp"].includes(ext)
+        ? ext
+        : ".jpg";
+      const base = slugify(path.basename(req.file.originalname, ext)) || "upload";
+      const filename = `${base}-${Date.now()}${safeExt}`;
+      const rel = `src/assets/img/news/${filename}`;
+      const publicUrl = `/assets/img/news/${filename}`;
 
-    if (remote) {
-      await ghPutBinary(rel, req.file.buffer, `content: upload ${filename}`);
-      return res.json({ ok: true, url: publicUrl, remote: true });
+      if (remote) {
+        await ghPutBinary(rel, req.file.buffer, `content: upload ${filename}`);
+        return res.json({ ok: true, url: publicUrl, remote: true });
+      }
+      ensureDirs();
+      fs.writeFileSync(path.join(NEWS_IMG_DIR, filename), req.file.buffer);
+      res.json({ ok: true, url: publicUrl });
+    } catch (e) {
+      res.status(500).json({ error: String(e.message || e) });
     }
-    ensureDirs();
-    fs.writeFileSync(path.join(NEWS_IMG_DIR, filename), req.file.buffer);
-    res.json({ ok: true, url: publicUrl });
-  } catch (e) {
-    res.status(500).json({ error: String(e.message || e) });
-  }
+  });
 });
 
 app.get("/api/health", (_req, res) =>
