@@ -1,7 +1,11 @@
 ---
 layout: layouts/about.njk
 title: About
-permalink: /about/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/about/', locale) }}"
 ---
 
 <section class="chapter chapter--dark about-hero about-hero--bleed" data-chapter="01" data-label-en="ABOUT" data-label-zh="关于" data-label-vi="GIỚI THIỆU">
@@ -11,42 +15,32 @@ permalink: /about/
   </div>
   <div class="container about-hero__content">
     <nav class="breadcrumb about-hero__crumb reveal" aria-label="Breadcrumb">
-      <a href="{{ '/' | url }}">
-        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
-        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
-        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      <a href="{{ '/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].breadcrumbHome }}
       </a>
       <span aria-hidden="true">/</span>
       <span>
-        <span class="lang en">About</span>
-        <span class="lang vi">Giới thiệu</span>
-        <span class="lang zh">关于</span>
+        {{ ({ en: 'About', vi: 'Giới thiệu', zh: '关于' })[locale] }}
       </span>
     </nav>
     <header class="chapter__head">
       <p class="eyebrow eyebrow--light reveal">
-        <span class="lang en">About the Group</span>
-        <span class="lang vi">Giới thiệu Tập đoàn</span>
-        <span class="lang zh">关于集团</span>
+        {{ ({ en: 'About the Group', vi: 'Giới thiệu Tập đoàn', zh: '关于集团' })[locale] }}
       </p>
       <h1 class="chapter__title">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">Nam Viet Group</span></span>
           <span class="line-mask"><span class="line line--accent">An integrated agribusiness ecosystem.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Tập đoàn Nam Việt</span></span>
-          <span class="line-mask"><span class="line line--accent">Hệ sinh thái nông nghiệp tích hợp.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">南越集团</span></span>
           <span class="line-mask"><span class="line line--accent">一体化农业产业生态。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Tập đoàn Nam Việt</span></span>
+          <span class="line-mask"><span class="line line--accent">Hệ sinh thái nông nghiệp tích hợp.</span></span>
+        {% endif %}
       </h1>
       <p class="chapter__desc reveal" data-delay="200">
-        <span class="lang en">We connect feed manufacturing, trading, logistics and ports so partners get reliable nutrition and supply across Vietnam and beyond.</span>
-        <span class="lang vi">Chúng tôi kết nối sản xuất thức ăn, thương mại, logistics và kho cảng — mang dinh dưỡng và chuỗi cung ứng ổn định cho đối tác trong và ngoài nước.</span>
-        <span class="lang zh">我们连接饲料制造、贸易、物流与港口，为境内外伙伴提供可靠的营养方案与供应链。</span>
+        {{ ({ en: 'We connect feed manufacturing, trading, logistics and ports so partners get reliable nutrition and supply across Vietnam and beyond.', vi: 'Chúng tôi kết nối sản xuất thức ăn, thương mại, logistics và kho cảng — mang dinh dưỡng và chuỗi cung ứng ổn định cho đối tác trong và ngoài nước.', zh: '我们连接饲料制造、贸易、物流与港口，为境内外伙伴提供可靠的营养方案与供应链。' })[locale] }}
       </p>
     </header>
   </div>
@@ -55,24 +49,16 @@ permalink: /about/
 <nav class="page-subnav about-subnav" aria-label="About sections" data-page-subnav>
   <div class="container page-subnav__inner">
     <a href="#overview" class="page-subnav__link is-active" data-subnav-target="overview">
-      <span class="lang en">Overview</span>
-      <span class="lang vi">Tổng quan</span>
-      <span class="lang zh">概览</span>
+      {{ ({ en: 'Overview', vi: 'Tổng quan', zh: '概览' })[locale] }}
     </a>
     <a href="#ecosystem" class="page-subnav__link" data-subnav-target="ecosystem">
-      <span class="lang en">Ecosystem</span>
-      <span class="lang vi">Hệ sinh thái</span>
-      <span class="lang zh">生态系统</span>
+      {{ ({ en: 'Ecosystem', vi: 'Hệ sinh thái', zh: '生态系统' })[locale] }}
     </a>
     <a href="#vision" class="page-subnav__link" data-subnav-target="vision">
-      <span class="lang en">Direction</span>
-      <span class="lang vi">Định hướng</span>
-      <span class="lang zh">方向</span>
+      {{ ({ en: 'Direction', vi: 'Định hướng', zh: '方向' })[locale] }}
     </a>
     <a href="#leadership" class="page-subnav__link" data-subnav-target="leadership">
-      <span class="lang en">Leadership</span>
-      <span class="lang vi">Lãnh đạo</span>
-      <span class="lang zh">领导团队</span>
+      {{ ({ en: 'Leadership', vi: 'Lãnh đạo', zh: '领导团队' })[locale] }}
     </a>
   </div>
 </nav>
@@ -82,28 +68,22 @@ permalink: /about/
     <header class="chapter__head about-section__head">
       <span class="chapter__num reveal">01</span>
       <p class="eyebrow reveal">
-        <span class="lang en">Overview</span>
-        <span class="lang vi">Tổng quan</span>
-        <span class="lang zh">概览</span>
+        {{ ({ en: 'Overview', vi: 'Tổng quan', zh: '概览' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">Who we are</span></span>
           <span class="line-mask"><span class="line line--muted">in numbers that matter.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Chúng tôi là ai</span></span>
-          <span class="line-mask"><span class="line line--muted">qua những chỉ số then chốt.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">我们是谁</span></span>
           <span class="line-mask"><span class="line line--muted">用关键指标说明。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Chúng tôi là ai</span></span>
+          <span class="line-mask"><span class="line line--muted">qua những chỉ số then chốt.</span></span>
+        {% endif %}
       </h2>
       <p class="chapter__desc reveal" data-delay="150">
-        <span class="lang en">From feed production to logistics, ports and strategic investments, we expand one ecosystem for customers, partners and communities.</span>
-        <span class="lang vi">Từ thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi mở rộng một hệ sinh thái phục vụ khách hàng, đối tác và xã hội.</span>
-        <span class="lang zh">从饲料生产到物流、港口与战略投资，我们拓展同一生态系统，服务客户、伙伴与社区。</span>
+        {{ ({ en: 'From feed production to logistics, ports and strategic investments, we expand one ecosystem for customers, partners and communities.', vi: 'Từ thức ăn chăn nuôi đến logistics, kho cảng và đầu tư chiến lược, chúng tôi mở rộng một hệ sinh thái phục vụ khách hàng, đối tác và xã hội.', zh: '从饲料生产到物流、港口与战略投资，我们拓展同一生态系统，服务客户、伙伴与社区。' })[locale] }}
       </p>
     </header>
 
@@ -111,72 +91,52 @@ permalink: /about/
       <div class="stat" data-delay="0">
         <span class="stat__value"><span data-count="20">0</span>+</span>
         <span class="stat__label">
-          <span class="lang en">Years building the Group</span>
-          <span class="lang vi">Năm hình thành &amp; phát triển</span>
-          <span class="lang zh">年集团发展历程</span>
+          {{ ({ en: 'Years building the Group', vi: 'Năm hình thành &amp; phát triển', zh: '年集团发展历程' })[locale] }}
         </span>
       </div>
       <div class="stat" data-delay="80">
         <span class="stat__value"><span data-count="10">0</span></span>
         <span class="stat__label">
-          <span class="lang en">Units in the ecosystem</span>
-          <span class="lang vi">Đơn vị trong hệ sinh thái</span>
-          <span class="lang zh">生态体系内企业单位</span>
+          {{ ({ en: 'Units in the ecosystem', vi: 'Đơn vị trong hệ sinh thái', zh: '生态体系内企业单位' })[locale] }}
         </span>
       </div>
       <div class="stat" data-delay="160">
         <span class="stat__value"><span data-count="186">0</span>+</span>
         <span class="stat__label">
-          <span class="lang en">Projects delivered</span>
-          <span class="lang vi">Dự án đã triển khai</span>
-          <span class="lang zh">已交付项目</span>
+          {{ ({ en: 'Projects delivered', vi: 'Dự án đã triển khai', zh: '已交付项目' })[locale] }}
         </span>
       </div>
       <div class="stat" data-delay="240">
         <span class="stat__value">
-          <span class="lang en"><span data-count="542">0</span>B+</span></span>
-          <span class="lang vi"><span data-count="542">0</span> tỷ</span></span>
-          <span class="lang zh"><span data-count="542">0</span>B+</span></span>
+          <span data-count="542">0</span>{% if locale == 'vi' %} tỷ{% else %}B+{% endif %}
         </span>
         <span class="stat__label">
-          <span class="lang en">VND charter capital</span>
-          <span class="lang vi">Vốn điều lệ (đồng)</span>
-          <span class="lang zh">注册资本（越南盾）</span>
+          {{ ({ en: 'VND charter capital', vi: 'Vốn điều lệ (đồng)', zh: '注册资本（越南盾）' })[locale] }}
         </span>
       </div>
     </div>
 
     <aside class="about-capacity" aria-label="Production capacity">
       <p class="about-capacity__label reveal">
-        <span class="lang en">Feed production capacity</span>
-        <span class="lang vi">Năng lực sản xuất thức ăn</span>
-        <span class="lang zh">饲料产能</span>
+        {{ ({ en: 'Feed production capacity', vi: 'Năng lực sản xuất thức ăn', zh: '饲料产能' })[locale] }}
       </p>
       <div class="about-capacity__grid">
         <div class="about-capacity__item reveal">
           <span class="about-capacity__value"><span data-count="300000">0</span></span>
           <span class="about-capacity__unit">
-            <span class="lang en">{{ about.capacity.poultryLine.unit.en }}</span>
-            <span class="lang vi">{{ about.capacity.poultryLine.unit.vi }}</span>
-            <span class="lang zh">{{ about.capacity.poultryLine.unit.zh }}</span>
+            {{ about.capacity.poultryLine.unit[locale] }}
           </span>
           <p class="about-capacity__note">
-            <span class="lang en">{{ about.capacity.poultryLine.label.en }}</span>
-            <span class="lang vi">{{ about.capacity.poultryLine.label.vi }}</span>
-            <span class="lang zh">{{ about.capacity.poultryLine.label.zh }}</span>
+            {{ about.capacity.poultryLine.label[locale] }}
           </p>
         </div>
         <div class="about-capacity__item reveal" data-delay="100">
           <span class="about-capacity__value"><span data-count="10">0</span></span>
           <span class="about-capacity__unit">
-            <span class="lang en">{{ about.capacity.aquaLine.unit.en }}</span>
-            <span class="lang vi">{{ about.capacity.aquaLine.unit.vi }}</span>
-            <span class="lang zh">{{ about.capacity.aquaLine.unit.zh }}</span>
+            {{ about.capacity.aquaLine.unit[locale] }}
           </span>
           <p class="about-capacity__note">
-            <span class="lang en">{{ about.capacity.aquaLine.label.en }}</span>
-            <span class="lang vi">{{ about.capacity.aquaLine.label.vi }}</span>
-            <span class="lang zh">{{ about.capacity.aquaLine.label.zh }}</span>
+            {{ about.capacity.aquaLine.label[locale] }}
           </p>
         </div>
       </div>
@@ -190,46 +150,38 @@ permalink: /about/
     <header class="chapter__head about-section__head">
       <span class="chapter__num reveal">02</span>
       <p class="eyebrow reveal">
-        <span class="lang en">Ecosystem</span>
-        <span class="lang vi">Hệ sinh thái</span>
-        <span class="lang zh">生态系统</span>
+        {{ ({ en: 'Ecosystem', vi: 'Hệ sinh thái', zh: '生态系统' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">One value chain.</span></span>
           <span class="line-mask"><span class="line line--muted">Member companies by sector.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Một chuỗi giá trị.</span></span>
-          <span class="line-mask"><span class="line line--muted">Công ty thành viên theo lĩnh vực.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">一条价值链。</span></span>
           <span class="line-mask"><span class="line line--muted">按领域划分的成员企业。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Một chuỗi giá trị.</span></span>
+          <span class="line-mask"><span class="line line--muted">Công ty thành viên theo lĩnh vực.</span></span>
+        {% endif %}
       </h2>
       <p class="chapter__desc reveal" data-delay="150">
-        <span class="lang en">{{ ecosystem.intro.en }}</span>
-        <span class="lang vi">{{ ecosystem.intro.vi }}</span>
-        <span class="lang zh">{{ ecosystem.intro.zh }}</span>
+        {{ ecosystem.intro[locale] }}
       </p>
     </header>
 
     <div class="about-chain-wrap reveal">
       <p class="about-chain__label">
-        <span class="lang en">Integrated value chain</span>
-        <span class="lang vi">Chuỗi giá trị tích hợp</span>
-        <span class="lang zh">一体化价值链</span>
+        {{ ({ en: 'Integrated value chain', vi: 'Chuỗi giá trị tích hợp', zh: '一体化价值链' })[locale] }}
       </p>
       <ol class="about-chain" aria-label="Value chain">
-        <li><span class="lang en">Raw materials</span><span class="lang vi">Nguyên liệu</span><span class="lang zh">原材料</span></li>
-        <li><span class="lang en">R&amp;D</span><span class="lang vi">R&amp;D</span><span class="lang zh">研发</span></li>
-        <li><span class="lang en">Manufacturing</span><span class="lang vi">Sản xuất</span><span class="lang zh">制造</span></li>
-        <li><span class="lang en">Packaging</span><span class="lang vi">Đóng gói</span><span class="lang zh">包装</span></li>
-        <li><span class="lang en">Warehousing</span><span class="lang vi">Kho vận</span><span class="lang zh">仓储</span></li>
-        <li><span class="lang en">Logistics</span><span class="lang vi">Logistics</span><span class="lang zh">物流</span></li>
-        <li><span class="lang en">Ports</span><span class="lang vi">Cảng</span><span class="lang zh">港口</span></li>
-        <li><span class="lang en">Distribution</span><span class="lang vi">Phân phối</span><span class="lang zh">分销</span></li>
+        <li>{{ ({ en: 'Raw materials', vi: 'Nguyên liệu', zh: '原材料' })[locale] }}</li>
+        <li>{{ ({ en: 'R&amp;D', vi: 'R&amp;D', zh: '研发' })[locale] }}</li>
+        <li>{{ ({ en: 'Manufacturing', vi: 'Sản xuất', zh: '制造' })[locale] }}</li>
+        <li>{{ ({ en: 'Packaging', vi: 'Đóng gói', zh: '包装' })[locale] }}</li>
+        <li>{{ ({ en: 'Warehousing', vi: 'Kho vận', zh: '仓储' })[locale] }}</li>
+        <li>{{ ({ en: 'Logistics', vi: 'Logistics', zh: '物流' })[locale] }}</li>
+        <li>{{ ({ en: 'Ports', vi: 'Cảng', zh: '港口' })[locale] }}</li>
+        <li>{{ ({ en: 'Distribution', vi: 'Phân phối', zh: '分销' })[locale] }}</li>
       </ol>
     </div>
 
@@ -246,67 +198,49 @@ permalink: /about/
     <header class="chapter__head about-section__head">
       <span class="chapter__num reveal">03</span>
       <p class="eyebrow reveal">
-        <span class="lang en">Direction</span>
-        <span class="lang vi">Định hướng</span>
-        <span class="lang zh">方向</span>
+        {{ ({ en: 'Direction', vi: 'Định hướng', zh: '方向' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">Where we aim.</span></span>
           <span class="line-mask"><span class="line line--muted">How we operate.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Đích đến.</span></span>
-          <span class="line-mask"><span class="line line--muted">Cách chúng tôi vận hành.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">目标所向。</span></span>
           <span class="line-mask"><span class="line line--muted">运营之道。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Đích đến.</span></span>
+          <span class="line-mask"><span class="line line--muted">Cách chúng tôi vận hành.</span></span>
+        {% endif %}
       </h2>
       <p class="chapter__desc reveal" data-delay="150">
-        <span class="lang en">{{ about.valuesLead.en }}</span>
-        <span class="lang vi">{{ about.valuesLead.vi }}</span>
-        <span class="lang zh">{{ about.valuesLead.zh }}</span>
+        {{ about.valuesLead[locale] }}
       </p>
     </header>
 
     <div class="about-vmv">
       <article class="about-vmv__block about-vmv__block--vision reveal">
         <p class="about-vmv__label">
-          <span class="lang en">Vision</span>
-          <span class="lang vi">Tầm nhìn</span>
-          <span class="lang zh">愿景</span>
+          {{ ({ en: 'Vision', vi: 'Tầm nhìn', zh: '愿景' })[locale] }}
         </p>
         <h3 class="about-vmv__title">
-          <span class="lang en">{{ about.vision.en }}</span>
-          <span class="lang vi">{{ about.vision.vi }}</span>
-          <span class="lang zh">{{ about.vision.zh }}</span>
+          {{ about.vision[locale] }}
         </h3>
       </article>
       <div class="about-vmv__pair">
         <article class="about-vmv__block about-vmv__block--mission reveal" data-delay="80">
           <p class="about-vmv__label">
-            <span class="lang en">Mission</span>
-            <span class="lang vi">Sứ mệnh</span>
-            <span class="lang zh">使命</span>
+            {{ ({ en: 'Mission', vi: 'Sứ mệnh', zh: '使命' })[locale] }}
           </p>
           <p class="about-vmv__body">
-            <span class="lang en">{{ about.mission.en }}</span>
-            <span class="lang vi">{{ about.mission.vi }}</span>
-            <span class="lang zh">{{ about.mission.zh }}</span>
+            {{ about.mission[locale] }}
           </p>
         </article>
         <article class="about-vmv__block about-vmv__block--values reveal" data-delay="160">
           <p class="about-vmv__label">
-            <span class="lang en">Core values</span>
-            <span class="lang vi">Giá trị cốt lõi</span>
-            <span class="lang zh">核心价值</span>
+            {{ ({ en: 'Core values', vi: 'Giá trị cốt lõi', zh: '核心价值' })[locale] }}
           </p>
           <p class="about-vmv__values">
-            <span class="lang en">{{ about.values.en }}</span>
-            <span class="lang vi">{{ about.values.vi }}</span>
-            <span class="lang zh">{{ about.values.zh }}</span>
+            {{ about.values[locale] }}
           </p>
         </article>
       </div>
@@ -319,35 +253,27 @@ permalink: /about/
     <header class="chapter__head about-leader__head about-section__head">
       <span class="chapter__num reveal">04</span>
       <p class="eyebrow reveal">
-        <span class="lang en">Leadership</span>
-        <span class="lang vi">Lãnh đạo</span>
-        <span class="lang zh">领导团队</span>
+        {{ ({ en: 'Leadership', vi: 'Lãnh đạo', zh: '领导团队' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">Leadership that</span></span>
           <span class="line-mask"><span class="line line--muted">steers the Group.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Ban lãnh đạo</span></span>
-          <span class="line-mask"><span class="line line--muted">định hướng Tập đoàn.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">以领导力</span></span>
           <span class="line-mask"><span class="line line--muted">掌舵集团。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Ban lãnh đạo</span></span>
+          <span class="line-mask"><span class="line line--muted">định hướng Tập đoàn.</span></span>
+        {% endif %}
       </h2>
       <p class="chapter__desc reveal" data-delay="150">
-        <span class="lang en">Executives across the Group set strategy and operating standards — open the leadership page for the full roster and profiles.</span>
-        <span class="lang vi">Đội ngũ lãnh đạo định hướng chiến lược và chuẩn vận hành — xem danh sách và hồ sơ đầy đủ trên trang Ban lãnh đạo.</span>
-        <span class="lang zh">高管团队定调战略与运营标准——完整名录与简介请前往领导团队页。</span>
+        {{ ({ en: 'Executives across the Group set strategy and operating standards — open the leadership page for the full roster and profiles.', vi: 'Đội ngũ lãnh đạo định hướng chiến lược và chuẩn vận hành — xem danh sách và hồ sơ đầy đủ trên trang Ban lãnh đạo.', zh: '高管团队定调战略与运营标准——完整名录与简介请前往领导团队页。' })[locale] }}
       </p>
       <div class="reveal page-actions page-actions--tight" data-delay="220">
-        <a class="btn btn--dark" href="{{ '/about/leadership/' | url }}">
+        <a class="btn btn--dark" href="{{ '/about/leadership/'  | localeUrl(locale) | url }}">
           <span class="btn__dot"></span>
-          <span class="lang en">View detailed profiles</span>
-          <span class="lang vi">Xem hồ sơ chi tiết</span>
-          <span class="lang zh">查看详细简介</span>
+          {{ ({ en: 'View detailed profiles', vi: 'Xem hồ sơ chi tiết', zh: '查看详细简介' })[locale] }}
         </a>
       </div>
     </header>
@@ -359,21 +285,15 @@ permalink: /about/
 <section class="about-close" aria-label="Next steps">
   <div class="container about-close__inner">
     <p class="about-close__lead reveal">
-      <span class="lang en">Ready to explore the ecosystem or start a partnership?</span>
-      <span class="lang vi">Sẵn sàng khám phá hệ sinh thái hoặc bắt đầu hợp tác?</span>
-      <span class="lang zh">准备探索生态体系或开启合作？</span>
+      {{ ({ en: 'Ready to explore the ecosystem or start a partnership?', vi: 'Sẵn sàng khám phá hệ sinh thái hoặc bắt đầu hợp tác?', zh: '准备探索生态体系或开启合作？' })[locale] }}
     </p>
     <div class="page-actions reveal" data-delay="100">
-      <a class="btn btn--dark" href="{{ '/companies/' | url }}">
+      <a class="btn btn--dark" href="{{ '/companies/'  | localeUrl(locale) | url }}">
         <span class="btn__dot"></span>
-        <span class="lang en">Explore the ecosystem</span>
-        <span class="lang vi">Khám phá hệ sinh thái</span>
-        <span class="lang zh">探索生态系统</span>
+        {{ ({ en: 'Explore the ecosystem', vi: 'Khám phá hệ sinh thái', zh: '探索生态系统' })[locale] }}
       </a>
-      <a class="btn btn--ghost" href="{{ '/contact/?type=partner' | url }}">
-        <span class="lang en">Partner with us</span>
-        <span class="lang vi">Liên hệ hợp tác</span>
-        <span class="lang zh">联系合作</span>
+      <a class="btn btn--ghost" href="{{ '/contact/?type=partner'  | localeUrl(locale) | url }}">
+        {{ ({ en: 'Partner with us', vi: 'Liên hệ hợp tác', zh: '联系合作' })[locale] }}
       </a>
     </div>
   </div>

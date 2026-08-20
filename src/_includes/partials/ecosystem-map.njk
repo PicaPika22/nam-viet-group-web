@@ -22,14 +22,10 @@
   {% if showHead %}
   <header class="eco-map__head reveal">
     <h3 class="eco-map__title">
-      <span class="lang en">Member companies</span>
-      <span class="lang vi">Công ty thành viên</span>
-      <span class="lang zh">成员企业</span>
+      {{ ({ en: 'Member companies', vi: 'Công ty thành viên', zh: '成员企业' })[locale] }}
     </h3>
     <p class="eco-map__intro">
-      <span class="lang en">{{ ecosystem.intro.en }}</span>
-      <span class="lang vi">{{ ecosystem.intro.vi }}</span>
-      <span class="lang zh">{{ ecosystem.intro.zh }}</span>
+      {{ ecosystem.intro[locale] }}
     </p>
   </header>
   {% endif %}
@@ -48,14 +44,10 @@
         data-eco-tab="{{ sector.id }}"
       >
         <span class="eco-map__tab-key" aria-hidden="true">
-          <span class="lang en">{{ sector.key.en }}</span>
-          <span class="lang vi">{{ sector.key.vi }}</span>
-          <span class="lang zh">{{ sector.key.zh }}</span>
+          {{ sector.key[locale] }}
         </span>
         <span class="eco-map__tab-label">
-          <span class="lang en">{{ sector.title.en }}</span>
-          <span class="lang vi">{{ sector.title.vi }}</span>
-          <span class="lang zh">{{ sector.title.zh }}</span>
+          {{ sector.title[locale] }}
         </span>
       </button>
       {% endfor %}
@@ -84,19 +76,13 @@
         <div class="eco-map__veil" aria-hidden="true"></div>
         <div class="eco-map__media-copy">
           <p class="eco-map__sector-key" aria-hidden="true">
-            <span class="lang en">{{ sector.key.en }}</span>
-            <span class="lang vi">{{ sector.key.vi }}</span>
-            <span class="lang zh">{{ sector.key.zh }}</span>
+            {{ sector.key[locale] }}
           </p>
           <h4 class="eco-map__sector-title">
-            <span class="lang en">{{ sector.title.en }}</span>
-            <span class="lang vi">{{ sector.title.vi }}</span>
-            <span class="lang zh">{{ sector.title.zh }}</span>
+            {{ sector.title[locale] }}
           </h4>
           <p class="eco-map__sector-blurb">
-            <span class="lang en">{{ sector.blurb.en }}</span>
-            <span class="lang vi">{{ sector.blurb.vi }}</span>
-            <span class="lang zh">{{ sector.blurb.zh }}</span>
+            {{ sector.blurb[locale] }}
           </p>
         </div>
       </div>
@@ -104,34 +90,26 @@
       <ul class="eco-map__companies">
         {% for co in sector.companies %}
         <li class="eco-map__co">
-          <a class="eco-map__co-link" href="{{ ('/companies/' + co.id + '/') | url }}">
+          <a class="eco-map__co-link" href="{{ ('/companies/' + co.id + '/') | localeUrl(locale) | url }}">
             <div class="eco-map__co-meta">
               {% if co.year %}
               <span class="eco-map__co-year">{{ co.year }}</span>
               {% endif %}
               {% if co.unit %}
               <span class="eco-map__co-unit">
-                <span class="lang en">Unit</span>
-                <span class="lang vi">Đơn vị</span>
-                <span class="lang zh">单位</span>
+                {{ ({ en: 'Unit', vi: 'Đơn vị', zh: '单位' })[locale] }}
               </span>
               {% endif %}
             </div>
             <div class="eco-map__co-body">
               <p class="eco-map__co-short">
-                <span class="lang en">{{ co.short.en }}</span>
-                <span class="lang vi">{{ co.short.vi }}</span>
-                <span class="lang zh">{{ co.short.zh }}</span>
+                {{ co.short[locale] }}
               </p>
               <p class="eco-map__co-name">
-                <span class="lang en">{{ co.name.en }}</span>
-                <span class="lang vi">{{ co.name.vi }}</span>
-                <span class="lang zh">{{ co.name.zh }}</span>
+                {{ co.name[locale] }}
               </p>
               <p class="eco-map__co-desc">
-                <span class="lang en">{{ co.desc.en }}</span>
-                <span class="lang vi">{{ co.desc.vi }}</span>
-                <span class="lang zh">{{ co.desc.zh }}</span>
+                {{ co.desc[locale] }}
               </p>
             </div>
             <span class="eco-map__co-go" aria-hidden="true">→</span>

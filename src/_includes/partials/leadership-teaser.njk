@@ -16,7 +16,7 @@
 
   <div class="leader-teaser__inner">
     {% if chairman %}
-    <a class="leader-teaser__apex" href="{{ '/about/leadership/' | url }}">
+    <a class="leader-teaser__apex" href="{{ '/about/leadership/'  | localeUrl(locale) | url }}">
       <div class="leader-teaser__apex-media">
         <img
           src="{{ chairman.image | url }}"
@@ -30,24 +30,16 @@
       </div>
       <div class="leader-teaser__apex-copy">
         <p class="leader-teaser__eyebrow">
-          <span class="lang en">Chairman</span>
-          <span class="lang vi">Chủ tịch</span>
-          <span class="lang zh">主席</span>
+          {{ ({ en: 'Chairman', vi: 'Chủ tịch', zh: '主席' })[locale] }}
         </p>
         <p class="leader-teaser__name">
-          <span class="lang en">{{ chairman.name.en }}</span>
-          <span class="lang vi">{{ chairman.name.vi }}</span>
-          <span class="lang zh">{{ chairman.name.zh }}</span>
+          {{ chairman.name[locale] }}
         </p>
         <p class="leader-teaser__role">
-          <span class="lang en">{{ chairman.role.en }}</span>
-          <span class="lang vi">{{ chairman.role.vi }}</span>
-          <span class="lang zh">{{ chairman.role.zh }}</span>
+          {{ chairman.role[locale] }}
         </p>
         <span class="leader-teaser__cue">
-          <span class="lang en">Open leadership page</span>
-          <span class="lang vi">Mở trang Ban lãnh đạo</span>
-          <span class="lang zh">打开领导团队页</span>
+          {{ ({ en: 'Open leadership page', vi: 'Mở trang Ban lãnh đạo', zh: '打开领导团队页' })[locale] }}
           <span aria-hidden="true">→</span>
         </span>
       </div>
@@ -60,7 +52,7 @@
         <li>
           <a
             class="leader-teaser__face"
-            href="{{ '/about/leadership/' | url }}"
+            href="{{ '/about/leadership/'  | localeUrl(locale) | url }}"
             title="{{ person.name.en }}"
           >
             <img
@@ -73,9 +65,7 @@
               style="{% if person.objectPosition %}object-position: {{ person.objectPosition }};{% endif %}"
             >
             <span class="leader-teaser__face-name">
-              <span class="lang en">{{ person.name.en }}</span>
-              <span class="lang vi">{{ person.name.vi }}</span>
-              <span class="lang zh">{{ person.name.zh }}</span>
+              {{ person.name[locale] }}
             </span>
           </a>
         </li>
@@ -85,14 +75,10 @@
 
     <p class="leader-teaser__foot">
       <span class="leader-teaser__count">
-        <span class="lang en">{{ leadership | length }} executives · Group &amp; member units</span>
-        <span class="lang vi">{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên</span>
-        <span class="lang zh">集团及成员企业 {{ leadership | length }} 位高管</span>
+        {% if locale == 'en' %}{{ leadership | length }} executives · Group &amp; member units{% elif locale == 'zh' %}集团及成员企业 {{ leadership | length }} 位高管{% else %}{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên{% endif %}
       </span>
-      <a class="leader-teaser__more" href="{{ '/about/leadership/' | url }}">
-        <span class="lang en">Full roster &amp; profiles</span>
-        <span class="lang vi">Danh sách &amp; hồ sơ đầy đủ</span>
-        <span class="lang zh">完整名录与简介</span>
+      <a class="leader-teaser__more" href="{{ '/about/leadership/'  | localeUrl(locale) | url }}">
+        {{ ({ en: 'Full roster &amp; profiles', vi: 'Danh sách &amp; hồ sơ đầy đủ', zh: '完整名录与简介' })[locale] }}
         <span aria-hidden="true">→</span>
       </a>
     </p>

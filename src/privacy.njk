@@ -1,7 +1,11 @@
 ---
 layout: layouts/inner.njk
 title: Privacy Policy
-permalink: /privacy/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/privacy/', locale) }}"
 eyebrow:
   en: Legal
   vi: Pháp lý
@@ -16,40 +20,28 @@ lead:
   zh: 南越集团如何在本网站收集、使用与保护个人信息。
 ---
 
-<h2><span class="lang en">1. Information we collect</span><span class="lang vi">1. Thông tin chúng tôi thu thập</span><span class="lang zh">1. 我们收集的信息</span></h2>
+<h2>{{ ({ en: '1. Information we collect', vi: '1. Thông tin chúng tôi thu thập', zh: '1. 我们收集的信息' })[locale] }}</h2>
 <p>
-  <span class="lang en">When you submit a contact form, we may collect your name, email, company, phone number, inquiry type and message content.</span>
-  <span class="lang vi">Khi bạn gửi form liên hệ, chúng tôi có thể thu thập họ tên, email, công ty, số điện thoại, loại yêu cầu và nội dung tin nhắn.</span>
-  <span class="lang zh">当您提交联系表单时，我们可能收集姓名、邮箱、公司、电话、咨询类型与留言内容。</span>
+  {{ ({ en: 'When you submit a contact form, we may collect your name, email, company, phone number, inquiry type and message content.', vi: 'Khi bạn gửi form liên hệ, chúng tôi có thể thu thập họ tên, email, công ty, số điện thoại, loại yêu cầu và nội dung tin nhắn.', zh: '当您提交联系表单时，我们可能收集姓名、邮箱、公司、电话、咨询类型与留言内容。' })[locale] }}
 </p>
 
-<h2><span class="lang en">2. How we use information</span><span class="lang vi">2. Mục đích sử dụng</span><span class="lang zh">2. 使用方式</span></h2>
+<h2>{{ ({ en: '2. How we use information', vi: '2. Mục đích sử dụng', zh: '2. 使用方式' })[locale] }}</h2>
 <p>
-  <span class="lang en">We use submitted information to respond to inquiries, improve our services and, where permitted, analyze aggregated website usage.</span>
-  <span class="lang vi">Chúng tôi dùng thông tin để phản hồi yêu cầu, cải thiện dịch vụ và (khi được phép) phân tích mức sử dụng website ở dạng tổng hợp.</span>
-  <span class="lang zh">我们使用所提交信息以回复咨询、改进服务，并在允许的情况下分析汇总网站使用情况。</span>
+  {{ ({ en: 'We use submitted information to respond to inquiries, improve our services and, where permitted, analyze aggregated website usage.', vi: 'Chúng tôi dùng thông tin để phản hồi yêu cầu, cải thiện dịch vụ và (khi được phép) phân tích mức sử dụng website ở dạng tổng hợp.', zh: '我们使用所提交信息以回复咨询、改进服务，并在允许的情况下分析汇总网站使用情况。' })[locale] }}
 </p>
 
-<h2><span class="lang en">3. Cookies & analytics</span><span class="lang vi">3. Cookie & phân tích</span><span class="lang zh">3. Cookie 与分析</span></h2>
+<h2>{{ ({ en: '3. Cookies & analytics', vi: '3. Cookie & phân tích', zh: '3. Cookie 与分析' })[locale] }}</h2>
 <p>
-  <span class="lang en">We may use cookies or similar technologies for analytics after you accept the cookie notice. See our </span>
-  <span class="lang vi">Chúng tôi có thể dùng cookie cho phân tích sau khi bạn chấp nhận thông báo. Xem </span>
-  <span class="lang zh">在您接受 Cookie 提示后，我们可能使用 Cookie 进行分析。请参阅</span>
-  <a href="{{ '/cookies/' | url }}">
-    <span class="lang en">Cookie Policy</span>
-    <span class="lang vi">Chính sách cookie</span>
-    <span class="lang zh">Cookie 政策</span>
+  {{ ({ en: 'We may use cookies or similar technologies for analytics after you accept the cookie notice. See our', vi: 'Chúng tôi có thể dùng cookie cho phân tích sau khi bạn chấp nhận thông báo. Xem', zh: '在您接受 Cookie 提示后，我们可能使用 Cookie 进行分析。请参阅' })[locale] }}
+  <a href="{{ '/cookies/'  | localeUrl(locale) | url }}">
+    {{ ({ en: 'Cookie Policy', vi: 'Chính sách cookie', zh: 'Cookie 政策' })[locale] }}
   </a>.
-  <span class="lang en"> You can clear cookies in your browser settings.</span>
-  <span class="lang vi"> Bạn có thể xóa cookie trong cài đặt trình duyệt.</span>
-  <span class="lang zh"> 您可在浏览器设置中清除 Cookie。</span>
+  {{ ({ en: 'You can clear cookies in your browser settings.', vi: 'Bạn có thể xóa cookie trong cài đặt trình duyệt.', zh: '您可在浏览器设置中清除 Cookie。' })[locale] }}
 </p>
 
-<h2><span class="lang en">4. Contact</span><span class="lang vi">4. Liên hệ</span><span class="lang zh">4. 联系</span></h2>
+<h2>{{ ({ en: '4. Contact', vi: '4. Liên hệ', zh: '4. 联系' })[locale] }}</h2>
 <p>
-  <span class="lang en">Privacy questions: </span>
-  <span class="lang vi">Câu hỏi về bảo mật: </span>
-  <span class="lang zh">隐私相关问题：</span>
+  {{ ({ en: 'Privacy questions:', vi: 'Câu hỏi về bảo mật:', zh: '隐私相关问题：' })[locale] }}
   <a href="mailto:{{ site.emailContact }}">{{ site.emailContact }}</a>
 </p>
-<p class="legal-updated"><span class="lang en">Last updated: July 2026</span><span class="lang vi">Cập nhật: Tháng 7/2026</span><span class="lang zh">最近更新：2026年7月</span></p>
+<p class="legal-updated">{{ ({ en: 'Last updated: July 2026', vi: 'Cập nhật: Tháng 7/2026', zh: '最近更新：2026年7月' })[locale] }}</p>

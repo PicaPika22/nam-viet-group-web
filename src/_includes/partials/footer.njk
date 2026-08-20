@@ -8,20 +8,12 @@
           <span class="footer__wordmark">NAM VIỆT<span class="footer__wordmark-sub">GROUP</span></span>
         </div>
         <p class="footer__legal-name">
-          <span class="lang en">{{ site.legalName.en }}</span>
-          <span class="lang vi">{{ site.legalName.vi }}</span>
-          <span class="lang zh">{{ site.legalName.zh }}</span>
+          {{ site.legalName[locale] }}
         </p>
         <address class="footer__contact">
           <p>
-            <strong>
-              <span class="lang en">Head office:</span>
-              <span class="lang vi">Trụ sở chính:</span>
-              <span class="lang zh">总部：</span>
-            </strong>
-            <span class="lang en">{{ site.address.en }}</span>
-            <span class="lang vi">{{ site.address.vi }}</span>
-            <span class="lang zh">{{ site.address.zh }}</span>
+            <strong>{{ ({ en: "Head office:", vi: "Trụ sở chính:", zh: "总部：" })[locale] }}</strong>
+            {{ site.address[locale] }}
           </p>
           <p>
             <strong>Tel:</strong>
@@ -39,11 +31,7 @@
           </p>
           {% if site.taxId %}
           <p>
-            <strong>
-              <span class="lang en">Tax ID:</span>
-              <span class="lang vi">Mã số thuế:</span>
-              <span class="lang zh">税号：</span>
-            </strong>
+            <strong>{{ ({ en: "Tax ID:", vi: "Mã số thuế:", zh: "税号：" })[locale] }}</strong>
             {{ site.taxId }}
           </p>
           {% endif %}
@@ -52,16 +40,12 @@
       {% for col in nav.footerColumns %}
       <div class="footer__col">
         <p class="footer__col-title" id="footer-col-{{ col.id }}">
-          <span class="lang en">{{ col.titleEn }}</span>
-          <span class="lang vi">{{ col.titleVi }}</span>
-          <span class="lang zh">{{ col.titleZh }}</span>
+          {{ ({ en: col.titleEn, vi: col.titleVi, zh: col.titleZh })[locale] }}
         </p>
         <nav class="footer__nav" aria-labelledby="footer-col-{{ col.id }}">
           {% for item in col.links %}
-          <a href="{{ item.href | url }}">
-            <span class="lang en">{{ item.en }}</span>
-            <span class="lang vi">{{ item.vi }}</span>
-            <span class="lang zh">{{ item.zh }}</span>
+          <a href="{{ item.href | localeUrl(locale) | url }}">
+            {{ item[locale] }}
           </a>
           {% endfor %}
         </nav>
@@ -70,16 +54,12 @@
     </div>
     <div class="footer__bottom">
       <p class="footer__copy">© 2026 Nam Viet Group.
-        <span class="lang en">All rights reserved.</span>
-        <span class="lang vi">Bảo lưu mọi quyền.</span>
-        <span class="lang zh">保留所有权利。</span>
+        {{ ({ en: "All rights reserved.", vi: "Bảo lưu mọi quyền.", zh: "保留所有权利。" })[locale] }}
       </p>
       <nav class="footer__legal" aria-label="Legal">
         {% for item in nav.legal %}
-        <a href="{{ item.href | url }}">
-          <span class="lang en">{{ item.en }}</span>
-          <span class="lang vi">{{ item.vi }}</span>
-          <span class="lang zh">{{ item.zh }}</span>
+        <a href="{{ item.href | localeUrl(locale) | url }}">
+          {{ item[locale] }}
         </a>
         {% endfor %}
       </nav>
@@ -106,31 +86,21 @@
 <div class="cookie-bar" id="cookieBar" hidden role="dialog" aria-labelledby="cookieBarTitle" aria-live="polite">
   <div class="cookie-bar__content">
     <p class="cookie-bar__title" id="cookieBarTitle">
-      <span class="lang en">{{ i18n.en.cookieTitle }}</span>
-      <span class="lang vi">{{ i18n.vi.cookieTitle }}</span>
-      <span class="lang zh">{{ i18n.zh.cookieTitle }}</span>
+      {{ i18n[locale].cookieTitle }}
     </p>
     <p class="cookie-bar__text">
-      <span class="lang en">{{ i18n.en.cookieText }}</span>
-      <span class="lang vi">{{ i18n.vi.cookieText }}</span>
-      <span class="lang zh">{{ i18n.zh.cookieText }}</span>
-      <a href="{{ '/cookies/' | url }}">
-        <span class="lang en">{{ i18n.en.cookiePolicy }}</span>
-        <span class="lang vi">{{ i18n.vi.cookiePolicy }}</span>
-        <span class="lang zh">{{ i18n.zh.cookiePolicy }}</span>
+      {{ i18n[locale].cookieText }}
+      <a href="{{ '/cookies/' | localeUrl(locale) | url }}">
+        {{ i18n[locale].cookiePolicy }}
       </a>
     </p>
   </div>
   <div class="cookie-bar__actions">
     <button type="button" class="cookie-bar__btn cookie-bar__btn--decline" id="cookieDecline">
-      <span class="lang en">{{ i18n.en.cookieDecline }}</span>
-      <span class="lang vi">{{ i18n.vi.cookieDecline }}</span>
-      <span class="lang zh">{{ i18n.zh.cookieDecline }}</span>
+      {{ i18n[locale].cookieDecline }}
     </button>
     <button type="button" class="cookie-bar__btn cookie-bar__btn--accept" id="cookieAccept">
-      <span class="lang en">{{ i18n.en.cookieAccept }}</span>
-      <span class="lang vi">{{ i18n.vi.cookieAccept }}</span>
-      <span class="lang zh">{{ i18n.zh.cookieAccept }}</span>
+      {{ i18n[locale].cookieAccept }}
     </button>
   </div>
 </div>

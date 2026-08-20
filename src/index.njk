@@ -3,6 +3,10 @@ layout: layouts/base.njk
 pageLayout: home
 showLoader: true
 showRail: true
-permalink: /
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/', locale) }}"
 ---
 {% include "home-chapters.njk" %}

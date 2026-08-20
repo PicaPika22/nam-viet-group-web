@@ -17,31 +17,21 @@
     <header class="leader-strip__head{% if not stripCompact %} leader-strip__head--page{% endif %} reveal">
       {% if not stripCompact %}
       <p class="eyebrow eyebrow--light">
-        <span class="lang en">Our Leadership</span>
-        <span class="lang vi">Ban lãnh đạo</span>
-        <span class="lang zh">领导团队</span>
+        {{ ({ en: 'Our Leadership', vi: 'Ban lãnh đạo', zh: '领导团队' })[locale] }}
       </p>
       <h1 class="leader-strip__title">
-        <span class="lang en">Leadership that steers the Group</span>
-        <span class="lang vi">Ban lãnh đạo định hướng Tập đoàn</span>
-        <span class="lang zh">以领导力掌舵集团</span>
+        {{ ({ en: 'Leadership that steers the Group', vi: 'Ban lãnh đạo định hướng Tập đoàn', zh: '以领导力掌舵集团' })[locale] }}
       </h1>
       <p class="leader-strip__lead">
-        <span class="lang en">Charter capital VND 542 billion — feed, trading, manufacturing and logistics under one leadership.</span>
-        <span class="lang vi">Vốn điều lệ 542 tỷ đồng — thức ăn chăn nuôi, thương mại, sản xuất và logistics dưới một ban lãnh đạo.</span>
-        <span class="lang zh">注册资本5,420亿越南盾——饲料、贸易、制造与物流，统一领导。</span>
+        {{ ({ en: 'Charter capital VND 542 billion — feed, trading, manufacturing and logistics under one leadership.', vi: 'Vốn điều lệ 542 tỷ đồng — thức ăn chăn nuôi, thương mại, sản xuất và logistics dưới một ban lãnh đạo.', zh: '注册资本5,420亿越南盾——饲料、贸易、制造与物流，统一领导。' })[locale] }}
       </p>
       {% else %}
       <p class="eyebrow eyebrow--light">
-        <span class="lang en">Organizational chart</span>
-        <span class="lang vi">Sơ đồ tổ chức</span>
-        <span class="lang zh">组织架构</span>
+        {{ ({ en: 'Organizational chart', vi: 'Sơ đồ tổ chức', zh: '组织架构' })[locale] }}
       </p>
       {% endif %}
       <p class="leader-strip__count">
-        <span class="lang en">{{ leadership | length }} executives · Group &amp; member units</span>
-        <span class="lang vi">{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên</span>
-        <span class="lang zh">集团及成员企业 {{ leadership | length }} 位高管</span>
+        {% if locale == 'en' %}{{ leadership | length }} executives · Group &amp; member units{% elif locale == 'zh' %}集团及成员企业 {{ leadership | length }} 位高管{% else %}{{ leadership | length }} lãnh đạo · Tập đoàn &amp; đơn vị thành viên{% endif %}
       </p>
     </header>
 
@@ -50,17 +40,11 @@
     {% if stripShowBands %}
     <p class="leader-strip__band" aria-hidden="true">
       {% if level == 1 %}
-      <span class="lang en">Chairman</span>
-      <span class="lang vi">Chủ tịch</span>
-      <span class="lang zh">董事长</span>
+      {{ ({ en: 'Chairman', vi: 'Chủ tịch', zh: '董事长' })[locale] }}
       {% elif level == 2 %}
-      <span class="lang en">Group support</span>
-      <span class="lang vi">Hỗ trợ Tập đoàn</span>
-      <span class="lang zh">集团支持</span>
+      {{ ({ en: 'Group support', vi: 'Hỗ trợ Tập đoàn', zh: '集团支持' })[locale] }}
       {% else %}
-      <span class="lang en">Member companies</span>
-      <span class="lang vi">Công ty thành viên</span>
-      <span class="lang zh">成员企业</span>
+      {{ ({ en: 'Member companies', vi: 'Công ty thành viên', zh: '成员企业' })[locale] }}
       {% endif %}
     </p>
     {% endif %}
@@ -71,7 +55,7 @@
         <li>
           <a
             class="leader-panel{% if level == 1 %} leader-panel--apex{% endif %} reveal"
-            href="{{ ('/about/leadership/' + person.id + '/') | url }}"
+            href="{{ ('/about/leadership/' + person.id + '/') | localeUrl(locale) | url }}"
             data-delay="{{ (level - 1) * 100 + (loop.index0 % 5) * 50 }}"
           >
             <div class="leader-panel__media" aria-hidden="true">
@@ -88,19 +72,13 @@
             </div>
             <span class="leader-panel__meta">
               <span class="leader-panel__name">
-                <span class="lang en">{{ person.name.en }}</span>
-                <span class="lang vi">{{ person.name.vi }}</span>
-                <span class="lang zh">{{ person.name.zh }}</span>
+                {{ person.name[locale] }}
               </span>
               <span class="leader-panel__role">
-                <span class="lang en">{{ person.role.en }}</span>
-                <span class="lang vi">{{ person.role.vi }}</span>
-                <span class="lang zh">{{ person.role.zh }}</span>
+                {{ person.role[locale] }}
               </span>
               <span class="leader-panel__cue" aria-hidden="true">
-                <span class="lang en">View profile</span>
-                <span class="lang vi">Xem hồ sơ</span>
-                <span class="lang zh">查看简介</span>
+                {{ ({ en: 'View profile', vi: 'Xem hồ sơ', zh: '查看简介' })[locale] }}
                 <span>→</span>
               </span>
             </span>

@@ -1,7 +1,11 @@
 ---
 layout: layouts/inner.njk
 title: Products
-permalink: /products/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/products/', locale) }}"
 eyebrow:
   en: Our Products
   vi: Sản phẩm
@@ -19,54 +23,40 @@ lead:
 <div class="products-stats reveal">
   <div>
     <strong>{{ about.distribution.commercial.value }}</strong>
-    <span class="lang en">{{ about.distribution.commercial.en }}</span>
-    <span class="lang vi">{{ about.distribution.commercial.vi }}</span>
-    <span class="lang zh">{{ about.distribution.commercial.zh }}</span>
+    {{ about.distribution.commercial[locale] }}
   </div>
   <div>
     <strong>{{ about.distribution.internal.value }}</strong>
-    <span class="lang en">{{ about.distribution.internal.en }}</span>
-    <span class="lang vi">{{ about.distribution.internal.vi }}</span>
-    <span class="lang zh">{{ about.distribution.internal.zh }}</span>
+    {{ about.distribution.internal[locale] }}
   </div>
   <div>
     <strong>{{ about.distribution.dealers.value }}</strong>
-    <span class="lang en">{{ about.distribution.dealers.en }}</span>
-    <span class="lang vi">{{ about.distribution.dealers.vi }}</span>
-    <span class="lang zh">{{ about.distribution.dealers.zh }}</span>
+    {{ about.distribution.dealers[locale] }}
   </div>
   <div>
     <strong>{{ about.capacity.poultryLine.value }}</strong>
-    <span class="lang en">t / year feed capacity</span>
-    <span class="lang vi">tấn / năm công suất TACN</span>
-    <span class="lang zh">吨 / 年饲料产能</span>
+    {{ ({ en: 't / year feed capacity', vi: 'tấn / năm công suất TACN', zh: '吨 / 年饲料产能' })[locale] }}
   </div>
 </div>
 
 <div class="products__grid products__grid--page">
   {% for product in collections.products %}
-  <a href="{{ ('/products/' + product.fileSlug + '/') | url }}" class="pcard pcard--media" style="--pc:{{ product.data.color }}">
+  <a href="{{ ('/products/' + product.fileSlug + '/') | localeUrl(locale) | url }}" class="pcard pcard--media" style="--pc:{{ product.data.color }}">
     {% if product.data.image %}
     <span class="pcard__media"><img src="{{ product.data.image | url }}" alt="{{ product.data.code }}" loading="lazy" width="400" height="560" decoding="async"></span>
     {% endif %}
     <span class="pcard__code">{{ product.data.code }}</span>
     <span class="pcard__name">
-      <span class="lang en">{{ product.data.title.en }}</span>
-      <span class="lang vi">{{ product.data.title.vi }}</span>
-      <span class="lang zh">{{ product.data.title.zh }}</span>
+      {{ product.data.title[locale] }}
     </span>
     <span class="pcard__more">
-      <span class="lang en">Learn more</span>
-      <span class="lang vi">Xem thêm</span>
-      <span class="lang zh">了解更多</span> →
+      {{ ({ en: 'Learn more', vi: 'Xem thêm', zh: '了解更多' })[locale] }} →
     </span>
   </a>
   {% endfor %}
 </div>
 <p class="page-actions">
-  <a class="btn btn--solid" href="{{ '/downloads/' | url }}">
-    <span class="lang en">{{ i18n.en.downloadCatalog }}</span>
-    <span class="lang vi">{{ i18n.vi.downloadCatalog }}</span>
-    <span class="lang zh">{{ i18n.zh.downloadCatalog }}</span>
+  <a class="btn btn--solid" href="{{ '/downloads/'  | localeUrl(locale) | url }}">
+    {{ i18n[locale].downloadCatalog }}
   </a>
 </p>

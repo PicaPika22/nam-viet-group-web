@@ -67,7 +67,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("navActive", (item, pageUrl) => {
     if (!item || !pageUrl) return false;
-    const path = String(pageUrl).split("#")[0] || "/";
+    const path = pageIdentity(String(pageUrl).split("#")[0] || "/");
     const href = String(item.hrefInner || item.href || "/").split("#")[0];
     if (item.match === "prefix" && href !== "/" && href !== "/#") {
       if (path === href || path.startsWith(href)) return true;

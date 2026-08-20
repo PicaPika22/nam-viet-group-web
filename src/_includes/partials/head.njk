@@ -1,25 +1,25 @@
 {% set docTitle = site.title %}
 {% if title %}
   {% if title.en or title.vi or title.zh %}
-    {% set docTitle = (title.en or title.vi or title.zh) ~ " — " ~ site.name %}
+    {% set docTitle = title[locale] ~ " — " ~ site.name %}
   {% else %}
     {% set docTitle = title ~ " — " ~ site.name %}
   {% endif %}
 {% endif %}
 {% set docDesc = description or site.description %}
 {% if docDesc.en or docDesc.vi or docDesc.zh %}
-  {% set docDesc = docDesc.en or docDesc.vi or docDesc.zh %}
+  {% set docDesc = docDesc[locale] %}
 {% endif %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{{ docTitle }}</title>
 <meta name="description" content="{{ docDesc }}">
-<link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+<link rel="canonical" href="{{ canonicalUrl(site.url, page.url, locale) }}">
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:title" content="{{ docTitle }}">
 <meta property="og:description" content="{{ docDesc }}">
-<meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
+<meta property="og:url" content="{{ canonicalUrl(site.url, page.url, locale) }}">
 <meta property="og:image" content="{{ (ogImage or site.ogImage) | absoluteUrl(site.url) }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ docTitle }}">

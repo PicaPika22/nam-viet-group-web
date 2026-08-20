@@ -1,7 +1,11 @@
 ---
 layout: layouts/contact.njk
 title: Contact
-permalink: /contact/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/contact/', locale) }}"
 ---
 
 <section class="chapter chapter--cream contact-section" id="inquire">
@@ -10,52 +14,38 @@ permalink: /contact/
       <aside class="contact-desk__aside reveal">
         <header class="contact-desk__head">
           <p class="eyebrow">
-            <span class="lang en">Direct lines</span>
-            <span class="lang vi">Kênh liên hệ</span>
-            <span class="lang zh">联系方式</span>
+            {{ ({ en: 'Direct lines', vi: 'Kênh liên hệ', zh: '联系方式' })[locale] }}
           </p>
           <h2 class="contact-desk__title">
-            <span class="lang en">Reach the right team</span>
-            <span class="lang vi">Liên hệ đúng bộ phận</span>
-            <span class="lang zh">联系对应团队</span>
+            {{ ({ en: 'Reach the right team', vi: 'Liên hệ đúng bộ phận', zh: '联系对应团队' })[locale] }}
           </h2>
         </header>
 
         <ul class="contact-desk__channels">
           <li>
             <span class="contact-desk__label">
-              <span class="lang en">Partnership</span>
-              <span class="lang vi">Hợp tác</span>
-              <span class="lang zh">合作</span>
+              {{ ({ en: 'Partnership', vi: 'Hợp tác', zh: '合作' })[locale] }}
             </span>
             <a href="mailto:{{ site.emailPartner }}">{{ site.emailPartner }}</a>
           </li>
           <li>
             <span class="contact-desk__label">
-              <span class="lang en">General</span>
-              <span class="lang vi">Chung</span>
-              <span class="lang zh">综合</span>
+              {{ ({ en: 'General', vi: 'Chung', zh: '综合' })[locale] }}
             </span>
             <a href="mailto:{{ site.emailContact }}">{{ site.emailContact }}</a>
           </li>
           <li>
             <span class="contact-desk__label">
-              <span class="lang en">Hotline</span>
-              <span class="lang vi">Hotline</span>
-              <span class="lang zh">热线</span>
+              {{ ({ en: 'Hotline', vi: 'Hotline', zh: '热线' })[locale] }}
             </span>
             <a href="tel:{{ site.phoneTel }}">{{ site.phone }}</a>
           </li>
           <li>
             <span class="contact-desk__label">
-              <span class="lang en">Address</span>
-              <span class="lang vi">Địa chỉ</span>
-              <span class="lang zh">地址</span>
+              {{ ({ en: 'Address', vi: 'Địa chỉ', zh: '地址' })[locale] }}
             </span>
             <span>
-              <span class="lang en">{{ site.address.en }}</span>
-              <span class="lang vi">{{ site.address.vi }}</span>
-              <span class="lang zh">{{ site.address.zh }}</span>
+              {{ site.address[locale] }}
             </span>
           </li>
         </ul>
@@ -80,19 +70,13 @@ permalink: /contact/
       <div class="contact-desk__panel reveal" data-delay="120">
         <header class="contact-desk__panel-head">
           <p class="eyebrow">
-            <span class="lang en">Inquiry</span>
-            <span class="lang vi">Yêu cầu</span>
-            <span class="lang zh">咨询</span>
+            {{ ({ en: 'Inquiry', vi: 'Yêu cầu', zh: '咨询' })[locale] }}
           </p>
           <h2>
-            <span class="lang en">Send a message</span>
-            <span class="lang vi">Gửi tin nhắn</span>
-            <span class="lang zh">发送信息</span>
+            {{ ({ en: 'Send a message', vi: 'Gửi tin nhắn', zh: '发送信息' })[locale] }}
           </h2>
           <p>
-            <span class="lang en">We route each inquiry to the right team — partnership, products, logistics, careers or investors.</span>
-            <span class="lang vi">Mỗi yêu cầu sẽ được chuyển đến đúng bộ phận — hợp tác, sản phẩm, logistics, tuyển dụng hoặc nhà đầu tư.</span>
-            <span class="lang zh">我们会将每条咨询转交对应团队——合作、产品、物流、招聘或投资者关系。</span>
+            {{ ({ en: 'We route each inquiry to the right team — partnership, products, logistics, careers or investors.', vi: 'Mỗi yêu cầu sẽ được chuyển đến đúng bộ phận — hợp tác, sản phẩm, logistics, tuyển dụng hoặc nhà đầu tư.', zh: '我们会将每条咨询转交对应团队——合作、产品、物流、招聘或投资者关系。' })[locale] }}
           </p>
         </header>
         {% set productCode = "" %}
@@ -106,28 +90,22 @@ permalink: /contact/
   <div class="container">
     <header class="chapter__head chapter__head--center">
       <p class="eyebrow reveal">
-        <span class="lang en">Headquarters</span>
-        <span class="lang vi">Trụ sở</span>
-        <span class="lang zh">总部</span>
+        {{ ({ en: 'Headquarters', vi: 'Trụ sở', zh: '总部' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
-        <span class="lang en">
+        {% if locale == 'en' %}
           <span class="line-mask"><span class="line">Visit us in</span></span>
           <span class="line-mask"><span class="line line--muted">Thai Nguyen.</span></span>
-        </span>
-        <span class="lang vi">
-          <span class="line-mask"><span class="line">Ghé thăm chúng tôi</span></span>
-          <span class="line-mask"><span class="line line--muted">tại Thái Nguyên.</span></span>
-        </span>
-        <span class="lang zh">
+        {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">欢迎造访</span></span>
           <span class="line-mask"><span class="line line--muted">太原总部。</span></span>
-        </span>
+        {% else %}
+          <span class="line-mask"><span class="line">Ghé thăm chúng tôi</span></span>
+          <span class="line-mask"><span class="line line--muted">tại Thái Nguyên.</span></span>
+        {% endif %}
       </h2>
       <p class="chapter__desc chapter__desc--center reveal" data-delay="150">
-        <span class="lang en">{{ site.address.en }}</span>
-        <span class="lang vi">{{ site.address.vi }}</span>
-        <span class="lang zh">{{ site.address.zh }}</span>
+        {{ site.address[locale] }}
       </p>
     </header>
     <div class="contact-map reveal-img" data-parallax-img>

@@ -13,10 +13,8 @@
 <{{ tag }} class="inner-hero">
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="{{ '/' | url }}">
-        <span class="lang en">{{ i18n.en.breadcrumbHome }}</span>
-        <span class="lang vi">{{ i18n.vi.breadcrumbHome }}</span>
-        <span class="lang zh">{{ i18n.zh.breadcrumbHome }}</span>
+      <a href="{{ '/'  | localeUrl(locale) | url }}">
+        {{ i18n[locale].breadcrumbHome }}
       </a>
       {% if breadcrumbHtml %}
       {{ breadcrumbHtml | safe }}
@@ -28,9 +26,7 @@
     {% if eyebrow %}
     <p class="eyebrow">
       {% if eyebrow.en %}
-      <span class="lang en">{{ eyebrow.en }}</span>
-      <span class="lang vi">{{ eyebrow.vi }}</span>
-      <span class="lang zh">{{ eyebrow.zh }}</span>
+      {{ eyebrow[locale] }}
       {% else %}
       {{ eyebrow | safe }}
       {% endif %}
@@ -38,22 +34,16 @@
     {% endif %}
     <h1 class="inner-hero__title">
       {% if heading %}
-      <span class="lang en">{{ heading.en }}</span>
-      <span class="lang vi">{{ heading.vi }}</span>
-      <span class="lang zh">{{ heading.zh }}</span>
+      {{ heading[locale] }}
       {% elif title.en %}
-      <span class="lang en">{{ title.en }}</span>
-      <span class="lang vi">{{ title.vi }}</span>
-      <span class="lang zh">{{ title.zh }}</span>
+      {{ title[locale] }}
       {% else %}
       {{ title }}
       {% endif %}
     </h1>
     {% if lead %}
     <p class="inner-hero__lead">
-      <span class="lang en">{{ lead.en }}</span>
-      <span class="lang vi">{{ lead.vi }}</span>
-      <span class="lang zh">{{ lead.zh }}</span>
+      {{ lead[locale] }}
     </p>
     {% endif %}
     {% if heroMeta %}

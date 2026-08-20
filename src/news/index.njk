@@ -1,7 +1,11 @@
 ---
 layout: layouts/news-list.njk
 title: News
-permalink: /news/
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "{{ localeUrl('/news/', locale) }}"
 ---
 
 <div class="news__grid">
@@ -12,9 +16,7 @@ permalink: /news/
   {% endfor %}
 </div>
 <p class="page-actions">
-  <a class="rss-link" href="{{ '/news/feed.xml' | url }}">
-    <span class="lang en">{{ i18n.en.rssFeed }}</span>
-    <span class="lang vi">{{ i18n.vi.rssFeed }}</span>
-    <span class="lang zh">{{ i18n.zh.rssFeed }}</span>
+  <a class="rss-link" href="{{ '/news/feed.xml'  | localeUrl(locale) | url }}">
+    {{ i18n[locale].rssFeed }}
   </a>
 </p>

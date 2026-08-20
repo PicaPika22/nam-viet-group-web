@@ -1,6 +1,6 @@
 <header class="header{% if pageLayout == 'inner' or pageLayout == 'home' %} is-scrolled header--inner{% endif %}" id="header">
   <div class="header__inner">
-    <a href="{{ '/' | url }}" class="header__logo" aria-label="Nam Viet Group">
+    <a href="{{ '/' | localeUrl(locale) | url }}" class="header__logo" aria-label="Nam Viet Group">
       <span class="header__logo-mark">
         <img class="logo-img logo-img--light" src="{{ '/assets/img/logo-light.png' | url }}?v=seal-on" alt="">
         <img class="logo-img logo-img--dark" src="{{ '/assets/img/logo.png' | url }}?v=seal" alt="">
@@ -10,7 +10,7 @@
     </a>
     <nav class="header__nav" id="nav" aria-label="Primary">
       <div class="nav-mobile__head">
-        <a href="{{ '/' | url }}" class="nav-mobile__brand">
+        <a href="{{ '/' | localeUrl(locale) | url }}" class="nav-mobile__brand">
           <img src="{{ '/assets/img/logo-light.png' | url }}?v=seal-on" alt="" width="40" height="28">
           <span translate="no">NAM VIỆT<span class="header__wordmark-sub">GROUP</span></span>
         </a>
@@ -20,23 +20,21 @@
       </div>
       <div class="nav-mobile__body">
       {% for item in nav.primary %}
-      {% set onHome = page.url == '/' %}
+      {% set onHome = (page.url | pageIdentity) == '/' %}
       {% set itemHref = (onHome and item.hrefHome) or item.hrefInner or item.href %}
       {% set hasChildren = item.children and item.children.length %}
       {% set hasMega = item.mega and item.mega.length %}
       {% if hasChildren or hasMega %}
       <div class="nav-item{% if hasMega %} has-mega{% else %} has-dropdown{% endif %}{% if item | navActive(page.url) %} is-current{% endif %}">
         <a
-          href="{{ itemHref | url }}"
+          href="{{ itemHref | localeUrl(locale) | url }}"
           class="nav-item__link{% if item | navActive(page.url) %} is-active{% endif %}"
           data-nav-id="{{ item.id }}"
           {% if item | navActive(page.url) %} aria-current="page"{% endif %}
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <span class="lang en">{{ item.en }}</span>
-          <span class="lang vi">{{ item.vi }}</span>
-          <span class="lang zh">{{ item.zh }}</span>
+          {{ item[locale] }}
           <svg class="nav-item__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
         </a>
 
@@ -47,17 +45,13 @@
               {% for col in item.mega %}
               <div class="nav-mega__col">
                 <p class="nav-mega__head">
-                  <span class="nav-mega__key lang en">{{ col.keyEn }}</span>
-                  <span class="nav-mega__key lang vi">{{ col.keyVi }}</span>
-                  <span class="nav-mega__key lang zh">{{ col.keyZh }}</span>
+                  <span class="nav-mega__key">{{ ({ en: col.keyEn, vi: col.keyVi, zh: col.keyZh })[locale] }}</span>
                 </p>
                 <ul class="nav-mega__list">
                   {% for link in col.links %}
                   <li>
-                    <a href="{{ link.href | url }}" class="nav-mega__link{% if page.url == (link.href | pathOnly) %} is-active{% endif %}">
-                      <span class="lang en">{{ link.en }}</span>
-                      <span class="lang vi">{{ link.vi }}</span>
-                      <span class="lang zh">{{ link.zh }}</span>
+                    <a href="{{ link.href | localeUrl(locale) | url }}" class="nav-mega__link{% if (page.url | pageIdentity) == (link.href | pathOnly) %} is-active{% endif %}">
+                      {{ link[locale] }}
                     </a>
                   </li>
                   {% endfor %}
@@ -71,14 +65,12 @@
         <div class="nav-dropdown" role="menu">
           {% for child in item.children %}
           <a
-            href="{{ child.href | url }}"
-            class="nav-dropdown__link{% if (not (child.href | hasHash)) and page.url == (child.href | pathOnly) %} is-active{% endif %}"
+            href="{{ child.href | localeUrl(locale) | url }}"
+            class="nav-dropdown__link{% if (not (child.href | hasHash)) and (page.url | pageIdentity) == (child.href | pathOnly) %} is-active{% endif %}"
             role="menuitem"
             data-nav-child="{{ child.id }}"
           >
-            <span class="lang en">{{ child.en }}</span>
-            <span class="lang vi">{{ child.vi }}</span>
-            <span class="lang zh">{{ child.zh }}</span>
+            {{ child[locale] }}
           </a>
           {% endfor %}
         </div>
@@ -86,24 +78,20 @@
       </div>
       {% else %}
       <a
-        href="{{ itemHref | url }}"
+        href="{{ itemHref | localeUrl(locale) | url }}"
         class="nav-item__link{% if item | navActive(page.url) %} is-active{% endif %}"
         data-nav-id="{{ item.id }}"
         {% if item | navActive(page.url) %} aria-current="page"{% endif %}
       >
-        <span class="lang en">{{ item.en }}</span>
-        <span class="lang vi">{{ item.vi }}</span>
-        <span class="lang zh">{{ item.zh }}</span>
+        {{ item[locale] }}
       </a>
       {% endif %}
       {% endfor %}
       <span class="nav-indicator" aria-hidden="true"></span>
       </div>
       <div class="nav-mobile__foot">
-        <a href="{{ '/contact/' | url }}" class="btn btn--small btn--solid nav-mobile__cta">
-          <span class="lang en">{{ i18n.en.contact }}</span>
-          <span class="lang vi">{{ i18n.vi.contact }}</span>
-          <span class="lang zh">{{ i18n.zh.contact }}</span>
+        <a href="{{ '/contact/' | localeUrl(locale) | url }}" class="btn btn--small btn--solid nav-mobile__cta">
+          {{ i18n[locale].contact }}
           <span aria-hidden="true">→</span>
         </a>
         <p class="nav-mobile__meta">
@@ -126,29 +114,27 @@
           aria-controls="langMenu"
           aria-label="Language"
         >
-          <span class="lang-flag lang-flag--en" data-lang-flag aria-hidden="true"></span>
-          <span class="lang-switch__code" data-lang-code>EN</span>
+          <span class="lang-flag lang-flag--{{ locale }}" data-lang-flag aria-hidden="true"></span>
+          <span class="lang-switch__code" data-lang-code>{% if locale == 'zh' %}中文{% else %}{{ locale | upper }}{% endif %}</span>
           <svg class="lang-switch__caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
         </button>
         <div class="lang-switch__menu" id="langMenu" role="listbox" aria-label="Language" hidden>
-          <button type="button" role="option" data-set-lang="en" aria-label="English" class="is-active">
-            <span class="lang-flag lang-flag--en" aria-hidden="true"></span>
-            <span>EN</span>
-          </button>
-          <button type="button" role="option" data-set-lang="vi" aria-label="Tiếng Việt">
+          <a href="{{ localeUrl(pageIdentity(page.url), 'vi') | url }}" lang="vi" role="option"{% if locale == 'vi' %} class="is-active"{% endif %} aria-label="Tiếng Việt">
             <span class="lang-flag lang-flag--vi" aria-hidden="true"></span>
             <span>VI</span>
-          </button>
-          <button type="button" role="option" data-set-lang="zh" aria-label="中文">
+          </a>
+          <a href="{{ localeUrl(pageIdentity(page.url), 'en') | url }}" lang="en" role="option"{% if locale == 'en' %} class="is-active"{% endif %} aria-label="English">
+            <span class="lang-flag lang-flag--en" aria-hidden="true"></span>
+            <span>EN</span>
+          </a>
+          <a href="{{ localeUrl(pageIdentity(page.url), 'zh') | url }}" lang="zh-Hans" role="option"{% if locale == 'zh' %} class="is-active"{% endif %} aria-label="中文">
             <span class="lang-flag lang-flag--zh" aria-hidden="true"></span>
             <span>中文</span>
-          </button>
+          </a>
         </div>
       </div>
-      <a href="{{ '/contact/' | url }}" class="btn btn--small btn--solid header__cta">
-        <span class="lang en">{{ i18n.en.contact }}</span>
-        <span class="lang vi">{{ i18n.vi.contact }}</span>
-        <span class="lang zh">{{ i18n.zh.contact }}</span>
+      <a href="{{ '/contact/' | localeUrl(locale) | url }}" class="btn btn--small btn--solid header__cta">
+        {{ i18n[locale].contact }}
         <span class="header__cta-arrow" aria-hidden="true">→</span>
       </a>
       <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
@@ -159,20 +145,16 @@
 <div class="site-search" id="siteSearch" hidden>
   <div class="site-search__panel" role="dialog" aria-modal="true" aria-label="Search">
     <label class="site-search__label" for="searchInput">
-      <span class="lang en">{{ i18n.en.search }}</span>
-      <span class="lang vi">{{ i18n.vi.search }}</span>
-      <span class="lang zh">{{ i18n.zh.search }}</span>
+      {{ i18n[locale].search }}
     </label>
     <input type="search" id="searchInput" class="site-search__input" autocomplete="off"
-      placeholder="{{ i18n.en.searchPlaceholder }}"
+      placeholder="{{ i18n[locale].searchPlaceholder }}"
       data-ph-en="{{ i18n.en.searchPlaceholder }}"
       data-ph-vi="{{ i18n.vi.searchPlaceholder }}"
       data-ph-zh="{{ i18n.zh.searchPlaceholder }}">
     <ul class="site-search__results" id="searchResults"></ul>
     <p class="site-search__empty" id="searchEmpty" hidden>
-      <span class="lang en">{{ i18n.en.searchNoResults }}</span>
-      <span class="lang vi">{{ i18n.vi.searchNoResults }}</span>
-      <span class="lang zh">{{ i18n.zh.searchNoResults }}</span>
+      {{ i18n[locale].searchNoResults }}
     </p>
   </div>
 </div>

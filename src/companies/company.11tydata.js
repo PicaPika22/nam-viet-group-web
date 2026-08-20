@@ -1,7 +1,12 @@
+const { localeUrl } = require("../../scripts/i18n/locale");
+
 module.exports = {
   eleventyComputed: {
     company: (data) => data.render && data.render.item,
-    title: (data) => data.company?.name?.en || "Company",
+    title: (data) => {
+      const loc = data.locale || data.render?.locale || "vi";
+      return data.company?.name?.[loc] || "Company";
+    },
     eyebrow: (data) =>
       data.company?.unit
         ? {
@@ -19,22 +24,17 @@ module.exports = {
     breadcrumbHtml: (data) => {
       const co = data.company;
       if (!co) return "";
+      const loc = data.locale || data.render?.locale || "vi";
       const prefix = process.env.PATH_PREFIX || "/";
       const base = prefix === "/" ? "" : prefix.replace(/\/$/, "");
-      const companiesUrl = `${base}/companies/`;
+      const companiesUrl = `${base}${localeUrl("/companies/", loc)}`;
+      const label = { en: "Companies", vi: "Công ty thành viên", zh: "成员企业" }[loc];
+      const short = co.short?.[loc] || "";
       return `
       <span aria-hidden="true">/</span>
-      <a href="${companiesUrl}">
-        <span class="lang en">Companies</span>
-        <span class="lang vi">Công ty thành viên</span>
-        <span class="lang zh">成员企业</span>
-      </a>
+      <a href="${companiesUrl}">${label}</a>
       <span aria-hidden="true">/</span>
-      <span>
-        <span class="lang en">${co.short.en}</span>
-        <span class="lang vi">${co.short.vi}</span>
-        <span class="lang zh">${co.short.zh}</span>
-      </span>`;
+      <span>${short}</span>`;
     },
   },
 };

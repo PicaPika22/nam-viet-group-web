@@ -4,88 +4,68 @@
 
   <div class="contact-form__grid">
     <label>
-      <span class="lang en">{{ i18n.en.formName }}</span>
-      <span class="lang vi">{{ i18n.vi.formName }}</span>
-      <span class="lang zh">{{ i18n.zh.formName }}</span>
+      {{ i18n[locale].formName }}
       <input type="text" name="name" required autocomplete="name">
     </label>
     <label>
-      <span class="lang en">{{ i18n.en.formEmail }}</span>
-      <span class="lang vi">{{ i18n.vi.formEmail }}</span>
-      <span class="lang zh">{{ i18n.zh.formEmail }}</span>
+      {{ i18n[locale].formEmail }}
       <input type="email" name="email" required autocomplete="email">
     </label>
     <label>
-      <span class="lang en">{{ i18n.en.formCompany }}</span>
-      <span class="lang vi">{{ i18n.vi.formCompany }}</span>
-      <span class="lang zh">{{ i18n.zh.formCompany }}</span>
+      {{ i18n[locale].formCompany }}
       <input type="text" name="company" autocomplete="organization">
     </label>
     <label>
-      <span class="lang en">{{ i18n.en.formPhone }}</span>
-      <span class="lang vi">{{ i18n.vi.formPhone }}</span>
-      <span class="lang zh">{{ i18n.zh.formPhone }}</span>
+      {{ i18n[locale].formPhone }}
       <input type="tel" name="phone" autocomplete="tel">
     </label>
     <label>
-      <span class="lang en">{{ i18n.en.formType }}</span>
-      <span class="lang vi">{{ i18n.vi.formType }}</span>
-      <span class="lang zh">{{ i18n.zh.formType }}</span>
+      {{ i18n[locale].formType }}
       <select name="inquiry_type" id="inquiryType">
         <option value="partner"
           data-label-en="{{ i18n.en.typePartner }}"
           data-label-vi="{{ i18n.vi.typePartner }}"
-          data-label-zh="{{ i18n.zh.typePartner }}">{{ i18n.en.typePartner }}</option>
+          data-label-zh="{{ i18n.zh.typePartner }}">{{ i18n[locale].typePartner }}</option>
         <option value="product"
           data-label-en="{{ i18n.en.typeProduct }}"
           data-label-vi="{{ i18n.vi.typeProduct }}"
-          data-label-zh="{{ i18n.zh.typeProduct }}">{{ i18n.en.typeProduct }}</option>
+          data-label-zh="{{ i18n.zh.typeProduct }}">{{ i18n[locale].typeProduct }}</option>
         <option value="logistics"
           data-label-en="{{ i18n.en.typeLogistics }}"
           data-label-vi="{{ i18n.vi.typeLogistics }}"
-          data-label-zh="{{ i18n.zh.typeLogistics }}">{{ i18n.en.typeLogistics }}</option>
+          data-label-zh="{{ i18n.zh.typeLogistics }}">{{ i18n[locale].typeLogistics }}</option>
         <option value="careers"
           data-label-en="{{ i18n.en.typeCareers }}"
           data-label-vi="{{ i18n.vi.typeCareers }}"
-          data-label-zh="{{ i18n.zh.typeCareers }}">{{ i18n.en.typeCareers }}</option>
+          data-label-zh="{{ i18n.zh.typeCareers }}">{{ i18n[locale].typeCareers }}</option>
         <option value="investor"
           data-label-en="{{ i18n.en.typeInvestor }}"
           data-label-vi="{{ i18n.vi.typeInvestor }}"
-          data-label-zh="{{ i18n.zh.typeInvestor }}">{{ i18n.en.typeInvestor }}</option>
+          data-label-zh="{{ i18n.zh.typeInvestor }}">{{ i18n[locale].typeInvestor }}</option>
         <option value="other"
           data-label-en="{{ i18n.en.typeOther }}"
           data-label-vi="{{ i18n.vi.typeOther }}"
-          data-label-zh="{{ i18n.zh.typeOther }}">{{ i18n.en.typeOther }}</option>
+          data-label-zh="{{ i18n.zh.typeOther }}">{{ i18n[locale].typeOther }}</option>
       </select>
     </label>
     <label>
-      <span class="lang en">{{ i18n.en.formProduct }}</span>
-      <span class="lang vi">{{ i18n.vi.formProduct }}</span>
-      <span class="lang zh">{{ i18n.zh.formProduct }}</span>
+      {{ i18n[locale].formProduct }}
       <input type="text" name="product_code" id="productCode" value="{{ productCode or '' }}" placeholder="NV007">
     </label>
   </div>
   <label class="contact-form__message">
-    <span class="lang en">{{ i18n.en.formMessage }}</span>
-    <span class="lang vi">{{ i18n.vi.formMessage }}</span>
-    <span class="lang zh">{{ i18n.zh.formMessage }}</span>
+    {{ i18n[locale].formMessage }}
     <textarea name="message" rows="5" required></textarea>
   </label>
   <p class="contact-form__note">
-    <span class="lang en">By submitting, you agree to our </span>
-    <span class="lang vi">Khi gửi form, bạn đồng ý với </span>
-    <span class="lang zh">提交即表示您同意我们的</span>
-    <a href="{{ '/privacy/' | url }}">
-      <span class="lang en">Privacy Policy</span>
-      <span class="lang vi">Chính sách bảo mật</span>
-      <span class="lang zh">隐私政策</span>
+    {{ ({ en: 'By submitting, you agree to our', vi: 'Khi gửi form, bạn đồng ý với', zh: '提交即表示您同意我们的' })[locale] }}
+    <a href="{{ '/privacy/'  | localeUrl(locale) | url }}">
+      {{ ({ en: 'Privacy Policy', vi: 'Chính sách bảo mật', zh: '隐私政策' })[locale] }}
     </a>.
   </p>
   <button type="submit" class="btn btn--dark btn--big">
     <span class="btn__dot"></span>
-    <span class="lang en">{{ i18n.en.sendMessage }}</span>
-    <span class="lang vi">{{ i18n.vi.sendMessage }}</span>
-    <span class="lang zh">{{ i18n.zh.sendMessage }}</span>
+    {{ i18n[locale].sendMessage }}
   </button>
   <p class="contact-form__status" id="formStatus" role="status" aria-live="polite" hidden></p>
 </form>

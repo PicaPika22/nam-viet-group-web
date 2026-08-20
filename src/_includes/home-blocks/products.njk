@@ -2,24 +2,22 @@
   <div class="container">
     <header class="chapter__head chapter__head--center">
       <span class="chapter__num reveal">{{ section.displayNum }}</span>
-      <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+      <p class="eyebrow reveal">{{ section.content[locale].eyebrow }}</p>
       <h2 class="chapter__title">
-        <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.en.titleLine2 }}</span></span></span>
-        <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.vi.titleLine2 }}</span></span></span>
-        <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content.zh.titleLine2 }}</span></span></span>
+        <span class="line-mask"><span class="line">{{ section.content[locale].titleLine1 }}</span></span><span class="line-mask"><span class="line line--muted">{{ section.content[locale].titleLine2 }}</span></span>
       </h2>
-      <p class="chapter__desc reveal" data-delay="200"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+      <p class="chapter__desc reveal" data-delay="200">{{ section.content[locale].lead }}</p>
     </header>
     <div class="products__grid">
       {% for item in section.items %}
-      <a href="{{ item.href | url }}" class="pcard pcard--media reveal" data-delay="{{ loop.index0 * 80 }}" style="--pc:{% if loop.index == 1 %}#c62828{% elif loop.index == 2 %}#2e7d32{% elif loop.index == 3 %}#1565c0{% elif loop.index == 4 %}#0277bd{% else %}#558b2f{% endif %}">
+      <a href="{{ item.href | localeUrl(locale) | url }}" class="pcard pcard--media reveal" data-delay="{{ loop.index0 * 80 }}" style="--pc:{% if loop.index == 1 %}#c62828{% elif loop.index == 2 %}#2e7d32{% elif loop.index == 3 %}#1565c0{% elif loop.index == 4 %}#0277bd{% else %}#558b2f{% endif %}">
         <span class="pcard__media"><img src="{{ section.images[item.id] | url }}" alt="{{ item.code }}" loading="lazy" width="400" height="560" decoding="async"></span>
         <span class="pcard__code">{{ item.code }}</span>
-        <span class="pcard__name"><span class="lang en">{{ item.name.en }}</span><span class="lang vi">{{ item.name.vi }}</span><span class="lang zh">{{ item.name.zh }}</span></span>
-        <span class="pcard__more"><span class="lang en">Learn more</span><span class="lang vi">Xem thêm</span><span class="lang zh">了解更多</span> →</span>
+        <span class="pcard__name">{{ item.name[locale] }}</span>
+        <span class="pcard__more">{{ ({ en: 'Learn more', vi: 'Xem thêm', zh: '了解更多' })[locale] }} →</span>
       </a>
       {% endfor %}
     </div>
-    <div class="center reveal" data-delay="300"><a href="{{ section.cta.primary.href | url }}" class="btn btn--dark"><span class="btn__dot"></span><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span></a></div>
+    <div class="center reveal" data-delay="300"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--dark"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
   </div>
 </section>
