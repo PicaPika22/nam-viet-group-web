@@ -69,6 +69,9 @@ function mountHomeRoutes(app, { store, upload }) {
           if (uploadError.code === "LIMIT_FILE_SIZE") {
             throw new HttpError(413, { error: "Image too large" });
           }
+          if (uploadError.message === "Chỉ nhận file ảnh") {
+            throw new HttpError(415, { error: "Unsupported image type" });
+          }
           throw uploadError;
         }
         if (!req.file) throw new HttpError(400, { error: "No file" });

@@ -11,6 +11,8 @@ const {
 
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const SAFE_IMAGE_IDENTIFIER = /^[a-z0-9-]+(?::[a-z0-9-]+)?$/i;
+const PUBLISHED_FILE = "src/_data/home.json";
+const DRAFT_FILE = "src/_cms/home.draft.json";
 
 class HttpError extends Error {
   constructor(status, body) {
@@ -20,7 +22,15 @@ class HttpError extends Error {
   }
 }
 
-function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
+function createStore({
+  rootDir,
+  fsImpl = fs,
+  cryptoImpl = crypto,
+  remote = false,
+  ghGetFile,
+  ghPutFile,
+  ghPutBinary,
+}) {
   const publishedPath = path.join(rootDir, "src", "_data", "home.json");
   const draftPath = path.join(rootDir, "src", "_cms", "home.draft.json");
   const imageDir = path.join(rootDir, "src", "assets", "img", "home");
@@ -31,7 +41,11 @@ function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
 
   function writeJson(filePath, document) {
     fsImpl.mkdirSync(path.dirname(filePath), { recursive: true });
-    fsImpl.writeFileSync(filePath, JSON.stringify(document, null, 2) + "\n", "utf8");
+    fsImpl.writeFileSync(filePath, serialize(document), "utf8");
+  }
+
+  function serialize(document) {
+    return JSON.stringify(document, null, 2) + "\n";
   }
 
   function readDocument(filePath) {
@@ -39,19 +53,45 @@ function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
     return { bytes, document: JSON.parse(bytes.toString("utf8")) };
   }
 
-  function getState() {
-    const published = readDocument(publishedPath);
-    if (!fsImpl.existsSync(draftPath)) {
-      writeJson(draftPath, published.document);
-    }
-    const draft = readDocument(draftPath);
+  async function readRemoteDocument(filePath) {
+    const file = await ghGetFile(filePath);
+    if (!file) return null;
+    const bytes = Buffer.from(file.content, "base64");
+    return { bytes, document: JSON.parse(bytes.toString("utf8")), sha: file.sha };
+  }
+
+  function stateFromDocuments(draft, published) {
     return {
       draft: draft.document,
       published: published.document,
-      draftRevision: hashBytes(draft.bytes),
-      publishedRevision: hashBytes(published.bytes),
+      draftRevision: remote ? draft.sha : hashBytes(draft.bytes),
+      publishedRevision: remote ? published.sha : hashBytes(published.bytes),
       status: documentsEqual(draft.document, published.document) ? "in-sync" : "draft",
     };
+  }
+
+  async function getState() {
+    if (remote) {
+      const published = await readRemoteDocument(PUBLISHED_FILE);
+      if (!published) {
+        throw new HttpError(404, { error: "Published Home document not found" });
+      }
+      let draft = await readRemoteDocument(DRAFT_FILE);
+      if (!draft) {
+        await ghPutFile(
+          DRAFT_FILE,
+          serialize(published.document),
+          "home: initialize draft",
+        );
+        draft = await readRemoteDocument(DRAFT_FILE);
+      }
+      return stateFromDocuments(draft, published);
+    }
+
+    const published = readDocument(publishedPath);
+    if (!fsImpl.existsSync(draftPath)) writeJson(draftPath, published.document);
+    const draft = readDocument(draftPath);
+    return stateFromDocuments(draft, published);
   }
 
   function conflict(state, revision) {
@@ -83,31 +123,85 @@ function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
     }
   }
 
-  function saveDraft(document, revision) {
-    const state = getState();
+  async function mapWriteError(error, revision) {
+    if (error?.status === 409) {
+      const current = await getState();
+      throw conflict(current, revision);
+    }
+    throw error;
+  }
+
+  async function saveDraft(document, revision) {
+    const state = await getState();
     assertRevisions(state, revision);
     const next = applyOrder(mergeLockedHrefs(document, state.published));
     assertValid(next);
+    if (remote) {
+      try {
+        await ghPutFile(
+          DRAFT_FILE,
+          serialize(next),
+          "home: save draft",
+          state.draftRevision,
+        );
+      } catch (error) {
+        await mapWriteError(error, revision);
+      }
+      return getState();
+    }
     writeJson(draftPath, next);
     return getState();
   }
 
-  function publish(revision, publishedRevision) {
-    const state = getState();
+  async function publish(revision, publishedRevision) {
+    const state = await getState();
     assertRevisions(state, revision, publishedRevision);
     assertValid(state.draft);
+    if (remote) {
+      const content = serialize(state.draft);
+      try {
+        await ghPutFile(
+          PUBLISHED_FILE,
+          content,
+          "home: publish homepage",
+          state.publishedRevision,
+        );
+        await ghPutFile(
+          DRAFT_FILE,
+          content,
+          "home: publish homepage",
+          state.draftRevision,
+        );
+      } catch (error) {
+        await mapWriteError(error, revision);
+      }
+      return getState();
+    }
     writeJson(publishedPath, state.draft);
     return getState();
   }
 
-  function discard(revision, publishedRevision) {
-    const state = getState();
+  async function discard(revision, publishedRevision) {
+    const state = await getState();
     assertRevisions(state, revision, publishedRevision);
+    if (remote) {
+      try {
+        await ghPutFile(
+          DRAFT_FILE,
+          serialize(state.published),
+          "home: discard draft",
+          state.draftRevision,
+        );
+      } catch (error) {
+        await mapWriteError(error, revision);
+      }
+      return getState();
+    }
     writeJson(draftPath, state.published);
     return getState();
   }
 
-  function writeImage({ sectionId, slot, buffer, ext }) {
+  async function writeImage({ sectionId, slot, buffer, ext }) {
     if (
       typeof sectionId !== "string" ||
       typeof slot !== "string" ||
@@ -131,6 +225,13 @@ function createStore({ rootDir, fsImpl = fs, cryptoImpl = crypto }) {
     const imagePath = path.resolve(imageDir, filename);
     if (path.dirname(imagePath) !== path.resolve(imageDir)) {
       throw new HttpError(400, { error: "Invalid image slot" });
+    }
+    if (remote) {
+      await ghPutBinary(relPath, buffer, `home: upload ${filename}`);
+      return {
+        url: `/assets/img/home/${filename}`,
+        relPath,
+      };
     }
     fsImpl.mkdirSync(imageDir, { recursive: true });
     fsImpl.writeFileSync(imagePath, buffer);

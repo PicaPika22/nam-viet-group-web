@@ -31,7 +31,10 @@ describe("Home CMS routes", () => {
     const upload = multer({
       storage: multer.memoryStorage(),
       limits: { fileSize: 8 * 1024 * 1024 },
-      fileFilter: (_req, file, cb) => cb(null, /^image\//.test(file.mimetype)),
+      fileFilter: (_req, file, cb) => {
+        if (/^image\//.test(file.mimetype)) cb(null, true);
+        else cb(new Error("Chỉ nhận file ảnh"));
+      },
     });
     mountHomeRoutes(app, { store: createStore({ rootDir }), upload });
     server = http.createServer(app);
@@ -130,6 +133,36 @@ describe("Home CMS routes", () => {
 
     assert.equal(response.status, 400);
     assert.equal(body.error, "Invalid image slot");
+  });
+
+  it("returns 415 for GIF uploads", async () => {
+    const form = new FormData();
+    form.append("sectionId", "hero");
+    form.append("slot", "art");
+    form.append("file", new Blob([Buffer.from("gif")], { type: "image/gif" }), "hero.gif");
+
+    const { response, body } = await request("/api/home/images", {
+      method: "POST",
+      body: form,
+    });
+
+    assert.equal(response.status, 415);
+    assert.equal(body.error, "Unsupported image type");
+  });
+
+  it("maps multer file-filter rejections to 415", async () => {
+    const form = new FormData();
+    form.append("sectionId", "hero");
+    form.append("slot", "art");
+    form.append("file", new Blob([Buffer.from("text")], { type: "text/plain" }), "hero.txt");
+
+    const { response, body } = await request("/api/home/images", {
+      method: "POST",
+      body: form,
+    });
+
+    assert.equal(response.status, 415);
+    assert.equal(body.error, "Unsupported image type");
   });
 
   it("replaces a client-supplied href with the locked href", async () => {
