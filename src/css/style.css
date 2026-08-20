@@ -9,6 +9,8 @@
   --green-500: #33a364;
   --accent: #9ddda1;
   --gold: #d9b970;
+  --brand-blue: #003d6a;
+  --brand-red: #c42a2c;
   --cream: #f4f1ea;
   --paper: #fbfaf7;
   --ink: #183527;
@@ -147,8 +149,10 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 .loader__word {
   font-family: var(--font-display); font-weight: 400;
   letter-spacing: 0.42em; font-size: clamp(0.85rem, 2vw, 1.15rem);
-  color: var(--cream); animation: loaderPulse 1.6s ease-in-out infinite;
+  color: color-mix(in srgb, var(--brand-blue) 28%, #9ec9e8);
+  animation: loaderPulse 1.6s ease-in-out infinite;
 }
+.loader__word-sub { color: var(--brand-red); }
 .loader__bar { width: 180px; height: 1px; background: rgba(244,241,234,0.2); overflow: hidden; }
 .loader__fill { display: block; height: 100%; width: 100%; background: var(--accent); transform-origin: left; animation: loaderFill 1.4s var(--ease-soft) forwards; }
 @keyframes loaderFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -221,7 +225,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   position: relative;
   flex: none;
   height: clamp(42px, 3.8vw, 50px);
-  aspect-ratio: 1.37;
+  aspect-ratio: 384 / 263;
   width: auto;
 }
 .header__logo-rule {
@@ -237,7 +241,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   letter-spacing: 0.05em;
   line-height: 1.15;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--brand-blue);
   white-space: nowrap;
   flex: none;
 }
@@ -247,7 +251,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.22em;
-  color: var(--green-600);
+  color: var(--brand-red);
 }
 .logo-img {
   position: absolute; inset: 0;
@@ -727,16 +731,23 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
     text-transform: uppercase;
   }
   .nav-mobile__brand img {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    object-fit: cover;
+    width: auto;
+    height: 2.4rem;
+    object-fit: contain;
     flex: none;
   }
   .nav-mobile__brand span {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: color-mix(in srgb, var(--brand-blue) 28%, #9ec9e8);
+  }
+  .nav-mobile__brand .header__wordmark-sub {
+    display: inline;
+    margin: 0 0 0 0.35em;
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: var(--brand-red);
   }
   .nav-mobile__close {
     width: 2.4rem;
@@ -1386,10 +1397,8 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   );
 }
 .hero-nv__ring img {
-  /* Clip inside the seal's oval stroke so only lion + globe sit on the glow. */
-  width: 72%;
+  width: 88%;
   height: auto;
-  clip-path: circle(46%);
 }
 .hero-nv__grid {
   position: relative;
@@ -2888,7 +2897,6 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   width: auto;
   flex: none;
   object-fit: contain;
-  clip-path: ellipse(47% 48% at 50% 52%);
 }
 .footer__brand-rule {
   display: block;
@@ -2902,7 +2910,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   font-weight: 700;
   letter-spacing: 0.06em;
   line-height: 1.15;
-  color: var(--white);
+  color: color-mix(in srgb, var(--brand-blue) 28%, #9ec9e8);
   text-transform: uppercase;
 }
 .footer__wordmark-sub {
@@ -2911,7 +2919,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.28em;
-  color: var(--accent);
+  color: var(--brand-red);
 }
 .footer__legal-name {
   margin: 1.4rem 0 1.15rem;
