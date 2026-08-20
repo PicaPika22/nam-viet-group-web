@@ -28,11 +28,12 @@
   }
 
   function head(section, lang, number, options = {}) {
+    const bodyOnlyLead = section.id === "about" || section.id === "manufacturing" || section.id === "sustainability";
     return `<header class="chapter__head${options.center ? " chapter__head--center" : ""}">
       <span class="chapter__num">${number}</span>
       <p class="eyebrow${options.light ? " eyebrow--light" : ""}">${text(section, lang, "eyebrow")}</p>
       ${title(section, lang, options.small, false, options.accent)}
-      ${section.content?.[lang]?.lead ? `<p class="chapter__desc">${text(section, lang, "lead")}</p>` : ""}
+      ${!bodyOnlyLead && section.content?.[lang]?.lead ? `<p class="chapter__desc">${text(section, lang, "lead")}</p>` : ""}
     </header>`;
   }
 

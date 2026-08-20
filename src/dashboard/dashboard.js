@@ -118,12 +118,12 @@
     $("#appShell").hidden = show;
   }
 
-  function toast(message) {
+  function toast(message, duration = 3000) {
     const el = $("#toast");
     el.textContent = message;
     el.classList.add("is-show");
     clearTimeout(toast.timer);
-    toast.timer = setTimeout(() => el.classList.remove("is-show"), 3000);
+    toast.timer = setTimeout(() => el.classList.remove("is-show"), duration);
   }
 
   function currentSection() {
@@ -276,8 +276,8 @@
           <button class="icon-button is-danger" type="button" data-delete-timeline="${index}" aria-label="Xóa cột mốc">×</button>
         </div></div>
         <div class="timeline-fields">
-          <label class="field"><span>Năm</span><input type="text" value="${esc(item.year)}" data-kind="timeline" data-index="${index}" data-field="year"></label>
-          <label class="field"><span>Biểu tượng</span><select data-kind="timeline" data-index="${index}" data-field="icon">${TIMELINE_ICONS.map((icon) => `<option value="${icon}" ${item.icon === icon ? "selected" : ""}>${icon}</option>`).join("")}</select></label>
+          <label class="field"><span>Năm</span><input type="text" value="${esc(item.year)}" data-kind="timeline" data-index="${index}" data-field="year" data-path="milestones.timeline.${item.id}"><small class="field-error" data-error-for="milestones.timeline.${item.id}"></small></label>
+          <label class="field"><span>Biểu tượng</span><select data-kind="timeline" data-index="${index}" data-field="icon" data-path="milestones.timeline.${item.id}.icon">${TIMELINE_ICONS.map((icon) => `<option value="${icon}" ${item.icon === icon ? "selected" : ""}>${icon}</option>`).join("")}</select><small class="field-error" data-error-for="milestones.timeline.${item.id}.icon"></small></label>
           <div>${imageCard(section.id, `timeline:${item.id}`, item.image, "timeline", index)}</div>
           ${LANGS.map((lang) => { const path = `${section.id}.timeline.${item.id}.${lang}`; return `<label class="field"><span>Tiêu đề ${lang.toUpperCase()}</span><input type="text" value="${esc(item.title?.[lang] || "")}" data-kind="timeline-i18n" data-index="${index}" data-field="title" data-lang="${lang}" data-path="${path}"><small class="field-error" data-error-for="${path}"></small></label>`; }).join("")}
           ${LANGS.map((lang) => { const path = `${section.id}.timeline.${item.id}.${lang}`; return `<label class="field field--description"><span>Mô tả ${lang.toUpperCase()}</span><textarea data-kind="timeline-i18n" data-index="${index}" data-field="description" data-lang="${lang}" data-path="${path}">${esc(item.description?.[lang] || "")}</textarea></label>`; }).join("")}
@@ -411,8 +411,17 @@
     renderAll();
   }
 
-  async function reloadAfterConflict() {
-    toast("Bản Home đã được cập nhật bởi người khác. Dữ liệu mới nhất đang được tải lại.");
+  async function reloadAfterConflict(error) {
+    const data = error?.data || {};
+    toast(
+      [
+        data.message || error.message || "Bản Home đã được cập nhật bởi người khác.",
+        `Revision hiện tại: ${data.currentRevision || "—"}`,
+        `Revision của bạn: ${data.yourRevision || "—"}`,
+        "Vui lòng tải lại dữ liệu trước khi tiếp tục.",
+      ].join(" "),
+      8000
+    );
     await loadHome();
   }
 
@@ -433,7 +442,7 @@
       setDirty(false);
       toast("Đã lưu bản nháp");
     } catch (error) {
-      if (error.status === 409) await reloadAfterConflict();
+      if (error.status === 409) await reloadAfterConflict(error);
       else if (error.status === 400) {
         focusFirstInvalidField(error.data.fields);
         showFieldErrors(error.data.fields);
@@ -465,7 +474,7 @@
       setDirty(false);
       toast("Đã xuất bản trang chủ");
     } catch (error) {
-      if (error.status === 409) await reloadAfterConflict();
+      if (error.status === 409) await reloadAfterConflict(error);
       else toast(error.message);
     } finally {
       $("#publishBtn").disabled = state.dirty || state.status === "in-sync";
@@ -483,7 +492,7 @@
       applyState(data);
       toast("Đã hủy bản nháp");
     } catch (error) {
-      if (error.status === 409) await reloadAfterConflict();
+      if (error.status === 409) await reloadAfterConflict(error);
       else toast(error.message);
     }
   }
