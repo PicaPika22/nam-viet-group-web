@@ -47,7 +47,10 @@
     "journey": "Journey",
     "contactIr": "Contact IR",
     "rssFeed": "RSS feed",
-    "legalEyebrow": "Legal"
+    "legalEyebrow": "Legal",
+    "quickContact": "Quick contact",
+    "callLabel": "Call",
+    "callAriaLabel": "Call"
   },
   "vi": {
     "contact": "Liên hệ",
@@ -97,7 +100,10 @@
     "journey": "Hành trình",
     "contactIr": "Liên hệ IR",
     "rssFeed": "Nguồn RSS",
-    "legalEyebrow": "Pháp lý"
+    "legalEyebrow": "Pháp lý",
+    "quickContact": "Liên hệ nhanh",
+    "callLabel": "Gọi",
+    "callAriaLabel": "Gọi điện"
   },
   "zh": {
     "contact": "联系我们",
@@ -147,6 +153,9 @@
     "journey": "发展历程",
     "contactIr": "联系投资者关系",
     "rssFeed": "RSS 订阅",
-    "legalEyebrow": "法律信息"
+    "legalEyebrow": "法律信息",
+    "quickContact": "快速联系",
+    "callLabel": "致电",
+    "callAriaLabel": "拨打电话"
   }
 }
