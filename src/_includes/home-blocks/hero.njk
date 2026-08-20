@@ -1,0 +1,29 @@
+<section class="hero-nv chapter" id="hero" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
+  <div class="hero-nv__scene" aria-hidden="true"><div class="hero-nv__art">
+    <img src="{{ section.images.art | url }}" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+    <span class="hero-nv__ring"><img src="{{ '/assets/img/logo.png' | url }}" alt="" width="120" height="120"></span>
+  </div><span class="hero-nv__focus-veil"></span></div>
+  <ul class="hero-nv__metrics">
+    {% for stat in section.stats %}
+    <li class="hero-nv__metric">
+      <svg class="hero-nv__metric-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">{% if loop.first %}<path d="M12 21v-8.5"/><path d="M12 12.5C12 9 9.3 6.2 6 6.2c0 3.5 2.7 6.3 6 6.3Z"/><path d="M12 12.5c0-4 3.1-7.3 7-7.3 0 4-3.1 7.3-7 7.3Z"/>{% else %}<path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.5ZM7 21v-7h10v7"/>{% endif %}</svg>
+      <p class="hero-nv__metric-value">{{ stat.value }}</p>
+      <p class="hero-nv__metric-label"><span class="lang en">{{ stat.label.en }}</span><span class="lang vi">{{ stat.label.vi }}</span><span class="lang zh">{{ stat.label.zh }}</span></p>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="container hero-nv__grid"><div class="hero-nv__copy">
+    <p class="eyebrow reveal"><span class="lang en">{{ section.content.en.eyebrow }}</span><span class="lang vi">{{ section.content.vi.eyebrow }}</span><span class="lang zh">{{ section.content.zh.eyebrow }}</span></p>
+    <h1 class="hero-nv__title">
+      <span class="lang en"><span class="line-mask"><span class="line">{{ section.content.en.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.en.titleLine2 }}</span></span></span>
+      <span class="lang vi"><span class="line-mask"><span class="line">{{ section.content.vi.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.vi.titleLine2 }}</span></span></span>
+      <span class="lang zh"><span class="line-mask"><span class="line">{{ section.content.zh.titleLine1 }}</span></span><span class="line-mask"><span class="line line--accent">{{ section.content.zh.titleLine2 }}</span></span></span>
+    </h1>
+    <p class="lead hero-nv__desc reveal" data-delay="120"><span class="lang en">{{ section.content.en.lead }}</span><span class="lang vi">{{ section.content.vi.lead }}</span><span class="lang zh">{{ section.content.zh.lead }}</span></p>
+    <div class="hero-nv__actions reveal" data-delay="200">
+      <a href="{{ section.cta.primary.href | url }}" class="btn btn--solid hero-nv__cta"><span class="lang en">{{ section.content.en.ctaPrimary }}</span><span class="lang vi">{{ section.content.vi.ctaPrimary }}</span><span class="lang zh">{{ section.content.zh.ctaPrimary }}</span><span class="hero-nv__cta-arrow" aria-hidden="true">→</span></a>
+      <a href="{{ section.cta.secondary.href | url }}" class="btn btn--dark btn--outline hero-nv__cta"><span class="lang en">{{ section.content.en.ctaSecondary }}</span><span class="lang vi">{{ section.content.vi.ctaSecondary }}</span><span class="lang zh">{{ section.content.zh.ctaSecondary }}</span><span class="hero-nv__cta-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div></div>
+  <div class="container hero-nv__foot"><a href="{{ section.cta.scroll.href | url }}" class="hero-nv__scroll reveal" data-delay="240"><span class="hero-nv__scroll-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" focusable="false"><path d="M12 4.5v15M5.5 13l6.5 6.5L18.5 13"/></svg></span><span class="hero-nv__scroll-text"><span class="lang en">{{ section.content.en.scroll }}</span><span class="lang vi">{{ section.content.vi.scroll }}</span><span class="lang zh">{{ section.content.zh.scroll }}</span></span></a></div>
+</section>
