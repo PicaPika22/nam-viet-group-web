@@ -1,6 +1,29 @@
+const fs = require("fs");
 const path = require("path");
+const matter = require("gray-matter");
 const markdownIt = require("markdown-it");
+const {
+  LOCALES,
+  localeUrl,
+  localized,
+  pageIdentity,
+  canonicalUrl,
+  htmlLang,
+} = require("./scripts/i18n/locale");
+const { validateNewsPost, validateProduct, validateJob } = require("./scripts/i18n/required");
+
 const md = markdownIt({ html: false, linkify: true, breaks: true });
+
+function markdownEntries(relDir) {
+  const dir = path.join(__dirname, relDir);
+  return fs
+    .readdirSync(dir)
+    .filter((name) => name.endsWith(".md"))
+    .map((name) => ({
+      slug: path.basename(name, ".md"),
+      data: matter(fs.readFileSync(path.join(dir, name), "utf8")).data,
+    }));
+}
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("src/admin/**");
@@ -73,6 +96,27 @@ module.exports = function (eleventyConfig) {
       return new Date(value).toISOString().slice(0, 10);
     } catch {
       return value;
+    }
+  });
+
+  eleventyConfig.addFilter("localeUrl", (href, locale) => localeUrl(href, locale));
+  eleventyConfig.addFilter("localized", (value, locale) => localized(value, locale));
+  eleventyConfig.addFilter("pageIdentity", (pathname) => pageIdentity(pathname));
+  eleventyConfig.addFilter("canonicalUrl", (origin, href, locale) =>
+    canonicalUrl(origin, href, locale)
+  );
+  eleventyConfig.addFilter("htmlLang", (locale) => htmlLang(locale));
+  eleventyConfig.addGlobalData("locales", Object.keys(LOCALES));
+
+  eleventyConfig.on("eleventy.before", () => {
+    for (const { slug, data } of markdownEntries("src/news/posts")) {
+      validateNewsPost(data, slug);
+    }
+    for (const { slug, data } of markdownEntries("src/products/items")) {
+      validateProduct(data, slug);
+    }
+    for (const { slug, data } of markdownEntries("src/careers/jobs")) {
+      validateJob(data, slug);
     }
   });
 
