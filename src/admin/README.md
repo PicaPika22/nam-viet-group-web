@@ -53,4 +53,21 @@ Create a fine-grained PAT with **Contents: Read and write** on this repository o
 
 ## Auth
 
-If `ADMIN_USER` + `ADMIN_PASS` (or `ADMIN_TOKEN`) are set, the Studio shows a login screen.
+When auth is required (`NODE_ENV=production`, `CMS_MODE=remote`, or any non-empty `GITHUB_TOKEN` / `GITHUB_REPO`), the Studio **always** shows a login screen. Boot refuses to start without `ADMIN_USER` + `ADMIN_PASS` or `ADMIN_TOKEN` — there is no fail-open production mode.
+
+In local open mode (none of those triggers), login appears only if credentials are configured.
+
+## Production lock
+
+- `NODE_ENV=production` or `CMS_MODE=remote` or any non-empty `GITHUB_TOKEN` / `GITHUB_REPO` **requires** admin credentials. The process logs error codes and **exits before listen** if boot fails.
+- GitHub Contents publish runs only when **both** token and repo are set. Token-only still requires auth and does **not** fall back to an open local API.
+- When auth is required, `SITE_URL` and `CORS_ORIGIN` are required; `CORS_ORIGIN` is a pure origin matching `SITE_URL`.
+- Local open mode: none of those triggers (typical `npm run cms` on a laptop).
+
+### GitHub Pages (Ops)
+
+Public site is Vercel only.
+
+- [ ] Pages workflow disabled/removed
+- [ ] Repository Settings → Pages publishing disabled
+- [ ] Ops sign-off recorded

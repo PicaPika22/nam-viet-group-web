@@ -56,18 +56,17 @@ Config file: [`vercel.json`](vercel.json)
 | `GITHUB_TOKEN` | Fine-grained PAT, Contents read/write |
 | `GITHUB_REPO` | `owner/repo` |
 | `GITHUB_BRANCH` | `main` |
-| `ADMIN_USER` / `ADMIN_PASS` | Editor login |
-| `CORS_ORIGIN` | Optional; default `*` |
+| `ADMIN_USER` / `ADMIN_PASS` | Editor login (required when auth is required) |
+| `SITE_URL` / `CORS_ORIGIN` | Required in production; pure origin matching `SITE_URL` |
 
 4. Give the client: Railway `/admin/` URL + username/password  
 5. Publishing commits to GitHub → Vercel rebuilds in ~1–2 minutes  
 
 Details: [`src/admin/README.md`](src/admin/README.md)
 
-### GitHub Pages (optional / legacy)
+### GitHub Pages (Ops)
 
-Workflow `.github/workflows/deploy.yml` still publishes to  
-`https://picapika22.github.io/nam-viet-group-web/` with `PATH_PREFIX`. Prefer Vercel for the client domain.
+Public site is **Vercel only**. Disable GitHub Pages publishing in repository settings. See [`src/admin/README.md`](src/admin/README.md) for the Ops checklist.
 
 ## Configure
 
