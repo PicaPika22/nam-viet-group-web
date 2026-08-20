@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="admin-api" content="">
+    <title>Nam Viet Home</title>
+    <link id="homepageStyles" rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="dashboard.css">
+  </head>
+  <body class="dashboard-page">
+    <main class="login-gate" id="loginGate" hidden>
+      <form class="login-card" id="loginForm">
+        <p class="brand-mark">NV</p>
+        <p class="kicker">Nam Viet Group</p>
+        <h1>Nam Viet Home</h1>
+        <p>Đăng nhập để quản lý nội dung trang chủ.</p>
+        <label>Tên đăng nhập<input id="loginUser" name="user" autocomplete="username"></label>
+        <label>Mật khẩu<input id="loginPass" name="password" type="password" autocomplete="current-password" required></label>
+        <p class="form-error" id="loginError" role="alert" hidden></p>
+        <button class="button button--primary" type="submit">Đăng nhập</button>
+      </form>
+    </main>
+
+    <div class="dashboard" id="appShell" hidden>
+      <header class="dashboard__header">
+        <div>
+          <p class="kicker">Nam Viet Group</p>
+          <h1>Home Editor</h1>
+        </div>
+        <div class="revision" aria-live="polite">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusLabel">Đang tải</span>
+          <code id="revisionLabel">—</code>
+        </div>
+        <div class="header-actions">
+          <a class="button button--ghost" id="siteLink" href="http://localhost:8125/" target="_blank" rel="noopener">Mở trang chủ ↗</a>
+          <button class="button button--ghost" id="discardBtn" type="button">Hủy nháp</button>
+          <button class="button button--secondary" id="saveBtn" type="button">Lưu nháp</button>
+          <button class="button button--primary" id="publishBtn" type="button">Xuất bản</button>
+          <button class="text-button" id="logoutBtn" type="button" hidden>Đăng xuất</button>
+        </div>
+      </header>
+
+      <p class="api-warning" id="apiWarning" role="alert" hidden></p>
+
+      <div class="editor-grid">
+        <aside class="block-rail" aria-label="Các khối trang chủ">
+          <div class="panel-head">
+            <div><p class="kicker">Bố cục</p><h2>12 khối</h2></div>
+            <span class="dirty-flag" id="dirtyFlag" hidden>Chưa lưu</span>
+          </div>
+          <ol class="block-list" id="blockList"></ol>
+          <p class="rail-help">Kéo để đổi thứ tự. Tắt khối chỉ có hiệu lực sau khi xuất bản.</p>
+        </aside>
+
+        <section class="form-stage">
+          <div class="form-stage__head">
+            <div><p class="kicker" id="sectionKicker">Khối</p><h2 id="sectionTitle">Nội dung</h2></div>
+            <div class="lang-tabs" id="langTabs" role="tablist" aria-label="Ngôn ngữ">
+              <button type="button" data-lang="vi" role="tab" aria-selected="true">VI</button>
+              <button type="button" data-lang="en" role="tab" aria-selected="false">EN</button>
+              <button type="button" data-lang="zh" role="tab" aria-selected="false">中文</button>
+            </div>
+          </div>
+          <div class="block-form" id="blockForm"></div>
+        </section>
+
+        <aside class="preview-pane" id="previewPane">
+          <div class="panel-head">
+            <div><p class="kicker">Bản xem trước</p><h2 id="previewTitle">Khối đang chọn</h2></div>
+            <span class="preview-scale">42%</span>
+          </div>
+          <div class="preview-viewport">
+            <div class="home-preview" id="previewMount"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="preview.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
