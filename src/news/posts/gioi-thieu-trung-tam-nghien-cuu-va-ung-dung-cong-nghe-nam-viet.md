@@ -8,8 +8,7 @@ category:
   en: Internal News
   zh: 内部新闻
 date: '2020-12-10'
-image: >-
-  /assets/img/news/gioi-thieu-trung-tam-nghien-cuu-va-ung-dung-cong-nghe-nam-viet.jpg
+image: /assets/img/lab-equipment.png
 excerpt:
   vi: >-
     Song song với quá trình sản xuất kinh doanh, tập đoàn luôn nhận thức rằng:

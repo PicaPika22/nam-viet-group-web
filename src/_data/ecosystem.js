@@ -289,7 +289,7 @@ module.exports = {
     },
     {
       id: "research",
-      image: "/assets/img/sustainability.png",
+      image: "/assets/img/lab-equipment.png",
       key: { en: "06", vi: "06", zh: "06" },
       title: {
         en: "Research & Quality",
