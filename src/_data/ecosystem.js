@@ -163,7 +163,7 @@ module.exports = {
     },
     {
       id: "trade",
-      image: "/assets/img/manufacturing.png",
+      image: "/assets/img/fuel-station.png",
       key: { en: "03", vi: "03", zh: "03" },
       title: {
         en: "Trade & Energy",
@@ -257,7 +257,7 @@ module.exports = {
     },
     {
       id: "hospitality",
-      image: "/assets/img/cta.png",
+      image: "/assets/img/hospitality.png",
       key: { en: "05", vi: "05", zh: "05" },
       title: {
         en: "Hospitality",

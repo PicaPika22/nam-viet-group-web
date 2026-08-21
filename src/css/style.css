@@ -1959,7 +1959,9 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 .eco-map__panel {
   display: none;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: stretch;
   min-height: min(28rem, 70vh);
+  max-height: min(32rem, 75vh);
 }
 .eco-map__panel.is-active {
   display: grid;
@@ -1974,15 +1976,18 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 
 .eco-map__media {
   position: relative;
-  min-height: 16rem;
+  min-height: 0;
+  height: 100%;
   overflow: hidden;
   background: var(--green-900);
 }
 .eco-map__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.04);
+  object-position: center;
 }
 .eco-map__veil {
   position: absolute;
@@ -2032,8 +2037,9 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   flex-direction: column;
   gap: 0.15rem;
   background: color-mix(in srgb, var(--green-900) 92%, #000);
+  min-height: 0;
+  height: 100%;
   overflow: auto;
-  max-height: min(28rem, 70vh);
 }
 .eco-map--ink .eco-map__companies {
   background: color-mix(in srgb, var(--ink) 3%, var(--paper));
@@ -2135,10 +2141,16 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   .eco-map__panel.is-active {
     grid-template-columns: 1fr;
     min-height: 0;
+    max-height: none;
   }
-  .eco-map__media { aspect-ratio: 16 / 10; min-height: 0; }
+  .eco-map__media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    height: auto;
+  }
   .eco-map__companies {
     max-height: none;
+    height: auto;
     padding: 0.65rem 0.85rem 0.85rem;
   }
   .eco-map__tab { min-width: 9.25rem; flex: 0 0 auto; }
