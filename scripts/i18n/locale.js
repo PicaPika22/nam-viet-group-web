@@ -78,7 +78,7 @@ function localeUrl(href, locale) {
   if (isExternalOrFragment(href)) return href;
   if (!href.startsWith("/")) return href;
 
-  const url = new URL(href, "https://namvietjscom.vn");
+  const url = new URL(href, "https://namvietjsc.vn");
   const { pathname, search, hash } = url;
 
   if (hasLocalePrefix(pathname) && isLocaleTreePath(pageIdentity(pathname))) {
@@ -92,7 +92,7 @@ function localeUrl(href, locale) {
 
 function canonicalUrl(origin, href, locale) {
   assertLocale(locale);
-  const pathname = new URL(href, "https://namvietjscom.vn").pathname;
+  const pathname = new URL(href, "https://namvietjsc.vn").pathname;
   const identity = pageIdentity(pathname);
   const localizedPath = localeUrl(identity, locale);
   const base = String(origin).replace(/\/$/, "");

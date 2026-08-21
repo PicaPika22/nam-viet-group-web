@@ -28,7 +28,7 @@ describe("localeUrl", () => {
     assert.equal(localeUrl("/news/feed.xml", "en"), "/news/feed.xml");
     assert.equal(localeUrl("/downloads/file.pdf", "en"), "/downloads/file.pdf");
     assert.equal(localeUrl("https://partner.example/", "en"), "https://partner.example/");
-    assert.equal(localeUrl("https://namvietjscom.vn/about/", "en"), "https://namvietjscom.vn/about/");
+    assert.equal(localeUrl("https://namvietjsc.vn/about/", "en"), "https://namvietjsc.vn/about/");
     assert.equal(localeUrl("//example.com/about/", "en"), "//example.com/about/");
     assert.equal(localeUrl("mailto:a@b.c", "vi"), "mailto:a@b.c");
     assert.equal(localeUrl("tel:+1", "zh"), "tel:+1");
@@ -58,12 +58,12 @@ describe("identity and canonical", () => {
   });
   it("canonical is origin + pathname only", () => {
     assert.equal(
-      canonicalUrl("https://namvietjscom.vn", "/careers/#x", "en"),
-      "https://namvietjscom.vn/en/careers/"
+      canonicalUrl("https://namvietjsc.vn", "/careers/#x", "en"),
+      "https://namvietjsc.vn/en/careers/"
     );
     assert.equal(
-      canonicalUrl("https://namvietjscom.vn", "/news/?page=2", "zh"),
-      "https://namvietjscom.vn/zh/news/"
+      canonicalUrl("https://namvietjsc.vn", "/news/?page=2", "zh"),
+      "https://namvietjsc.vn/zh/news/"
     );
     assert.equal(htmlLang("zh"), "zh-Hans");
   });

@@ -77,11 +77,11 @@ function canonicalHref(html) {
 
 describe("viewSite contract", () => {
   it("is frozen origin plus localeUrl(unprefixed, editor locale)", () => {
-    assert.equal(viewSite("/", "https://namvietjscom.vn/", "en"), "https://namvietjscom.vn/en/");
-    assert.equal(viewSite("/", "https://namvietjscom.vn/", "vi"), "https://namvietjscom.vn/");
+    assert.equal(viewSite("/", "https://namvietjsc.vn/", "en"), "https://namvietjsc.vn/en/");
+    assert.equal(viewSite("/", "https://namvietjsc.vn/", "vi"), "https://namvietjsc.vn/");
     assert.equal(
-      viewSite(`/news/${NEWS_SLUG}/`, "https://namvietjscom.vn/", "zh"),
-      `https://namvietjscom.vn/zh/news/${NEWS_SLUG}/`
+      viewSite(`/news/${NEWS_SLUG}/`, "https://namvietjsc.vn/", "zh"),
+      `https://namvietjsc.vn/zh/news/${NEWS_SLUG}/`
     );
     assert.equal(viewSite("/", "", "en"), "/en/");
     assert.equal(viewSite("/news/x/", "", "de"), "/news/x/");
@@ -148,14 +148,14 @@ describe("locale tree parity", { timeout: 120000 }, () => {
   it("EN about is self-canonical with html lang=en and no sibling lang triples", () => {
     const html = fs.readFileSync(path.join(SITE, "en", "about", "index.html"), "utf8");
     assert.equal(htmlLangAttr(html), "en");
-    assert.equal(canonicalHref(html), "https://namvietjscom.vn/en/about/");
+    assert.equal(canonicalHref(html), "https://namvietjsc.vn/en/about/");
     assert.equal(hasSiblingLangTriples(html), false);
   });
 
   it("ZH about uses lang=zh-Hans", () => {
     const html = fs.readFileSync(path.join(SITE, "zh", "about", "index.html"), "utf8");
     assert.equal(htmlLangAttr(html), "zh-Hans");
-    assert.equal(canonicalHref(html), "https://namvietjscom.vn/zh/about/");
+    assert.equal(canonicalHref(html), "https://namvietjsc.vn/zh/about/");
   });
 
   it("news slug exists in all three locales", () => {

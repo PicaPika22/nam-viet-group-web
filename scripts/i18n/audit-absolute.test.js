@@ -5,8 +5,8 @@ const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "../..");
 const SRC = path.join(ROOT, "src");
-const ORIGIN = "https://namvietjscom.vn";
-const PAGE = /https:\/\/namvietjscom\.vn(?:\/en|\/zh)?\/(?:about|companies|products|news|careers|contact|investors|sustainability|downloads|privacy|cookies|terms)(?:\/[^\s"'`)]*)?/gi;
+const ORIGIN = "https://namvietjsc.vn";
+const PAGE = /https:\/\/namvietjsc\.vn(?:\/en|\/zh)?\/(?:about|companies|products|news|careers|contact|investors|sustainability|downloads|privacy|cookies|terms)(?:\/[^\s"'`)]*)?/gi;
 
 function walk(dir, acc = []) {
   for (const name of fs.readdirSync(dir, { withFileTypes: true })) {

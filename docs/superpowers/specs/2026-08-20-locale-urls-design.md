@@ -15,7 +15,7 @@ Emit **three server-rendered HTML documents** per existing public page identity.
 1. Every **existing** public HTML page identity exists at `{path}` (VI), `/en{path}` (EN), `/zh{path}` (ZH), trailing slash. `path` starts with `/` (example: `/about/` → `/en/about/`).
 2. Each document’s **visible public copy** is that locale only. Crawlers do not need `data-lang` / CSS to pick a language.
 3. Language switcher `href`s are server-rendered equivalent locale URLs for the **same page identity**. Clicking them loads that HTML. `html[lang]` / `span.lang` toggling on the same URL does **not** satisfy this spec.
-4. Self-canonical is the absolute URL on `https://namvietjscom.vn` for that locale pathname (no query, no hash). `/en/about/` does **not** canonical to `/about/`.
+4. Self-canonical is the absolute URL on `https://namvietjsc.vn` for that locale pathname (no query, no hash). `/en/about/` does **not** canonical to `/about/`.
 5. Content JSON/markdown keeps **locale-agnostic** paths. Prefixing is render-only.
 6. `npm run build` fails if a required translatable field is missing or blank. Editorial sign-off of real VI / EN / ZH copy is a **hard merge gate**.
 
@@ -27,7 +27,7 @@ Success is **not** Spec 3 SEO pack, translated slugs, or new page types.
 
 | Topic | Choice |
 |---|---|
-| Production canonical origin | `https://namvietjscom.vn` (apex). `SITE_URL`, `CORS_ORIGIN`, and `site.json.url` must be this origin. `www.namvietjscom.vn` and `*.vercel.app` are **non-canonical** |
+| Production canonical origin | `https://namvietjsc.vn` (apex). `SITE_URL`, `CORS_ORIGIN`, and `site.json.url` must be this origin. `www.namvietjsc.vn` and `*.vercel.app` are **non-canonical** |
 | Public language authority | **URL only.** `/` always VI; `/en/…` always EN; `/zh/…` always ZH. `localStorage nv-lang`, `data-lang`, and client swap must not override public documents. No redirect from `nv-lang` or `Accept-Language` |
 | Locale keys | Internal: `vi`, `en`, `zh`. Routes: `/`, `/en/`, `/zh/` |
 | `html[lang]` | `vi` → `vi`; `en` → `en`; `zh` → `zh-Hans`. Do not emit `/zh-Hans/` paths. Spec 3 reuses this map for `hreflang` |
@@ -135,7 +135,7 @@ For a **locale-tree HTML page URL**, `localeUrl` prefixes the **pathname** and p
 Navigation URL → keep `?query` and `#fragment`.  
 Canonical URL (§7) → pathname only (drop query and hash).
 
-Absolute `http:` / `https:` values are **unchanged**. `localeUrl` does **not** parse same-origin absolute URLs into locale paths. Internal public navigation must be stored **root-relative**. Implementation planning **audits** content for same-origin absolute public-page links (`https://namvietjscom.vn/about/` and equivalents) and converts any hits to the root-relative content-path contract before relying on `localeUrl`.
+Absolute `http:` / `https:` values are **unchanged**. `localeUrl` does **not** parse same-origin absolute URLs into locale paths. Internal public navigation must be stored **root-relative**. Implementation planning **audits** content for same-origin absolute public-page links (`https://namvietjsc.vn/about/` and equivalents) and converts any hits to the root-relative content-path contract before relying on `localeUrl`.
 
 If called with a content path that **already** contains an `/en/` or `/zh/` prefix, **fail the build/dev** — do not silently no-op. Content contract is unprefixed.
 
@@ -162,7 +162,7 @@ Locale-agnostic fields are out of this validator.
 ## 7. Document chrome
 
 - `<html lang="…">` from the locale table (`zh` → `zh-Hans`).
-- Self-canonical: `https://namvietjscom.vn` + locale pathname (trailing slash). Exclude query and fragment. `/en/careers/#prod-engineer` canonicalizes to `https://namvietjscom.vn/en/careers/`.
+- Self-canonical: `https://namvietjsc.vn` + locale pathname (trailing slash). Exclude query and fragment. `/en/careers/#prod-engineer` canonicalizes to `https://namvietjsc.vn/en/careers/`.
 - Canonical must **not** follow the request Host (`www` or `*.vercel.app`). Those hosts are non-canonical; Ops should redirect them to apex. If redirect infra is outside this spec’s code, that is **Ops acceptance**, not a reason to emit host-relative canonicals.
 - Switcher: three server-rendered `<a href>` from **page identity** + `localeUrl`, not `window.location` string hacks.
 

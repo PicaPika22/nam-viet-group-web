@@ -31,7 +31,7 @@
   function localeUrl(href, locale) {
     const prefix = locale === "en" ? "/en" : locale === "zh" ? "/zh" : "";
     if (!href.startsWith("/")) return href;
-    const url = new URL(href, "https://namvietjscom.vn");
+    const url = new URL(href, "https://namvietjsc.vn");
     return prefix + url.pathname + url.search + url.hash;
   }
 

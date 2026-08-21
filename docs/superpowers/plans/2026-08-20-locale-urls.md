@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Emit three server-rendered public HTML documents per existing page identity (`/` VI, `/en/…` EN, `/zh/…` ZH) with URL as language authority, self-canonical on `https://namvietjscom.vn`, and no Spec 3 SEO pack.
+**Goal:** Emit three server-rendered public HTML documents per existing page identity (`/` VI, `/en/…` EN, `/zh/…` ZH) with URL as language authority, self-canonical on `https://namvietjsc.vn`, and no Spec 3 SEO pack.
 
 **Architecture:** Pure helpers in `scripts/i18n/locale.js` (locale table, `localeUrl`, `localized`, `pageIdentity`, `canonicalUrl`, `flattenPairs`). Eleventy registers filters and flattened global data. Static templates paginate `[vi,en,zh]`; news/products/companies/leadership-person use one flat `{ item, locale }` dataset. Public switcher is `<a href>`. `nv-lang` must not override public documents.
 
@@ -14,7 +14,7 @@
 - Isolate from uncommitted ecosystem/CSS WIP on `main` (worktree). Do not edit ecosystem mill-line CSS/redesign files unless they are the only copy of a `span.lang` that must become `localized` — prefer locale render, not visual redesign.
 - Do **not** implement hreflang, sitemap locale listing, JSON-LD, translated slugs, job-detail routes, inner-page CMS.
 - Locale keys: `vi` | `en` | `zh`. Routes `/` `/en/` `/zh/`. `html[lang]`: `vi` / `en` / `zh-Hans`.
-- Origin: `https://namvietjscom.vn`. Canonical = origin + locale **pathname** (no query/hash).
+- Origin: `https://namvietjsc.vn`. Canonical = origin + locale **pathname** (no query/hash).
 - `localeUrl` prefixes **locale-tree HTML page paths only**; preserves query + fragment; leaves `http(s):`, `mailto:`, `tel:`, `#…`, assets, admin, feeds, robots/sitemap, download files unchanged. Already-prefixed `/en/` `/zh/` content paths **throw**. Invalid locale **throws**. Absolute same-origin URLs are **not** rewritten by `localeUrl`.
 - `localized(value, locale)`: no cross-language fallback. Required-field validation is **separate**.
 - Careers: listing × 3 + `#id` only. Apply stays `tel:`.
@@ -32,7 +32,7 @@
 | `scripts/i18n/audit-absolute.test.js` | Same-origin absolute public-page links in `src/` |
 | `scripts/i18n/tree-parity.test.js` | After build: VI/EN/ZH identity sets 1:1:1 + sample canonical/`html[lang]` |
 | `.eleventy.js` | Filters, global flattened data, `eleventy.before` validation |
-| `src/_data/site.json` | `localeDefault: "vi"`; `url` stays `https://namvietjscom.vn` |
+| `src/_data/site.json` | `localeDefault: "vi"`; `url` stays `https://namvietjsc.vn` |
 | `src/_includes/macros/i18n.njk` | One-locale macros |
 | `src/_includes/layouts/base.njk` | `html lang` + `data-lang` = **current** locale only |
 | `src/_includes/partials/head.njk` | Self-canonical via `canonicalUrl` |
@@ -69,7 +69,7 @@
 
 **CMS view site today:** `admin.js` `publicUrl(path)` = `siteUrl + unprefixed path` (no locale prefix). `dashboard.js` `#siteLink` = `health.siteUrl` (homepage, no locale).
 
-**Same-origin absolute page URLs:** at plan time, `src/` has `site.json.url` only — no `https://namvietjscom.vn/about/` hits. Task 1 test must keep that true.
+**Same-origin absolute page URLs:** at plan time, `src/` has `site.json.url` only — no `https://namvietjsc.vn/about/` hits. Task 1 test must keep that true.
 
 **`html[lang]` today:** `base.njk` hardcodes `en`; `main.js` maps `zh` → `zh-CN`. Spec 2: server sets `zh-Hans`; JS must not overwrite.
 
@@ -100,8 +100,8 @@ const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "../..");
 const SRC = path.join(ROOT, "src");
-const ORIGIN = "https://namvietjscom.vn";
-const PAGE = /https:\/\/namvietjscom\.vn(?:\/en|\/zh)?\/(?:about|companies|products|news|careers|contact|investors|sustainability|downloads|privacy|cookies|terms)(?:\/[^\s"'`)]*)?/gi;
+const ORIGIN = "https://namvietjsc.vn";
+const PAGE = /https:\/\/namvietjsc\.vn(?:\/en|\/zh)?\/(?:about|companies|products|news|careers|contact|investors|sustainability|downloads|privacy|cookies|terms)(?:\/[^\s"'`)]*)?/gi;
 
 function walk(dir, acc = []) {
   for (const name of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -238,7 +238,7 @@ describe("localeUrl", () => {
     assert.equal(localeUrl("/news/feed.xml", "en"), "/news/feed.xml");
     assert.equal(localeUrl("/downloads/file.pdf", "en"), "/downloads/file.pdf");
     assert.equal(localeUrl("https://partner.example/", "en"), "https://partner.example/");
-    assert.equal(localeUrl("https://namvietjscom.vn/about/", "en"), "https://namvietjscom.vn/about/");
+    assert.equal(localeUrl("https://namvietjsc.vn/about/", "en"), "https://namvietjsc.vn/about/");
     assert.equal(localeUrl("mailto:a@b.c", "vi"), "mailto:a@b.c");
     assert.equal(localeUrl("tel:+1", "zh"), "tel:+1");
     assert.equal(localeUrl("#prod-engineer", "en"), "#prod-engineer");
@@ -267,12 +267,12 @@ describe("identity and canonical", () => {
   });
   it("canonical is origin + pathname only", () => {
     assert.equal(
-      canonicalUrl("https://namvietjscom.vn", "/careers/#x", "en"),
-      "https://namvietjscom.vn/en/careers/"
+      canonicalUrl("https://namvietjsc.vn", "/careers/#x", "en"),
+      "https://namvietjsc.vn/en/careers/"
     );
     assert.equal(
-      canonicalUrl("https://namvietjscom.vn", "/news/?page=2", "zh"),
-      "https://namvietjscom.vn/zh/news/"
+      canonicalUrl("https://namvietjsc.vn", "/news/?page=2", "zh"),
+      "https://namvietjsc.vn/zh/news/"
     );
     assert.equal(htmlLang("zh"), "zh-Hans");
   });
@@ -297,7 +297,7 @@ Run: `node --test scripts/i18n/locale.test.js`
 
 - [ ] **Step 3: Implement `scripts/i18n/locale.js`**
 
-Parse `href` into pathname/search/hash (use `new URL(href, "https://namvietjscom.vn")` **only** for root-relative strings; do not use that parse result to rewrite absolute http(s) — those return unchanged **before** parse-as-internal).
+Parse `href` into pathname/search/hash (use `new URL(href, "https://namvietjsc.vn")` **only** for root-relative strings; do not use that parse result to rewrite absolute http(s) — those return unchanged **before** parse-as-internal).
 
 `isLocaleTreePath(pathname)`: true for `/` and paths under `/about`, `/companies`, `/products`, `/news` (but not `/news/feed.xml`), `/careers`, `/contact`, `/investors`, `/sustainability`, `/downloads` (not `*.pdf`/`*.docx`), `/privacy`, `/cookies`, `/terms`. False for `/admin`, `/dashboard`, `/mobile-concept`, `/assets`, `/css`, `/js`, `*.xml`, `*.txt`, typical static file extensions.
 
@@ -618,7 +618,7 @@ Dashboard homepage: `viewSite("/")`.
 - `_site/about/index.html` → `/about/`
 - `_site/en/about/index.html` → `/about/`
 
-Assert VI, EN, ZH identity sets equal. Read one EN about HTML: `html[lang]="en"`, canonical `https://namvietjscom.vn/en/about/`, does not contain three sibling `class="lang en"` + `class="lang vi"` + `class="lang zh"` for the same string. ZH sample: `lang="zh-Hans"`. News sample slug × 3. Asset path `/assets/` still at `_site/assets` not `_site/en/assets`.
+Assert VI, EN, ZH identity sets equal. Read one EN about HTML: `html[lang]="en"`, canonical `https://namvietjsc.vn/en/about/`, does not contain three sibling `class="lang en"` + `class="lang vi"` + `class="lang zh"` for the same string. ZH sample: `lang="zh-Hans"`. News sample slug × 3. Asset path `/assets/` still at `_site/assets` not `_site/en/assets`.
 
 Add npm:
 

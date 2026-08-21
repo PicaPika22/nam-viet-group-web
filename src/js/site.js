@@ -70,7 +70,7 @@
     if (isExternalOrFragment(href)) return href;
     if (!href.startsWith("/")) return href;
 
-    const url = new URL(href, "https://namvietjscom.vn");
+    const url = new URL(href, "https://namvietjsc.vn");
     const { pathname, search, hash } = url;
 
     if (hasLocalePrefix(pathname) && isLocaleTreePath(pageIdentity(pathname))) {
