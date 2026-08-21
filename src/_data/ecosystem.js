@@ -115,21 +115,6 @@ module.exports = {
           },
         },
         {
-          id: "hutech",
-          year: "2022",
-          short: { en: "Hutech Vietnam", vi: "Hutech Việt Nam", zh: "Hutech" },
-          name: {
-            en: "Hutech Vietnam Co., Ltd.",
-            vi: "Công ty TNHH Hutech Việt Nam",
-            zh: "Hutech Vietnam 有限公司",
-          },
-          desc: {
-            en: "International-standard warehousing and logistics within the Group network.",
-            vi: "Kho bãi và logistics chuẩn quốc tế trong mạng lưới Tập đoàn.",
-            zh: "集团网络内的国际标准仓储物流。",
-          },
-        },
-        {
           id: "logistics-nv",
           year: "2023",
           short: { en: "Nam Viet Trade Logistics", vi: "TM Logistics Nam Việt", zh: "南越贸易物流" },

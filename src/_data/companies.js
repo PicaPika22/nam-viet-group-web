@@ -122,23 +122,6 @@ const focusesById = {
       zh: "2018年成立",
     },
   ],
-  hutech: [
-    {
-      en: "International-standard warehousing and logistics",
-      vi: "Kho bãi và logistics chuẩn quốc tế",
-      zh: "国际标准仓储与物流",
-    },
-    {
-      en: "Integrated into the Group network",
-      vi: "Hội nhập vào mạng lưới tập đoàn",
-      zh: "并入集团网络",
-    },
-    {
-      en: "Serve domestic distribution and export flows",
-      vi: "Phục vụ phân phối nội địa và luồng xuất khẩu",
-      zh: "服务国内分销与出口物流",
-    },
-  ],
   "trading-vn": [
     {
       en: "Agricultural imports for feed manufacturing",
