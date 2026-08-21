@@ -7,7 +7,7 @@ eleventyExcludeFromCollections: true
   <channel>
     <title>{{ site.name }} News</title>
     <link>{{ site.url }}/news/</link>
-    <description>{{ site.description }}</description>
+    <description>{{ site.description.en }}</description>
     {%- for post in collections.news %}
     <item>
       <title>{{ post.data.title.en }}</title>

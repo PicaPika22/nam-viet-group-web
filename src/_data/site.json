@@ -5,8 +5,16 @@
     "vi": "Tập đoàn Đầu tư và Phát triển Nam Việt",
     "zh": "南越投资与发展集团"
   },
-  "title": "Nam Viet Group — Feeding Growth. Connecting the Future.",
-  "description": "Namviet Investment and Development Group — feed manufacturing, agri trade, port logistics, solar and industrial real estate across Vietnam.",
+  "title": {
+    "en": "Feed Manufacturing & Agri Logistics in Vietnam",
+    "vi": "Thức ăn chăn nuôi, thương mại & logistics nông nghiệp",
+    "zh": "越南饲料生产、农产贸易与港口物流"
+  },
+  "description": {
+    "en": "Nam Viet Group builds Vietnam's integrated agribusiness ecosystem — feed manufacturing, agri trade, port warehousing, logistics and industrial real estate. Explore 20+ years of sustainable growth.",
+    "vi": "Tập đoàn Nam Việt kiến tạo hệ sinh thái nông nghiệp tích hợp tại Việt Nam — sản xuất thức ăn chăn nuôi, thương mại nông sản, kho cảng, logistics và bất động sản công nghiệp. Hơn 20 năm phát triển bền vững.",
+    "zh": "南越集团深耕越南农业一体化生态系统——饲料生产、农产品贸易、港口仓储、物流与工业地产。二十余年积累制造实力与全球合作网络，助力可持续农业增长。"
+  },
   "url": "https://namvietjscom.vn",
   "localeDefault": "vi",
   "locales": ["vi", "en", "zh"],

@@ -1,4 +1,7 @@
 {% set docTitle = site.title %}
+{% if docTitle.en or docTitle.vi or docTitle.zh %}
+  {% set docTitle = docTitle[locale] %}
+{% endif %}
 {% if title %}
   {% if title.en or title.vi or title.zh %}
     {% set docTitle = title[locale] ~ " — " ~ site.name %}
