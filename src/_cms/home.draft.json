@@ -888,19 +888,35 @@
           }
         },
         {
-          "id": "m-2014",
+          "id": "m-2014-pilmico",
           "year": "2014",
-          "icon": "farm",
-          "image": "/assets/img/milestones/2014.jpg",
+          "icon": "building",
+          "image": "/assets/img/milestones/2014-pilmico.jpg",
           "title": {
-            "en": "Pilmico & Định Hóa farm",
-            "vi": "Pilmico & trang trại Định Hóa",
-            "zh": "Pilmico 与定化农场"
+            "en": "Pilmico Group",
+            "vi": "Pilmico Group",
+            "zh": "Pilmico 集团"
           },
           "description": {
-            "en": "Pilmico Group JSC is founded and a high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
-            "vi": "Thành lập CTCP Pilmico Group và xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
-            "zh": "成立 Pilmico 集团股份，并在太原定化建设优质牛猪繁殖场。"
+            "en": "Pilmico Group JSC is founded — feed manufacturing capacity within the Nam Viet ecosystem.",
+            "vi": "Thành lập CTCP Pilmico Group — năng lực sản xuất thức ăn trong hệ sinh thái Nam Việt.",
+            "zh": "成立 Pilmico 集团股份——南越生态内的饲料产能。"
+          }
+        },
+        {
+          "id": "m-2014-farm",
+          "year": "2014",
+          "icon": "farm",
+          "image": "/assets/img/milestones/2014-farm.jpg",
+          "title": {
+            "en": "Định Hóa farm",
+            "vi": "Trang trại Định Hóa",
+            "zh": "定化农场"
+          },
+          "description": {
+            "en": "A high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
+            "vi": "Xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+            "zh": "在太原定化建设优质牛猪繁殖场。"
           }
         },
         {

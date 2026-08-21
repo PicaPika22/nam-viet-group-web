@@ -41,19 +41,36 @@ module.exports = {
     },
     {
       year: "2014",
-      icon: "farm",
-      file: "2014.jpg",
+      icon: "building",
+      file: "2014-pilmico.jpg",
       en: {
-        title: "Pilmico & Định Hóa farm",
-        text: "Pilmico Group JSC is founded and a high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
+        title: "Pilmico Group",
+        text: "Pilmico Group JSC is founded — feed manufacturing capacity within the Nam Viet ecosystem.",
       },
       vi: {
-        title: "Pilmico & trang trại Định Hóa",
-        text: "Thành lập CTCP Pilmico Group và xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+        title: "Pilmico Group",
+        text: "Thành lập CTCP Pilmico Group — năng lực sản xuất thức ăn trong hệ sinh thái Nam Việt.",
       },
       zh: {
-        title: "Pilmico 与定化农场",
-        text: "成立 Pilmico 集团股份，并在太原定化建设优质牛猪繁殖场。",
+        title: "Pilmico 集团",
+        text: "成立 Pilmico 集团股份——南越生态内的饲料产能。",
+      },
+    },
+    {
+      year: "2014",
+      icon: "farm",
+      file: "2014-farm.jpg",
+      en: {
+        title: "Định Hóa farm",
+        text: "A high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
+      },
+      vi: {
+        title: "Trang trại Định Hóa",
+        text: "Xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+      },
+      zh: {
+        title: "定化农场",
+        text: "在太原定化建设优质牛猪繁殖场。",
       },
     },
     {
