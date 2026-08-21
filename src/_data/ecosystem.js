@@ -163,7 +163,7 @@ module.exports = {
       companies: [
         {
           id: "trading-vn",
-          year: null,
+          year: "2013",
           short: { en: "Trading Vietnam", vi: "Trading Việt Nam", zh: "Trading VN" },
           name: {
             en: "Trading Vietnam Co., Ltd.",
