@@ -72,7 +72,6 @@
           "keyVi": "XUẤT NHẬP KHẨU",
           "keyZh": "进出口",
           "links": [
-            { "href": "/companies/trading-vn/", "en": "Trading Vietnam", "vi": "Trading Việt Nam", "zh": "Trading VN" },
             { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
           ]
         },

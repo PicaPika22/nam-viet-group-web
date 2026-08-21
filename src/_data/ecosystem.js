@@ -162,21 +162,6 @@ module.exports = {
       },
       companies: [
         {
-          id: "trading-vn",
-          year: "2013",
-          short: { en: "Trading Vietnam", vi: "Trading Việt Nam", zh: "Trading VN" },
-          name: {
-            en: "Trading Vietnam Co., Ltd.",
-            vi: "Công ty TNHH Trading Việt Nam",
-            zh: "Trading Vietnam 有限公司",
-          },
-          desc: {
-            en: "Agricultural imports for feed and international trade programs.",
-            vi: "Nhập khẩu nông sản phục vụ sản xuất thức ăn và thương mại quốc tế.",
-            zh: "服务饲料生产的农产品进口与国际贸易。",
-          },
-        },
-        {
           id: "fuel",
           year: "2016",
           short: { en: "Nam Viet Fuel", vi: "Xăng dầu Nam Việt", zh: "南越石油" },

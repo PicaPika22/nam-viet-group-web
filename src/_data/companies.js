@@ -122,23 +122,6 @@ const focusesById = {
       zh: "2018年成立",
     },
   ],
-  "trading-vn": [
-    {
-      en: "Agricultural imports for feed manufacturing",
-      vi: "Nhập khẩu nông sản phục vụ sản xuất thức ăn",
-      zh: "服务饲料生产的农产品进口",
-    },
-    {
-      en: "International trade programs",
-      vi: "Chương trình thương mại quốc tế",
-      zh: "国际贸易业务",
-    },
-    {
-      en: "Complement Group supply chains",
-      vi: "Bổ trợ chuỗi cung ứng tập đoàn",
-      zh: "补充集团供应链",
-    },
-  ],
   fuel: [
     {
       en: "Fuel retail under Nam Viet Petroleum",
