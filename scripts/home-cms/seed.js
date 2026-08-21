@@ -233,7 +233,7 @@ function buildSeedDocument() {
             stat(`banner-${index + 1}`, row.value, i18n(row.en, row.vi, row.zh), { icon: row.icon }),
           ),
           timeline: journey.items.map((row) => ({
-            id: `m-${row.year}`,
+            id: `m-${String(row.file).replace(/\.[^.]+$/, "")}`,
             year: row.year,
             icon: row.icon,
             image: `/assets/img/milestones/${row.file}`,
