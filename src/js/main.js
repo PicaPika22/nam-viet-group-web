@@ -637,11 +637,61 @@
   onHeaderScroll();
   onScrollFx();
 
-  /* ─── Ecosystem map — sector tabs ─── */
+  /* ─── Ecosystem map — sector tabs + company image preview ─── */
   document.querySelectorAll("[data-eco-map]").forEach((root) => {
     const tabs = [...root.querySelectorAll("[data-eco-tab]")];
     const panels = [...root.querySelectorAll("[data-eco-panel]")];
     if (!tabs.length || !panels.length) return;
+
+    const resetPanelMedia = (panel) => {
+      const img = panel.querySelector("[data-eco-media]");
+      const title = panel.querySelector("[data-eco-media-title]");
+      const blurb = panel.querySelector("[data-eco-media-blurb]");
+      if (img?.dataset.ecoDefaultSrc) img.src = img.dataset.ecoDefaultSrc;
+      if (title?.dataset.ecoDefaultTitle) title.textContent = title.dataset.ecoDefaultTitle;
+      if (blurb?.dataset.ecoDefaultBlurb) blurb.textContent = blurb.dataset.ecoDefaultBlurb;
+      panel.querySelectorAll("[data-eco-co].is-selected").forEach((el) => {
+        el.classList.remove("is-selected");
+      });
+    };
+
+    const showCompanyMedia = (panel, link) => {
+      const img = panel.querySelector("[data-eco-media]");
+      const title = panel.querySelector("[data-eco-media-title]");
+      const blurb = panel.querySelector("[data-eco-media-blurb]");
+      const nextSrc = link.dataset.ecoCoImage;
+      if (img && nextSrc) {
+        const absolute = new URL(nextSrc, window.location.href).href;
+        if (img.src !== absolute) {
+          img.classList.add("is-swapping");
+          const apply = () => {
+            img.src = nextSrc;
+            img.classList.remove("is-swapping");
+          };
+          if (prefersReduced) apply();
+          else window.setTimeout(apply, 120);
+        }
+      }
+      if (title && link.dataset.ecoCoTitle) title.textContent = link.dataset.ecoCoTitle;
+      if (blurb && link.dataset.ecoCoBlurb) blurb.textContent = link.dataset.ecoCoBlurb;
+      panel.querySelectorAll("[data-eco-co]").forEach((el) => {
+        el.classList.toggle("is-selected", el === link);
+      });
+    };
+
+    panels.forEach((panel) => {
+      panel.querySelectorAll("[data-eco-co]").forEach((link) => {
+        link.addEventListener("pointerenter", () => showCompanyMedia(panel, link));
+        link.addEventListener("focus", () => showCompanyMedia(panel, link));
+        link.addEventListener("click", (e) => {
+          // First click: preview company image. Second click: follow link.
+          if (!link.classList.contains("is-selected")) {
+            e.preventDefault();
+            showCompanyMedia(panel, link);
+          }
+        });
+      });
+    });
 
     const activate = (id, { focus = false, scrollTab = true } = {}) => {
       let activeTab = null;
@@ -656,7 +706,10 @@
         const on = panel.dataset.ecoPanel === id;
         panel.classList.toggle("is-active", on);
         if (on) panel.removeAttribute("hidden");
-        else panel.setAttribute("hidden", "");
+        else {
+          panel.setAttribute("hidden", "");
+          resetPanelMedia(panel);
+        }
       });
       if (focus && activeTab) activeTab.focus({ preventScroll: true });
       // Never scroll on initial activate — that yanked the homepage to chapter 03.

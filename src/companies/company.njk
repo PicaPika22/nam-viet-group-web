@@ -13,7 +13,7 @@ eleventyComputed:
   <div class="company-stage__panel">
     <div class="company-stage__media">
       <img
-        src="{{ company.sector.image | url }}"
+        src="{{ (company.image or company.sector.image) | url }}"
         alt=""
         loading="lazy"
         decoding="async"

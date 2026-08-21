@@ -72,16 +72,18 @@
           decoding="async"
           width="960"
           height="640"
+          data-eco-media
+          data-eco-default-src="{{ sector.image | url }}"
         >
         <div class="eco-map__veil" aria-hidden="true"></div>
         <div class="eco-map__media-copy">
           <p class="eco-map__sector-key" aria-hidden="true">
             {{ sector.key[locale] }}
           </p>
-          <h4 class="eco-map__sector-title">
+          <h4 class="eco-map__sector-title" data-eco-media-title data-eco-default-title="{{ sector.title[locale] }}">
             {{ sector.title[locale] }}
           </h4>
-          <p class="eco-map__sector-blurb">
+          <p class="eco-map__sector-blurb" data-eco-media-blurb data-eco-default-blurb="{{ sector.blurb[locale] }}">
             {{ sector.blurb[locale] }}
           </p>
         </div>
@@ -90,7 +92,14 @@
       <ul class="eco-map__companies">
         {% for co in sector.companies %}
         <li class="eco-map__co">
-          <a class="eco-map__co-link" href="{{ ('/companies/' + co.id + '/') | localeUrl(locale) | url }}">
+          <a
+            class="eco-map__co-link"
+            href="{{ ('/companies/' + co.id + '/') | localeUrl(locale) | url }}"
+            data-eco-co
+            data-eco-co-image="{{ (co.image or sector.image) | url }}"
+            data-eco-co-title="{{ co.short[locale] }}"
+            data-eco-co-blurb="{{ co.desc[locale] }}"
+          >
             <div class="eco-map__co-meta">
               {% if co.year %}
               <span class="eco-map__co-year">{{ co.year }}</span>

@@ -24,6 +24,7 @@ module.exports = {
         {
           id: "nam-viet",
           year: "2002",
+          image: "/assets/img/manufacturing.png",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
             en: "Nam Viet Joint Stock Company",
@@ -39,6 +40,7 @@ module.exports = {
         {
           id: "feed-trading",
           year: "2013",
+          image: "/assets/img/milestones/2013.jpg",
           short: { en: "Feed Trading", vi: "Feed Trading", zh: "Feed Trading" },
           name: {
             en: "Feed Trading Vietnam Co., Ltd.",
@@ -54,6 +56,7 @@ module.exports = {
         {
           id: "pilmico",
           year: "2014",
+          image: "/assets/img/milestones/2014-pilmico.jpg",
           short: { en: "Pilmico Group", vi: "Pilmico Group", zh: "Pilmico" },
           name: {
             en: "Pilmico Group Joint Stock Company",
@@ -86,6 +89,7 @@ module.exports = {
         {
           id: "vapco",
           year: "2018",
+          image: "/assets/img/milestones/2018.jpg",
           short: { en: "Vapco", vi: "Vapco", zh: "Vapco" },
           name: {
             en: "Vapco Production & Trading Co., Ltd.",
@@ -102,6 +106,7 @@ module.exports = {
           id: "warehouse-qn",
           year: "2019",
           unit: true,
+          image: "/assets/img/milestones/2019.jpg",
           short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
           name: {
             en: "Nam Viet Port Warehouse (Cai Lan, Quang Ninh)",
@@ -117,6 +122,7 @@ module.exports = {
         {
           id: "logistics-nv",
           year: "2023",
+          image: "/assets/img/logistics.png",
           short: { en: "Nam Viet Trade Logistics", vi: "TM Logistics Nam Việt", zh: "南越贸易物流" },
           name: {
             en: "Nam Viet Trade Logistics JSC",
@@ -132,6 +138,7 @@ module.exports = {
         {
           id: "ag-ah-logistics",
           year: "2024",
+          image: "/assets/img/milestones/2024.jpg",
           short: { en: "AG & AH Logistics", vi: "AG & AH Logistics", zh: "AG & AH" },
           name: {
             en: "AG & AH Logistics Joint Stock Company",
@@ -164,6 +171,7 @@ module.exports = {
         {
           id: "fuel",
           year: "2016",
+          image: "/assets/img/fuel-station.png",
           short: { en: "Nam Viet Fuel", vi: "Xăng dầu Nam Việt", zh: "南越石油" },
           name: {
             en: "Nam Viet Petroleum",
@@ -196,6 +204,7 @@ module.exports = {
         {
           id: "xdnn-tn",
           year: "2020",
+          image: "/assets/img/farm-dinh-hoa.png",
           short: { en: "Thai Nguyen Agri Construction", vi: "XDNN Thái Nguyên", zh: "太原农建" },
           name: {
             en: "Thai Nguyen Agricultural Construction & Rural Development JSC",
@@ -211,6 +220,7 @@ module.exports = {
         {
           id: "song-cong",
           year: "2021",
+          image: "/assets/img/milestones/2021.jpg",
           short: { en: "Song Cong Industrial", vi: "PTCN Sông Công", zh: "宋功工业" },
           name: {
             en: "Song Cong Industrial Development JSC",
@@ -243,6 +253,7 @@ module.exports = {
         {
           id: "tourism",
           year: "2020",
+          image: "/assets/img/hospitality.png",
           short: { en: "Nam Viet Tourism", vi: "Du lịch Nam Việt", zh: "南越旅游" },
           name: {
             en: "Nam Viet Trade, Services & Tourism Development JSC",
@@ -276,6 +287,7 @@ module.exports = {
           id: "rd-center",
           year: "2016",
           unit: true,
+          image: "/assets/img/lab-equipment.png",
           short: { en: "R&D Center", vi: "Trung tâm NC&ƯD", zh: "研发中心" },
           name: {
             en: "Nam Viet Technology Research & Application Center",

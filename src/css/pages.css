@@ -482,6 +482,9 @@
 .about-ecosystem .eco-map--ink .eco-map__co-link:hover {
   background: color-mix(in srgb, var(--green-600, #1f7a46) 4%, transparent);
 }
+.about-ecosystem .eco-map--ink .eco-map__co-link.is-selected {
+  background: color-mix(in srgb, var(--green-600, #1f7a46) 10%, transparent);
+}
 .about-ecosystem .eco-map__co-year {
   font-family: var(--font-display, Georgia, serif);
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
