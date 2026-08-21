@@ -1,9 +1,9 @@
 /** Nam Viet Group ecosystem — sectors + member companies (Profile TAP DOAN) */
 module.exports = {
   intro: {
-    en: "One group. Multiple pillars. Companies and units working as a single value chain.",
-    vi: "Một tập đoàn. Nhiều trụ cột. Các công ty và đơn vị vận hành như một chuỗi giá trị.",
-    zh: "一个集团，多支柱协同。成员企业与单位形成一体化价值链。",
+    en: "One group, multiple pillars — Nam Viet Group's member companies and units operate as a single integrated agribusiness value chain across Vietnam.",
+    vi: "Một tập đoàn, nhiều trụ cột — các công ty và đơn vị thành viên của Nam Việt vận hành như một chuỗi giá trị nông nghiệp tích hợp xuyên suốt Việt Nam.",
+    zh: "一个集团，多支柱协同——南越集团旗下成员企业与单位在越南形成统一的农业产业一体化价值链。",
   },
   sectors: [
     {
