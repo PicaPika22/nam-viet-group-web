@@ -210,7 +210,7 @@ module.exports = {
     },
     {
       id: "infra",
-      image: "/assets/img/about.png",
+      image: "/assets/img/infrastructure.png",
       key: { en: "04", vi: "04", zh: "04" },
       title: {
         en: "Infrastructure & Industry",
