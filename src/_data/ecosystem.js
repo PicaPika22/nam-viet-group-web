@@ -24,7 +24,7 @@ module.exports = {
         {
           id: "nam-viet",
           year: "2002",
-          image: "/assets/img/manufacturing.png",
+          image: "/assets/img/about.png",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
             en: "Nam Viet Joint Stock Company",
