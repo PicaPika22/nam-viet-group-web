@@ -31,30 +31,39 @@
           "links": [
             { "href": "/companies/nam-viet/", "en": "Nam Viet JSC", "vi": "CTCP Nam Việt", "zh": "南越股份" },
             { "href": "/companies/pilmico/", "en": "Pilmico Group", "vi": "Pilmico Group", "zh": "Pilmico" },
-            { "href": "/companies/feed-trading/", "en": "Feed Trading", "vi": "Feed Trading", "zh": "Feed Trading" },
             { "href": "/products/", "en": "Feed product catalog", "vi": "Danh mục thức ăn", "zh": "饲料产品目录" }
-          ]
-        },
-        {
-          "id": "farm",
-          "keyEn": "FARM",
-          "keyVi": "CHĂN NUÔI",
-          "keyZh": "养殖",
-          "links": [
-            { "href": "/companies/xdnn-tn/", "en": "Thai Nguyen Agri Construction", "vi": "XDNN Thái Nguyên", "zh": "太原农建" },
-            { "href": "/companies/song-cong/", "en": "Song Cong Industrial", "vi": "PTCN Sông Công", "zh": "宋功工业" }
           ]
         },
         {
           "id": "logistics",
           "keyEn": "LOGISTICS",
-          "keyVi": "VẬN TẢI & KHO",
-          "keyZh": "物流仓储",
+          "keyVi": "LOGISTICS & CẢNG",
+          "keyZh": "物流与港口",
           "links": [
-            { "href": "/companies/logistics-nv/", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
-            { "href": "/companies/ag-ah-logistics/", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH" },
+            { "href": "/companies/feed-trading/", "en": "Feed Trading", "vi": "Feed Trading", "zh": "Feed Trading" },
+            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" },
             { "href": "/companies/warehouse-qn/", "en": "Cai Lan Warehouse", "vi": "Tổng kho Cái Lân", "zh": "盖麟总仓" },
-            { "href": "/companies/vapco/", "en": "Vapco", "vi": "Vapco", "zh": "Vapco" }
+            { "href": "/companies/logistics-nv/", "en": "Nam Viet Trade Logistics", "vi": "TM Logistics Nam Việt", "zh": "南越贸易物流" },
+            { "href": "/companies/ag-ah-logistics/", "en": "AG & AH Logistics", "vi": "AG & AH Logistics", "zh": "AG & AH" }
+          ]
+        },
+        {
+          "id": "trade",
+          "keyEn": "TRADE & ENERGY",
+          "keyVi": "THƯƠNG MẠI & NĂNG LƯỢNG",
+          "keyZh": "贸易与能源",
+          "links": [
+            { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
+          ]
+        },
+        {
+          "id": "infra",
+          "keyEn": "INFRASTRUCTURE",
+          "keyVi": "HẠ TẦNG & CÔNG NGHIỆP",
+          "keyZh": "基建与工业",
+          "links": [
+            { "href": "/companies/xdnn-tn/", "en": "Thai Nguyen Agri Construction", "vi": "XDNN Thái Nguyên", "zh": "太原农建" },
+            { "href": "/companies/song-cong/", "en": "Song Cong Industrial", "vi": "PTCN Sông Công", "zh": "宋功工业" }
           ]
         },
         {
@@ -67,19 +76,10 @@
           ]
         },
         {
-          "id": "trade",
-          "keyEn": "TRADE",
-          "keyVi": "XUẤT NHẬP KHẨU",
-          "keyZh": "进出口",
-          "links": [
-            { "href": "/companies/fuel/", "en": "Nam Viet Fuel", "vi": "Xăng dầu Nam Việt", "zh": "南越石油" }
-          ]
-        },
-        {
           "id": "tech",
-          "keyEn": "TECH",
-          "keyVi": "NGHIÊN CỨU",
-          "keyZh": "科研",
+          "keyEn": "RESEARCH",
+          "keyVi": "NGHIÊN CỨU & CHẤT LƯỢNG",
+          "keyZh": "研发与质量",
           "links": [
             { "href": "/companies/rd-center/", "en": "Nam Viet R&D Center", "vi": "Trung tâm NC&ƯD Nam Việt", "zh": "南越研发中心" }
           ]
@@ -123,11 +123,15 @@
       "titleVi": "Thức ăn chăn nuôi",
       "titleZh": "饲料营养",
       "links": [
+        { "href": "/products/", "en": "All feed products", "vi": "Toàn bộ sản phẩm", "zh": "全部产品" },
         { "href": "/products/nv007/", "en": "Pig feed — NV007", "vi": "Thức ăn heo — NV007", "zh": "猪饲料 NV007" },
         { "href": "/products/nv-10s/", "en": "Broiler starter — NV10S", "vi": "Gà trắng úm — NV10S", "zh": "肉鸡育雏 NV10S" },
+        { "href": "/products/nv5302a/", "en": "Duck feed — NV5302A", "vi": "Thức ăn vịt — NV5302A", "zh": "鸭饲料 NV5302A" },
         { "href": "/products/nv888/", "en": "Dairy cattle — NV888", "vi": "Bò sữa — NV888", "zh": "奶牛精料 NV888" },
+        { "href": "/products/nv5806/", "en": "Dairy goat — NV5806", "vi": "Dê sữa — NV5806", "zh": "奶山羊 NV5806" },
         { "href": "/products/nv40/", "en": "Fingerling feed — NV40", "vi": "Cá giống — NV40", "zh": "鱼苗浮料 NV40" },
         { "href": "/products/nv530/", "en": "Frog feed — NV530", "vi": "Thức ăn ếch — NV530", "zh": "蛙用浮料 NV530" },
+        { "href": "/products/nv5740/", "en": "Quail layer — NV5740", "vi": "Chim cút đẻ — NV5740", "zh": "蛋鹌鹑 NV5740" },
         { "href": "/#manufacturing", "en": "Manufacturing capability", "vi": "Năng lực sản xuất", "zh": "生产能力" }
       ]
     },
