@@ -46,10 +46,7 @@ permalink: "{{ localeUrl('/about/', locale) }}"
           <span class="line-mask"><span class="line line--accent">Hệ sinh thái nông nghiệp tích hợp.</span></span>
         {% endif %}
       </h1>
-      <p class="chapter__desc reveal" data-delay="200">
-        {{ ({ en: 'Nam Viet Group connects feed manufacturing, trading, logistics and ports across Vietnam — giving partners reliable nutrition and supply, from farm to global markets.', vi: 'Tập đoàn Nam Việt kết nối sản xuất thức ăn chăn nuôi, thương mại, logistics và kho cảng trên khắp Việt Nam — mang đến dinh dưỡng và chuỗi cung ứng ổn định cho đối tác trong và ngoài nước.', zh: '南越集团连接越南各地的饲料制造、贸易、物流与港口，为境内外伙伴提供可靠的营养方案与稳定供应链。' })[locale] }}
-      </p>
-      <div class="reveal page-actions" data-delay="300">
+      <div class="reveal page-actions about-hero__actions" data-delay="200">
         <button type="button" class="btn btn--light btn--play" data-video-open data-video-id="CTsPIRyZzAY">
           <span class="btn__play" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.29-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/></svg>
@@ -57,6 +54,9 @@ permalink: "{{ localeUrl('/about/', locale) }}"
           {{ ({ en: 'Watch our story', vi: 'Xem video giới thiệu', zh: '观看集团简介' })[locale] }}
         </button>
       </div>
+      <p class="chapter__desc reveal" data-delay="300">
+        {{ ({ en: 'Nam Viet Group connects feed manufacturing, trading, logistics and ports across Vietnam.', vi: 'Tập đoàn Nam Việt kết nối sản xuất thức ăn chăn nuôi, thương mại, logistics và kho cảng trên khắp Việt Nam.', zh: '南越集团连接越南各地的饲料制造、贸易、物流与港口。' })[locale] }}<span class="chapter__desc__more">{{ ({ en: ' We give partners reliable nutrition and supply, from farm to global markets.', vi: ' Mang đến dinh dưỡng và chuỗi cung ứng ổn định cho đối tác trong và ngoài nước.', zh: '为境内外伙伴提供可靠的营养方案与稳定供应链。' })[locale] }}</span>
+      </p>
     </header>
   </div>
 </section>
