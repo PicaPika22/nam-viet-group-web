@@ -774,4 +774,49 @@
       history.replaceState(null, "", id);
     });
   });
+
+  /* ─── Intro video modal ─── */
+  (() => {
+    const modal = document.querySelector("[data-video-modal]");
+    const openers = document.querySelectorAll("[data-video-open]");
+    if (!modal || !openers.length) return;
+    const frame = modal.querySelector("[data-video-frame]");
+    const closeBtn = modal.querySelector(".video-modal__close");
+    document.body.appendChild(modal); // lift clear of any stacking context
+    let lastFocus = null;
+    let closeTimer = 0;
+
+    const open = (id) => {
+      if (!id) return;
+      clearTimeout(closeTimer);
+      lastFocus = document.activeElement;
+      frame.innerHTML =
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+        '?autoplay=1&rel=0&modestbranding=1" title="Nam Viet Group" ' +
+        'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      modal.hidden = false;
+      html.classList.add("video-open");
+      document.body.classList.add("video-open");
+      requestAnimationFrame(() => modal.classList.add("is-open"));
+      closeBtn?.focus();
+    };
+
+    const close = () => {
+      if (modal.hidden) return;
+      modal.classList.remove("is-open");
+      html.classList.remove("video-open");
+      document.body.classList.remove("video-open");
+      closeTimer = setTimeout(() => {
+        modal.hidden = true;
+        frame.innerHTML = "";
+      }, prefersReduced ? 0 : 340);
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    };
+
+    openers.forEach((btn) => btn.addEventListener("click", () => open(btn.dataset.videoId)));
+    modal.querySelectorAll("[data-video-close]").forEach((el) => el.addEventListener("click", close));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  })();
 })();

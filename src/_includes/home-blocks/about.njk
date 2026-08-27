@@ -8,7 +8,17 @@
       </h2>
     </header>
     <div class="about__grid">
-      <div class="about__media reveal-img" data-parallax-img><img src="{{ section.images.media | url }}" alt="Golden grain in farmer's hands" loading="lazy"></div>
+      <button type="button" class="about__media reveal-img video-trigger" data-parallax-img data-video-open data-video-id="CTsPIRyZzAY"
+        aria-label="{{ ({ en: 'Play the Nam Viet Group introduction video', vi: 'Phát video giới thiệu Tập đoàn Nam Việt', zh: '播放南越集团简介视频' })[locale] }}">
+        <img src="{{ section.images.media | url }}" alt="Golden grain in farmer's hands" loading="lazy">
+        <span class="video-trigger__scrim" aria-hidden="true"></span>
+        <span class="video-trigger__cue">
+          <span class="video-trigger__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.29-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/></svg>
+          </span>
+          <span class="video-trigger__label">{{ ({ en: 'Watch our story', vi: 'Xem video giới thiệu', zh: '观看集团简介' })[locale] }}</span>
+        </span>
+      </button>
       <div class="about__body">
         <p class="lead reveal">{{ section.content[locale].lead }}</p>
         <p class="body-text reveal" data-delay="150">{{ section.content[locale].body }}</p>
@@ -21,6 +31,18 @@
           {% endfor %}
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="video-modal" data-video-modal hidden>
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__dialog" role="dialog" aria-modal="true"
+      aria-label="{{ ({ en: 'Nam Viet Group introduction video', vi: 'Video giới thiệu Tập đoàn Nam Việt', zh: '南越集团简介视频' })[locale] }}">
+      <button type="button" class="video-modal__close" data-video-close
+        aria-label="{{ ({ en: 'Close', vi: 'Đóng video', zh: '关闭' })[locale] }}">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="video-modal__frame" data-video-frame></div>
     </div>
   </div>
 </section>
