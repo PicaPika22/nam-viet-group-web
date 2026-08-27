@@ -175,12 +175,39 @@
 .about-hero--bleed .chapter__title .line {
   padding-bottom: 0.06em;
 }
+.about-hero--bleed .about-hero__actions {
+  margin-top: 0.35rem;
+}
 .about-hero--bleed .chapter__desc {
-  margin: 0;
+  margin: 1.35rem 0 0;
   max-width: 36rem;
   color: color-mix(in srgb, var(--cream, #f4f1ea) 88%, transparent);
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   line-height: 1.65;
+}
+@media (max-width: 700px) {
+  /* Lift the hero content up so it clears the cookie banner on phones */
+  .about-hero--bleed {
+    min-height: auto;
+    padding-bottom: clamp(1.9rem, 6vw, 2.75rem);
+  }
+  .about-hero--bleed .about-hero__crumb { margin-bottom: 1.05rem; }
+  /* Trim the trailing clause — shorter hero copy on phones */
+  .about-hero--bleed .chapter__desc__more { display: none; }
+  .about-hero--bleed .about-hero__actions { margin-top: 0.15rem; }
+  .about-hero--bleed .chapter__desc { margin-top: 1rem; }
+}
+@media (max-width: 430px) {
+  .about-hero--bleed {
+    padding-top: calc(var(--header-h) + 0.6rem);
+    padding-bottom: 1.6rem;
+  }
+  .about-hero--bleed .about-hero__crumb { margin-bottom: 0.65rem; font-size: 0.82rem; }
+  .about-hero--bleed .eyebrow { margin-bottom: 0.5rem; }
+  .about-hero--bleed .chapter__title { font-size: 1.62rem; margin-bottom: 0.8rem; line-height: 1.12; }
+  .about-hero--bleed .chapter__title .line:first-child { font-size: 1.9rem; }
+  .about-hero--bleed .chapter__title .line-mask { padding-bottom: 0.12em; margin-bottom: 0.02em; }
+  .about-hero--bleed .chapter__desc { font-size: 1rem; margin-top: 0.85rem; }
 }
 
 /* Kill page-subnav's default 2rem bottom margin — section pad owns the gap */
