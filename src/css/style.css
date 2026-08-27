@@ -3363,9 +3363,10 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   cursor: pointer;
   isolation: isolate;
 }
-/* keep a positioning context for the play cue where the mobile rule drops it to static */
+/* Positioning context for the play cue (mobile drops sticky to static).
+   Reset `top` so the desktop sticky offset is not treated as a relative shift. */
 @media (max-width: 900px) {
-  .about__media.video-trigger { position: relative; }
+  .about__media.video-trigger { position: relative; top: auto; }
 }
 .video-trigger__scrim {
   position: absolute;
