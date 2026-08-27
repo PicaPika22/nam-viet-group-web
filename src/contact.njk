@@ -97,7 +97,7 @@ permalink: "{{ localeUrl('/contact/', locale) }}"
   <div class="container">
     <header class="chapter__head chapter__head--center">
       <p class="eyebrow reveal">
-        {{ ({ en: 'Headquarters', vi: 'Trụ sở', zh: '总部' })[locale] }}
+        {{ ({ en: 'Location', vi: 'Vị trí', zh: '位置' })[locale] }}
       </p>
       <h2 class="chapter__title chapter__title--sm">
         {% if locale == 'en' %}
@@ -105,22 +105,23 @@ permalink: "{{ localeUrl('/contact/', locale) }}"
           <span class="line-mask"><span class="line line--muted">Thai Nguyen.</span></span>
         {% elif locale == 'zh' %}
           <span class="line-mask"><span class="line">欢迎造访</span></span>
-          <span class="line-mask"><span class="line line--muted">太原总部。</span></span>
+          <span class="line-mask"><span class="line line--muted">太原厂区。</span></span>
         {% else %}
           <span class="line-mask"><span class="line">Ghé thăm chúng tôi</span></span>
           <span class="line-mask"><span class="line line--muted">tại Thái Nguyên.</span></span>
         {% endif %}
       </h2>
       <p class="chapter__desc chapter__desc--center reveal" data-delay="150">
-        {{ site.address[locale] }}
+        <a href="{{ site.mapUrl }}" target="_blank" rel="noopener noreferrer">{{ site.address[locale] }}</a>
       </p>
     </header>
     <div class="contact-map reveal-img" data-parallax-img>
       <iframe
-        title="Nam Viet Group headquarters map"
+        title="{{ ({ en: 'Nam Viet Group — Diem Thuy Industrial Park map', vi: 'Bản đồ Nam Việt — KCN Điềm Thụy', zh: '南越集团 — 店瑞工业园地图' })[locale] }}"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?q=Phuong%20Song%20Cong%2C%20Thai%20Nguyen%2C%20Vietnam&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        src="{{ site.mapEmbed }}"
+        allowfullscreen
       ></iframe>
     </div>
   </div>

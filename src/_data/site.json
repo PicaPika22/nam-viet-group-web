@@ -25,10 +25,14 @@
   "phoneTel": "+842083861808",
   "fax": "+84 208 3861 808",
   "address": {
-    "en": "Urban Block II, Song Cong Ward, Thai Nguyen Province, Vietnam",
-    "vi": "Khối phố II, Phường Sông Công, Tỉnh Thái Nguyên, Việt Nam",
-    "zh": "越南太原省宋功坊第二街区"
+    "en": "Diem Thuy Industrial Park, Thai Nguyen Province, Vietnam",
+    "vi": "Khu công nghiệp Điềm Thụy, Tỉnh Thái Nguyên, Việt Nam",
+    "zh": "越南太原省店瑞工业园"
   },
+  "mapEmbed": "https://maps.google.com/maps?q=21.4723334,105.9044832&z=17&hl=vi&ie=UTF8&output=embed",
+  "mapUrl": "https://www.google.com/maps?q=21.4723334,105.9044832&z=17",
+  "mapLat": 21.4723334,
+  "mapLng": 105.9044832,
   "social": {
     "linkedin": "https://www.linkedin.com/",
     "facebook": "https://www.facebook.com/"
