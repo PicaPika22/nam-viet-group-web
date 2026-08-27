@@ -3342,6 +3342,19 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   }
 }
 
+/* ─── Intro-video button (text trigger, e.g. About hero) ─── */
+.btn--play { gap: 0.65rem; padding-left: 1.35rem; }
+.btn__play {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+.btn__play svg { margin-left: 2px; }
+
 /* ─── Intro-video trigger (About section) ─── */
 .video-trigger {
   display: block;
