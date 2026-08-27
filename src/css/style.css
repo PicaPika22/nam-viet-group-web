@@ -3341,3 +3341,158 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
     min-height: auto;
   }
 }
+
+/* ─── Intro-video trigger (About section) ─── */
+.video-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  isolation: isolate;
+}
+/* keep a positioning context for the play cue where the mobile rule drops it to static */
+@media (max-width: 900px) {
+  .about__media.video-trigger { position: relative; }
+}
+.video-trigger__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(to top, rgba(16, 40, 24, 0.68) 0%, rgba(16, 40, 24, 0.12) 42%, rgba(16, 40, 24, 0) 68%);
+  transition: background 0.4s var(--ease-soft);
+}
+.video-trigger:hover .video-trigger__scrim,
+.video-trigger:focus-visible .video-trigger__scrim {
+  background:
+    linear-gradient(to top, rgba(16, 40, 24, 0.74) 0%, rgba(16, 40, 24, 0.28) 50%, rgba(16, 40, 24, 0.1) 100%);
+}
+.video-trigger__cue {
+  position: absolute;
+  z-index: 3;
+  left: clamp(1.1rem, 2.4vw, 1.9rem);
+  bottom: clamp(1.1rem, 2.4vw, 1.9rem);
+  right: clamp(1.1rem, 2.4vw, 1.9rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+.video-trigger__play {
+  position: relative;
+  flex: none;
+  width: clamp(3.4rem, 5vw, 4.25rem);
+  height: clamp(3.4rem, 5vw, 4.25rem);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: background 0.35s var(--ease-soft), color 0.35s, transform 0.4s var(--ease-out);
+}
+.video-trigger__play svg { margin-left: 3px; }
+.video-trigger__play::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: video-pulse 2.6s var(--ease-out) infinite;
+}
+.video-trigger:hover .video-trigger__play,
+.video-trigger:focus-visible .video-trigger__play {
+  background: var(--white);
+  color: var(--green-900);
+  transform: scale(1.07);
+}
+.video-trigger__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.3;
+  text-shadow: 0 1px 12px rgba(16, 40, 24, 0.55);
+}
+[data-lang="vi"] .video-trigger__label { letter-spacing: 0.09em; }
+.video-trigger:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+@keyframes video-pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  70% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* ─── Intro-video modal ─── */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  opacity: 0;
+  transition: opacity 0.32s var(--ease-soft);
+}
+.video-modal[hidden] { display: none; }
+.video-modal.is-open { opacity: 1; }
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 22, 15, 0.82);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.video-modal__dialog {
+  position: relative;
+  width: min(1120px, 100%);
+  aspect-ratio: 16 / 9;
+  max-height: 84vh;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.55);
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.36s var(--ease-out);
+}
+.video-modal.is-open .video-modal__dialog { transform: none; }
+.video-modal__frame,
+.video-modal__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-modal__close {
+  position: absolute;
+  top: -0.9rem;
+  right: -0.9rem;
+  z-index: 4;
+  width: 2.9rem;
+  height: 2.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--green-900);
+  background: var(--white);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s var(--ease-out), background 0.3s;
+}
+.video-modal__close:hover { transform: rotate(90deg); background: var(--cream); }
+.video-modal__close:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+@media (max-width: 620px) {
+  .video-modal__close { top: 0.6rem; right: 0.6rem; width: 2.5rem; height: 2.5rem; }
+}
+html.video-open, body.video-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .video-trigger__play::after { animation: none; }
+  .video-modal, .video-modal__dialog, .video-modal__close { transition: none; }
+}
