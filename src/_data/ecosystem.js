@@ -220,7 +220,7 @@ module.exports = {
         {
           id: "xdnn-tn",
           year: "2020",
-          image: "/assets/img/farm-dinh-hoa.png",
+          image: "/assets/img/xdnn-tn.jpg",
           short: { en: "Thai Nguyen Agri Construction", vi: "XDNN Thái Nguyên", zh: "太原农建" },
           name: {
             en: "Thai Nguyen Agricultural Construction & Rural Development JSC",
