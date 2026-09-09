@@ -14,12 +14,16 @@ URL = f"{BASE}/about/leadership/"
 OUT = Path(r"d:\Code\WEB\scripts\_qa_leadership_out")
 OUT.mkdir(parents=True, exist_ok=True)
 
-SUPPORT_IDS = ["nguyen-thi-nu", "hoang-thanh-phong", "nguyen-van-dich"]
+SUPPORT_IDS = [
+    "nguyen-thi-nu",
+    "trinh-manh-hai",
+    "hoang-thanh-phong",
+    "nguyen-van-dich",
+]
 MEMBER_IDS = [
     "le-van-mien",
     "ha-van-huong",
     "pham-van-dung",
-    "nguyen-manh-hai",
     "nguyen-duc-hung",
     "nguyen-van-hung",
 ]
@@ -219,10 +223,10 @@ def main() -> int:
         # Sticky titles / empty grids
         empty_office = page.locator("#leadership-office .lgallery-card").count()
         empty_comp = page.locator("#leadership-companies .lgallery-card").count()
-        if empty_office != 3:
-            fail("blocker", "render", f"Office cards count={empty_office} expected 3")
-        if empty_comp != 6:
-            fail("blocker", "render", f"Company cards count={empty_comp} expected 6")
+        if empty_office != 4:
+            fail("blocker", "render", f"Office cards count={empty_office} expected 4")
+        if empty_comp != 5:
+            fail("blocker", "render", f"Company cards count={empty_comp} expected 5")
 
         # Console
         noisy = [e for e in console_errors if "favicon" not in e.lower()]

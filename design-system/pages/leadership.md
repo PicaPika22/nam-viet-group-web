@@ -3,7 +3,7 @@
 **ID:** `adn.page.leadership`  
 **Routes:** `/about/leadership/`, About panel `#leadership`  
 **Overrides:** [nam-viet-group/MASTER.md](../nam-viet-group/MASTER.md)  
-**Pattern:** [vertical-people-panels.md](../patterns/vertical-people-panels.md) → genotype **B (1–3–6)**
+**Pattern:** [vertical-people-panels.md](../patterns/vertical-people-panels.md) → genotype **B (1–4–5)**
 
 ---
 
@@ -25,8 +25,8 @@ About embed: intro `leader__grid` (copy + group photo) then **compact** strip.
 | Tier | Count | Who | Layout gene |
 |------|-------|-----|-------------|
 | 1 | 1 | Chủ tịch (Hà Văn An) | Apex centered, larger |
-| 2 | 3 | Phó TGĐ (Nụ), Kế toán trưởng (Phong), Giám đốc đối ngoại (Đích) | Centered row ~80–92% |
-| 3 | 6 | Giám đốc đơn vị thành viên (gồm Lê Văn Miên) | Full-width equal |
+| 2 | 4 | Phó CT Tập đoàn (Nụ), TGĐ phụ trách kinh doanh (Hải), Kế toán trưởng (Phong), Giám đốc đối ngoại (Đích) | Centered row ~80–92% |
+| 3 | 5 | Giám đốc đơn vị thành viên (gồm Lê Văn Miên) | Full-width equal |
 
 Source of truth: `src/_data/leadership.js` → `person.tier`.
 
@@ -51,7 +51,7 @@ Tiered `.reveal` stagger; hover lift on panels; respect reduced motion.
 
 ## QA
 
-- Counts 1/3/6
+- Counts 1/4/5
 - Apex center delta &lt; 8px vs strip inner
 - Compact About does not break sticky subnav
 - Mobile: apex first; no Chairman lost in mid-scroll peers

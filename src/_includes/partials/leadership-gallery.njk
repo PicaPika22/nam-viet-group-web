@@ -1,7 +1,7 @@
 {#
   Leadership gallery — quiet corporate authority.
   Bands (from person.band — NEVER guess from job title):
-    chairman · group-support (Nụ / Phong / Đích ONLY) · member-director
+    chairman · group-support (Nụ / Hải / Phong / Đích ONLY) · member-director
   Classes: lgallery-* (isolated from legacy .leader-card).
 #}
 {% set chairman = null %}
@@ -85,7 +85,7 @@
         {{ ({ en: 'Group support', vi: 'Hỗ trợ cấp Tập đoàn', zh: '集团支持团队' })[locale] }}
       </h2>
       <p class="leader-gallery__band-lead">
-        {{ ({ en: 'Deputy General Director, Chief Accountant and Director of External Affairs — the core support around Group leadership.', vi: 'Phó Tổng giám đốc, Kế toán trưởng và Giám đốc đối ngoại — đội ngũ hỗ trợ cốt lõi bên cạnh lãnh đạo Tập đoàn.', zh: '副总经理、总会计师与对外事务总监——围绕集团领导的核心支持团队。' })[locale] }}
+        {{ ({ en: 'Vice Chairman, General Director for Business, Chief Accountant and Director of External Affairs — the Group-level executive team beside the Chairman.', vi: 'Phó Chủ tịch, Tổng giám đốc phụ trách kinh doanh, Kế toán trưởng và Giám đốc đối ngoại — ban điều hành cấp Tập đoàn bên cạnh Chủ tịch.', zh: '集团副主席、商务总经理、总会计师与对外事务总监——主席身边的集团级高管团队。' })[locale] }}
       </p>
       <div class="leader-gallery__grid leader-gallery__grid--office">
         {% for person in leadership %}
