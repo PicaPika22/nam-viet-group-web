@@ -6,7 +6,9 @@
  * ║                                                                  ║
  * ║  "chairman"         → Chủ tịch Tập đoàn                         ║
  * ║  "group-support"    → Hỗ trợ Tập đoàn ONLY:                      ║
- * ║                       Nguyễn Thị Nụ, Hoàng Thanh Phong,           ║
+ * ║                       Nguyễn Thị Nụ (Phó Chủ tịch),              ║
+ * ║                       Trịnh Mạnh Hải (TGĐ phụ trách kinh doanh), ║
+ * ║                       Hoàng Thanh Phong (Kế toán trưởng),         ║
  * ║                       Nguyễn Văn Đích (Giám đốc đối ngoại)        ║
  * ║  "member-director"  → Giám đốc công ty / đơn vị thành viên       ║
  * ║                       (gồm Lê Văn Miên — GĐ SCID Sông Công,       ║
@@ -39,10 +41,11 @@ const TIER_FROM_BAND = Object.freeze({
   [BAND.MEMBER_DIRECTOR]: 3,
 });
 
-/** IDs locked to group-support — ONLY these three */
+/** IDs locked to group-support — ONLY these four */
 const GROUP_SUPPORT_IDS = Object.freeze([
-  "nguyen-thi-nu",
-  "hoang-thanh-phong",
+  "nguyen-thi-nu", // Phó Chủ tịch Tập đoàn
+  "trinh-manh-hai", // Tổng Giám đốc phụ trách kinh doanh, CTCP Nam Việt
+  "hoang-thanh-phong", // Kế toán trưởng
   "nguyen-van-dich", // Giám đốc đối ngoại
 ]);
 
@@ -51,7 +54,6 @@ const MEMBER_DIRECTOR_IDS = Object.freeze([
   "le-van-mien", // GĐ SCID Sông Công, AH Logistics & Du lịch Nam Việt
   "ha-van-huong",
   "pham-van-dung",
-  "nguyen-manh-hai",
   "nguyen-duc-hung", // Feed Trading — member director
   "nguyen-van-hung", // Cái Lân warehouse — member director (DO NOT move to support)
 ]);
@@ -91,14 +93,14 @@ const people = [
       zh: "阮氏努",
     },
     role: {
-      en: "Deputy General Director",
-      vi: "Phó Tổng giám đốc",
-      zh: "副总经理",
+      en: "Vice Chairman of the Group",
+      vi: "Phó Chủ tịch Tập đoàn",
+      zh: "集团副主席",
     },
     bio: {
-      en: "Supports Group executive leadership across member companies — turning strategy into day-to-day management and coordinated performance.",
-      vi: "Hỗ trợ điều hành Tập đoàn tại các công ty thành viên — đưa định hướng lãnh đạo vào quản trị hàng ngày và hiệu quả phối hợp liên đơn vị.",
-      zh: "协助集团在各成员企业的经营领导——将领导层方向落实为日常管理与跨单元协同绩效。",
+      en: "Vice Chairman of the Group — works alongside the Chairman on strategy and oversight of operations across the Nam Viet ecosystem.",
+      vi: "Phó Chủ tịch Tập đoàn — cùng Chủ tịch định hướng chiến lược và giám sát điều hành trên toàn hệ sinh thái Nam Việt.",
+      zh: "集团副主席——与主席共同制定战略并监督南越生态体系的运营。",
     },
   },
   {
@@ -207,24 +209,24 @@ const people = [
     },
   },
   {
-    id: "nguyen-manh-hai",
-    band: BAND.MEMBER_DIRECTOR,
-    order: 130,
-    image: "/assets/img/leadership/nguyen-manh-hai.jpg",
+    id: "trinh-manh-hai",
+    band: BAND.GROUP_SUPPORT,
+    order: 15,
+    image: "/assets/img/leadership/trinh-manh-hai.jpg",
     name: {
-      en: "Nguyen Manh Hai",
-      vi: "Nguyễn Mạnh Hải",
-      zh: "阮孟海",
+      en: "Trinh Manh Hai",
+      vi: "Trịnh Mạnh Hải",
+      zh: "郑孟海",
     },
     role: {
-      en: "Director, Nam Viet Logistics Co., Ltd.",
-      vi: "Giám đốc, CT TNHH Logistics Nam Việt",
-      zh: "南越物流有限公司总经理",
+      en: "General Director for Business, Nam Viet JSC",
+      vi: "Tổng Giám đốc phụ trách kinh doanh, CTCP Nam Việt",
+      zh: "南越股份公司商务总经理",
     },
     bio: {
-      en: "Runs Nam Viet Logistics — integrating warehouse, transport and distribution so Group cargo moves as one network, not isolated lanes.",
-      vi: "Điều hành Logistics Nam Việt — tích hợp kho bãi, vận tải và phân phối để hàng hóa Tập đoàn vận hành như một mạng lưới thống nhất.",
-      zh: "执掌南越物流——整合仓储、运输与分销，使集团货流作为一体网络而非割裂通道运转。",
+      en: "General Director for Business at Nam Viet JSC — leads commercial strategy, sales and distribution across the Group's feed and trading operations.",
+      vi: "Tổng Giám đốc phụ trách kinh doanh CTCP Nam Việt — điều hành chiến lược thương mại, bán hàng và phân phối cho mảng thức ăn và thương mại của Tập đoàn.",
+      zh: "南越股份公司商务总经理——统筹集团饲料与贸易板块的商业战略、销售与分销。",
     },
   },
   {
