@@ -260,6 +260,46 @@ permalink: "{{ localeUrl('/about/', locale) }}"
         </article>
       </div>
     </div>
+
+    {% if about.direction2030 %}
+    <div class="about-direction">
+      <header class="about-direction__head reveal">
+        <p class="about-direction__label">
+          {{ about.direction2030.label[locale] }}
+        </p>
+        <p class="about-direction__lead">
+          {{ about.direction2030.lead[locale] }}
+        </p>
+      </header>
+      <ul class="about-direction__grid" role="list">
+        {% for item in about.direction2030.items %}
+        <li class="about-direction__item reveal" data-delay="{{ loop.index0 * 100 }}">
+          <div class="about-direction__media">
+            <img
+              src="{{ item.image | url }}"
+              alt="{{ item.place.en }} — {{ item.tag.en }}"
+              width="1440"
+              height="810"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <div class="about-direction__body">
+            <p class="about-direction__place">
+              {{ item.place[locale] }}
+            </p>
+            <p class="about-direction__tag">
+              {{ item.tag[locale] }}
+            </p>
+            <p class="about-direction__text">
+              {{ item.text[locale] }}
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </div>
 </section>
 
