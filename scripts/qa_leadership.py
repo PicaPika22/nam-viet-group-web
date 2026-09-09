@@ -14,10 +14,10 @@ URL = f"{BASE}/about/leadership/"
 OUT = Path(r"d:\Code\WEB\scripts\_qa_leadership_out")
 OUT.mkdir(parents=True, exist_ok=True)
 
-SUPPORT_IDS = ["nguyen-thi-nu", "hoang-thanh-phong", "le-van-mien"]
+SUPPORT_IDS = ["nguyen-thi-nu", "hoang-thanh-phong", "nguyen-van-dich"]
 MEMBER_IDS = [
+    "le-van-mien",
     "ha-van-huong",
-    "nguyen-manh-ha",
     "pham-van-dung",
     "nguyen-manh-hai",
     "nguyen-duc-hung",

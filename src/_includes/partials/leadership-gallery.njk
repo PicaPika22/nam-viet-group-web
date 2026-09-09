@@ -1,7 +1,7 @@
 {#
   Leadership gallery — quiet corporate authority.
   Bands (from person.band — NEVER guess from job title):
-    chairman · group-support (Nụ / Phong / Miên ONLY) · member-director
+    chairman · group-support (Nụ / Phong / Đích ONLY) · member-director
   Classes: lgallery-* (isolated from legacy .leader-card).
 #}
 {% set chairman = null %}
@@ -85,7 +85,7 @@
         {{ ({ en: 'Group support', vi: 'Hỗ trợ cấp Tập đoàn', zh: '集团支持团队' })[locale] }}
       </h2>
       <p class="leader-gallery__band-lead">
-        {{ ({ en: 'Deputy General Director, Chief Accountant, and Assistant to the General Director — the core support around Group leadership.', vi: 'Phó Tổng giám đốc, Kế toán trưởng và Trợ lý Tổng giám đốc — đội ngũ hỗ trợ cốt lõi bên cạnh lãnh đạo Tập đoàn.', zh: '副总经理、总会计师与总经理助理——围绕集团领导的核心支持团队。' })[locale] }}
+        {{ ({ en: 'Deputy General Director, Chief Accountant and Director of External Affairs — the core support around Group leadership.', vi: 'Phó Tổng giám đốc, Kế toán trưởng và Giám đốc đối ngoại — đội ngũ hỗ trợ cốt lõi bên cạnh lãnh đạo Tập đoàn.', zh: '副总经理、总会计师与对外事务总监——围绕集团领导的核心支持团队。' })[locale] }}
       </p>
       <div class="leader-gallery__grid leader-gallery__grid--office">
         {% for person in leadership %}
@@ -129,7 +129,7 @@
         {{ ({ en: 'Directors of member companies', vi: 'Giám đốc công ty thành viên', zh: '成员企业负责人' })[locale] }}
       </h2>
       <p class="leader-gallery__band-lead">
-        {{ ({ en: 'Directors who run member companies across feed, trade, logistics, hospitality and rural development.', vi: 'Giám đốc điều hành các công ty thành viên — thức ăn, thương mại, logistics, du lịch và phát triển nông thôn.', zh: '执掌成员企业的负责人——覆盖饲料、贸易、物流、旅游与农村发展。' })[locale] }}
+        {{ ({ en: 'Directors who run member companies across feed, trade, logistics, industry, hospitality and rural development.', vi: 'Giám đốc điều hành các công ty thành viên — thức ăn, thương mại, logistics, công nghiệp, du lịch và phát triển nông thôn.', zh: '执掌成员企业的负责人——覆盖饲料、贸易、物流、工业、旅游与农村发展。' })[locale] }}
       </p>
       <div class="leader-gallery__grid leader-gallery__grid--companies">
         {% for person in leadership %}
