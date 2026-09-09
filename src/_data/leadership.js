@@ -2,18 +2,21 @@
  * Leadership team — names/roles/photos from namviet-jsc.com/vn/about
  *
  * ╔══════════════════════════════════════════════════════════════════╗
- * ║  BAN (bắt buộc) — KHÔNG đoán từ chức danh / tier số             ║
+ * ║  BAND (bắt buộc) — KHÔNG đoán từ chức danh / tier số            ║
  * ║                                                                  ║
  * ║  "chairman"         → Chủ tịch Tập đoàn                         ║
  * ║  "group-support"    → Hỗ trợ Tập đoàn ONLY:                      ║
  * ║                       Nguyễn Thị Nụ, Hoàng Thanh Phong,           ║
- * ║                       Lê Văn Miên                                 ║
+ * ║                       Nguyễn Văn Đích (Giám đốc đối ngoại)        ║
  * ║  "member-director"  → Giám đốc công ty / đơn vị thành viên       ║
- * ║                       (gồm Feed Trading + kho Cái Lân)            ║
+ * ║                       (gồm Lê Văn Miên — GĐ SCID Sông Công,       ║
+ * ║                       AH Logistics & Du lịch Nam Việt;            ║
+ * ║                       Feed Trading; kho Cái Lân)                  ║
  * ║                                                                  ║
  * ║  CẤM đưa vào group-support:                                      ║
  * ║    - nguyen-van-hung  (Giám đốc kho cảng Cái Lân)                 ║
  * ║    - nguyen-duc-hung  (GĐ Feed Trading)                           ║
+ * ║    - le-van-mien      (GĐ SCID Sông Công / AH / Du lịch NV)       ║
  * ║    - mọi Giám đốc công ty thành viên khác                        ║
  * ╚══════════════════════════════════════════════════════════════════╝
  *
@@ -40,13 +43,13 @@ const TIER_FROM_BAND = Object.freeze({
 const GROUP_SUPPORT_IDS = Object.freeze([
   "nguyen-thi-nu",
   "hoang-thanh-phong",
-  "le-van-mien",
+  "nguyen-van-dich", // Giám đốc đối ngoại
 ]);
 
 /** Member-company directors — NEVER promote to group-support */
 const MEMBER_DIRECTOR_IDS = Object.freeze([
+  "le-van-mien", // GĐ SCID Sông Công, AH Logistics & Du lịch Nam Việt
   "ha-van-huong",
-  "nguyen-manh-ha",
   "pham-van-dung",
   "nguyen-manh-hai",
   "nguyen-duc-hung", // Feed Trading — member director
@@ -121,8 +124,8 @@ const people = [
   },
   {
     id: "le-van-mien",
-    band: BAND.GROUP_SUPPORT,
-    order: 30,
+    band: BAND.MEMBER_DIRECTOR,
+    order: 95,
     image: "/assets/img/leadership/le-van-mien.jpg",
     name: {
       en: "Le Van Mien",
@@ -130,14 +133,35 @@ const people = [
       zh: "黎文绵",
     },
     role: {
-      en: "Assistant to the General Director, Nam Viet JSC",
-      vi: "Trợ lý Tổng giám đốc, CTCP Nam Việt",
-      zh: "南越股份公司总经理助理",
+      en: "Director — Song Cong Industrial Development, AH Logistics & Nam Viet Tourism",
+      vi: "Giám đốc SCID Sông Công, AH Logistics & Du lịch Nam Việt",
+      zh: "宋功工业发展、AH Logistics 及南越旅游总经理",
     },
     bio: {
-      en: "Coordinates executive agendas for Nam Viet JSC — bridging manufacturing priorities with Group-level initiatives and partner programs.",
-      vi: "Điều phối chương trình điều hành CTCP Nam Việt — kết nối ưu tiên sản xuất với các sáng kiến cấp Tập đoàn và chương trình đối tác.",
-      zh: "协调南越股份公司高管议程——衔接制造重点与集团级举措及伙伴项目。",
+      en: "Leads Song Cong Industrial Development (SCID) on 20 ha in Song Cong II Industrial Park, directs AH Logistics, and now runs Nam Viet Trade–Services–Tourism Development — pairing the Group's industrial base in Thai Nguyen with its hospitality and services platform.",
+      vi: "Điều hành CTCP Phát triển Công nghiệp Sông Công (SCID) trên 20ha tại KCN Sông Công II, làm Giám đốc CTCP AH Logistics và nay phụ trách CTCP Thương mại – Dịch vụ & Du lịch Nam Việt — gắn nền tảng công nghiệp của Tập đoàn tại Thái Nguyên với mảng lưu trú và dịch vụ.",
+      zh: "执掌宋功工业发展（SCID，宋功二号工业园20公顷），兼任 AH Logistics 总经理，并接管南越贸易服务旅游发展——将集团在太原的工业基础与住宿及服务平台相结合。",
+    },
+  },
+  {
+    id: "nguyen-van-dich",
+    band: BAND.GROUP_SUPPORT,
+    order: 30,
+    image: "/assets/img/leadership/nguyen-van-dich.jpg",
+    name: {
+      en: "Nguyen Van Dich",
+      vi: "Nguyễn Văn Đích",
+      zh: "阮文的",
+    },
+    role: {
+      en: "Director of External Affairs",
+      vi: "Giám đốc đối ngoại",
+      zh: "对外事务总监",
+    },
+    bio: {
+      en: "Leads external affairs for the Group — partner relations, investment promotion and stakeholder engagement across the Nam Viet ecosystem.",
+      vi: "Phụ trách công tác đối ngoại của Tập đoàn — quan hệ đối tác, xúc tiến đầu tư và kết nối các bên liên quan trong hệ sinh thái Nam Việt.",
+      zh: "负责集团对外事务——伙伴关系、投资促进与南越生态内各方联络。",
     },
   },
   {
@@ -151,35 +175,14 @@ const people = [
       zh: "何文享",
     },
     role: {
-      en: "Director, Pilmico Group JSC",
-      vi: "Giám đốc, CTCP Pilmico Group",
-      zh: "Pilmico 集团股份公司总经理",
+      en: "Director, Vapco Production & Trading Co., Ltd. & Nam Viet Trade Logistics JSC",
+      vi: "Giám đốc, Công ty TNHH SX & TM Vapco & CTCP Thương mại Logistics Nam Việt",
+      zh: "Vapco 生产贸易有限公司及南越贸易物流股份公司总经理",
     },
     bio: {
-      en: "Leads Pilmico Group JSC within the Nam Viet ecosystem — feed manufacturing capacity backed by warehouse and logistics services for industrial partners.",
-      vi: "Điều hành CTCP Pilmico Group trong hệ sinh thái Nam Việt — năng lực sản xuất thức ăn gắn với dịch vụ kho bãi và logistics cho đối tác công nghiệp.",
-      zh: "执掌南越生态内的 Pilmico 集团股份——饲料产能与面向产业伙伴的仓储物流服务并举。",
-    },
-  },
-  {
-    id: "nguyen-manh-ha",
-    band: BAND.MEMBER_DIRECTOR,
-    order: 110,
-    image: "/assets/img/leadership/nguyen-manh-ha.jpg",
-    name: {
-      en: "Nguyen Manh Ha",
-      vi: "Nguyễn Mạnh Hà",
-      zh: "阮孟河",
-    },
-    role: {
-      en: "Director, Nam Viet Trade–Tourism Development JSC",
-      vi: "Giám đốc, CTCP Thương mại – Dịch vụ & Du lịch Nam Việt",
-      zh: "南越贸易旅游发展股份公司总经理",
-    },
-    bio: {
-      en: "Directs Nam Viet Trade–Tourism Development — hospitality, events and service platforms that extend the Group’s brand beyond core agribusiness.",
-      vi: "Điều hành CTCP phát triển thương mại – du lịch Nam Việt — lưu trú, sự kiện và nền tảng dịch vụ mở rộng thương hiệu Tập đoàn ngoài lõi nông nghiệp.",
-      zh: "执掌南越贸易旅游发展股份——住宿、活动与服务平台，延展集团品牌至农业主业之外。",
+      en: "Runs Vapco and Nam Viet Trade Logistics — premises leasing, warehousing and cargo services that host industrial tenants and keep Group logistics moving as one network.",
+      vi: "Điều hành Vapco và Thương mại Logistics Nam Việt — cho thuê mặt bằng, kho bãi và dịch vụ hàng hóa, đón doanh nghiệp sản xuất và vận hành logistics Tập đoàn như một mạng lưới.",
+      zh: "执掌 Vapco 与南越贸易物流——场地租赁、仓储与货运服务，承接入驻企业并使集团物流作为一体网络运转。",
     },
   },
   {
@@ -193,14 +196,14 @@ const people = [
       zh: "范文勇",
     },
     role: {
-      en: "Director, Thai Nguyen Agriculture & Rural Development Construction JSC",
-      vi: "Giám đốc, CTCP Xây dựng nông nghiệp & Phát triển nông thôn Thái Nguyên",
-      zh: "太原农业农村建设发展股份公司总经理",
+      en: "Director, Pilmico Group JSC & AG Logistics JSC",
+      vi: "Giám đốc, CTCP Pilmico Group & CTCP AG Logistics",
+      zh: "Pilmico 集团股份公司及 AG Logistics 股份公司总经理",
     },
     bio: {
-      en: "Leads Thai Nguyen agriculture and rural development construction — infrastructure and farm-system projects that expand the Group’s real-economy footprint.",
-      vi: "Điều hành CTCP xây dựng nông nghiệp & phát triển nông thôn Thái Nguyên — hạ tầng và mô hình trang trại mở rộng dấu ấn kinh tế thực của Tập đoàn.",
-      zh: "执掌太原农业农村建设发展股份——基础设施与农场体系项目，拓展集团实体经济布局。",
+      en: "Leads Pilmico Group feed manufacturing and directs AG Logistics — production capacity paired with premises and logistics support for industrial partners in the Nam Viet ecosystem.",
+      vi: "Điều hành sản xuất thức ăn tại CTCP Pilmico Group và làm Giám đốc CTCP AG Logistics — năng lực sản xuất gắn với hỗ trợ mặt bằng và logistics cho đối tác công nghiệp trong hệ sinh thái Nam Việt.",
+      zh: "执掌 Pilmico 集团饲料生产并兼任 AG Logistics 总经理——产能与面向产业伙伴的场地及物流支持并举。",
     },
   },
   {

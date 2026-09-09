@@ -30,10 +30,10 @@ CENTER_BY_ID: dict[str, tuple[float, float]] = {
     "nguyen-duc-hung": (0.5, 0.27),
     "nguyen-van-hung": (0.5, 0.26),
     "ha-van-huong": (0.5, 0.28),
-    "nguyen-manh-ha": (0.5, 0.27),
     "le-van-mien": (0.5, 0.26),
     "pham-van-dung": (0.5, 0.28),
     "nguyen-manh-hai": (0.5, 0.27),
+    "nguyen-van-dich": (0.54, 0.36),
 }
 
 

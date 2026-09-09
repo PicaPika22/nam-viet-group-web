@@ -71,16 +71,33 @@ const focusesById = {
       zh: "国际货物运输服务",
     },
   ],
-  "ag-ah-logistics": [
+  "ag-logistics": [
     {
-      en: "Premises leasing and logistics on 5 ha",
-      vi: "Cho thuê mặt bằng và logistics trên 5ha",
-      zh: "5公顷场地租赁与物流",
+      en: "Premises leasing and logistics for industrial tenants",
+      vi: "Cho thuê mặt bằng và logistics cho doanh nghiệp sản xuất",
+      zh: "为制造企业提供场地租赁与物流",
     },
     {
-      en: "Serves regional manufacturing tenants",
-      vi: "Phục vụ doanh nghiệp sản xuất trong khu vực",
-      zh: "服务区域内制造企业",
+      en: "Based in Song Cong II Industrial Park, Thai Nguyen",
+      vi: "Đặt tại KCN Sông Công II, Thái Nguyên",
+      zh: "位于太原宋功二号工业园",
+    },
+    {
+      en: "Founded 2024 within the Group logistics network",
+      vi: "Thành lập 2024 trong mạng lưới logistics Tập đoàn",
+      zh: "2024年成立，纳入集团物流网络",
+    },
+  ],
+  "ah-logistics": [
+    {
+      en: "Premises leasing and logistics for industrial tenants",
+      vi: "Cho thuê mặt bằng và logistics cho doanh nghiệp sản xuất",
+      zh: "为制造企业提供场地租赁与物流",
+    },
+    {
+      en: "Based in Song Cong II Industrial Park, Thai Nguyen",
+      vi: "Đặt tại KCN Sông Công II, Thái Nguyên",
+      zh: "位于太原宋功二号工业园",
     },
     {
       en: "Founded 2024 within the Group logistics network",
