@@ -3,6 +3,7 @@ pagination:
   data: newsLocales
   size: 1
   alias: render
+  addAllPagesToCollections: true
 permalink: "{{ localeUrl('/news/' + render.item.fileSlug + '/', render.locale) }}"
 layout: layouts/article.njk
 eleventyComputed:

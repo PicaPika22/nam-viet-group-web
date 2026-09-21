@@ -168,6 +168,28 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   );
 
+  eleventyConfig.addCollection("sitemapPages", (collectionApi) => {
+    const seen = new Set();
+    const skip = (url) => {
+      if (!url) return true;
+      return (
+        url.includes("/admin/") ||
+        url.includes("/dashboard/") ||
+        url.includes("/mobile-concept")
+      );
+    };
+    return collectionApi
+      .getAll()
+      .filter((item) => {
+        if (item.data && item.data.eleventyExcludeFromCollections) return false;
+        const url = item.url;
+        if (skip(url) || seen.has(url)) return false;
+        seen.add(url);
+        return true;
+      })
+      .sort((a, b) => String(a.url).localeCompare(String(b.url)));
+  });
+
   return {
     dir: {
       input: "src",

@@ -65,9 +65,9 @@ module.exports = function () {
       url: withPrefix("/companies/"),
       title: { en: "Member companies", vi: "Công ty thành viên", zh: "成员企业" },
       body: {
-        en: "ecosystem Pilmico logistics feed trading Song Cong",
-        vi: "hệ sinh thái Pilmico logistics thức ăn Sông Công",
-        zh: "生态 Pilmico 物流 饲料 宋功",
+        en: "ecosystem Pilmico logistics feed trading Song Cong Định Hóa farm livestock",
+        vi: "hệ sinh thái Pilmico logistics thức ăn Sông Công trang trại Định Hóa chăn nuôi",
+        zh: "生态 Pilmico 物流 饲料 宋功 定化农场 养殖",
       },
     },
     {

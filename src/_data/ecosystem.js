@@ -318,5 +318,39 @@ module.exports = {
         },
       ],
     },
+    {
+      id: "farming",
+      image: "/assets/img/direction/dinh-hoa.jpg",
+      key: { en: "07", vi: "07", zh: "07" },
+      title: {
+        en: "Livestock & Farms",
+        vi: "Chăn nuôi và trang trại",
+        zh: "养殖与农场",
+      },
+      blurb: {
+        en: "Biosecure livestock production that closes the loop from feed to farm.",
+        vi: "Chăn nuôi an toàn sinh học, khép kín chuỗi từ thức ăn đến trang trại.",
+        zh: "生物安全养殖，闭合从饲料到农场的价值链。",
+      },
+      companies: [
+        {
+          id: "dinh-hoa-farm",
+          year: "2014",
+          unit: true,
+          image: "/assets/img/milestones/2014-farm.jpg",
+          short: { en: "Định Hóa farm", vi: "Trang trại Định Hóa", zh: "定化农场" },
+          name: {
+            en: "Nam Viet Livestock Farm — Định Hóa, Thái Nguyên",
+            vi: "Trang trại chăn nuôi Nam Việt — Định Hóa, Thái Nguyên",
+            zh: "南越养殖农场 — 太原定化",
+          },
+          desc: {
+            en: "Opened 2014 — high-quality cattle and pig breeding farm in Định Hóa, Thái Nguyên.",
+            vi: "Hoạt động từ 2014 — trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+            zh: "2014年投入运营——位于太原定化的优质牛猪种畜养殖场。",
+          },
+        },
+      ],
+    },
   ],
 };

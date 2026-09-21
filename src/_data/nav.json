@@ -84,6 +84,15 @@
           "links": [
             { "href": "/companies/rd-center/", "en": "Nam Viet R&D Center", "vi": "Trung tâm NC&ƯD Nam Việt", "zh": "南越研发中心" }
           ]
+        },
+        {
+          "id": "farming",
+          "keyEn": "LIVESTOCK & FARMS",
+          "keyVi": "CHĂN NUÔI & TRANG TRẠI",
+          "keyZh": "养殖与农场",
+          "links": [
+            { "href": "/companies/dinh-hoa-farm/", "en": "Định Hóa farm", "vi": "Trang trại Định Hóa", "zh": "定化农场" }
+          ]
         }
       ]
     },

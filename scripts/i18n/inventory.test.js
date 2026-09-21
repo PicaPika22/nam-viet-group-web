@@ -21,6 +21,8 @@ describe("current emission inventory", () => {
     assert.match(person, /alias:\s*render/);
     assert.match(person, /localeUrl\('\/about\/leadership\/' \+ render\.item\.id/);
     assert.doesNotMatch(person, /pagination:[\s\S]*pagination:/);
+    assert.match(company, /addAllPagesToCollections:\s*true/);
+    assert.match(person, /addAllPagesToCollections:\s*true/);
   });
   it("news and products paginate flattenPairs (one axis)", () => {
     const post = src("news/post-locale.njk");
@@ -38,6 +40,8 @@ describe("current emission inventory", () => {
     assert.match(product, /alias:\s*render/);
     assert.match(product, /localeUrl\('\/products\/' \+ render\.item\.fileSlug/);
     assert.doesNotMatch(product, /pagination:[\s\S]*pagination:/);
+    assert.match(post, /addAllPagesToCollections:\s*true/);
+    assert.match(product, /addAllPagesToCollections:\s*true/);
   });
 });
 
@@ -136,6 +140,11 @@ describe("one locale per document", () => {
     assert.doesNotMatch(src("news/feed.njk"), /data:\s*locales/);
     assert.match(src("robots.njk"), /permalink:\s*\/robots\.txt/);
     assert.match(src("sitemap.njk"), /permalink:\s*\/sitemap\.xml/);
+    assert.match(src("sitemap.njk"), /collections\.sitemapPages/);
+    assert.match(
+      fs.readFileSync(path.join(ROOT, ".eleventy.js"), "utf8"),
+      /addCollection\("sitemapPages"/
+    );
     assert.match(src("news/feed.njk"), /permalink:\s*\/news\/feed\.xml/);
   });
 

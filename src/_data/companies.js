@@ -224,6 +224,23 @@ const focusesById = {
       zh: "益生菌与营养科学应用",
     },
   ],
+  "dinh-hoa-farm": [
+    {
+      en: "High-quality cattle and pig breeding since 2014",
+      vi: "Chăn nuôi bò, lợn sinh sản chất lượng cao từ 2014",
+      zh: "自2014年起优质牛猪种畜养殖",
+    },
+    {
+      en: "Located in Định Hóa, Thái Nguyên",
+      vi: "Tọa lạc tại Định Hóa, Thái Nguyên",
+      zh: "位于太原定化",
+    },
+    {
+      en: "Biosecure farm closing the feed-to-livestock loop",
+      vi: "Trang trại an toàn sinh học, khép kín chuỗi thức ăn — chăn nuôi",
+      zh: "生物安全农场，闭合饲料到养殖循环",
+    },
+  ],
 };
 
 module.exports = function () {

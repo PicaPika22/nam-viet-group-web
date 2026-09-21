@@ -3,6 +3,7 @@ pagination:
   data: companyLocales
   size: 1
   alias: render
+  addAllPagesToCollections: true
 permalink: "{{ localeUrl('/companies/' + render.item.id + '/', render.locale) }}"
 layout: layouts/inner.njk
 eleventyComputed:

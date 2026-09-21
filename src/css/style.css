@@ -407,7 +407,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
 }
 .nav-mega__grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 1.35rem 2.15rem;
 }
 .nav-mega__col {

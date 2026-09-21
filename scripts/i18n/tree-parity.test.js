@@ -170,4 +170,31 @@ describe("locale tree parity", { timeout: 120000 }, () => {
     assert.equal(fs.existsSync(path.join(SITE, "en", "assets")), false);
     assert.equal(fs.existsSync(path.join(SITE, "zh", "assets")), false);
   });
+
+  it("sitemap lists every public HTML page once", () => {
+    const origin = "https://namvietjsc.vn";
+    const xml = fs.readFileSync(path.join(SITE, "sitemap.xml"), "utf8");
+    const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+    const locSet = new Set(locs);
+    assert.equal(locs.length, locSet.size, "sitemap URLs must be unique");
+
+    const missing = [];
+    for (const file of walkIndexHtml(SITE)) {
+      const expected = origin + localeUrl(fileToIdentity(file), fileToLocale(file));
+      if (!locSet.has(expected)) missing.push(expected);
+    }
+    assert.deepEqual(missing, []);
+    assert.ok(
+      locSet.has(`${origin}/companies/dinh-hoa-farm/`),
+      "Định Hóa farm is in the sitemap"
+    );
+    assert.ok(
+      locSet.has(`${origin}/en/companies/dinh-hoa-farm/`),
+      "EN Định Hóa farm is in the sitemap"
+    );
+    assert.ok(
+      locSet.has(`${origin}/zh/companies/dinh-hoa-farm/`),
+      "ZH Định Hóa farm is in the sitemap"
+    );
+  });
 });

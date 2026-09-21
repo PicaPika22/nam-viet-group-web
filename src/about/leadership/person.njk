@@ -3,6 +3,7 @@ pagination:
   data: leadershipPersonLocales
   size: 1
   alias: render
+  addAllPagesToCollections: true
 permalink: "{{ localeUrl('/about/leadership/' + render.item.id + '/', render.locale) }}"
 layout: layouts/leader.njk
 eleventyComputed:
