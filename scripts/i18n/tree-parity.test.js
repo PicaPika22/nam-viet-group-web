@@ -124,6 +124,7 @@ describe("public JS, CMS view-site, trailing slash source", () => {
 
 describe("locale tree parity", { timeout: 120000 }, () => {
   before(() => {
+    fs.rmSync(SITE, { recursive: true, force: true });
     const eleventyBin = path.join(ROOT, "node_modules", "@11ty", "eleventy", "cmd.cjs");
     execFileSync(process.execPath, [eleventyBin, "--quiet"], {
       cwd: ROOT,
@@ -196,5 +197,11 @@ describe("locale tree parity", { timeout: 120000 }, () => {
       locSet.has(`${origin}/zh/companies/dinh-hoa-farm/`),
       "ZH Định Hóa farm is in the sitemap"
     );
+    assert.ok(
+      locSet.has(`${origin}/companies/ag-ah-logistics/`),
+      "combined AG & AH Logistics is in the sitemap"
+    );
+    assert.equal(locSet.has(`${origin}/companies/ag-logistics/`), false);
+    assert.equal(locSet.has(`${origin}/companies/ah-logistics/`), false);
   });
 });

@@ -3,5 +3,13 @@
   "outputDirectory": "_site",
   "framework": null,
   "installCommand": "npm install",
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/companies/ag-logistics/", "destination": "/companies/ag-ah-logistics/", "permanent": true },
+    { "source": "/companies/ah-logistics/", "destination": "/companies/ag-ah-logistics/", "permanent": true },
+    { "source": "/en/companies/ag-logistics/", "destination": "/en/companies/ag-ah-logistics/", "permanent": true },
+    { "source": "/en/companies/ah-logistics/", "destination": "/en/companies/ag-ah-logistics/", "permanent": true },
+    { "source": "/zh/companies/ag-logistics/", "destination": "/zh/companies/ag-ah-logistics/", "permanent": true },
+    { "source": "/zh/companies/ah-logistics/", "destination": "/zh/companies/ag-ah-logistics/", "permanent": true }
+  ]
 }

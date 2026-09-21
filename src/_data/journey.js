@@ -62,15 +62,15 @@ module.exports = {
       file: "2014-farm.jpg",
       en: {
         title: "Định Hóa farm",
-        text: "A high-quality cattle and pig breeding farm opens in Định Hóa, Thái Nguyên.",
+        text: "A high-quality cattle, pig and poultry breeding farm opens in Định Hóa, Thái Nguyên.",
       },
       vi: {
         title: "Trang trại Định Hóa",
-        text: "Xây dựng trang trại chăn nuôi bò, lợn sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
+        text: "Xây dựng trang trại chăn nuôi bò, lợn, gà sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
       },
       zh: {
         title: "定化农场",
-        text: "在太原定化建设优质牛猪繁殖场。",
+        text: "在太原定化建设优质牛、猪、禽繁殖场。",
       },
     },
     {

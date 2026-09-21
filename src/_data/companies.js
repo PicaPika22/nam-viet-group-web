@@ -71,28 +71,11 @@ const focusesById = {
       zh: "国际货物运输服务",
     },
   ],
-  "ag-logistics": [
+  "ag-ah-logistics": [
     {
-      en: "Premises leasing and logistics for industrial tenants",
-      vi: "Cho thuê mặt bằng và logistics cho doanh nghiệp sản xuất",
-      zh: "为制造企业提供场地租赁与物流",
-    },
-    {
-      en: "Based in Song Cong II Industrial Park, Thai Nguyen",
-      vi: "Đặt tại KCN Sông Công II, Thái Nguyên",
-      zh: "位于太原宋功二号工业园",
-    },
-    {
-      en: "Founded 2024 within the Group logistics network",
-      vi: "Thành lập 2024 trong mạng lưới logistics Tập đoàn",
-      zh: "2024年成立，纳入集团物流网络",
-    },
-  ],
-  "ah-logistics": [
-    {
-      en: "Premises leasing and logistics for industrial tenants",
-      vi: "Cho thuê mặt bằng và logistics cho doanh nghiệp sản xuất",
-      zh: "为制造企业提供场地租赁与物流",
+      en: "Premises leasing and logistics on 5 ha for industrial tenants",
+      vi: "Cho thuê mặt bằng và logistics trên 5ha cho doanh nghiệp sản xuất",
+      zh: "5公顷场地租赁与物流，服务制造企业",
     },
     {
       en: "Based in Song Cong II Industrial Park, Thai Nguyen",
@@ -226,9 +209,9 @@ const focusesById = {
   ],
   "dinh-hoa-farm": [
     {
-      en: "High-quality cattle and pig breeding since 2014",
-      vi: "Chăn nuôi bò, lợn sinh sản chất lượng cao từ 2014",
-      zh: "自2014年起优质牛猪种畜养殖",
+      en: "High-quality cattle, pig and poultry breeding since 2014",
+      vi: "Chăn nuôi bò, lợn, gà sinh sản chất lượng cao từ 2014",
+      zh: "自2014年起优质牛、猪、禽种畜养殖",
     },
     {
       en: "Located in Định Hóa, Thái Nguyên",
