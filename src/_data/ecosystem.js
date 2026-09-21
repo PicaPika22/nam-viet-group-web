@@ -73,7 +73,7 @@ module.exports = {
     },
     {
       id: "logistics",
-      image: "/assets/img/logistics.png",
+      image: "/assets/img/logistics.jpg",
       key: { en: "02", vi: "02", zh: "02" },
       title: {
         en: "Logistics & Ports",
@@ -122,7 +122,7 @@ module.exports = {
         {
           id: "logistics-nv",
           year: "2023",
-          image: "/assets/img/logistics.png",
+          image: "/assets/img/logistics.jpg",
           short: { en: "Nam Viet Trade Logistics", vi: "TM Logistics Nam Việt", zh: "南越贸易物流" },
           name: {
             en: "Nam Viet Trade Logistics JSC",
@@ -204,7 +204,7 @@ module.exports = {
     },
     {
       id: "infra",
-      image: "/assets/img/infrastructure.jpg",
+      image: "/assets/img/infrastructure.png",
       key: { en: "04", vi: "04", zh: "04" },
       title: {
         en: "Infrastructure & Industry",

@@ -175,7 +175,7 @@ function buildSeedDocument() {
           zh: { eyebrow: "智慧物流", titleLine1: "连接越南", titleLine2: "与全球市场。", lead: "高效的物流网络、仓储、运输与港口基础设施，确保可靠交付与无缝供应链管理。", ctaPrimary: "探索物流" },
         },
         {
-          images: { background: "/assets/img/logistics.png" },
+          images: { background: "/assets/img/logistics.jpg" },
           stats: [
             stat("hubs", "20+", i18n("Strategic Logistics Hubs", "Trung tâm logistics", "战略物流枢纽"), { count: 20, suffix: "+" }),
             stat("shipments", "500+", i18n("Daily Shipments", "Chuyến hàng mỗi ngày", "日发货量"), { count: 500, suffix: "+" }),
