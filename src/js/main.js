@@ -683,13 +683,6 @@
       panel.querySelectorAll("[data-eco-co]").forEach((link) => {
         link.addEventListener("pointerenter", () => showCompanyMedia(panel, link));
         link.addEventListener("focus", () => showCompanyMedia(panel, link));
-        link.addEventListener("click", (e) => {
-          // First click: preview company image. Second click: follow link.
-          if (!link.classList.contains("is-selected")) {
-            e.preventDefault();
-            showCompanyMedia(panel, link);
-          }
-        });
       });
     });
 

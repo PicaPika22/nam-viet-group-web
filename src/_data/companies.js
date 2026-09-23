@@ -224,6 +224,40 @@ const focusesById = {
       zh: "生物安全农场，闭合饲料到养殖循环",
     },
   ],
+  "phu-luong-farm": [
+    {
+      en: "Poultry cluster toward 2030 in Phú Lương",
+      vi: "Cụm chăn nuôi gà định hướng 2030 tại Phú Lương",
+      zh: "面向2030的富良家禽集群",
+    },
+    {
+      en: "Genetics, nutrition and technical practice aligned",
+      vi: "Đồng bộ con giống, dinh dưỡng và quy trình kỹ thuật",
+      zh: "种禽、营养与技术流程协同",
+    },
+    {
+      en: "Expands the Group poultry line in Thái Nguyên",
+      vi: "Mở rộng mảng gia cầm của Tập đoàn tại Thái Nguyên",
+      zh: "拓展集团在太原的家禽板块",
+    },
+  ],
+  "da-phuc-logistics": [
+    {
+      en: "Container terminal operations toward 2030",
+      vi: "Khai thác cảng và bãi container định hướng 2030",
+      zh: "面向2030的港口与集装箱堆场运营",
+    },
+    {
+      en: "Located in Đa Phúc, Thái Nguyên",
+      vi: "Tọa lạc tại Đa Phúc, Thái Nguyên",
+      zh: "位于太原多福",
+    },
+    {
+      en: "Links the northern corridor to seaports and international cargo",
+      vi: "Kết nối hành lang phía Bắc với cảng biển và tuyến hàng hóa quốc tế",
+      zh: "连接北部走廊与海港及国际货运航线",
+    },
+  ],
 };
 
 module.exports = function () {

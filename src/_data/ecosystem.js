@@ -151,6 +151,23 @@ module.exports = {
             zh: "2024年成立——宋功二号工业园5公顷场地租赁与物流，服务制造企业。",
           },
         },
+        {
+          id: "da-phuc-logistics",
+          year: "2030",
+          unit: true,
+          image: "/assets/img/direction/da-phuc.jpg",
+          short: { en: "Đa Phúc terminal", vi: "Cảng Đa Phúc", zh: "多福港" },
+          name: {
+            en: "Đa Phúc container logistics — Thái Nguyên",
+            vi: "Logistics container Đa Phúc — Thái Nguyên",
+            zh: "多福集装箱物流 — 太原",
+          },
+          desc: {
+            en: "Toward 2030 — container terminal at Đa Phúc connecting the northern corridor to seaports and international cargo routes.",
+            vi: "Định hướng 2030 — khai thác cảng và bãi container tại Đa Phúc, kết nối hành lang vận tải phía Bắc với cảng biển và tuyến hàng hóa quốc tế.",
+            zh: "面向2030——多福港口与集装箱堆场，连接北部运输走廊与海港及国际货运航线。",
+          },
+        },
       ],
     },
     {
@@ -329,9 +346,26 @@ module.exports = {
             zh: "南越养殖农场 — 太原定化",
           },
           desc: {
-            en: "Opened 2014 — high-quality cattle, pig and poultry breeding farm in Định Hóa, Thái Nguyên.",
-            vi: "Hoạt động từ 2014 — trang trại chăn nuôi bò, lợn, gà sinh sản chất lượng cao tại Định Hóa, Thái Nguyên.",
-            zh: "2014年投入运营——位于太原定化的优质牛、猪、禽种畜养殖场。",
+            en: "Opened 2014 — biosecure cattle, pig and poultry breeding in Định Hóa; toward 2030 the Group deepens the feed–genetics–farm loop.",
+            vi: "Hoạt động từ 2014 — chăn nuôi bò, lợn, gà sinh sản an toàn sinh học tại Định Hóa; định hướng 2030 khép kín thêm vòng thức ăn – con giống – trang trại.",
+            zh: "自2014年运营——定化生物安全牛、猪、禽种畜养殖；面向2030进一步闭合饲料—种畜—农场循环。",
+          },
+        },
+        {
+          id: "phu-luong-farm",
+          year: "2030",
+          unit: true,
+          image: "/assets/img/direction/phu-luong.jpg",
+          short: { en: "Phú Lương poultry", vi: "Chăn nuôi gà Phú Lương", zh: "富良养禽" },
+          name: {
+            en: "Nam Viet poultry cluster — Phú Lương, Thái Nguyên",
+            vi: "Cụm chăn nuôi gà Nam Việt — Phú Lương, Thái Nguyên",
+            zh: "南越家禽集群 — 太原富良",
+          },
+          desc: {
+            en: "Toward 2030 — poultry cluster in Phú Lương aligning genetics, nutrition and technical practice.",
+            vi: "Định hướng 2030 — cụm chăn nuôi gà tại Phú Lương đồng bộ con giống, dinh dưỡng và quy trình kỹ thuật.",
+            zh: "面向2030——富良家禽养殖集群，协同种禽、营养与技术流程。",
           },
         },
       ],

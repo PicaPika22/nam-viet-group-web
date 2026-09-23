@@ -38,6 +38,10 @@
     {% set ecoMapShowHead = true %}
     {% set ecoMapId = "home-eco" %}
     {% include "partials/ecosystem-map.njk" %}
-    <div class="reveal" data-delay="300"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--light"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
+    <div class="home-eco__cta reveal" data-delay="300">
+      <a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--light">
+        <span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}
+      </a>
+    </div>
   </div>
 </section>

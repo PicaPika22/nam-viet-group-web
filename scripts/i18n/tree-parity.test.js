@@ -201,6 +201,14 @@ describe("locale tree parity", { timeout: 120000 }, () => {
       locSet.has(`${origin}/companies/ag-ah-logistics/`),
       "combined AG & AH Logistics is in the sitemap"
     );
+    assert.ok(
+      locSet.has(`${origin}/companies/phu-luong-farm/`),
+      "Phú Lương poultry is in the sitemap"
+    );
+    assert.ok(
+      locSet.has(`${origin}/companies/da-phuc-logistics/`),
+      "Đa Phúc logistics is in the sitemap"
+    );
     assert.equal(locSet.has(`${origin}/companies/ag-logistics/`), false);
     assert.equal(locSet.has(`${origin}/companies/ah-logistics/`), false);
   });

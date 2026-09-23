@@ -95,6 +95,7 @@
           <a
             class="eco-map__co-link"
             href="{{ ('/companies/' + co.id + '/') | localeUrl(locale) | url }}"
+            aria-label="{{ co.name[locale] }}"
             data-eco-co
             data-eco-co-image="{{ (co.image or sector.image) | url }}"
             data-eco-co-title="{{ co.short[locale] }}"
