@@ -2053,6 +2053,7 @@ body.lang-switching main { animation: langFade 0.5s var(--ease-out); }
   opacity: 0.88;
   text-wrap: pretty;
 }
+.eco-map__play { margin-top: 1rem; }
 
 .eco-map__companies {
   list-style: none;

@@ -73,6 +73,7 @@ module.exports = {
     },
     {
       id: "logistics",
+      video: "J5WqgMWb13M",
       image: "/assets/img/logistics.jpg",
       key: { en: "02", vi: "02", zh: "02" },
       title: {
@@ -321,6 +322,7 @@ module.exports = {
     },
     {
       id: "farming",
+      video: "Iaw0RU6kaQM",
       image: "/assets/img/direction/dinh-hoa.jpg",
       key: { en: "07", vi: "07", zh: "07" },
       title: {
