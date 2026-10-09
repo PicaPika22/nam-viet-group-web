@@ -64,6 +64,15 @@ eleventyComputed:
       {% endif %}
 
       <div class="company-stage__actions">
+        {% if company.video %}
+        <button type="button" class="btn btn--outline btn--dark btn--play" data-video-open data-video-id="{{ company.video }}"
+          aria-label="{{ ({ en: 'Play the ' + company.short.en + ' video', vi: 'Phát video giới thiệu ' + company.short.vi, zh: '播放' + company.short.zh + '视频' })[locale] }}">
+          <span class="btn__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.29-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/></svg>
+          </span>
+          {{ ({ en: 'Watch video', vi: 'Xem video', zh: '观看视频' })[locale] }}
+        </button>
+        {% endif %}
         <a class="btn btn--solid" href="{{ '/contact/'  | localeUrl(locale) | url }}">
           {{ i18n[locale].contact }}
         </a>

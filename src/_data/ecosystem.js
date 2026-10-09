@@ -24,6 +24,7 @@ module.exports = {
         {
           id: "nam-viet",
           year: "2002",
+          video: "WNR72DQayUI",
           image: "/assets/img/about.png",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
@@ -123,7 +124,7 @@ module.exports = {
         {
           id: "logistics-nv",
           year: "2023",
-          image: "/assets/img/logistics.jpg",
+          image: "/assets/img/logistics-nv.jpg",
           short: { en: "Nam Viet Trade Logistics", vi: "TM Logistics Nam Việt", zh: "南越贸易物流" },
           name: {
             en: "Nam Viet Trade Logistics JSC",
