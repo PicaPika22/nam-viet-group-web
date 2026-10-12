@@ -28,6 +28,16 @@ ogType: article
     {% else %}
     {{ content | safe }}
     {% endif %}
+    {% if gallery %}
+    <div class="article-gallery">
+      {% for photo in gallery %}
+      <figure class="article-gallery__item">
+        <img src="{{ photo.src | url }}" alt="{{ photo.caption[locale] if photo.caption }}" loading="lazy">
+        {% if photo.caption %}<figcaption>{{ photo.caption[locale] }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
     <p class="article-back">
       <a href="{{ '/news/'  | localeUrl(locale) | url }}">←
         {{ i18n[locale].backToNews }}

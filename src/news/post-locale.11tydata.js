@@ -6,5 +6,6 @@ module.exports = {
     image: (data) => data.render && data.render.item.data.image,
     body: (data) => data.render && data.render.item.data.body,
     excerpt: (data) => data.render && data.render.item.data.excerpt,
+    gallery: (data) => data.render && data.render.item.data.gallery,
   },
 };
