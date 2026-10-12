@@ -56,6 +56,21 @@ module.exports = function (eleventyConfig) {
       });
   });
 
+  // Video for a sector or member company id. A company without its own video falls back to its sector's;
+  // a sector without one falls back to its first company that has one (e.g. Feed → Nam Viet JSC).
+  eleventyConfig.addFilter("ecoVideo", (id) => {
+    const { sectors = [] } = require("./src/_data/ecosystem");
+    for (const sector of sectors) {
+      if (sector.id === id) {
+        const lead = (sector.companies || []).find((c) => c.video);
+        return sector.video || (lead && lead.video) || "";
+      }
+      const co = (sector.companies || []).find((c) => c.id === id);
+      if (co) return co.video || sector.video || "";
+    }
+    return "";
+  });
+
   eleventyConfig.addFilter("pathOnly", (value) => {
     if (!value) return "/";
     return String(value).split("#")[0] || "/";

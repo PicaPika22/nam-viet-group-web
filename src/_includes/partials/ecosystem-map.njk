@@ -6,6 +6,7 @@
     ecoMapId — id prefix for a11y ids when multiple maps could exist. Default: eco
     ecoMapActive — optional sector id to open first (also reads URL hash)
 #}
+{% from "macros/video.njk" import videoButton with context %}
 {% set variant = ecoMapVariant or "dark" %}
 {% set showHead = ecoMapShowHead if ecoMapShowHead is defined else true %}
 {% set idPrefix = ecoMapId or "eco" %}
@@ -86,14 +87,8 @@
           <p class="eco-map__sector-blurb" data-eco-media-blurb data-eco-default-blurb="{{ sector.blurb[locale] }}">
             {{ sector.blurb[locale] }}
           </p>
-          {% if sector.video %}
-          <button type="button" class="btn btn--light btn--small btn--play eco-map__play" data-video-open data-video-id="{{ sector.video }}">
-            <span class="btn__play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.29-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z"/></svg>
-            </span>
-            {{ ({ en: 'Watch video', vi: 'Xem video', zh: '观看视频' })[locale] }}
-          </button>
-          {% endif %}
+          {% set panelVideo = sector.id | ecoVideo %}
+          {{ videoButton(panelVideo, "btn--light btn--small eco-map__play", "", 'data-eco-video data-eco-default-video="' + panelVideo + '"') }}
         </div>
       </div>
 
@@ -108,6 +103,7 @@
             data-eco-co-image="{{ (co.image or sector.image) | url }}"
             data-eco-co-title="{{ co.short[locale] }}"
             data-eco-co-blurb="{{ co.desc[locale] }}"
+            data-eco-co-video="{{ co.video or sector.video }}"
           >
             <div class="eco-map__co-meta">
               {% if co.year %}

@@ -643,6 +643,14 @@
     const panels = [...root.querySelectorAll("[data-eco-panel]")];
     if (!tabs.length || !panels.length) return;
 
+    // The panel's "Watch video" button follows whichever company is previewed; hidden when it has none.
+    const setPanelVideo = (panel, id) => {
+      const btn = panel.querySelector("[data-eco-video]");
+      if (!btn) return;
+      btn.dataset.videoId = id || "";
+      btn.hidden = !id;
+    };
+
     const resetPanelMedia = (panel) => {
       const img = panel.querySelector("[data-eco-media]");
       const title = panel.querySelector("[data-eco-media-title]");
@@ -650,6 +658,7 @@
       if (img?.dataset.ecoDefaultSrc) img.src = img.dataset.ecoDefaultSrc;
       if (title?.dataset.ecoDefaultTitle) title.textContent = title.dataset.ecoDefaultTitle;
       if (blurb?.dataset.ecoDefaultBlurb) blurb.textContent = blurb.dataset.ecoDefaultBlurb;
+      setPanelVideo(panel, panel.querySelector("[data-eco-video]")?.dataset.ecoDefaultVideo);
       panel.querySelectorAll("[data-eco-co].is-selected").forEach((el) => {
         el.classList.remove("is-selected");
       });
@@ -674,6 +683,7 @@
       }
       if (title && link.dataset.ecoCoTitle) title.textContent = link.dataset.ecoCoTitle;
       if (blurb && link.dataset.ecoCoBlurb) blurb.textContent = link.dataset.ecoCoBlurb;
+      setPanelVideo(panel, link.dataset.ecoCoVideo);
       panel.querySelectorAll("[data-eco-co]").forEach((el) => {
         el.classList.toggle("is-selected", el === link);
       });

@@ -3524,3 +3524,7 @@ html.video-open, body.video-open { overflow: hidden; }
   .video-trigger__play::after { animation: none; }
   .video-modal, .video-modal__dialog, .video-modal__close { transition: none; }
 }
+
+/* CTA row that pairs a primary link with a "Watch video" button (home chapters) */
+.block-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+.btn[hidden] { display: none; }

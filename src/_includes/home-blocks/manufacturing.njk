@@ -1,3 +1,4 @@
+{% from "macros/video.njk" import videoButton with context %}
 <section class="chapter chapter--light" id="manufacturing" data-chapter="{{ section.displayNum }}" data-label-en="{{ section.content.en.chapterLabel }}" data-label-zh="{{ section.content.zh.chapterLabel }}" data-label-vi="{{ section.content.vi.chapterLabel }}">
   <div class="container">
     <header class="chapter__head">
@@ -11,7 +12,7 @@
       <div class="manu__body">
         <p class="lead reveal">{{ section.content[locale].lead }}</p>
         <ul class="checks">{% for item in section.items %}<li class="reveal" data-delay="{{ loop.index0 * 100 }}"><i></i>{{ item.label[locale] }}</li>{% endfor %}</ul>
-        <div class="reveal" data-delay="350"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--dark"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a></div>
+        <div class="reveal block-actions" data-delay="350"><a href="{{ section.cta.primary.href | localeUrl(locale) | url }}" class="btn btn--dark"><span class="btn__dot"></span>{{ section.content[locale].ctaPrimary }}</a>{% set blockVideo = "nam-viet" | ecoVideo %}{% if blockVideo %}{{ videoButton(blockVideo, "btn--outline btn--dark") }}{% endif %}</div>
       </div>
       <div class="manu__media reveal-img" data-parallax-img><img src="{{ section.images.media | url }}" alt="Automated feed production line" loading="lazy"></div>
     </div>
