@@ -1,5 +1,7 @@
 /** Nam Viet Group ecosystem — sectors + member companies (Profile TAP DOAN) */
 module.exports = {
+  // Group film (Google Drive) — fallback for any company/sector without its own video.
+  groupVideo: "1Bvi6XhWJllUf44QKmQb_1Z74mmilGdRl",
   intro: {
     en: "One group, multiple pillars — Nam Viet Group's member companies and units operate as a single integrated agribusiness value chain across Vietnam.",
     vi: "Một tập đoàn, nhiều trụ cột — các công ty và đơn vị thành viên của Nam Việt vận hành như một chuỗi giá trị nông nghiệp tích hợp xuyên suốt Việt Nam.",
