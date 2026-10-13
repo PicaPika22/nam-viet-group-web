@@ -103,7 +103,7 @@
             data-eco-co-image="{{ (co.image or sector.image) | url }}"
             data-eco-co-title="{{ co.short[locale] }}"
             data-eco-co-blurb="{{ co.desc[locale] }}"
-            data-eco-co-video="{{ co.video or sector.video }}"
+            data-eco-co-video="{{ co.id | ecoVideo }}"
           >
             <div class="eco-map__co-meta">
               {% if co.year %}
