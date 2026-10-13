@@ -793,12 +793,9 @@
       if (!id) return;
       clearTimeout(closeTimer);
       lastFocus = document.activeElement;
-      // YouTube IDs are 11 chars; anything longer is a Google Drive file ID.
-      const src = id.length > 11
-        ? "https://drive.google.com/file/d/" + encodeURIComponent(id) + "/preview"
-        : "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0&modestbranding=1";
       frame.innerHTML =
-        '<iframe src="' + src + '" title="Nam Viet Group" ' +
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+        '?autoplay=1&rel=0&modestbranding=1" title="Nam Viet Group" ' +
         'allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
       modal.hidden = false;
       html.classList.add("video-open");
