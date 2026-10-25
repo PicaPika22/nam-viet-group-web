@@ -58,15 +58,19 @@ module.exports = function (eleventyConfig) {
 
   // Video for a sector or member company id. A company without its own video falls back to its sector's;
   // a sector without one falls back to its first company that has one (e.g. Feed → Nam Viet JSC).
-  eleventyConfig.addFilter("ecoVideo", (id) => {
+  eleventyConfig.addFilter("ecoVideo", (id, variant) => {
     const { sectors = [] } = require("./src/_data/ecosystem");
     for (const sector of sectors) {
       if (sector.id === id) {
+        if (variant === "short" && sector.videoShort) return sector.videoShort;
         const lead = (sector.companies || []).find((c) => c.video);
-        return sector.video || (lead && lead.video) || "";
+        return sector.video || (lead && (variant === "short" && lead.videoShort ? lead.videoShort : lead.video)) || "";
       }
       const co = (sector.companies || []).find((c) => c.id === id);
-      if (co) return co.video || sector.video || "";
+      if (co) {
+        if (variant === "short" && co.videoShort) return co.videoShort;
+        return co.video || sector.video || "";
+      }
     }
     return "";
   });

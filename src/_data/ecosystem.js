@@ -24,7 +24,8 @@ module.exports = {
         {
           id: "nam-viet",
           year: "2002",
-          video: "WNR72DQayUI",
+          video: "2kN4kUMRzPY",
+          videoShort: "dUT33waM1hE",
           image: "/assets/img/about.png",
           short: { en: "Nam Viet JSC", vi: "CTCP Nam Việt", zh: "南越股份" },
           name: {
@@ -57,6 +58,7 @@ module.exports = {
         {
           id: "pilmico",
           year: "2014",
+          video: "sGrCglJ6uEY",
           image: "/assets/img/milestones/2014-pilmico.jpg",
           short: { en: "Pilmico Group", vi: "Pilmico Group", zh: "Pilmico" },
           name: {
@@ -74,7 +76,7 @@ module.exports = {
     },
     {
       id: "logistics",
-      video: "J5WqgMWb13M",
+      video: "4OLj4TnrN8g",
       image: "/assets/img/logistics.jpg",
       key: { en: "02", vi: "02", zh: "02" },
       title: {
@@ -107,6 +109,7 @@ module.exports = {
         {
           id: "warehouse-qn",
           year: "2019",
+          video: "4OLj4TnrN8g",
           unit: true,
           image: "/assets/img/milestones/2019.jpg",
           short: { en: "Cai Lan Warehouse", vi: "Tổng kho Cái Lân", zh: "盖麟总仓" },
@@ -323,7 +326,7 @@ module.exports = {
     },
     {
       id: "farming",
-      video: "Iaw0RU6kaQM",
+      video: "RKiR4zo7U9Q",
       image: "/assets/img/direction/dinh-hoa.jpg",
       key: { en: "07", vi: "07", zh: "07" },
       title: {
@@ -340,6 +343,7 @@ module.exports = {
         {
           id: "dinh-hoa-farm",
           year: "2014",
+          video: "RKiR4zo7U9Q",
           unit: true,
           image: "/assets/img/milestones/2014-farm.jpg",
           short: { en: "Định Hóa farm", vi: "Trang trại Định Hóa", zh: "定化农场" },
